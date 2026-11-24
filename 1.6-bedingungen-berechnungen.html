@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<!-- GENERIERT von java/kurs/_build (java-grundlagen) – nicht direkt bearbeiten!
+     Quelle: java/kurs/_build/java-grundlagen/lessons/, bauen: python3 _build/build.py java-grundlagen -->
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1.6 &ndash; Bedingungen &amp; Berechnungen | Java-Grundlagen Kurs</title>
+  <script>(function () { var t = localStorage.getItem('kurs-theme') || 'dark'; document.documentElement.setAttribute('data-theme', t); })();</script>
+  <link rel="stylesheet" href="assets/kurs.css">
+  <link rel="stylesheet" id="hljs-theme"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+
+<body>
+
+  <button class="hamburger" id="hamburger" aria-label="Navigation &ouml;ffnen">&#9776;</button>
+  <div class="sidebar-overlay" id="overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html">
+        <span class="brand-icon">J</span>
+        <div>
+          <div class="brand-name">Java</div>
+          <div class="brand-sub">Grundlagen der Programmierung</div>
+        </div>
+      </a>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Dark/Light Mode"
+        title="Theme wechseln">&#9728;</button>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-group">
+        <div class="nav-group-label html-label">Teil 1 &mdash; Grundlagen</div>
+        <a class="nav-link" href="1.1-einfuehrung-entwicklungsumgebung.html"><span class="ln">1.1</span>Einf&uuml;hrung &amp; Entwicklungsumgebung</a>
+        <a class="nav-link" href="1.2-klassen-objekte.html"><span class="ln">1.2</span>Klassen, Objekte, Get &amp; Set</a>
+        <a class="nav-link" href="1.3-konstruktoren-methoden.html"><span class="ln">1.3</span>Konstruktoren, this &amp; Methoden</a>
+        <a class="nav-link" href="1.4-datentypen.html"><span class="ln">1.4</span>Datentypen</a>
+        <a class="nav-link" href="1.5-signatur-ueberladen.html"><span class="ln">1.5</span>Methoden, Signatur &amp; &Uuml;berladen</a>
+        <a class="nav-link" href="1.6-bedingungen-berechnungen.html"><span class="ln">1.6</span>Bedingungen &amp; Berechnungen</a>
+        <a class="nav-link" href="1.7-debugger-testklassen.html"><span class="ln">1.7</span>Debugger &amp; Testklassen</a>
+        <a class="nav-link" href="1.8-strings-random.html"><span class="ln">1.8</span>Strings &amp; Random</a>
+        <a class="nav-link" href="1.9-objekt-beziehungen.html"><span class="ln">1.9</span>Objekt-Beziehungen</a>
+        <a class="nav-link" href="1.10-schleifen.html"><span class="ln">1.10</span>Schleifen</a>
+        <a class="nav-link" href="1.11-statische-methoden.html"><span class="ln">1.11</span>Statische Methoden &amp; main</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label css-label">Teil 2 &mdash; Datenstrukturen &amp; OOP</div>
+        <a class="nav-link" href="2.1-intellij-junit.html"><span class="ln">2.1</span>IntelliJ, Maven &amp; JUnit</a>
+        <a class="nav-link" href="2.2-arrays.html"><span class="ln">2.2</span>Arrays</a>
+        <a class="nav-link" href="2.3-arrays-einfuegen-entfernen.html"><span class="ln">2.3</span>Arrays: Einf&uuml;gen &amp; Entfernen</a>
+        <a class="nav-link" href="2.4-sortieralgorithmen.html"><span class="ln">2.4</span>Sortieralgorithmen</a>
+        <a class="nav-link" href="2.5-objekt-arrays.html"><span class="ln">2.5</span>Objekt-Arrays</a>
+        <a class="nav-link" href="2.6-assoziation-equals.html"><span class="ln">2.6</span>Beidseitige Assoziation &amp; equals</a>
+        <a class="nav-link" href="2.7-collections.html"><span class="ln">2.7</span>Collections: ArrayList &amp; Co.</a>
+        <a class="nav-link" href="2.8-vererbung.html"><span class="ln">2.8</span>Vererbung &amp; Polymorphismus</a>
+        <a class="nav-link" href="2.9-abstrakt-interfaces.html"><span class="ln">2.9</span>Abstrakte Klassen &amp; Interfaces</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label rn-label">Teil 3 &mdash; Fortgeschrittene Konzepte</div>
+        <a class="nav-link" href="3.0-fail-early.html"><span class="ln">3.0</span>Fail Early statt Happy Path</a>
+        <a class="nav-link" href="3.1-exceptions.html"><span class="ln">3.1</span>Exceptions</a>
+        <a class="nav-link" href="3.2-hashset-treeset.html"><span class="ln">3.2</span>HashSet, TreeSet &amp; hashCode</a>
+        <a class="nav-link" href="3.3-serialisierung-dateien.html"><span class="ln">3.3</span>Serialisierung &amp; Dateien</a>
+        <a class="nav-link" href="3.4-git.html"><span class="ln">3.4</span>Versionsverwaltung mit Git</a>
+        <a class="nav-link" href="3.5-lambdas.html"><span class="ln">3.5</span>Lambda-Ausdr&uuml;cke</a>
+        <a class="nav-link" href="3.6-streams.html"><span class="ln">3.6</span>Die Streams-API</a>
+        <a class="nav-link" href="3.7-design-patterns.html"><span class="ln">3.7</span>Design-Patterns</a>
+        <a class="nav-link" href="3.8-model-klassen.html"><span class="ln">3.8</span>Model-Klassen f&uuml;r die GUI</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label react-label">Teil 4 &mdash; Webanwendungen mit Vaadin</div>
+        <a class="nav-link" href="4.1-web-grundlagen.html"><span class="ln">4.1</span>Grundprinzipien des Web</a>
+        <a class="nav-link" href="4.2-vaadin-einstieg.html"><span class="ln">4.2</span>Vaadin Flow &amp; Start-Paket</a>
+        <a class="nav-link" href="4.3-komponenten-layouts.html"><span class="ln">4.3</span>Komponenten &amp; Layouts</a>
+        <a class="nav-link" href="4.4-grid-routing-binding.html"><span class="ln">4.4</span>Tabellen, Routing &amp; Binding</a>
+        <a class="nav-link" href="4.5-mitarbeiterverwaltung.html"><span class="ln">4.5</span>Mitarbeiterverwaltung</a>
+      </div>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <header class="lesson-header">
+      <p class="lesson-eyebrow">Lektion 1.6 &mdash; Teil 1: Grundlagen</p>
+      <h1>Bedingungen &amp; Berechnungen</h1>
+      <div class="lesson-tags">
+        <span class="tag tag-html">Bedingungen</span>
+        <span class="tag tag-time">ca. 90 min</span>
+        <span class="tag tag-level">Grundlagen</span>
+      </div>
+    </header>
+
+    <div class="content-area">
+      <section class="section section-lernziele">
+        <h2>Lernziele</h2>
+        <ul class="lernziele-list">
+          <li><a class="lernziel-link" href="#abschnitt-1">Parameter in Set-Methoden mit <code>if</code>/<code>else</code> prüfen und ungültige Werte abweisen<span class="lernziel-ziel">Abschnitt 1</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-2">Vergleichsoperatoren und die logischen Operatoren <code>&amp;&amp;</code> und <code>||</code> einsetzen<span class="lernziel-ziel">Abschnitt 2</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-2">den Unterschied zwischen Zuweisung <code>=</code> und Vergleich <code>==</code> erklären<span class="lernziel-ziel">Abschnitt 2</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-3">lokale Variablen für Zwischenergebnisse verwenden<span class="lernziel-ziel">Abschnitt 3</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-3">ganzzahlige Division erkennen und mit einer Typkonvertierung (<code>(float)</code>, <code>(double)</code>) vermeiden<span class="lernziel-ziel">Abschnitt 3</span></a></li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-1">1 &mdash; Parameter-Prüfungen</h2>
+        <p>
+          Wir betrachten die Klasse <code>Person</code> gemäß dem folgenden UML-Diagramm. Die Set-Methoden sollen
+          sicherstellen, dass die Eigenschaften stets <strong>gültige Werte</strong> haben.
+        </p>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/person-bmi.png" alt="UML-Klassendiagramm der Klasse Person" loading="lazy" style="max-width:260px"></div>
+  <figcaption>UML-Klassendiagramm der Klasse Person</figcaption>
+</figure>
+        <details class="code-collapse">
+  <summary><span class="code-filename">Person.java</span> <span class="code-collapse-hint">Code anzeigen (62 Zeilen)</span></summary>
+<div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Person.java</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public class Person {
+
+    private String name;
+    private boolean maennlich;
+    private int groesse;
+    private int gewicht;
+
+    public Person() {
+        setName("n/a");
+        setMaennlich(true);
+        setGroesse(170);
+        setGewicht(70);
+    }
+
+    public Person(String name, boolean maennlich, int groesse, int gewicht) {
+        setName(name);
+        setMaennlich(maennlich);
+        setGroesse(groesse);
+        setGewicht(gewicht);
+    }
+
+    public void setName(String name) {
+        if (name != null) {
+            this.name = name;
+        } else {
+            System.out.println("Fehler, name darf nicht null sein");
+            this.name = "n/a";
+        }
+    }
+
+    public void setMaennlich(boolean maennlich) {
+        this.maennlich = maennlich;
+    }
+
+    public void setGroesse(int groesse) {
+        if (groesse &gt;= 110 &amp;&amp; groesse &lt;= 220) {
+            this.groesse = groesse;
+        } else {
+            this.groesse = 170;
+            System.out.println("Groesse ungültig, setze defaultwert");
+        }
+    }
+
+    public void setGewicht(int gewicht) {
+        if (gewicht &gt; 30 &amp;&amp; gewicht &lt; 150) { // zwischen bedeutet exklusiv
+            this.gewicht = gewicht;
+        } else {
+            this.gewicht = 70;
+            System.out.println("Gewicht ungültig, setze default");
+        }
+    }
+
+    public void printPerson() {
+        if (maennlich == true) {
+            System.out.println("Name: " + name + " (m), Groesse: "
+                    + groesse + ", Gewicht: " + gewicht);
+        } else {
+            System.out.println("Name: " + name + " (f), Groesse: "
+                    + groesse + ", Gewicht: " + gewicht);
+        }
+    }
+}</code></pre>
+</div>
+</details>
+        <p>
+          In <code>setName</code> prüft eine <strong>If-Bedingung</strong>, ob der Parameter <code>name</code> (ein
+          Referenzdatentyp) ungleich <code>null</code> ist. Nur dann erfolgt die Zuweisung, anderenfalls wird eine
+          Fehlermeldung ausgegeben. In <code>setGroesse</code> und <code>setGewicht</code> wird geprüft, ob der
+          Parameter im gültigen Wertebereich liegt.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-2">2 &mdash; Vergleichs- und logische Operatoren</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Operator</th><th>Bedeutung</th><th>Beispiel</th></tr></thead>
+            <tbody>
+              <tr><td><code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code></td><td>kleiner, kleiner gleich, größer, größer gleich</td><td><code>groesse &gt;= 110</code></td></tr>
+              <tr><td><code>==</code></td><td>gleich (Vergleich!)</td><td><code>maennlich == true</code></td></tr>
+              <tr><td><code>!=</code></td><td>ungleich</td><td><code>name != null</code></td></tr>
+              <tr><td><code>&amp;&amp;</code></td><td>logisches Und: nur wenn <em>beide</em> Seiten <code>true</code> sind</td><td><code>groesse &gt;= 110 &amp;&amp; groesse &lt;= 220</code></td></tr>
+              <tr><td><code>||</code></td><td>logisches Oder: wenn <em>eine</em> Seite (oder beide) <code>true</code> ist</td><td><code>alter &lt; 6 || alter &gt; 65</code></td></tr>
+              <tr><td><code>!</code></td><td>Negation</td><td><code>!maennlich</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          Die Vergleichsoperatoren vergleichen die Variable mit dem Zahlenwert (<em>Literal</em>). In
+          <code>printPerson</code> wird die Ausgabe je nach Geschlecht unterschiedlich formatiert, indem mit
+          <code>==</code> geprüft wird, ob <code>maennlich</code> den Wert <code>true</code> hat.
+        </p>
+        <div class="callout callout-error">
+  <div class="callout-icon">&#10007;</div>
+  <div class="callout-body">
+    <div class="callout-title">= ist kein Vergleich</div>
+    <p>Die Gleichheit zweier Werte wird in Java immer mit dem <strong>Doppel-Istgleich</strong>
+          <code>==</code> ermittelt. Ein einfaches <code>=</code> ist eine Zuweisung! Bei <code>boolean</code>
+          kann man den Vergleich übrigens weglassen: <code>if (maennlich)</code> ist gleichbedeutend mit
+          <code>if (maennlich == true)</code>.</p>
+  </div>
+</div>
+        <div class="callout callout-info">
+  <div class="callout-icon">&#8505;</div>
+  <div class="callout-body">
+    <div class="callout-title">Inklusiv oder exklusiv?</div>
+    <p>&bdquo;zwischen 30 und 150&ldquo; ist mehrdeutig. Im Code ist es eindeutig: <code>&gt; 30 &amp;&amp;
+          &lt; 150</code> schließt die Grenzen aus, <code>&gt;= 110 &amp;&amp; &lt;= 220</code> schließt sie ein.
+          Lies die Angabe genau und dokumentiere deine Entscheidung im Kommentar.</p>
+  </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-3">3 &mdash; Lokale Variablen, Berechnungen und Typkonvertierung</h2>
+        <p>Wir betrachten nun die folgende Aufgabenstellung:</p>
+        <div class="callout callout-info">
+          <div class="callout-icon">&#8505;</div>
+          <div class="callout-body">
+            <div class="callout-title">Aufgabe: Body-Mass-Index (BMI)</div>
+            <p>Der <em>Body-Mass-Index</em> (BMI) berechnet sich anhand der Größe <em>g</em> [m] und des Gewichts <em>w</em> [kg] mittels <strong>bmi = w / g&sup2;</strong>.</p>
+            <p>Berechne diesen Wert in der Methode <code>bmiBerechnen()</code> der Klasse <code>Person</code> und gib den Wert als Rückgabewert zurück. Abhängig vom Geschlecht kann wie folgt klassifiziert werden:</p>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th></th><th>BMI Frauen</th><th>BMI Männer</th></tr></thead>
+                <tbody>
+                  <tr><td>Untergewicht</td><td>&lt; 19</td><td>&lt; 20</td></tr>
+                  <tr><td>Normalgewicht</td><td>19 &hellip; 24</td><td>20 &hellip; 25</td></tr>
+                  <tr><td>Übergewicht</td><td>&gt; 24</td><td>&gt; 25</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>Entwickle nun die Methode <code>bmiAusgeben()</code>, welche den BMI selbst und die Interpretation des BMIs zum Objekt auf die Konsole ausgibt. Diese Methode soll die Methode <code>bmiBerechnen()</code> verwenden und mit <code>if</code>-Bedingungen die entsprechenden Fallunterscheidungen vornehmen.</p>
+          </div>
+        </div>
+        <p>Dazu ergänzen wir die Klasse <code>Person</code> um die folgenden beiden Methoden:</p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Person.java (Ergänzung)</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public float bmiBerechnen() {
+    float groesseMeter = (float) groesse / 100;
+    float bmi = (float) gewicht / (groesseMeter * groesseMeter);
+    return bmi;
+}
+
+public void bmiAusgeben() {
+    String bmiTyp = "";
+    float bmi = bmiBerechnen();
+    if (maennlich == true) { // Maenner
+        if (bmi &lt; 20) {
+            bmiTyp = "Untergewicht";
+        } else {
+            if (bmi &gt;= 20 &amp;&amp; bmi &lt;= 25) {
+                bmiTyp = "Normalgewicht";
+            } else {
+                bmiTyp = "Übergewicht";
+            }
+        }
+    } else { // Frauen
+        if (bmi &lt; 19) {
+            bmiTyp = "Untergewicht";
+        } else if (bmi &gt;= 19 &amp;&amp; bmi &lt;= 24) {
+            bmiTyp = "Normalgewicht";
+        } else {
+            bmiTyp = "Übergewicht";
+        }
+    }
+    System.out.println("BMI: " + bmi + " Typ: " + bmiTyp);
+}</code></pre>
+</div>
+        <p>
+          In <code>bmiBerechnen</code> speichert die <strong>lokale Variable</strong> <code>groesseMeter</code>
+          die Größe in Metern. Lokale Variablen werden innerhalb einer Methode deklariert und existieren nur
+          bis zum Ende dieser Methode.
+        </p>
+        <p>
+          Dafür wird <code>groesse</code> durch 100 dividiert. Achtung: Hier werden zwei <code>int</code>-Werte
+          dividiert. Java verwendet dann die <strong>ganzzahlige Division</strong> &ndash; alle Nachkommastellen
+          wären verloren (181 / 100 = 1). Um mit Kommazahlen zu rechnen, muss einer der Operanden in eine
+          Kommazahl konvertiert werden: das vorangestellte <code>(float)</code> ist eine
+          <strong>Typkonvertierung</strong> (<em>Cast</em>, mehr dazu in Lektion 1.4, Abschnitt
+          &bdquo;Typkonvertierung&ldquo;).
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Ganzzahlige Division</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">int a = 181;
+System.out.println(a / 100);           // 1
+System.out.println((float) a / 100);   // 1.81
+System.out.println(a / 100.0);         // 1.81 – 100.0 ist ein double-Literal
+System.out.println((double) (a / 100)); // 1.0 – zu spät konvertiert!</code></pre>
+</div>
+        <p>
+          <code>bmiAusgeben</code> legt zunächst die lokale Variable <code>bmiTyp</code> an, die am Ende für
+          die Ausgabe verwendet wird. Dann folgt eine Fallunterscheidung (männlich/weiblich) und darin weitere
+          If-Bedingungen für die Intervalle. Die Kurzform <code>else if</code> spart eine Verschachtelungsebene.
+        </p>
+      </section>
+
+      <section class="section section-projekt">
+        <h2 id="projektschritt">Projektschritt</h2>
+<div class="projekt-box">
+  <div class="projekt-box-header">
+    <span class="projekt-step">Projektschritt 1.6</span>
+    <h3>Gültige Werte, Teilzeit und Stunden pro Tag</h3>
+  </div>
+<p>Alle Set-Methoden prüfen jetzt ihre Parameter (dieselben Grenzen gelten später auch in Lektion 2.8): Geburtsjahr 1900&ndash;2050, Stundenlohn 8&ndash;999 Euro, 1&ndash;50 Wochenstunden. Bei ungültigen Werten gibt es eine Fehlermeldung und einen Standardwert. Neu sind außerdem <code>isTeilzeit()</code>, <code>stundenProTag()</code> mit Typkonvertierung und eine Fallunterscheidung in <code>print()</code>.</p>
+  <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">src/main/java/Mitarbeiter.java (Auszug)</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public void setGeburtsjahr(int geburtsjahr) {
+    if (geburtsjahr &gt;= 1900 &amp;&amp; geburtsjahr &lt;= 2050) {
+        this.geburtsjahr = geburtsjahr;
+    } else {
+        System.out.println("Fehler: ungueltiges Geburtsjahr: " + geburtsjahr);
+        this.geburtsjahr = 1970;
+    }
+}
+
+public void setStundenlohn(int stundenlohn) {
+    if (stundenlohn &gt; 7 &amp;&amp; stundenlohn &lt; 1000) {
+        this.stundenlohn = stundenlohn;
+    } else {
+        System.out.println("Fehler: ungueltiger Stundenlohn: " + stundenlohn);
+        this.stundenlohn = 10;
+    }
+}
+
+public boolean isTeilzeit() {
+    return anzahlWochenStunden &lt; 38;
+}
+
+public double stundenProTag() {
+    // Typkonvertierung: sonst ganzzahlige Division (37 / 5 = 7)
+    double stunden = (double) anzahlWochenStunden / 5;
+    return stunden;
+}
+
+public void print() {
+    String beschaeftigung;
+    if (isTeilzeit()) {
+        beschaeftigung = "Teilzeit";
+    } else {
+        beschaeftigung = "Vollzeit";
+    }
+    System.out.println("Mitarbeiter: " + name + " (Geburtsjahr: " + geburtsjahr
+                       + "), " + stundenlohn + " Euro/h, "
+                       + anzahlWochenStunden + " h/Woche (" + beschaeftigung + ")");
+}</code></pre>
+</div>
+  <p>Damit du nicht jede Prüfung in der Object Workbench durchklicken musst, schreibst du die Aufrufe in ein kleines Programm mit <code>main()</code> (Lektion 1.5): Lege in <code>src/test/java</code> die Datei <code>TestMitarbeiter.java</code> an. Sie erzeugt drei Mitarbeiter &ndash; darunter einen mit lauter ungültigen Werten, der vier Fehlermeldungen und die Standardwerte liefern muss &ndash; und gibt die Ergebnisse aus. Hinter jeder Ausgabe steht im Kommentar, was herauskommen soll; starte das Programm mit dem grünen Pfeil neben <code>main</code> und vergleiche.</p>
+  <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">src/test/java/TestMitarbeiter.java</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">/*
+ * Ausprobieren mit main: erzeugt Mitarbeiter, ruft Methoden auf und
+ * gibt die Ergebnisse aus. Die erwarteten Werte stehen im Kommentar -
+ * ob sie stimmen, wird "mit dem Auge" kontrolliert.
+ * Starten: grüner Pfeil neben main.
+ */
+void main() {
+    System.out.println("--- Karl, Konstruktor mit 4 Parametern:");
+    Mitarbeiter m1 = new Mitarbeiter("Karl Maier", 1989, 15, 40);
+    m1.print();   // ... 15 Euro/h, 40 h/Woche (Vollzeit)
+    System.out.println("Kosten pro Monat: " + m1.getKostenProMonat());     // 2400
+    System.out.println("Kosten fuer 5 Wochen: " + m1.getKostenProMonat(5)); // 3000
+    System.out.println("Alter im Jahr 2026: " + m1.alterBerechnen(2026));   // 37
+
+    System.out.println("--- Susanne, Standardwerte und Set-Methoden:");
+    Mitarbeiter m2 = new Mitarbeiter("Susanne Huber", 1991);
+    m2.print();   // ... 10 Euro/h, 40 h/Woche (Standardwerte)
+    m2.setStundenlohn(20);
+    m2.setAnzahlWochenStunden(30);
+    m2.print();   // ... 20 Euro/h, 30 h/Woche
+    System.out.println("Kosten pro Monat: " + m2.getKostenProMonat());     // 2400
+    System.out.println("Teilzeit? " + m2.isTeilzeit());                    // true
+    System.out.println("Stunden pro Tag: " + m2.stundenProTag());          // 6.0
+
+    System.out.println("--- Ungueltige Werte:");
+    Mitarbeiter m3 = new Mitarbeiter(null, 1789, 5, 70);   // 4 Fehlermeldungen
+    m3.print();   // Mitarbeiter: n/a (Geburtsjahr: 1970), 10 Euro/h, 40 h/Woche (Vollzeit)
+}</code></pre>
+</div>
+  <p class="mb-0">&#128193; Stand nach dieser Lektion: <a href="beispiele/1.6/src/main/java/Mitarbeiter.java" target="_blank">beispiele/1.6/</a> (vollständige Klasse mit allen Prüfungen)</p>
+</div>
+      </section>
+
+      <section class="section section-fehler">
+        <h2>Häufige Fehler</h2>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Zuweisung statt Vergleich</div>
+  <p><code>if (anzahl = 0)</code> &rarr; <code>incompatible types: int cannot be converted to boolean</code>. Bei <code>boolean</code>-Variablen übersetzt <code>if (maennlich = true)</code> sogar und ist dann <em>immer</em> wahr.</p>
+          <p class="fehler-fix">Vergleiche mit <code>==</code>; bei <code>boolean</code> einfach <code>if (maennlich)</code> bzw. <code>if (!maennlich)</code> schreiben.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Ganzzahlige Division</div>
+  <p>Der BMI ist immer eine ganze Zahl oder sogar 0, z.&nbsp;B. weil <code>groesse / 100</code> mit 181 cm 1 ergibt.</p>
+          <p class="fehler-fix">Vor der Division einen Operanden konvertieren: <code>(double) groesse / 100</code> oder <code>groesse / 100.0</code>.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: &amp;&amp; und || verwechselt</div>
+  <p><code>if (groesse &lt; 110 &amp;&amp; groesse &gt; 220)</code> ist nie wahr &ndash; ungültige Werte werden durchgelassen.</p>
+          <p class="fehler-fix">&bdquo;außerhalb&ldquo; heißt <code>||</code>: <code>groesse &lt; 110 || groesse &gt; 220</code>. Am besten die gültige Bedingung formulieren (<code>&gt;= 110 &amp;&amp; &lt;= 220</code>) und ungültige Werte im <code>else</code> behandeln.</p>
+</div>
+      </section>
+
+      <section class="section section-aufgaben">
+        <h2>Aufgaben</h2>
+        <div class="aufgaben-list">
+          <div class="aufgabe">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Aufgabe 1</span>
+    <span class="aufgabe-title">Person &amp; BMI</span>
+  </div>
+  <p>Eine Klasse <code>Person</code> mit Größe und Gewicht, geprüften Set-Methoden und der Berechnung des Body-Mass-Index samt Interpretation (Unter-, Normal-, Übergewicht) getrennt nach Geschlecht.</p>
+            <p class="mb-0"><a href="uebungen/lektion-1.6-uebung-1-person-bmi.pdf" target="_blank">&#128196; Übung 1.6-1 (PDF)</a></p>
+</div>
+          <div class="aufgabe">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Aufgabe 2</span>
+    <span class="aufgabe-title">Klasse Computer</span>
+  </div>
+  <p>Ein <code>Computer</code> mit Modell, SSD und Hauptspeicher: Upgrade auf SSD nur, wenn noch keine eingebaut ist; Speicher-Upgrade mit Obergrenze 64&nbsp;GB, das zurückgibt, wie viel tatsächlich ergänzt wurde.</p>
+            <p class="mb-0"><a href="uebungen/lektion-1.6-uebung-2-computer.pdf" target="_blank">&#128196; Übung 1.6-2 (PDF)</a></p>
+</div>
+          <div class="aufgabe">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Aufgabe 3</span>
+    <span class="aufgabe-title">Ticket-Automat</span>
+  </div>
+  <p>Ein Fahrschein-Automat verwaltet eingeworfenes Guthaben und Gesamteinnahmen: Geld einwerfen, Ticket drucken (nur bei genug Guthaben) und Wechselgeld auszahlen.</p>
+            <p class="mb-0"><a href="uebungen/lektion-1.6-uebung-3-ticket-automat.pdf" target="_blank">&#128196; Übung 1.6-3 (PDF)</a></p>
+</div>
+          <div class="aufgabe">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Aufgabe 4</span>
+    <span class="aufgabe-title">Beamer</span>
+  </div>
+  <p>Ein <code>Beamer</code> mit Raum, Restzeit und Ein/Aus-Zustand: Einschalten verbraucht Restzeit, bei Restzeit 0 ist er kaputt, Reparieren und Herunterwerfen verändern die Restzeit.</p>
+            <p class="mb-0"><a href="uebungen/lektion-1.6-uebung-4-beamer.pdf" target="_blank">&#128196; Übung 1.6-4 (PDF)</a></p>
+</div>
+        </div>
+      </section>
+
+      <section class="section section-quiz">
+        <h2>Wissenskontrolle</h2>
+        <div class="quiz" id="quiz-6">
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 1</span> Was ist der Unterschied zwischen <code>=</code> und <code>==</code>?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-6-1"> <span>Es gibt keinen, beide vergleichen.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-6-1"> <span><code>=</code> weist einen Wert zu, <code>==</code> vergleicht zwei Werte.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-6-1"> <span><code>=</code> vergleicht, <code>==</code> weist zu.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-6-1"> <span><code>==</code> ist nur für Strings gedacht.</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> <code>alter = 18</code> speichert 18 in der Variable, <code>alter == 18</code> liefert <code>true</code> oder <code>false</code>. In einer <code>if</code>-Bedingung braucht man den Vergleich.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 2</span> Ein Wert <code>x</code> soll zwischen 10 und 100 liegen (jeweils inklusive). Welche Bedingung prüft das?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-6-2"> <span><code>x &gt;= 10 || x &lt;= 100</code></span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-6-2"> <span><code>x &gt;= 10 &amp;&amp; x &lt;= 100</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-6-2"> <span><code>10 &lt;= x &lt;= 100</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-6-2"> <span><code>x &gt; 10 &amp;&amp; x &lt; 100</code></span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Beide Teilbedingungen müssen gleichzeitig gelten, also <code>&amp;&amp;</code>. Mit <code>||</code> wäre jede Zahl gültig. Die Schreibweise <code>10 &lt;= x &lt;= 100</code> gibt es in Java nicht, und <code>&gt;</code>/<code>&lt;</code> würden die Grenzen ausschließen.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 3</span> Welchen Wert hat <code>double d = 7 / 2;</code>?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-6-3"> <span>3.5</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-6-3"> <span>3.0</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-6-3"> <span>4.0</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-6-3"> <span>Das übersetzt nicht.</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> <code>7 / 2</code> ist eine Division zweier <code>int</code>-Werte und ergibt die ganze Zahl 3. Erst danach wird sie in <code>double</code> umgewandelt. Richtig wäre z.&nbsp;B. <code>(double) 7 / 2</code> oder <code>7.0 / 2</code>.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 4</span> Was gilt für eine lokale Variable, die innerhalb einer Methode deklariert wird?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-6-4"> <span>Sie behält ihren Wert bis zum nächsten Methodenaufruf.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-6-4"> <span>Sie existiert nur, solange die Methode läuft, und ist außerhalb nicht sichtbar.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-6-4"> <span>Sie ist automatisch ein Attribut der Klasse.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-6-4"> <span>Sie muss <code>private</code> deklariert werden.</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Lokale Variablen dienen für Zwischenergebnisse. Nach dem Ende der Methode sind sie weg; was dauerhaft zum Objekt gehört, ist ein Attribut. Zugriffs-Modifier wie <code>private</code> gibt es für lokale Variablen nicht.</div>
+  </div>
+  <div class="quiz-summary"><span class="quiz-score"></span><button type="button" class="quiz-reset">Zur&uuml;cksetzen</button></div>
+</div>
+      </section>
+
+    </div>
+
+    <nav class="lesson-nav">
+      <a class="nav-btn" href="1.5-signatur-ueberladen.html">&larr; Lektion 1.5: Methoden, Signatur &amp; &Uuml;berladen</a>
+      <span class="nav-center-info">Lektion 1.6</span>
+      <a class="nav-btn primary" href="1.7-debugger-testklassen.html">Lektion 1.7: Debugger &amp; Testklassen &rarr;</a>
+    </nav>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>
+    const ham = document.getElementById('hamburger');
+    const sb = document.getElementById('sidebar');
+    const ov = document.getElementById('overlay');
+    ham.addEventListener('click', () => { sb.classList.toggle('open'); ov.classList.toggle('visible'); });
+    ov.addEventListener('click', () => { sb.classList.remove('open'); ov.classList.remove('visible'); });
+    const cur = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-link').forEach(l => {
+      if (l.getAttribute('href') === cur) l.classList.add('active');
+    });
+    const themeBtn = document.getElementById('theme-toggle');
+    const applyTheme = (t) => {
+      document.documentElement.setAttribute('data-theme', t);
+      if (themeBtn) themeBtn.innerHTML = t === 'dark' ? '&#9728;' : '&#9790;';
+    };
+    applyTheme(localStorage.getItem('kurs-theme') || 'dark');
+    setTimeout(() => document.documentElement.classList.add('theme-transitions'), 50);
+    if (themeBtn) themeBtn.addEventListener('click', () => {
+      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('kurs-theme', next);
+      applyTheme(next);
+    });
+    hljs.highlightAll();
+  </script>
+  <script>
+    document.querySelectorAll('.quiz').forEach((quiz) => {
+      const fragen = [...quiz.querySelectorAll('.quiz-frage')];
+      const score = quiz.querySelector('.quiz-score');
+      const update = () => {
+        const done = fragen.filter((f) => f.dataset.state).length;
+        const ok = fragen.filter((f) => f.dataset.state === 'ok').length;
+        score.textContent = done === 0
+          ? fragen.length + ' Fragen – wähle eine Antwort und prüfe sie.'
+          : ok + ' von ' + fragen.length + ' richtig'
+            + (done < fragen.length ? ' (' + done + ' von ' + fragen.length + ' bearbeitet)' : '');
+      };
+      fragen.forEach((f) => {
+        const inputs = [...f.querySelectorAll('input')];
+        const check = f.querySelector('.quiz-check');
+        const reveal = f.querySelector('.quiz-reveal');
+        const fb = f.querySelector('.quiz-feedback');
+        const exp = f.querySelector('.quiz-erklaerung');
+        inputs.forEach((i) => i.addEventListener('change', () => {
+          check.disabled = !inputs.some((x) => x.checked);
+        }));
+        const finish = (graded) => {
+          let allOk = true;
+          f.querySelectorAll('.quiz-opt').forEach((li) => {
+            const input = li.querySelector('input');
+            const corr = li.dataset.correct === '1';
+            if (corr !== input.checked) allOk = false;
+            if (corr) li.classList.add('opt-correct');
+            else if (input.checked) li.classList.add('opt-wrong');
+            input.disabled = true;
+          });
+          f.dataset.state = !graded ? 'shown' : (allOk ? 'ok' : 'wrong');
+          fb.className = 'quiz-feedback fb-' + f.dataset.state;
+          fb.textContent = !graded ? 'Lösung angezeigt.'
+            : (allOk ? '✔ Richtig!' : '✘ Leider nicht ganz – die richtige Lösung ist markiert.');
+          fb.hidden = false;
+          exp.hidden = false;
+          check.disabled = true;
+          reveal.disabled = true;
+          update();
+        };
+        check.addEventListener('click', () => finish(true));
+        reveal.addEventListener('click', () => finish(false));
+      });
+      quiz.querySelector('.quiz-reset').addEventListener('click', () => {
+        fragen.forEach((f) => {
+          delete f.dataset.state;
+          f.querySelectorAll('.quiz-opt').forEach((li) => li.classList.remove('opt-correct', 'opt-wrong'));
+          f.querySelectorAll('input').forEach((i) => { i.checked = false; i.disabled = false; });
+          f.querySelector('.quiz-check').disabled = true;
+          f.querySelector('.quiz-reveal').disabled = false;
+          f.querySelector('.quiz-feedback').hidden = true;
+          f.querySelector('.quiz-erklaerung').hidden = true;
+        });
+        update();
+      });
+      update();
+    });
+  </script>
+</body>
+
+</html>

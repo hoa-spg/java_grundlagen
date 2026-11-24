@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<!-- GENERIERT von java/kurs/_build (java-grundlagen) – nicht direkt bearbeiten!
+     Quelle: java/kurs/_build/java-grundlagen/lessons/, bauen: python3 _build/build.py java-grundlagen -->
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3.1 &ndash; Exceptions | Java-Grundlagen Kurs</title>
+  <script>(function () { var t = localStorage.getItem('kurs-theme') || 'dark'; document.documentElement.setAttribute('data-theme', t); })();</script>
+  <link rel="stylesheet" href="assets/kurs.css">
+  <link rel="stylesheet" id="hljs-theme"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+
+<body>
+
+  <button class="hamburger" id="hamburger" aria-label="Navigation &ouml;ffnen">&#9776;</button>
+  <div class="sidebar-overlay" id="overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html">
+        <span class="brand-icon">J</span>
+        <div>
+          <div class="brand-name">Java</div>
+          <div class="brand-sub">Grundlagen der Programmierung</div>
+        </div>
+      </a>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Dark/Light Mode"
+        title="Theme wechseln">&#9728;</button>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-group">
+        <div class="nav-group-label html-label">Teil 1 &mdash; Grundlagen</div>
+        <a class="nav-link" href="1.1-einfuehrung-entwicklungsumgebung.html"><span class="ln">1.1</span>Einf&uuml;hrung &amp; Entwicklungsumgebung</a>
+        <a class="nav-link" href="1.2-klassen-objekte.html"><span class="ln">1.2</span>Klassen, Objekte, Get &amp; Set</a>
+        <a class="nav-link" href="1.3-konstruktoren-methoden.html"><span class="ln">1.3</span>Konstruktoren, this &amp; Methoden</a>
+        <a class="nav-link" href="1.4-datentypen.html"><span class="ln">1.4</span>Datentypen</a>
+        <a class="nav-link" href="1.5-signatur-ueberladen.html"><span class="ln">1.5</span>Methoden, Signatur &amp; &Uuml;berladen</a>
+        <a class="nav-link" href="1.6-bedingungen-berechnungen.html"><span class="ln">1.6</span>Bedingungen &amp; Berechnungen</a>
+        <a class="nav-link" href="1.7-debugger-testklassen.html"><span class="ln">1.7</span>Debugger &amp; Testklassen</a>
+        <a class="nav-link" href="1.8-strings-random.html"><span class="ln">1.8</span>Strings &amp; Random</a>
+        <a class="nav-link" href="1.9-objekt-beziehungen.html"><span class="ln">1.9</span>Objekt-Beziehungen</a>
+        <a class="nav-link" href="1.10-schleifen.html"><span class="ln">1.10</span>Schleifen</a>
+        <a class="nav-link" href="1.11-statische-methoden.html"><span class="ln">1.11</span>Statische Methoden &amp; main</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label css-label">Teil 2 &mdash; Datenstrukturen &amp; OOP</div>
+        <a class="nav-link" href="2.1-intellij-junit.html"><span class="ln">2.1</span>IntelliJ, Maven &amp; JUnit</a>
+        <a class="nav-link" href="2.2-arrays.html"><span class="ln">2.2</span>Arrays</a>
+        <a class="nav-link" href="2.3-arrays-einfuegen-entfernen.html"><span class="ln">2.3</span>Arrays: Einf&uuml;gen &amp; Entfernen</a>
+        <a class="nav-link" href="2.4-sortieralgorithmen.html"><span class="ln">2.4</span>Sortieralgorithmen</a>
+        <a class="nav-link" href="2.5-objekt-arrays.html"><span class="ln">2.5</span>Objekt-Arrays</a>
+        <a class="nav-link" href="2.6-assoziation-equals.html"><span class="ln">2.6</span>Beidseitige Assoziation &amp; equals</a>
+        <a class="nav-link" href="2.7-collections.html"><span class="ln">2.7</span>Collections: ArrayList &amp; Co.</a>
+        <a class="nav-link" href="2.8-vererbung.html"><span class="ln">2.8</span>Vererbung &amp; Polymorphismus</a>
+        <a class="nav-link" href="2.9-abstrakt-interfaces.html"><span class="ln">2.9</span>Abstrakte Klassen &amp; Interfaces</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label rn-label">Teil 3 &mdash; Fortgeschrittene Konzepte</div>
+        <a class="nav-link" href="3.0-fail-early.html"><span class="ln">3.0</span>Fail Early statt Happy Path</a>
+        <a class="nav-link" href="3.1-exceptions.html"><span class="ln">3.1</span>Exceptions</a>
+        <a class="nav-link" href="3.2-hashset-treeset.html"><span class="ln">3.2</span>HashSet, TreeSet &amp; hashCode</a>
+        <a class="nav-link" href="3.3-serialisierung-dateien.html"><span class="ln">3.3</span>Serialisierung &amp; Dateien</a>
+        <a class="nav-link" href="3.4-git.html"><span class="ln">3.4</span>Versionsverwaltung mit Git</a>
+        <a class="nav-link" href="3.5-lambdas.html"><span class="ln">3.5</span>Lambda-Ausdr&uuml;cke</a>
+        <a class="nav-link" href="3.6-streams.html"><span class="ln">3.6</span>Die Streams-API</a>
+        <a class="nav-link" href="3.7-design-patterns.html"><span class="ln">3.7</span>Design-Patterns</a>
+        <a class="nav-link" href="3.8-model-klassen.html"><span class="ln">3.8</span>Model-Klassen f&uuml;r die GUI</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label react-label">Teil 4 &mdash; Webanwendungen mit Vaadin</div>
+        <a class="nav-link" href="4.1-web-grundlagen.html"><span class="ln">4.1</span>Grundprinzipien des Web</a>
+        <a class="nav-link" href="4.2-vaadin-einstieg.html"><span class="ln">4.2</span>Vaadin Flow &amp; Start-Paket</a>
+        <a class="nav-link" href="4.3-komponenten-layouts.html"><span class="ln">4.3</span>Komponenten &amp; Layouts</a>
+        <a class="nav-link" href="4.4-grid-routing-binding.html"><span class="ln">4.4</span>Tabellen, Routing &amp; Binding</a>
+        <a class="nav-link" href="4.5-mitarbeiterverwaltung.html"><span class="ln">4.5</span>Mitarbeiterverwaltung</a>
+      </div>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <header class="lesson-header">
+      <p class="lesson-eyebrow">Lektion 3.1 &mdash; Teil 3: Fortgeschrittene Konzepte</p>
+      <h1>Exceptions</h1>
+      <div class="lesson-tags">
+        <span class="tag tag-rn">Exceptions</span>
+        <span class="tag tag-time">ca. 2 &times; 90 min</span>
+        <span class="tag tag-level">Fortgeschritten</span>
+      </div>
+    </header>
+
+    <div class="content-area">
+      <section class="section section-lernziele">
+        <h2>Lernziele</h2>
+        <ul class="lernziele-list">
+          <li><a class="lernziel-link" href="#abschnitt-1">erklären, warum Konsolenausgaben keine vollständige Fehlerbehandlung sind<span class="lernziel-ziel">Abschnitt 1</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-2">eine eigene Exception-Klasse von <code>Exception</code> ableiten<span class="lernziel-ziel">Abschnitt 2</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-2">Exceptions mit <code>throw</code> werfen und mit <code>throws</code> im Methodenkopf deklarieren<span class="lernziel-ziel">Abschnitt 2</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-3">Exceptions mit <code>try</code>/<code>catch</code> fangen und mit <code>getMessage()</code> auswerten<span class="lernziel-ziel">Abschnitt 3</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-4">checked und unchecked Exceptions unterscheiden<span class="lernziel-ziel">Abschnitt 4</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-5"><code>finally</code> zum Aufräumen einsetzen<span class="lernziel-ziel">Abschnitt 5</span></a></li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-1">1 &mdash; Warum Exceptions?</h2>
+        <p>
+          <strong>Exceptions</strong> sind ein Sprachmittel von Java, um Fehler- und Ausnahmesituationen geeignet zu
+          behandeln. Die Ausnahmebehandlung ermöglicht es oft, das Programm auch in solchen Situationen fortzusetzen,
+          und sie informiert andere Programmteile über aufgetretene Fehler.
+        </p>
+        <p>
+          Bisher gab es in den Set-Methoden im else-Zweig nur ein <code>System.out.println</code>. Das ist keine
+          vollständige Fehlerbehandlung: Es ist nur eine Ausgabe (die vielleicht niemand sieht), und vor allem
+          erfahren andere Programmteile &ndash; die <em>Aufrufer</em> der Methode &ndash; nichts vom Fehler. Künftig
+          werden stattdessen Exceptions <strong>geworfen</strong> &ndash; und zwar, wie in Lektion 3.0 besprochen, als
+          Guard Clause gleich am Anfang der Methode.
+        </p>
+        <p>Für das begleitende Beispiel <code>Firma</code> definieren wir eine Klasse <code>FirmaException</code>, die von <code>Exception</code> ableitet. In allen Fehler- und Ausnahmesituationen werden künftig Instanzen dieser Klasse verwendet.</p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">FirmaException.java</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public class FirmaException extends Exception {
+
+    public FirmaException(String message) {
+        super(message);
+    }
+
+    public FirmaException(String message, Exception e) {
+        super(message, e);
+    }
+}</code></pre>
+</div>
+        <p>Der zweite Konstruktor nimmt eine auslösende Exception (<em>cause</em>) mit &ndash; nützlich, wenn eine technische Exception (z.&nbsp;B. ein Dateifehler) in eine fachliche <code>FirmaException</code> &bdquo;umgewandelt&ldquo; wird (Lektion 3.3).</p>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-2">2 &mdash; throw und throws</h2>
+        <p>
+          Das Schlüsselwort lautet <code>throw</code>, gefolgt von <code>new</code> und dem Namen einer
+          Exception-Klasse. Nach <code>throw</code> wird die Methode sofort verlassen &ndash; die Exception wird an den
+          Aufrufer <strong>durchgereicht</strong>.
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Person.java – erster Versuch</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public void setName(String name) {
+    if (name == null || name.isEmpty()) {
+        // System.out.println("Fehler: ungueltiger Name: " + name);
+        throw new FirmaException("Fehler: ungueltiger Name: " + name);
+    }
+    this.name = name;
+}</code></pre>
+</div>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Compiler</span>
+    <span class="code-lang">Text</span>
+  </div>
+  <pre><code class="language-plaintext">Person.java:23: error: unreported exception FirmaException; must be caught or declared to be thrown
+            throw new FirmaException("Fehler: ungueltiger Name: " + name);
+            ^</code></pre>
+</div>
+        <p>Der Compiler zeigt nun einen Fehler an (in der IDE: <em>Unhandled exception: FirmaException</em>). Die vorgeschlagene Lösung (<em>Add exception to method signature</em>) fügt im Methodenkopf <code>throws FirmaException</code> hinzu:</p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Person.java – mit throws</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public void setName(String name) throws FirmaException {
+    if (name == null || name.isEmpty()) {
+        // System.out.println("Fehler: ungueltiger Name: " + name);
+        throw new FirmaException("Fehler: ungueltiger Name: " + name);
+    }
+    this.name = name;
+}</code></pre>
+</div>
+        <p>
+          Diese Deklaration stellt sicher, dass jeder Aufrufer die potenziell auftretende Exception in irgendeiner Form
+          behandeln muss. Daher zeigt der Compiler den Fehler nun auch im Konstruktor an, der <code>setName</code>
+          verwendet:
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Person.java – Konstruktor</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public Person(String name, int geburtsjahr) {
+    setName(name);              // Fehler: Unhandled exception: FirmaException
+    setGeburtsjahr(geburtsjahr);
+}</code></pre>
+</div>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Compiler</span>
+    <span class="code-lang">Text</span>
+  </div>
+  <pre><code class="language-plaintext">Person.java:14: error: unreported exception FirmaException; must be caught or declared to be thrown
+        setName(name);
+               ^</code></pre>
+</div>
+        <p>
+          Da der Fehler im Konstruktor kaum sinnvoll behandelt werden kann, wird auch beim Konstruktor
+          <code>throws FirmaException</code> deklariert:
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Person.java</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public abstract class Person implements Comparable&lt;Person&gt; {
+    private String name;
+    private int geburtsjahr;
+
+    public Person() throws FirmaException {
+        setName("n/a");
+        setGeburtsjahr(1900);
+    }
+
+    public Person(String name, int geburtsjahr) throws FirmaException {
+        setName(name);
+        setGeburtsjahr(geburtsjahr);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) throws FirmaException {
+        if (name == null || name.isEmpty()) {
+            throw new FirmaException("Fehler: ungueltiger Name: " + name);
+        }
+        this.name = name;
+    }
+
+    public int getGeburtsjahr() {
+        return geburtsjahr;
+    }
+
+    public void setGeburtsjahr(int geburtsjahr) throws FirmaException {
+        if (geburtsjahr &lt; 1900 || geburtsjahr &gt; 2050) {
+            throw new FirmaException("Fehler: ungueltiges Geburtsjahr: "
+                                     + geburtsjahr);
+        }
+        this.geburtsjahr = geburtsjahr;
+    }
+
+    public abstract int getKostenProMonat();
+
+    // compareTo und toString unveraendert zur vorigen Version
+}</code></pre>
+</div>
+        <p>Analog wird die <code>FirmaException</code> in der Klasse <code>Firma</code> verwendet:</p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Firma.java (Auszug)</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public Firma(String name) throws FirmaException {
+    personal = new ArrayList&lt;&gt;();
+    setName(name);
+}
+
+public void setName(String name) throws FirmaException {
+    if (name == null || name.isEmpty()) {
+        throw new FirmaException("Fehler: ungueltiger Name: " + name);
+    }
+    this.name = name;
+}
+
+public void einstellen(Person m) throws FirmaException {
+    if (m == null) {
+        throw new FirmaException("Fehler: ungueltiger Mitarbeiter: " + m);
+    }
+    personal.add(m);
+}
+
+public boolean kuendigen(Person m) throws FirmaException {
+    if (m == null) {
+        throw new FirmaException("Fehler: ungueltiger Mitarbeiter: " + m);
+    }
+    return personal.remove(m);
+}</code></pre>
+</div>
+        <div class="callout callout-info">
+  <div class="callout-icon">&#8505;</div>
+  <div class="callout-body">
+    <div class="callout-title">Unterklassen</div>
+    <p>Auch die Konstruktoren von <code>Mitarbeiter</code>, <code>Angestellter</code>, <code>Arbeiter</code> und
+          <code>Freelancer</code> rufen Set-Methoden bzw. <code>super(&hellip;)</code> auf, die werfen können &ndash;
+          sie brauchen daher ebenfalls <code>throws FirmaException</code>.</p>
+  </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-3">3 &mdash; try und catch</h2>
+        <p>
+          Wo sollen die geworfenen Exceptions <strong>gefangen</strong> werden? Eine geeignete Stelle wäre z.&nbsp;B. die
+          Benutzeroberfläche einer Personalverwaltung, die die Datenklassen (Person, Mitarbeiter, &hellip;) im
+          Hintergrund als <em>Modell</em> verwendet: Bei einer fehlerhaften Eingabe ruft die Oberfläche die Set-Methode
+          auf, dort wird eine Exception geworfen, die Oberfläche fängt sie und zeigt eine Fehlermeldung an (Teil 4).
+        </p>
+        <p>Bisher werden die Modellklassen nur in Testklassen verwendet &ndash; also muss dort die Fehlerbehandlung stattfinden:</p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">TestFirma.java</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public static void testEinstellen() {
+    try {
+        Arbeiter arb1 = new Arbeiter("Karl", 1989, 15, 40, false);
+        Angestellter ang1 = new Angestellter("Susanne", 1991, 20, 30, false);
+        Freelancer fl1 = new Freelancer("Sepp", 1981, 3, 300);
+
+        Firma firma = new Firma("Spengergasse OG");
+
+        firma.einstellen(arb1);
+        firma.einstellen(ang1);
+        firma.einstellen(fl1);
+
+        firma.print();
+
+        // Hier wird eine Exception geworfen
+        Arbeiter arb2 = new Arbeiter("Karl", 1789, 15, 40, false);
+
+        firma.print();
+
+    } catch (FirmaException e) {
+        System.out.println("EXCEPTION: " + e.getMessage());
+    }
+}</code></pre>
+</div>
+        <p>
+          Die betroffenen Anweisungen stehen in einem <code>try</code>-Block. Im direkt folgenden
+          <code>catch</code>-Block wird angegeben, welche Exceptions behandelt werden; zu einem <code>try</code> darf es
+          auch mehrere <code>catch</code>-Blöcke geben. Die eigentliche Fehlerbehandlung findet im
+          <code>catch</code>-Block statt &ndash; hier vorerst eine Ausgabe. Die Fehlermeldung liefert
+          <code>getMessage()</code>.
+        </p>
+        <p>
+          Bis auf die vorletzte Zeile des <code>try</code>-Blocks wird keine Exception geworfen. Dort führt das
+          ungültige Geburtsjahr 1789 zu einer <code>FirmaException</code>. Das folgende <code>firma.print()</code> wird
+          <strong>nicht mehr ausgeführt</strong>: Nach einer Exception geht es direkt im <code>catch</code>-Block weiter.
+        </p>
+        <div class="callout callout-tip">
+  <div class="callout-icon">&#128161;</div>
+  <div class="callout-body">
+    <div class="callout-title">In JUnit-Tests</div>
+    <p>Dass eine Exception geworfen wird, prüft man mit
+          <code>assertThrows(FirmaException.class, () -&gt; new Arbeiter("Karl", 1789, 15, 40, false));</code>
+          &ndash; der Teil nach <code>-&gt;</code> ist ein Lambda-Ausdruck (Lektion 3.5).</p>
+  </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-4">4 &mdash; Checked vs. unchecked Exceptions</h2>
+        <p>
+          Die bisherigen Exceptions sind <strong>checked</strong> Exceptions: Der Compiler stellt sicher, dass sie
+          behandelt werden. Deshalb musste bei jedem <code>throw new FirmaException</code> im Methodenkopf
+          <code>throws FirmaException</code> stehen, und deshalb erzwingt der Compiler, dass solche Methoden letztlich
+          in einem <code>try</code>-<code>catch</code>-Block aufgerufen werden.
+        </p>
+        <p>
+          Das ist besonders sicher, kann aber Nachteile haben: <code>throws</code>-Deklarationen und
+          <code>try</code>-<code>catch</code>-Blöcke an sehr vielen Stellen können Lesbarkeit und Wartbarkeit
+          verschlechtern. Deshalb gibt es auch <strong>unchecked</strong> Exceptions, deren Behandlung und Deklaration
+          der Compiler nicht erzwingt. Alle Exceptions, die von <code>Error</code> oder <code>RuntimeException</code>
+          ableiten, sind unchecked.
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Die Exception-Hierarchie (Ausschnitt)</span>
+    <span class="code-lang">Text</span>
+  </div>
+  <pre><code class="language-plaintext">Throwable
+├── Error                         (unchecked – schwere Fehler, z. B. OutOfMemoryError)
+└── Exception                     (checked)
+    ├── IOException, FirmaException, ...
+    └── RuntimeException          (unchecked)
+        ├── NullPointerException
+        ├── ArrayIndexOutOfBoundsException
+        └── NumberFormatException, IllegalArgumentException, ...</code></pre>
+</div>
+        <p>
+          Im Zusammenhang mit Frameworks wird oft der Ansatz mit unchecked Exceptions bevorzugt. Für den Einstieg
+          empfehlen wir aber checked Exceptions, da sie die Fehleranfälligkeit etwas reduzieren.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-5">5 &mdash; finally</h2>
+        <p>
+          Nach einem <code>try</code>-Block folgen ein oder mehrere <code>catch</code>-Blöcke. Zusätzlich kann ein
+          <code>finally</code>-Block angegeben werden: Er wird <strong>in jedem Fall</strong> ausgeführt, unabhängig
+          davon, ob eine Exception aufgetreten ist. Üblicherweise werden dort Ressourcen wie Dateien oder
+          Netzwerkverbindungen geschlossen.
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">try – catch – finally</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">try {
+    // Code
+} catch (ExceptionA e1) {
+    // Fehlerbehandlung
+} catch (ExceptionB e2) {
+    // Fehlerbehandlung
+} finally {
+    // Wird in jedem Fall ausgeführt.
+    // Schließen etwaiger Ressourcen
+}</code></pre>
+</div>
+      </section>
+
+      <section class="section section-projekt">
+        <h2 id="projektschritt">Projektschritt</h2>
+<div class="projekt-box">
+  <div class="projekt-box-header">
+    <span class="projekt-step">Projektschritt 3.1</span>
+    <h3>FirmaException statt Konsolenausgaben</h3>
+  </div>
+<p>Alle Set-Methoden, Konstruktoren und die Methoden der Firma werfen bei ungültigen Werten jetzt eine <code>FirmaException</code> &ndash; Standardwerte gibt es nicht mehr, ein ungültiges Objekt entsteht gar nicht erst. <code>einstellen</code> und <code>einfuegen</code> sind <code>void</code> und werfen im Fehlerfall; <code>kuendigen(String)</code> wirft, wenn niemand gefunden wird. <code>compareTo</code> darf (wegen des Interfaces) keine checked Exception werfen und verwendet daher eine unchecked <code>NullPointerException</code>. Die Tests prüfen mit <code>assertThrows</code>.</p>
+  <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">src/main/java/Firma.java (Auszug)</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public void einfuegen(int position, Person p) throws FirmaException {
+    if (p == null) {
+        throw new FirmaException("Fehler: ungueltiger Mitarbeiter: null");
+    }
+    if (position &lt; 0 || position &gt; personal.size()) {
+        throw new FirmaException("Fehler: ungueltige Position " + position);
+    }
+    if (p.getFirma() != null) {
+        throw new FirmaException("Fehler: " + p.getName() + " arbeitet schon bei "
+                                 + p.getFirma().getName());
+    }
+    personal.add(position, p);
+    p.setFirma(this);
+}
+
+public Person kuendigen(String name) throws FirmaException {
+    if (name == null) {
+        throw new FirmaException("Fehler: name ist null.");
+    }
+    for (int i = 0; i &lt; personal.size(); i++) {
+        if (name.equals(personal.get(i).getName())) {
+            return kuendigen(i);
+        }
+    }
+    throw new FirmaException("Fehler: kein Mitarbeiter mit Namen " + name);
+}</code></pre>
+</div>
+  <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">src/main/java/Programm.java</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public class Programm {
+
+    public static void main(String[] args) {
+        try {
+            Firma firma = new Firma("Spengergasse OG");
+            firma.einstellen(new Angestellter("Susanne Huber", 1991, 20, 30, false));
+            firma.einstellen(new Arbeiter("Karl Maier", 1989, 15, 40, true));
+            firma.einstellen(new Freelancer("Sepp Gruber", 1981, 3, 300));
+            firma.sortieren();
+            firma.print();
+
+            // Hier wird eine Exception geworfen (Geburtsjahr ungueltig) ...
+            Arbeiter fehler = new Arbeiter("Karl Maier", 1789, 15, 40, false);
+
+            // ... diese Zeilen werden daher nicht mehr ausgeführt
+            firma.einstellen(fehler);
+            firma.print();
+        } catch (FirmaException e) {
+            System.out.println("EXCEPTION: " + e.getMessage());
+        }
+    }
+}</code></pre>
+</div>
+  <p class="mb-0">&#128193; Stand nach dieser Lektion: <a href="beispiele/3.1/src/main/java/FirmaException.java" target="_blank">beispiele/3.1/</a></p>
+</div>
+      </section>
+
+      <section class="section section-fehler">
+        <h2>Häufige Fehler</h2>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: unreported exception</div>
+  <p><code>unreported exception FirmaException; must be caught or declared to be thrown</code>.</p>
+          <p class="fehler-fix">Eine aufgerufene Methode wirft eine checked Exception. Entweder mit <code>try</code>/<code>catch</code> behandeln oder mit <code>throws FirmaException</code> an den eigenen Aufrufer weiterreichen.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Exception verschluckt</div>
+  <p><code>catch (FirmaException e) { }</code> &ndash; das Programm läuft weiter, als wäre nichts passiert, mit unvollständigen Daten.</p>
+          <p class="fehler-fix">Ein leerer <code>catch</code>-Block ist fast immer falsch. Mindestens die Meldung ausgeben bzw. dem Benutzer anzeigen &ndash; oder die Exception nicht fangen, sondern weiterreichen.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: throw vs. throws</div>
+  <p><code>public void setName(String n) throw FirmaException</code> oder <code>throws new FirmaException(&hellip;);</code> übersetzt nicht.</p>
+          <p class="fehler-fix"><code>throws</code> (mit s) steht im Methodenkopf und <em>deklariert</em>; <code>throw</code> (ohne s) steht im Rumpf und <em>wirft</em> ein Exception-Objekt.</p>
+</div>
+      </section>
+
+      <section class="section section-quiz">
+        <h2>Wissenskontrolle</h2>
+        <div class="quiz" id="quiz-22">
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 1</span> Warum ist eine Fehlermeldung mit <code>System.out.println</code> keine vollständige Fehlerbehandlung?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-22-1"> <span>weil sie zu langsam ist</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-22-1"> <span>weil der Aufrufer nicht erfährt, dass etwas schiefging, und nicht darauf reagieren kann</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-22-1"> <span>weil Konsolenausgaben verboten sind</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-22-1"> <span>weil sie nur in <code>main</code> funktioniert</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Eine Oberfläche oder ein anderes Programmteil sieht die Konsolenausgabe nicht. Eine Exception dagegen unterbricht den normalen Ablauf und kann vom Aufrufer gefangen und behandelt werden.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 2</span> Was ist der Unterschied zwischen <code>throw</code> und <code>throws</code>?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-22-2"> <span>Es gibt keinen.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-22-2"> <span><code>throw</code> wirft eine Exception, <code>throws</code> im Methodenkopf kündigt an, dass die Methode eine Exception werfen kann.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-22-2"> <span><code>throws</code> fängt eine Exception.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-22-2"> <span><code>throw</code> steht im Methodenkopf, <code>throws</code> im Rumpf.</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> <code>throw new MeineException("&hellip;");</code> steht im Rumpf. <code>public void tuWas() throws MeineException</code> warnt alle Aufrufer: Diese Exception müsst ihr behandeln oder weitergeben.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 3</span> Welche Aussage über checked und unchecked Exceptions stimmt?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-22-3"> <span>Unchecked Exceptions müssen immer mit <code>throws</code> deklariert werden.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-22-3"> <span>Checked Exceptions (abgeleitet von <code>Exception</code>) muss der Aufrufer fangen oder weitergeben; unchecked Exceptions (<code>RuntimeException</code>) nicht.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-22-3"> <span>Checked Exceptions treten nur beim Übersetzen auf.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-22-3"> <span><code>NullPointerException</code> ist eine checked Exception.</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Bei checked Exceptions prüft der Compiler, dass sich jemand darum kümmert. <code>NullPointerException</code> oder <code>ArrayIndexOutOfBoundsException</code> sind unchecked &ndash; sie zeigen meist Programmierfehler an.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 4</span> Wann wird ein <code>finally</code>-Block ausgeführt?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-22-4"> <span>nur, wenn eine Exception aufgetreten ist</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-22-4"> <span>nur, wenn keine Exception aufgetreten ist</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-22-4"> <span>immer &ndash; egal, ob der <code>try</code>-Block normal endet oder eine Exception auftritt</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-22-4"> <span>nie, er ist nur Dokumentation</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> <code>finally</code> eignet sich zum Aufräumen, etwa um eine Datei zu schließen, die im <code>try</code>-Block geöffnet wurde.</div>
+  </div>
+  <div class="quiz-summary"><span class="quiz-score"></span><button type="button" class="quiz-reset">Zur&uuml;cksetzen</button></div>
+</div>
+      </section>
+
+    </div>
+
+    <nav class="lesson-nav">
+      <a class="nav-btn" href="3.0-fail-early.html">&larr; Lektion 3.0: Fail Early statt Happy Path</a>
+      <span class="nav-center-info">Lektion 3.1</span>
+      <a class="nav-btn primary" href="3.2-hashset-treeset.html">Lektion 3.2: HashSet, TreeSet &amp; hashCode &rarr;</a>
+    </nav>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>
+    const ham = document.getElementById('hamburger');
+    const sb = document.getElementById('sidebar');
+    const ov = document.getElementById('overlay');
+    ham.addEventListener('click', () => { sb.classList.toggle('open'); ov.classList.toggle('visible'); });
+    ov.addEventListener('click', () => { sb.classList.remove('open'); ov.classList.remove('visible'); });
+    const cur = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-link').forEach(l => {
+      if (l.getAttribute('href') === cur) l.classList.add('active');
+    });
+    const themeBtn = document.getElementById('theme-toggle');
+    const applyTheme = (t) => {
+      document.documentElement.setAttribute('data-theme', t);
+      if (themeBtn) themeBtn.innerHTML = t === 'dark' ? '&#9728;' : '&#9790;';
+    };
+    applyTheme(localStorage.getItem('kurs-theme') || 'dark');
+    setTimeout(() => document.documentElement.classList.add('theme-transitions'), 50);
+    if (themeBtn) themeBtn.addEventListener('click', () => {
+      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('kurs-theme', next);
+      applyTheme(next);
+    });
+    hljs.highlightAll();
+  </script>
+  <script>
+    document.querySelectorAll('.quiz').forEach((quiz) => {
+      const fragen = [...quiz.querySelectorAll('.quiz-frage')];
+      const score = quiz.querySelector('.quiz-score');
+      const update = () => {
+        const done = fragen.filter((f) => f.dataset.state).length;
+        const ok = fragen.filter((f) => f.dataset.state === 'ok').length;
+        score.textContent = done === 0
+          ? fragen.length + ' Fragen – wähle eine Antwort und prüfe sie.'
+          : ok + ' von ' + fragen.length + ' richtig'
+            + (done < fragen.length ? ' (' + done + ' von ' + fragen.length + ' bearbeitet)' : '');
+      };
+      fragen.forEach((f) => {
+        const inputs = [...f.querySelectorAll('input')];
+        const check = f.querySelector('.quiz-check');
+        const reveal = f.querySelector('.quiz-reveal');
+        const fb = f.querySelector('.quiz-feedback');
+        const exp = f.querySelector('.quiz-erklaerung');
+        inputs.forEach((i) => i.addEventListener('change', () => {
+          check.disabled = !inputs.some((x) => x.checked);
+        }));
+        const finish = (graded) => {
+          let allOk = true;
+          f.querySelectorAll('.quiz-opt').forEach((li) => {
+            const input = li.querySelector('input');
+            const corr = li.dataset.correct === '1';
+            if (corr !== input.checked) allOk = false;
+            if (corr) li.classList.add('opt-correct');
+            else if (input.checked) li.classList.add('opt-wrong');
+            input.disabled = true;
+          });
+          f.dataset.state = !graded ? 'shown' : (allOk ? 'ok' : 'wrong');
+          fb.className = 'quiz-feedback fb-' + f.dataset.state;
+          fb.textContent = !graded ? 'Lösung angezeigt.'
+            : (allOk ? '✔ Richtig!' : '✘ Leider nicht ganz – die richtige Lösung ist markiert.');
+          fb.hidden = false;
+          exp.hidden = false;
+          check.disabled = true;
+          reveal.disabled = true;
+          update();
+        };
+        check.addEventListener('click', () => finish(true));
+        reveal.addEventListener('click', () => finish(false));
+      });
+      quiz.querySelector('.quiz-reset').addEventListener('click', () => {
+        fragen.forEach((f) => {
+          delete f.dataset.state;
+          f.querySelectorAll('.quiz-opt').forEach((li) => li.classList.remove('opt-correct', 'opt-wrong'));
+          f.querySelectorAll('input').forEach((i) => { i.checked = false; i.disabled = false; });
+          f.querySelector('.quiz-check').disabled = true;
+          f.querySelector('.quiz-reveal').disabled = false;
+          f.querySelector('.quiz-feedback').hidden = true;
+          f.querySelector('.quiz-erklaerung').hidden = true;
+        });
+        update();
+      });
+      update();
+    });
+  </script>
+</body>
+
+</html>

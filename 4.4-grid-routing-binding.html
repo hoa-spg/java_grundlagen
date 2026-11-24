@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<!-- GENERIERT von java/kurs/_build (java-grundlagen) – nicht direkt bearbeiten!
+     Quelle: java/kurs/_build/java-grundlagen/lessons/, bauen: python3 _build/build.py java-grundlagen -->
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>4.4 &ndash; Tabellen, Routing &amp; Binding | Java-Grundlagen Kurs</title>
+  <script>(function () { var t = localStorage.getItem('kurs-theme') || 'dark'; document.documentElement.setAttribute('data-theme', t); })();</script>
+  <link rel="stylesheet" href="assets/kurs.css">
+  <link rel="stylesheet" id="hljs-theme"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+
+<body>
+
+  <button class="hamburger" id="hamburger" aria-label="Navigation &ouml;ffnen">&#9776;</button>
+  <div class="sidebar-overlay" id="overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html">
+        <span class="brand-icon">J</span>
+        <div>
+          <div class="brand-name">Java</div>
+          <div class="brand-sub">Grundlagen der Programmierung</div>
+        </div>
+      </a>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Dark/Light Mode"
+        title="Theme wechseln">&#9728;</button>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-group">
+        <div class="nav-group-label html-label">Teil 1 &mdash; Grundlagen</div>
+        <a class="nav-link" href="1.1-einfuehrung-entwicklungsumgebung.html"><span class="ln">1.1</span>Einf&uuml;hrung &amp; Entwicklungsumgebung</a>
+        <a class="nav-link" href="1.2-klassen-objekte.html"><span class="ln">1.2</span>Klassen, Objekte, Get &amp; Set</a>
+        <a class="nav-link" href="1.3-konstruktoren-methoden.html"><span class="ln">1.3</span>Konstruktoren, this &amp; Methoden</a>
+        <a class="nav-link" href="1.4-datentypen.html"><span class="ln">1.4</span>Datentypen</a>
+        <a class="nav-link" href="1.5-signatur-ueberladen.html"><span class="ln">1.5</span>Methoden, Signatur &amp; &Uuml;berladen</a>
+        <a class="nav-link" href="1.6-bedingungen-berechnungen.html"><span class="ln">1.6</span>Bedingungen &amp; Berechnungen</a>
+        <a class="nav-link" href="1.7-debugger-testklassen.html"><span class="ln">1.7</span>Debugger &amp; Testklassen</a>
+        <a class="nav-link" href="1.8-strings-random.html"><span class="ln">1.8</span>Strings &amp; Random</a>
+        <a class="nav-link" href="1.9-objekt-beziehungen.html"><span class="ln">1.9</span>Objekt-Beziehungen</a>
+        <a class="nav-link" href="1.10-schleifen.html"><span class="ln">1.10</span>Schleifen</a>
+        <a class="nav-link" href="1.11-statische-methoden.html"><span class="ln">1.11</span>Statische Methoden &amp; main</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label css-label">Teil 2 &mdash; Datenstrukturen &amp; OOP</div>
+        <a class="nav-link" href="2.1-intellij-junit.html"><span class="ln">2.1</span>IntelliJ, Maven &amp; JUnit</a>
+        <a class="nav-link" href="2.2-arrays.html"><span class="ln">2.2</span>Arrays</a>
+        <a class="nav-link" href="2.3-arrays-einfuegen-entfernen.html"><span class="ln">2.3</span>Arrays: Einf&uuml;gen &amp; Entfernen</a>
+        <a class="nav-link" href="2.4-sortieralgorithmen.html"><span class="ln">2.4</span>Sortieralgorithmen</a>
+        <a class="nav-link" href="2.5-objekt-arrays.html"><span class="ln">2.5</span>Objekt-Arrays</a>
+        <a class="nav-link" href="2.6-assoziation-equals.html"><span class="ln">2.6</span>Beidseitige Assoziation &amp; equals</a>
+        <a class="nav-link" href="2.7-collections.html"><span class="ln">2.7</span>Collections: ArrayList &amp; Co.</a>
+        <a class="nav-link" href="2.8-vererbung.html"><span class="ln">2.8</span>Vererbung &amp; Polymorphismus</a>
+        <a class="nav-link" href="2.9-abstrakt-interfaces.html"><span class="ln">2.9</span>Abstrakte Klassen &amp; Interfaces</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label rn-label">Teil 3 &mdash; Fortgeschrittene Konzepte</div>
+        <a class="nav-link" href="3.0-fail-early.html"><span class="ln">3.0</span>Fail Early statt Happy Path</a>
+        <a class="nav-link" href="3.1-exceptions.html"><span class="ln">3.1</span>Exceptions</a>
+        <a class="nav-link" href="3.2-hashset-treeset.html"><span class="ln">3.2</span>HashSet, TreeSet &amp; hashCode</a>
+        <a class="nav-link" href="3.3-serialisierung-dateien.html"><span class="ln">3.3</span>Serialisierung &amp; Dateien</a>
+        <a class="nav-link" href="3.4-git.html"><span class="ln">3.4</span>Versionsverwaltung mit Git</a>
+        <a class="nav-link" href="3.5-lambdas.html"><span class="ln">3.5</span>Lambda-Ausdr&uuml;cke</a>
+        <a class="nav-link" href="3.6-streams.html"><span class="ln">3.6</span>Die Streams-API</a>
+        <a class="nav-link" href="3.7-design-patterns.html"><span class="ln">3.7</span>Design-Patterns</a>
+        <a class="nav-link" href="3.8-model-klassen.html"><span class="ln">3.8</span>Model-Klassen f&uuml;r die GUI</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label react-label">Teil 4 &mdash; Webanwendungen mit Vaadin</div>
+        <a class="nav-link" href="4.1-web-grundlagen.html"><span class="ln">4.1</span>Grundprinzipien des Web</a>
+        <a class="nav-link" href="4.2-vaadin-einstieg.html"><span class="ln">4.2</span>Vaadin Flow &amp; Start-Paket</a>
+        <a class="nav-link" href="4.3-komponenten-layouts.html"><span class="ln">4.3</span>Komponenten &amp; Layouts</a>
+        <a class="nav-link" href="4.4-grid-routing-binding.html"><span class="ln">4.4</span>Tabellen, Routing &amp; Binding</a>
+        <a class="nav-link" href="4.5-mitarbeiterverwaltung.html"><span class="ln">4.5</span>Mitarbeiterverwaltung</a>
+      </div>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <header class="lesson-header">
+      <p class="lesson-eyebrow">Lektion 4.4 &mdash; Teil 4: Webanwendungen mit Vaadin</p>
+      <h1>Tabellen, Routing &amp; Binding</h1>
+      <div class="lesson-tags">
+        <span class="tag tag-react">Vaadin</span>
+        <span class="tag tag-time">ca. 2 &times; 90 min</span>
+        <span class="tag tag-level">Fortgeschritten</span>
+      </div>
+    </header>
+
+    <div class="content-area">
+      <section class="section section-lernziele">
+        <h2>Lernziele</h2>
+        <ul class="lernziele-list">
+          <li><a class="lernziel-link" href="#abschnitt-1">Daten mit einem <code>Grid</code> als Tabelle darstellen und eigene Spalten mit Buttons ergänzen<span class="lernziel-ziel">Abschnitt 1</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-2">zwischen Views navigieren, auch mit Parametern (<code>HasUrlParameter</code>, <code>@OptionalParameter</code>)<span class="lernziel-ziel">Abschnitt 2</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-2">Views über <code>@Route</code> per URL erreichbar machen und Query-Parameter auslesen<span class="lernziel-ziel">Abschnitt 2</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-3">die Nachteile des manuellen Kopierens zwischen Formular und Objekt erklären<span class="lernziel-ziel">Abschnitt 3</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-3">Formulare mit dem <code>Binder</code> an Model-Objekte binden (<code>bindInstanceFields</code>, <code>readBean</code>, <code>writeBean</code>)<span class="lernziel-ziel">Abschnitt 3</span></a></li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-1">1 &mdash; Tabellen mit Grid</h2>
+        <p>Die Darstellung von Daten in Tabellen erfolgt mit dem <code>Grid</code>:</p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Grid</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">Grid&lt;Person&gt; grid = new Grid&lt;&gt;(Person.class, false);
+grid.addColumn(Person::getFirstName).setHeader("First name");
+grid.addColumn(Person::getLastName).setHeader("Last name");
+grid.addColumn(Person::getEmail).setHeader("Email");
+grid.addColumn(Person::getProfession).setHeader("Profession");
+
+List&lt;Person&gt; people = DataService.getPeople();   // (1)
+grid.setItems(people);</code></pre>
+</div>
+        <p>(1) <code>DataService</code> ist hier eine fiktive Klasse, die eine Liste von <code>Person</code>en liefert &ndash; in unserem Projekt ist das <code>Company.getInstance().getStaff()</code>.</p>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/vaadin-grid.png" alt="Ein Grid mit vier Spalten" loading="lazy" style="max-width:460px"></div>
+  <figcaption>Ein Grid mit vier Spalten <small class="credit">Quelle: vaadin.com/docs</small></figcaption>
+</figure>
+        <ul>
+          <li><code>new Grid&lt;&gt;(Person.class, false)</code>: <code>false</code> verhindert, dass Vaadin automatisch für jede Eigenschaft eine Spalte anlegt.</li>
+          <li><code>addColumn(Person::getFirstName)</code> verwendet eine Methodenreferenz (Lektion 3.5): Für jede Zeile wird <code>getFirstName()</code> aufgerufen.</li>
+          <li>Alternativ: <code>addColumn("firstName")</code> &ndash; der Name der Eigenschaft nach JavaBeans-Konvention; die Überschrift wird daraus erzeugt.</li>
+          <li><code>addComponentColumn(e -&gt; new Button(&hellip;))</code> erzeugt eine Spalte mit Komponenten, z.&nbsp;B. Buttons zum Bearbeiten und Löschen.</li>
+          <li>Ändert sich die Liste, muss <code>grid.setItems(&hellip;)</code> erneut aufgerufen werden.</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-2">2 &mdash; Navigation und Routing</h2>
+        <p>
+          Für die Navigation zwischen Views gibt es mehrere Varianten. Direkt zur View einer bestimmten Klasse navigiert man
+          so:
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Navigation mit Parameter</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">UI.getCurrent().navigate(MyView.class, 18L);</code></pre>
+</div>
+        <p>
+          <code>MyView.class</code> ist eine Referenz auf die Klasse der Ziel-View; danach können weitere Parameter folgen,
+          hier eine Id (18). Diese Id übernimmt die Methode <code>setParameter</code> der Ziel-View, die dafür das Interface
+          <code>HasUrlParameter&lt;T&gt;</code> implementiert, wobei <code>T</code> der Typ des Parameters ist (hier <code>Long</code>):
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">MyView.java</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">@Route(value = "my-view", layout = MainLayout.class)
+public class MyView extends Div implements HasUrlParameter&lt;Long&gt; {
+
+    @Override
+    public void setParameter(BeforeEvent event,
+                             @OptionalParameter Long id)
+    {
+        // ...
+    }
+}</code></pre>
+</div>
+        <p>
+          Die URL lautet dann <code>my-view/18</code>. <code>@OptionalParameter</code> erlaubt auch den Aufruf ohne Id
+          (<code>my-view</code>) &ndash; dann ist <code>id</code> <code>null</code>. <code>setParameter</code> wird vor dem
+          Anzeigen der View aufgerufen.
+        </p>
+        <p>
+          Oft soll eine View per URL verfügbar sein. Mit der <code>@Route</code>-Annotation gibt man die URL einer Komponente an;
+          sie ist dann unter <code>some/path</code> (angehängt an <code>http://localhost:8080/</code>) erreichbar:
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">SomePathComponent.java</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">@Route("some/path")
+public class SomePathComponent extends Div {
+    public SomePathComponent() {
+        setText("Hello @Route!");
+    }
+}</code></pre>
+</div>
+        <p>Aus der Anwendung heraus können solche Views auch mit Query-Parametern aufgerufen werden &hellip;</p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Aufruf mit Query-Parameter</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">getUI().ifPresent(ui -&gt; ui.getPage().setLocation("some/path?id=" + something.getId()));</code></pre>
+</div>
+        <p>&hellip; die dann in <code>setParameter</code> ausgelesen werden:</p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Query-Parameter auslesen</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">@Override
+public void setParameter(BeforeEvent event,
+                         @OptionalParameter String parameter)
+{
+    // TODO: Exception handling
+
+    QueryParameters queryParameters = event.getLocation()
+                                            .getQueryParameters();
+    List&lt;String&gt; paramList = queryParameters.getParameters().get("id");
+    if (paramList != null &amp;&amp; !paramList.isEmpty()) {
+        int id = Integer.parseInt(paramList.get(0));
+        // do something to prepare data with id
+    }
+}</code></pre>
+</div>
+        <div class="callout callout-warning">
+  <div class="callout-icon">&#9888;</div>
+  <div class="callout-body">
+    <div class="callout-title">Query-Parameter sind Strings</div>
+    <code>paramList.get(0)</code> liefert immer einen <code>String</code>; erst <code>Integer.parseInt(&hellip;)</code>
+          macht eine Zahl daraus. Steht in der URL keine Zahl, wirft <code>parseInt</code> eine
+          <code>NumberFormatException</code>, die behandelt werden muss (das &bdquo;TODO&ldquo;). Bei einem
+          <code>Long</code>-Parameter schreibt man die Zahl im Code mit <code>L</code>: <code>18L</code>.
+  </div>
+</div>
+        <div class="callout callout-info">
+  <div class="callout-icon">&#8505;</div>
+  <div class="callout-body">
+    <div class="callout-title">getUI().ifPresent(&hellip;)</div>
+    <code>getUI()</code> liefert ein <code>Optional&lt;UI&gt;</code>: die Browser-Sitzung, falls die Komponente gerade
+          angezeigt wird. <code>ifPresent(ui -&gt; &hellip;)</code> führt das Lambda nur dann aus.
+  </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-3">3 &mdash; Data Binding</h2>
+        <p>
+          In Views sollen meist bestimmte Datensätze angezeigt werden (außer beim Anlegen eines neuen). Daten aus einem
+          <code>Employee</code>-Objekt könnte man so ins Formular eintragen &ndash; mit erheblichen Nachteilen:
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">So geht es auch – aber umständlich</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public class EmployeeFormView // ...
+{
+
+    private TextField firstName = new TextField("First name");
+    private TextField lastName = new TextField("Last name");
+
+    // ...
+
+    private void readData(Employee emp) {
+        firstName.setValue(emp.getFirstName());
+        lastName.setValue(emp.getLastName());
+    }
+
+    // ...
+
+    private void storeData(Employee emp) {
+        emp.setFirstName(firstName.getValue());
+        emp.setLastName(lastName.getValue());
+    }
+
+}</code></pre>
+</div>
+        <p>
+          <code>readData</code> trägt zu Beginn die Daten der Instanz ins Formular ein, <code>storeData</code> speichert nach
+          dem Klick auf &bdquo;Speichern&ldquo; die Formularwerte zurück. Bei vielen Attributen entsteht so jede Menge Code, und
+          jede Änderung muss an vielen Stellen konsistent nachgezogen werden &ndash; obwohl die Logik immer gleich ist. Die
+          bessere Lösung sind <strong>Bindings</strong>.
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Binder</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">Binder&lt;Employee&gt; binder = new Binder&lt;&gt;(Employee.class);</code></pre>
+</div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Methode</th><th>Wirkung</th></tr></thead>
+            <tbody>
+              <tr><td><code>binder.bindInstanceFields(this)</code></td><td>bindet alle Felder der View an die Eigenschaften mit gleichem Namen und passendem Typ (z.&nbsp;B. Feld <code>firstName</code> &harr; <code>getFirstName</code>/<code>setFirstName</code>)</td></tr>
+              <tr><td><code>binder.readBean(employee)</code></td><td>liest die Daten aus der Instanz und trägt sie ins Formular ein</td></tr>
+              <tr><td><code>binder.writeBean(employee)</code></td><td>schreibt den Formularinhalt in die Instanz (ruft die Set-Methoden auf); wirft eine <code>ValidationException</code> bei ungültigen Eingaben</td></tr>
+              <tr><td><code>binder.setBean(employee)</code></td><td>bindet dauerhaft: jede Änderung im Formular wird sofort ins Objekt übernommen</td></tr>
+              <tr><td><code>binder.forField(feld).bind(Employee::getX, Employee::setX)</code></td><td>bindet ein einzelnes Feld explizit (wenn die Namen nicht passen)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout callout-tip">
+  <div class="callout-icon">&#128161;</div>
+  <div class="callout-body">
+    <div class="callout-title">Warum die JavaBeans-Konvention wichtig ist</div>
+    <code>bindInstanceFields</code> findet die Zuordnung nur über die <em>Namen</em>: Formularfeld
+          <code>companyName</code> &harr; <code>getCompanyName()</code>/<code>setCompanyName(&hellip;)</code>. Ein Tippfehler im
+          Feldnamen führt dazu, dass das Feld einfach leer bleibt. Werfen die Set-Methoden eine <code>CompanyException</code>,
+          kommt sie bei <code>writeBean</code> &bdquo;verpackt&ldquo; als Ursache (<code>getCause()</code>) einer
+          RuntimeException an.
+  </div>
+</div>
+      </section>
+
+      <section class="section section-projekt">
+        <h2 id="projektschritt">Projektschritt</h2>
+<div class="projekt-box">
+  <div class="projekt-box-header">
+    <span class="projekt-step">Projektschritt 4.4</span>
+    <h3>Mitarbeiterliste, Mitarbeiterformular und Binder</h3>
+  </div>
+<p>Drei Neuerungen: Die <code>CompanyView</code> verwendet einen <code>Binder</code> statt <code>readData</code>/<code>storeData</code>. Die <code>EmployeesListView</code> zeigt alle Mitarbeiter in einem <code>Grid</code> mit Bearbeiten- und Löschen-Buttons. Die <code>EmployeeView</code> ist unter <code>/employee</code> (neu) und <code>/employee/1002</code> (bearbeiten) erreichbar &ndash; der Bearbeiten-Button navigiert mit der Id dorthin.</p>
+  <details class="code-collapse">
+  <summary><span class="code-filename">src/main/java/at/spengergasse/company/views/company/EmployeesListView.java</span> <span class="code-collapse-hint">Code anzeigen (78 Zeilen)</span></summary>
+<div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">src/main/java/at/spengergasse/company/views/company/EmployeesListView.java</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">package at.spengergasse.company.views.company;
+
+import at.spengergasse.company.model.Company;
+import at.spengergasse.company.model.CompanyException;
+import at.spengergasse.company.model.Employee;
+import at.spengergasse.company.views.MainLayout;
+import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.button.ButtonVariant;
+import com.vaadin.flow.component.grid.ColumnTextAlign;
+import com.vaadin.flow.component.grid.Grid;
+import com.vaadin.flow.component.html.Div;
+import com.vaadin.flow.component.icon.Icon;
+import com.vaadin.flow.component.icon.VaadinIcon;
+import com.vaadin.flow.component.notification.Notification;
+import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
+import com.vaadin.flow.router.PageTitle;
+import com.vaadin.flow.router.Route;
+
+/**
+ * Tabelle aller Mitarbeiter mit Bearbeiten- und Löschen-Button.
+ */
+@PageTitle("Employees")
+@Route(value = "employees", layout = MainLayout.class)
+public class EmployeesListView extends Div {
+
+    private final Grid&lt;Employee&gt; grid = new Grid&lt;&gt;(Employee.class, false);
+
+    public EmployeesListView() {
+        setSizeFull();
+
+        // Spalten über den Namen der Get-Methode (getFirstName -&gt; "firstName")
+        grid.addColumn("firstName").setAutoWidth(true);
+        grid.addColumn("lastName").setAutoWidth(true);
+        grid.addColumn("email").setAutoWidth(true);
+        grid.addColumn("phone").setAutoWidth(true);
+        grid.addColumn("dateOfBirth").setAutoWidth(true);
+        grid.addColumn("role").setAutoWidth(true);
+        grid.addColumn("salary").setAutoWidth(true);
+        grid.addColumn("subcontractor").setAutoWidth(true);
+
+        // eigene Spalte mit Komponenten (Buttons) pro Zeile
+        grid.addComponentColumn(employee -&gt; {
+                    Button edit = new Button(new Icon(VaadinIcon.EDIT));
+                    edit.addThemeVariants(ButtonVariant.LUMO_SMALL, ButtonVariant.LUMO_SUCCESS);
+                    edit.addClickListener(e -&gt; edit(employee));
+                    Button delete = new Button(new Icon(VaadinIcon.TRASH));
+                    delete.addThemeVariants(ButtonVariant.LUMO_SMALL, ButtonVariant.LUMO_ERROR);
+                    delete.addClickListener(e -&gt; delete(employee));
+                    return new HorizontalLayout(edit, delete);
+                }).setHeader("Actions")
+                .setTextAlign(ColumnTextAlign.END)
+                .setFrozenToEnd(true)
+                .setAutoWidth(true)
+                .setFlexGrow(0);
+
+        refreshGrid();
+        add(grid);
+    }
+
+    // Navigation mit Parameter: /employee/1002
+    private void edit(Employee employee) {
+        getUI().ifPresent(ui -&gt; ui.navigate(EmployeeView.class, employee.getId()));
+    }
+
+    private void delete(Employee employee) {
+        try {
+            Company.getInstance().fire(employee.getId());
+            refreshGrid();
+            Notification.show("Employee " + employee.getLastName() + " removed.");
+        } catch (CompanyException e) {
+            Notification.show("Error: " + e.getMessage());
+        }
+    }
+
+    private void refreshGrid() {
+        grid.setItems(Company.getInstance().getStaff());
+    }
+}</code></pre>
+</div>
+</details>
+  <details class="code-collapse">
+  <summary><span class="code-filename">src/main/java/at/spengergasse/company/views/company/EmployeeView.java</span> <span class="code-collapse-hint">Code anzeigen (102 Zeilen)</span></summary>
+<div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">src/main/java/at/spengergasse/company/views/company/EmployeeView.java</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">package at.spengergasse.company.views.company;
+
+import at.spengergasse.company.model.Company;
+import at.spengergasse.company.model.CompanyException;
+import at.spengergasse.company.model.Employee;
+import at.spengergasse.company.views.MainLayout;
+import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.button.ButtonVariant;
+import com.vaadin.flow.component.checkbox.Checkbox;
+import com.vaadin.flow.component.combobox.ComboBox;
+import com.vaadin.flow.component.datepicker.DatePicker;
+import com.vaadin.flow.component.formlayout.FormLayout;
+import com.vaadin.flow.component.html.H3;
+import com.vaadin.flow.component.notification.Notification;
+import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.component.textfield.EmailField;
+import com.vaadin.flow.component.textfield.IntegerField;
+import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.data.binder.Binder;
+import com.vaadin.flow.router.BeforeEvent;
+import com.vaadin.flow.router.HasUrlParameter;
+import com.vaadin.flow.router.OptionalParameter;
+import com.vaadin.flow.router.PageTitle;
+import com.vaadin.flow.router.Route;
+
+/**
+ * Formular für einen Mitarbeiter.
+ * /employee        -&gt; neuer Mitarbeiter
+ * /employee/1002   -&gt; Mitarbeiter mit Id 1002 bearbeiten
+ */
+@PageTitle("Employee")
+@Route(value = "employee", layout = MainLayout.class)
+public class EmployeeView extends VerticalLayout implements HasUrlParameter&lt;Long&gt; {
+
+    // Feldnamen = Attributnamen von Employee (für bindInstanceFields)
+    private final TextField firstName = new TextField("First name");
+    private final TextField lastName = new TextField("Last name");
+    private final EmailField email = new EmailField("Email address");
+    private final TextField phone = new TextField("Phone number");
+    private final DatePicker dateOfBirth = new DatePicker("Birthday");
+    private final ComboBox&lt;Employee.Role&gt; role = new ComboBox&lt;&gt;("Role");
+    private final IntegerField salary = new IntegerField("Salary");
+    private final Checkbox subcontractor = new Checkbox("Subcontractor");
+
+    private final Button save = new Button("Save");
+    private final Button cancel = new Button("Cancel");
+
+    private final Binder&lt;Employee&gt; binder = new Binder&lt;&gt;(Employee.class);
+    private Employee employee = new Employee();
+
+    public EmployeeView() {
+        role.setItems(Employee.Role.values());
+        email.setErrorMessage("Please enter a valid email address");
+
+        FormLayout form = new FormLayout();
+        form.add(firstName, lastName, dateOfBirth, phone, email, role, salary, subcontractor);
+
+        save.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+        HorizontalLayout buttons = new HorizontalLayout(save, cancel);
+
+        add(new H3("Personal information"), form, buttons);
+
+        save.addClickListener(e -&gt; onSave());
+        cancel.addClickListener(e -&gt; binder.readBean(employee));
+
+        binder.bindInstanceFields(this);
+    }
+
+    // wird beim Navigieren aufgerufen – vor dem Anzeigen der View
+    @Override
+    public void setParameter(BeforeEvent event, @OptionalParameter Long id) {
+        if (id == null) {                         // kein Parameter: neuer Mitarbeiter
+            employee = new Employee();
+            save.setText("Hire Employee");
+            binder.readBean(employee);
+            return;
+        }
+        try {
+            employee = Company.getInstance().getEmployee(id);
+            save.setText("Update");
+        } catch (CompanyException e) {
+            Notification.show(e.getMessage());
+            employee = new Employee();
+        }
+        binder.readBean(employee);
+    }
+
+    private void onSave() {
+        try {
+            binder.writeBean(employee);              // Formular -&gt; Objekt
+            if (!Company.getInstance().getStaff().contains(employee)) {
+                Company.getInstance().hire(employee); // neu: einstellen
+            }
+            Notification.show("Employee " + employee.getLastName() + " saved.");
+            getUI().ifPresent(ui -&gt; ui.navigate(EmployeesListView.class));
+        } catch (Exception e) {
+            Throwable cause = e.getCause() != null ? e.getCause() : e;
+            Notification.show("Error: " + cause.getMessage());
+        }
+    }
+}</code></pre>
+</div>
+</details>
+  <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">src/main/java/at/spengergasse/company/views/company/CompanyView.java (Auszug)</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">// verbindet die Felder companyName/companyAddress mit den gleichnamigen
+// Get-/Set-Methoden von Company
+private final Binder&lt;Company&gt; binder = new Binder&lt;&gt;(Company.class);
+
+public CompanyView() {
+    createLayout();
+    addHandlers();
+    binder.bindInstanceFields(this);           // Felder nach Namen binden
+    binder.readBean(Company.getInstance());    // Model -&gt; Formular
+}
+
+// Formular -&gt; Model; die Set-Methoden prüfen die Werte
+private void storeData() {
+    try {
+        binder.writeBean(Company.getInstance());
+        Notification.show("Company name and address saved.");
+    } catch (Exception e) {
+        // Exceptions der Set-Methoden kommen "verpackt" an
+        Throwable cause = e.getCause() != null ? e.getCause() : e;
+        Notification.show("Error: " + cause.getMessage());
+    }
+}</code></pre>
+</div>
+  <p class="mb-0">&#128193; Stand nach dieser Lektion: <a href="beispiele/4.4/src/main/java/at/spengergasse/company/views/company/EmployeeView.java" target="_blank">beispiele/4.4/</a></p>
+</div>
+      </section>
+
+      <section class="section section-fehler">
+        <h2>Häufige Fehler</h2>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Feld wird nicht gebunden</div>
+  <p>Nach <code>readBean</code> bleibt ein Feld leer, ohne Fehlermeldung.</p>
+          <p class="fehler-fix">Der Feldname muss exakt dem Eigenschaftsnamen entsprechen (<code>dateOfBirth</code>, nicht <code>birthday</code>), und der Typ muss passen (<code>DatePicker</code> &harr; <code>LocalDate</code>). Sonst mit <code>binder.forField(&hellip;).bind(&hellip;)</code> explizit binden.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Grid zeigt alte Daten</div>
+  <p>Nach dem Löschen eines Mitarbeiters steht er weiterhin in der Tabelle.</p>
+          <p class="fehler-fix">Das Grid kennt nur die Liste, die mit <code>setItems</code> übergeben wurde (eine Kopie, <code>getStaff()</code>). Nach jeder Änderung <code>grid.setItems(Company.getInstance().getStaff())</code> erneut aufrufen.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: setParameter ohne @OptionalParameter</div>
+  <p>Der Menüpunkt &bdquo;New Employee&ldquo; (<code>/employee</code> ohne Id) führt zu <em>Could not navigate</em>.</p>
+          <p class="fehler-fix">Ohne <code>@OptionalParameter</code> ist der Parameter Pflicht. Annotation ergänzen und in <code>setParameter</code> den Fall <code>id == null</code> (neuer Mitarbeiter) behandeln.</p>
+</div>
+      </section>
+
+      <section class="section section-quiz">
+        <h2>Wissenskontrolle</h2>
+        <div class="quiz" id="quiz-33">
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 1</span> Wozu dient die Komponente <code>Grid</code>?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-33-1"> <span>zum Zeichnen von Diagrammen</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-33-1"> <span>zum Anzeigen einer Liste von Objekten als Tabelle mit Spalten</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-33-1"> <span>zum Anordnen von Feldern in einem Formular</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-33-1"> <span>zum Hochladen von Dateien</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Ein <code>Grid&lt;T&gt;</code> bekommt die Objekte mit <code>setItems(&hellip;)</code>. Spalten können aus Get-Methoden entstehen oder eigene Komponenten wie Buttons enthalten.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 2</span> Wie bekommt eine Vaadin-View einen Parameter aus der URL, z.&nbsp;B. <code>/kunde/3</code>?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-33-2"> <span>über ein statisches Attribut</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-33-2"> <span>indem sie <code>HasUrlParameter</code> implementiert; Vaadin ruft dann <code>setParameter(&hellip;)</code> mit dem Wert auf</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-33-2"> <span>über <code>System.getProperty</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-33-2"> <span>gar nicht, Views haben keine Parameter</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Mit <code>@OptionalParameter</code> darf der Parameter auch fehlen &ndash; so kann dieselbe View z.&nbsp;B. neue und bestehende Datensätze bearbeiten.</div>
+  </div>
+  <div class="quiz-frage" data-multi="1">
+    <p class="quiz-q"><span class="quiz-num">Frage 3</span> Was ist der Nachteil, wenn man Werte von Hand zwischen Formular und Objekt kopiert?</p>
+    <p class="quiz-hint">Mehrere Antworten sind richtig.</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-33-3"> <span>Für jedes Feld braucht es Code in beide Richtungen &ndash; viel Wiederholung.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-33-3"> <span>Neue Felder vergisst man leicht an einer der Stellen.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-33-3"> <span>Es funktioniert nur mit <code>String</code>-Feldern.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-33-3"> <span>Es ist in Vaadin verboten.</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Der <code>Binder</code> verknüpft Felder und Attribute einmal und übernimmt das Kopieren samt Typumwandlung.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 4</span> Was macht <code>binder.writeBean(bean)</code>?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-33-4"> <span>Es füllt die Formularfelder mit den Werten des Objekts.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-33-4"> <span>Es schreibt die Werte aus den Formularfeldern in das Objekt; bei ungültigen Eingaben wirft es eine <code>ValidationException</code>.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-33-4"> <span>Es speichert das Objekt in einer Datei.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-33-4"> <span>Es löscht das Objekt.</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Die Gegenrichtung ist <code>readBean</code>: Objekt &rarr; Formular. <code>bindInstanceFields(this)</code> verbindet dabei Felder und Attribute mit gleichem Namen automatisch.</div>
+  </div>
+  <div class="quiz-summary"><span class="quiz-score"></span><button type="button" class="quiz-reset">Zur&uuml;cksetzen</button></div>
+</div>
+      </section>
+
+    </div>
+
+    <nav class="lesson-nav">
+      <a class="nav-btn" href="4.3-komponenten-layouts.html">&larr; Lektion 4.3: Komponenten &amp; Layouts</a>
+      <span class="nav-center-info">Lektion 4.4</span>
+      <a class="nav-btn primary" href="4.5-mitarbeiterverwaltung.html">Lektion 4.5: Mitarbeiterverwaltung &rarr;</a>
+    </nav>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>
+    const ham = document.getElementById('hamburger');
+    const sb = document.getElementById('sidebar');
+    const ov = document.getElementById('overlay');
+    ham.addEventListener('click', () => { sb.classList.toggle('open'); ov.classList.toggle('visible'); });
+    ov.addEventListener('click', () => { sb.classList.remove('open'); ov.classList.remove('visible'); });
+    const cur = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-link').forEach(l => {
+      if (l.getAttribute('href') === cur) l.classList.add('active');
+    });
+    const themeBtn = document.getElementById('theme-toggle');
+    const applyTheme = (t) => {
+      document.documentElement.setAttribute('data-theme', t);
+      if (themeBtn) themeBtn.innerHTML = t === 'dark' ? '&#9728;' : '&#9790;';
+    };
+    applyTheme(localStorage.getItem('kurs-theme') || 'dark');
+    setTimeout(() => document.documentElement.classList.add('theme-transitions'), 50);
+    if (themeBtn) themeBtn.addEventListener('click', () => {
+      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('kurs-theme', next);
+      applyTheme(next);
+    });
+    hljs.highlightAll();
+  </script>
+  <script>
+    document.querySelectorAll('.quiz').forEach((quiz) => {
+      const fragen = [...quiz.querySelectorAll('.quiz-frage')];
+      const score = quiz.querySelector('.quiz-score');
+      const update = () => {
+        const done = fragen.filter((f) => f.dataset.state).length;
+        const ok = fragen.filter((f) => f.dataset.state === 'ok').length;
+        score.textContent = done === 0
+          ? fragen.length + ' Fragen – wähle eine Antwort und prüfe sie.'
+          : ok + ' von ' + fragen.length + ' richtig'
+            + (done < fragen.length ? ' (' + done + ' von ' + fragen.length + ' bearbeitet)' : '');
+      };
+      fragen.forEach((f) => {
+        const inputs = [...f.querySelectorAll('input')];
+        const check = f.querySelector('.quiz-check');
+        const reveal = f.querySelector('.quiz-reveal');
+        const fb = f.querySelector('.quiz-feedback');
+        const exp = f.querySelector('.quiz-erklaerung');
+        inputs.forEach((i) => i.addEventListener('change', () => {
+          check.disabled = !inputs.some((x) => x.checked);
+        }));
+        const finish = (graded) => {
+          let allOk = true;
+          f.querySelectorAll('.quiz-opt').forEach((li) => {
+            const input = li.querySelector('input');
+            const corr = li.dataset.correct === '1';
+            if (corr !== input.checked) allOk = false;
+            if (corr) li.classList.add('opt-correct');
+            else if (input.checked) li.classList.add('opt-wrong');
+            input.disabled = true;
+          });
+          f.dataset.state = !graded ? 'shown' : (allOk ? 'ok' : 'wrong');
+          fb.className = 'quiz-feedback fb-' + f.dataset.state;
+          fb.textContent = !graded ? 'Lösung angezeigt.'
+            : (allOk ? '✔ Richtig!' : '✘ Leider nicht ganz – die richtige Lösung ist markiert.');
+          fb.hidden = false;
+          exp.hidden = false;
+          check.disabled = true;
+          reveal.disabled = true;
+          update();
+        };
+        check.addEventListener('click', () => finish(true));
+        reveal.addEventListener('click', () => finish(false));
+      });
+      quiz.querySelector('.quiz-reset').addEventListener('click', () => {
+        fragen.forEach((f) => {
+          delete f.dataset.state;
+          f.querySelectorAll('.quiz-opt').forEach((li) => li.classList.remove('opt-correct', 'opt-wrong'));
+          f.querySelectorAll('input').forEach((i) => { i.checked = false; i.disabled = false; });
+          f.querySelector('.quiz-check').disabled = true;
+          f.querySelector('.quiz-reveal').disabled = false;
+          f.querySelector('.quiz-feedback').hidden = true;
+          f.querySelector('.quiz-erklaerung').hidden = true;
+        });
+        update();
+      });
+      update();
+    });
+  </script>
+</body>
+
+</html>

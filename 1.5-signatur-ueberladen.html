@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<!-- GENERIERT von java/kurs/_build (java-grundlagen) – nicht direkt bearbeiten!
+     Quelle: java/kurs/_build/java-grundlagen/lessons/, bauen: python3 _build/build.py java-grundlagen -->
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1.5 &ndash; Methoden, Signatur &amp; &Uuml;berladen | Java-Grundlagen Kurs</title>
+  <script>(function () { var t = localStorage.getItem('kurs-theme') || 'dark'; document.documentElement.setAttribute('data-theme', t); })();</script>
+  <link rel="stylesheet" href="assets/kurs.css">
+  <link rel="stylesheet" id="hljs-theme"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+
+<body>
+
+  <button class="hamburger" id="hamburger" aria-label="Navigation &ouml;ffnen">&#9776;</button>
+  <div class="sidebar-overlay" id="overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html">
+        <span class="brand-icon">J</span>
+        <div>
+          <div class="brand-name">Java</div>
+          <div class="brand-sub">Grundlagen der Programmierung</div>
+        </div>
+      </a>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Dark/Light Mode"
+        title="Theme wechseln">&#9728;</button>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-group">
+        <div class="nav-group-label html-label">Teil 1 &mdash; Grundlagen</div>
+        <a class="nav-link" href="1.1-einfuehrung-entwicklungsumgebung.html"><span class="ln">1.1</span>Einf&uuml;hrung &amp; Entwicklungsumgebung</a>
+        <a class="nav-link" href="1.2-klassen-objekte.html"><span class="ln">1.2</span>Klassen, Objekte, Get &amp; Set</a>
+        <a class="nav-link" href="1.3-konstruktoren-methoden.html"><span class="ln">1.3</span>Konstruktoren, this &amp; Methoden</a>
+        <a class="nav-link" href="1.4-datentypen.html"><span class="ln">1.4</span>Datentypen</a>
+        <a class="nav-link" href="1.5-signatur-ueberladen.html"><span class="ln">1.5</span>Methoden, Signatur &amp; &Uuml;berladen</a>
+        <a class="nav-link" href="1.6-bedingungen-berechnungen.html"><span class="ln">1.6</span>Bedingungen &amp; Berechnungen</a>
+        <a class="nav-link" href="1.7-debugger-testklassen.html"><span class="ln">1.7</span>Debugger &amp; Testklassen</a>
+        <a class="nav-link" href="1.8-strings-random.html"><span class="ln">1.8</span>Strings &amp; Random</a>
+        <a class="nav-link" href="1.9-objekt-beziehungen.html"><span class="ln">1.9</span>Objekt-Beziehungen</a>
+        <a class="nav-link" href="1.10-schleifen.html"><span class="ln">1.10</span>Schleifen</a>
+        <a class="nav-link" href="1.11-statische-methoden.html"><span class="ln">1.11</span>Statische Methoden &amp; main</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label css-label">Teil 2 &mdash; Datenstrukturen &amp; OOP</div>
+        <a class="nav-link" href="2.1-intellij-junit.html"><span class="ln">2.1</span>IntelliJ, Maven &amp; JUnit</a>
+        <a class="nav-link" href="2.2-arrays.html"><span class="ln">2.2</span>Arrays</a>
+        <a class="nav-link" href="2.3-arrays-einfuegen-entfernen.html"><span class="ln">2.3</span>Arrays: Einf&uuml;gen &amp; Entfernen</a>
+        <a class="nav-link" href="2.4-sortieralgorithmen.html"><span class="ln">2.4</span>Sortieralgorithmen</a>
+        <a class="nav-link" href="2.5-objekt-arrays.html"><span class="ln">2.5</span>Objekt-Arrays</a>
+        <a class="nav-link" href="2.6-assoziation-equals.html"><span class="ln">2.6</span>Beidseitige Assoziation &amp; equals</a>
+        <a class="nav-link" href="2.7-collections.html"><span class="ln">2.7</span>Collections: ArrayList &amp; Co.</a>
+        <a class="nav-link" href="2.8-vererbung.html"><span class="ln">2.8</span>Vererbung &amp; Polymorphismus</a>
+        <a class="nav-link" href="2.9-abstrakt-interfaces.html"><span class="ln">2.9</span>Abstrakte Klassen &amp; Interfaces</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label rn-label">Teil 3 &mdash; Fortgeschrittene Konzepte</div>
+        <a class="nav-link" href="3.0-fail-early.html"><span class="ln">3.0</span>Fail Early statt Happy Path</a>
+        <a class="nav-link" href="3.1-exceptions.html"><span class="ln">3.1</span>Exceptions</a>
+        <a class="nav-link" href="3.2-hashset-treeset.html"><span class="ln">3.2</span>HashSet, TreeSet &amp; hashCode</a>
+        <a class="nav-link" href="3.3-serialisierung-dateien.html"><span class="ln">3.3</span>Serialisierung &amp; Dateien</a>
+        <a class="nav-link" href="3.4-git.html"><span class="ln">3.4</span>Versionsverwaltung mit Git</a>
+        <a class="nav-link" href="3.5-lambdas.html"><span class="ln">3.5</span>Lambda-Ausdr&uuml;cke</a>
+        <a class="nav-link" href="3.6-streams.html"><span class="ln">3.6</span>Die Streams-API</a>
+        <a class="nav-link" href="3.7-design-patterns.html"><span class="ln">3.7</span>Design-Patterns</a>
+        <a class="nav-link" href="3.8-model-klassen.html"><span class="ln">3.8</span>Model-Klassen f&uuml;r die GUI</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label react-label">Teil 4 &mdash; Webanwendungen mit Vaadin</div>
+        <a class="nav-link" href="4.1-web-grundlagen.html"><span class="ln">4.1</span>Grundprinzipien des Web</a>
+        <a class="nav-link" href="4.2-vaadin-einstieg.html"><span class="ln">4.2</span>Vaadin Flow &amp; Start-Paket</a>
+        <a class="nav-link" href="4.3-komponenten-layouts.html"><span class="ln">4.3</span>Komponenten &amp; Layouts</a>
+        <a class="nav-link" href="4.4-grid-routing-binding.html"><span class="ln">4.4</span>Tabellen, Routing &amp; Binding</a>
+        <a class="nav-link" href="4.5-mitarbeiterverwaltung.html"><span class="ln">4.5</span>Mitarbeiterverwaltung</a>
+      </div>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <header class="lesson-header">
+      <p class="lesson-eyebrow">Lektion 1.5 &mdash; Teil 1: Grundlagen</p>
+      <h1>Methoden, Signatur &amp; &Uuml;berladen</h1>
+      <div class="lesson-tags">
+        <span class="tag tag-html">Signatur</span>
+        <span class="tag tag-time">ca. 90 min</span>
+        <span class="tag tag-level">Grundlagen</span>
+      </div>
+    </header>
+
+    <div class="content-area">
+      <section class="section section-lernziele">
+        <h2>Lernziele</h2>
+        <ul class="lernziele-list">
+          <li><a class="lernziel-link" href="#abschnitt-1">Methodenkopf und Methodenrumpf unterscheiden<span class="lernziel-ziel">Abschnitt 1</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-1">Sichtbarkeit (<code>public</code>/<code>private</code>) und Rückgabewert (<code>void</code> oder Typ) gezielt wählen<span class="lernziel-ziel">Abschnitt 1</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-1">beschreiben, was bei der Übergabe von primitiven Werten und Objektreferenzen an Methoden passiert<span class="lernziel-ziel">Abschnitt 1</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-2">die Signatur einer Methode bestimmen und Methoden überladen<span class="lernziel-ziel">Abschnitt 2</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-3">ein Programm über die Methode <code>main()</code> starten<span class="lernziel-ziel">Abschnitt 3</span></a></li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-1">1 &mdash; Aufbau einer Methode</h2>
+        <p>
+          Methoden schreibst du schon seit Lektion 1.2. Jetzt sehen wir uns ihren Aufbau genauer an.
+          Eine Methode setzt sich aus <strong>Methodenkopf</strong> und <strong>Methodenrumpf</strong>
+          zusammen. Der Kopf enthält Zugriffs-Modifier, Rückgabewert, Namen und eine (möglicherweise leere)
+          Parameterliste.
+        </p>
+        <h3>Zugriffs-Modifier</h3>
+        <p>
+          Der Zugriffs-Modifier steuert die <em>Sichtbarkeit</em>. Alle <code>private</code> gesetzten Elemente
+          sind außerhalb der Klasse <em>nicht</em> sichtbar &ndash; sie können von dort nicht aufgerufen werden.
+          <code>public</code> bedeutet: überall sichtbar, auch für Methoden anderer Klassen. Methoden, die nur
+          innerhalb der Klasse verwendet werden sollen, werden <code>private</code> gesetzt, alle anderen
+          <code>public</code>.
+        </p>
+        <h3>Rückgabewert</h3>
+        <p>
+          Der Rückgabewert ist entweder eine zurückgegebene Eigenschaft oder das Ergebnis einer Berechnung.
+          Er ist ein Datentyp (primitiv oder Referenz) oder <code>void</code> &ndash; dann wird <em>nichts</em>
+          zurückgegeben. Ist der Rückgabewert nicht <code>void</code>, muss die Methode mindestens ein
+          <code>return</code>-Statement enthalten; der zurückgegebene Typ muss zum Methodenkopf passen. Bei
+          Referenzdatentypen ist grundsätzlich auch <code>null</code> möglich.
+        </p>
+        <h3>Parameter: call-by-value</h3>
+        <p>
+          Bei primitiven Datentypen wird der übergebene <em>Wert</em> in den Parameter <strong>kopiert</strong>.
+          Änderungen des Parameters innerhalb der Methode haben keine Auswirkungen außerhalb.
+        </p>
+        <p>
+          Bei Referenzdatentypen wird nur der <em>Verweis</em> auf das Objekt übergeben (oft
+          <em>call-by-reference</em> genannt). Änderungen <strong>am Objekt</strong> über diesen Verweis wirken
+          daher auch außerhalb der Methode &ndash; es gibt keine Kopie des Objekts. Meist ist es ratsam, als
+          Parameter übergebene Objekte nicht zu verändern, wenngleich das manchmal genau das gewünschte Verhalten
+          ist.
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Parameterübergabe</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public void verdoppeln(int zahl) {
+    zahl = zahl * 2;              // nur die Kopie ändert sich
+}
+
+public void umbenennen(Student s) {
+    s.setName("Neuer Name");      // das Objekt des Aufrufers ändert sich
+}</code></pre>
+</div>
+        <div class="callout callout-info">
+  <div class="callout-icon">&#8505;</div>
+  <div class="callout-body">
+    <div class="callout-title">Präzisierung</div>
+    <p>Genau genommen kopiert Java immer den <em>Inhalt</em> der Variablen &ndash; bei Referenztypen ist das
+          die Referenz. Weist man dem Parameter ein neues Objekt zu (<code>s = new Student();</code>), bleibt die
+          Variable des Aufrufers unverändert. Verändert wird nur, was man <em>über</em> die Referenz am Objekt
+          ändert.</p>
+  </div>
+</div>
+        <h3>Methoden rufen Methoden auf</h3>
+        <p>
+          Methoden können in der Object Workbench über das Menü einer Objekt-Karte aufgerufen werden, innerhalb der Klasse
+          aber auch direkt über ihren Namen:
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Student.java</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public class Student {
+
+    private String name;
+    private int geburtsjahr;
+
+    // Konstruktoren und Get-/Set-Methoden wurden hier (teilweise) ausgelassen
+
+    public int getGeburtsjahr() {
+        return geburtsjahr;
+    }
+
+    public int alterBerechnen(int aktuellesJahr) {
+        return aktuellesJahr - getGeburtsjahr();
+    }
+}</code></pre>
+</div>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-2">2 &mdash; Signatur und Überladen</h2>
+        <p>
+          Die <strong>Signatur</strong> einer Methode ist gegeben durch den Methodennamen sowie Typen und
+          Reihenfolge der Parameter. In einer Klasse dürfen nicht mehrere Methoden mit derselben Signatur
+          vorkommen. Mehrere Methoden mit gleichem <em>Namen</em> sind sehr wohl zulässig, wenn sie sich in den
+          Parametern unterscheiden &ndash; man nennt das <strong>Überladen</strong>.
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">SignaturDemo.java (Rümpfe weggelassen)</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public class SignaturDemo {
+
+    public int foo(int a, int b) {
+        // TODO
+    }
+
+    public int foo(int a) { // Zulässig, da andere Parameteranzahl als obige Methode
+        // TODO
+    }
+
+    public int foo(double a, double b) { // Zulässig, da andere Parametertypen
+        // TODO
+    }
+
+    public double foo(int a) { // Unzulässig, da schon eine Methode mit Namen foo und
+                               // einem int-Parameter existiert. Es ist hierbei
+                               // unerheblich, dass sich der Rückgabewert unterscheidet.
+                               // Es handelt sich dennoch um die gleiche Signatur wie
+                               // in der zweiten Methode.
+        // TODO
+    }
+}</code></pre>
+</div>
+        <p>
+          Überladen ist sinnvoll, wenn man sehr ähnliche Aufgaben mit unterschiedlichen Parametern durchführen
+          möchte &ndash; etwa die Summe von <code>int</code>- und von <code>double</code>-Werten:
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Berechnung.java</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public class Berechnung {
+
+    public int summe(int a, int b) {
+        return a + b;
+    }
+
+    public double summe(double a, double b) {
+        return a + b;
+    }
+}</code></pre>
+</div>
+        <p>Auch Konstruktoren lassen sich überladen &ndash; das hast du mit <code>Student()</code> und <code>Student(String, int)</code> bereits gemacht.</p>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-3">3 &mdash; Einstiegspunkt: die Methode main()</h2>
+        <p>
+          Bisher hast du Methoden in der Object Workbench per Mausklick aufgerufen. Ein Programm startet dagegen
+          von selbst &ndash; und zwar immer an derselben Stelle: der Methode <code>main</code>, dem
+          <strong>Einstiegspunkt</strong>. Am einfachsten schreibst du sie in eine eigene Datei, z.&nbsp;B.
+          <code>Main.java</code>. Diese Datei enthält nur die Methode, keine Klasse drumherum:
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Main.java</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">void main() {
+    Student s = new Student("Peter Huber", 2005);
+    s.printStudent();
+    System.out.println(s.alterBerechnen(2026));
+}</code></pre>
+</div>
+        <p>
+          Neben <code>main</code> zeigt IntelliJ einen grünen Pfeil. Ein Klick darauf startet das Programm: Java
+          führt die Anweisungen in <code>main</code> der Reihe nach aus und beendet das Programm nach der letzten.
+          Die Ausgaben erscheinen unten im Fenster <em>Run</em>.
+        </p>
+        <div class="callout callout-info">
+  <div class="callout-icon">&#8505;</div>
+  <div class="callout-body">
+    <div class="callout-title">Die lange Form</div>
+    <p>Diese kurze Schreibweise gibt es seit Java 25. In älterem Code steht <code>main</code> in einer Klasse und
+          hat einen längeren Kopf (<code>public static void main(String[] args)</code>) &ndash; was der bedeutet,
+          lernst du in Lektion 1.11.</p>
+  </div>
+</div>
+      </section>
+
+      <section class="section section-projekt">
+        <h2 id="projektschritt">Projektschritt</h2>
+<div class="projekt-box">
+  <div class="projekt-box-header">
+    <span class="projekt-step">Projektschritt 1.5</span>
+    <h3>Überladener Konstruktor und überladene Kostenmethode</h3>
+  </div>
+<p>Es gibt jetzt drei überladene Konstruktoren &ndash; der neue setzt alle vier Eigenschaften auf einmal &ndash; und zwei überladene Methoden <code>getKostenProMonat</code>: eine für beliebig viele Wochen, eine vereinfachte für 4 Wochen, die die erste aufruft (Code-Wiederverwendung). Neu:</p>
+  <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">src/main/java/Mitarbeiter.java (Auszug)</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public Mitarbeiter(String name, int geburtsjahr, int stundenlohn,
+                   int anzahlWochenStunden)
+{
+    setName(name);
+    setGeburtsjahr(geburtsjahr);
+    setStundenlohn(stundenlohn);
+    setAnzahlWochenStunden(anzahlWochenStunden);
+}
+
+// überladen: Kosten für eine bestimmte Anzahl an Wochen ...
+public int getKostenProMonat(int anzahlWochen) {
+    return anzahlWochen * stundenlohn * anzahlWochenStunden;
+}
+
+// ... und vereinfacht mit 4 Wochen pro Monat (Code-Wiederverwendung)
+public int getKostenProMonat() {
+    return getKostenProMonat(4);
+}</code></pre>
+</div>
+  <p>Probiere in der Object Workbench: <code>new Mitarbeiter("Karl Maier", 1989, 15, 40)</code> &rarr; <code>getKostenProMonat()</code> liefert 2400, <code>getKostenProMonat(5)</code> liefert 3000.</p>
+  <p class="mb-0">&#128193; Stand nach dieser Lektion: <a href="beispiele/1.5/src/main/java/Mitarbeiter.java" target="_blank">beispiele/1.5/</a></p>
+</div>
+      </section>
+
+      <section class="section section-fehler">
+        <h2>Häufige Fehler</h2>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Überladen nur über den Rückgabetyp</div>
+  <p><code>int foo(int a)</code> und <code>double foo(int a)</code> &rarr; <code>method foo(int) is already defined</code>.</p>
+          <p class="fehler-fix">Der Rückgabetyp gehört nicht zur Signatur. Überladene Methoden müssen sich in Anzahl, Typ oder Reihenfolge der Parameter unterscheiden.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: missing return statement</div>
+  <p>Eine Methode mit Rückgabetyp <code>int</code> übersetzt nicht, weil ein <code>return</code> fehlt.</p>
+          <p class="fehler-fix">Jede Methode, die nicht <code>void</code> ist, muss auf jedem Weg einen Wert des passenden Typs zurückgeben: <code>return &hellip;;</code>.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Private Methode von außen aufgerufen</div>
+  <p><code>m.hilfsmethode()</code> in einer anderen Klasse &rarr; <code>hilfsmethode() has private access in Mitarbeiter</code>.</p>
+          <p class="fehler-fix"><code>private</code> ist nur innerhalb der eigenen Klasse sichtbar. Soll die Methode von außen nutzbar sein, muss sie <code>public</code> sein.</p>
+</div>
+      </section>
+
+      <section class="section section-quiz">
+        <h2>Wissenskontrolle</h2>
+        <div class="quiz" id="quiz-5">
+  <div class="quiz-frage" data-multi="1">
+    <p class="quiz-q"><span class="quiz-num">Frage 1</span> Was gehört zur <strong>Signatur</strong> einer Methode?</p>
+    <p class="quiz-hint">Mehrere Antworten sind richtig.</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-5-1"> <span>der Methodenname</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-5-1"> <span>Typen und Reihenfolge der Parameter</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-5-1"> <span>der Rückgabetyp</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-5-1"> <span>die Namen der Parameter</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Die Signatur besteht aus Name sowie Typen und Reihenfolge der Parameter. Rückgabetyp und Parameternamen gehören nicht dazu &ndash; <code>int foo(int a)</code> und <code>double foo(int b)</code> haben dieselbe Signatur und dürfen nicht gemeinsam in einer Klasse stehen.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 2</span> Eine Methode bekommt einen <code>int</code>-Parameter und weist ihm im Rumpf einen neuen Wert zu. Was passiert mit der Variable, die der Aufrufer übergeben hat?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-5-2"> <span>Nichts &ndash; sie behält ihren Wert.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-5-2"> <span>Sie bekommt ebenfalls den neuen Wert.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-5-2"> <span>Sie wird auf 0 gesetzt.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-5-2"> <span>Das Programm übersetzt nicht.</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Bei primitiven Typen wird der Wert in den Parameter kopiert (call-by-value). Die Methode ändert nur ihre Kopie.</div>
+  </div>
+  <div class="quiz-frage" data-multi="1">
+    <p class="quiz-q"><span class="quiz-num">Frage 3</span> Welche Methoden dürfen zusammen mit <code>int summe(int a, int b)</code> in einer Klasse stehen?</p>
+    <p class="quiz-hint">Mehrere Antworten sind richtig.</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-5-3"> <span><code>double summe(double a, double b)</code></span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-5-3"> <span><code>int summe(int a, int b, int c)</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-5-3"> <span><code>long summe(int x, int y)</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-5-3"> <span><code>int summe(int b, int a)</code></span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Überladene Methoden müssen sich in Anzahl, Typ oder Reihenfolge der Parametertypen unterscheiden. Ein anderer Rückgabetyp oder andere Parameternamen reichen nicht.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 4</span> Eine Datei <code>Main.java</code> enthält nur <code>void main() { &hellip; }</code>, ohne Klasse drumherum. Was passiert beim Start?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-5-4"> <span>Nichts &ndash; ohne Klasse lässt sich die Datei nicht starten.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-5-4"> <span>Java führt die Anweisungen in <code>main</code> der Reihe nach aus; nach der letzten endet das Programm.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-5-4"> <span>Java führt alle Methoden aller Klassen im Projekt aus.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-5-4"> <span>Java wartet auf einen Mausklick, welche Methode laufen soll.</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> <code>main</code> ist der Einstiegspunkt eines Programms. Seit Java 25 genügt diese kurze Form in einer eigenen Datei; daneben gibt es die klassische Form <code>public static void main(String[] args)</code> innerhalb einer Klasse.</div>
+  </div>
+  <div class="quiz-summary"><span class="quiz-score"></span><button type="button" class="quiz-reset">Zur&uuml;cksetzen</button></div>
+</div>
+      </section>
+
+    </div>
+
+    <nav class="lesson-nav">
+      <a class="nav-btn" href="1.4-datentypen.html">&larr; Lektion 1.4: Datentypen</a>
+      <span class="nav-center-info">Lektion 1.5</span>
+      <a class="nav-btn primary" href="1.6-bedingungen-berechnungen.html">Lektion 1.6: Bedingungen &amp; Berechnungen &rarr;</a>
+    </nav>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>
+    const ham = document.getElementById('hamburger');
+    const sb = document.getElementById('sidebar');
+    const ov = document.getElementById('overlay');
+    ham.addEventListener('click', () => { sb.classList.toggle('open'); ov.classList.toggle('visible'); });
+    ov.addEventListener('click', () => { sb.classList.remove('open'); ov.classList.remove('visible'); });
+    const cur = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-link').forEach(l => {
+      if (l.getAttribute('href') === cur) l.classList.add('active');
+    });
+    const themeBtn = document.getElementById('theme-toggle');
+    const applyTheme = (t) => {
+      document.documentElement.setAttribute('data-theme', t);
+      if (themeBtn) themeBtn.innerHTML = t === 'dark' ? '&#9728;' : '&#9790;';
+    };
+    applyTheme(localStorage.getItem('kurs-theme') || 'dark');
+    setTimeout(() => document.documentElement.classList.add('theme-transitions'), 50);
+    if (themeBtn) themeBtn.addEventListener('click', () => {
+      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('kurs-theme', next);
+      applyTheme(next);
+    });
+    hljs.highlightAll();
+  </script>
+  <script>
+    document.querySelectorAll('.quiz').forEach((quiz) => {
+      const fragen = [...quiz.querySelectorAll('.quiz-frage')];
+      const score = quiz.querySelector('.quiz-score');
+      const update = () => {
+        const done = fragen.filter((f) => f.dataset.state).length;
+        const ok = fragen.filter((f) => f.dataset.state === 'ok').length;
+        score.textContent = done === 0
+          ? fragen.length + ' Fragen – wähle eine Antwort und prüfe sie.'
+          : ok + ' von ' + fragen.length + ' richtig'
+            + (done < fragen.length ? ' (' + done + ' von ' + fragen.length + ' bearbeitet)' : '');
+      };
+      fragen.forEach((f) => {
+        const inputs = [...f.querySelectorAll('input')];
+        const check = f.querySelector('.quiz-check');
+        const reveal = f.querySelector('.quiz-reveal');
+        const fb = f.querySelector('.quiz-feedback');
+        const exp = f.querySelector('.quiz-erklaerung');
+        inputs.forEach((i) => i.addEventListener('change', () => {
+          check.disabled = !inputs.some((x) => x.checked);
+        }));
+        const finish = (graded) => {
+          let allOk = true;
+          f.querySelectorAll('.quiz-opt').forEach((li) => {
+            const input = li.querySelector('input');
+            const corr = li.dataset.correct === '1';
+            if (corr !== input.checked) allOk = false;
+            if (corr) li.classList.add('opt-correct');
+            else if (input.checked) li.classList.add('opt-wrong');
+            input.disabled = true;
+          });
+          f.dataset.state = !graded ? 'shown' : (allOk ? 'ok' : 'wrong');
+          fb.className = 'quiz-feedback fb-' + f.dataset.state;
+          fb.textContent = !graded ? 'Lösung angezeigt.'
+            : (allOk ? '✔ Richtig!' : '✘ Leider nicht ganz – die richtige Lösung ist markiert.');
+          fb.hidden = false;
+          exp.hidden = false;
+          check.disabled = true;
+          reveal.disabled = true;
+          update();
+        };
+        check.addEventListener('click', () => finish(true));
+        reveal.addEventListener('click', () => finish(false));
+      });
+      quiz.querySelector('.quiz-reset').addEventListener('click', () => {
+        fragen.forEach((f) => {
+          delete f.dataset.state;
+          f.querySelectorAll('.quiz-opt').forEach((li) => li.classList.remove('opt-correct', 'opt-wrong'));
+          f.querySelectorAll('input').forEach((i) => { i.checked = false; i.disabled = false; });
+          f.querySelector('.quiz-check').disabled = true;
+          f.querySelector('.quiz-reveal').disabled = false;
+          f.querySelector('.quiz-feedback').hidden = true;
+          f.querySelector('.quiz-erklaerung').hidden = true;
+        });
+        update();
+      });
+      update();
+    });
+  </script>
+</body>
+
+</html>

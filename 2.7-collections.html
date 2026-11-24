@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<!-- GENERIERT von java/kurs/_build (java-grundlagen) – nicht direkt bearbeiten!
+     Quelle: java/kurs/_build/java-grundlagen/lessons/, bauen: python3 _build/build.py java-grundlagen -->
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.7 &ndash; Collections: ArrayList &amp; Co. | Java-Grundlagen Kurs</title>
+  <script>(function () { var t = localStorage.getItem('kurs-theme') || 'dark'; document.documentElement.setAttribute('data-theme', t); })();</script>
+  <link rel="stylesheet" href="assets/kurs.css">
+  <link rel="stylesheet" id="hljs-theme"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+
+<body>
+
+  <button class="hamburger" id="hamburger" aria-label="Navigation &ouml;ffnen">&#9776;</button>
+  <div class="sidebar-overlay" id="overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html">
+        <span class="brand-icon">J</span>
+        <div>
+          <div class="brand-name">Java</div>
+          <div class="brand-sub">Grundlagen der Programmierung</div>
+        </div>
+      </a>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Dark/Light Mode"
+        title="Theme wechseln">&#9728;</button>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-group">
+        <div class="nav-group-label html-label">Teil 1 &mdash; Grundlagen</div>
+        <a class="nav-link" href="1.1-einfuehrung-entwicklungsumgebung.html"><span class="ln">1.1</span>Einf&uuml;hrung &amp; Entwicklungsumgebung</a>
+        <a class="nav-link" href="1.2-klassen-objekte.html"><span class="ln">1.2</span>Klassen, Objekte, Get &amp; Set</a>
+        <a class="nav-link" href="1.3-konstruktoren-methoden.html"><span class="ln">1.3</span>Konstruktoren, this &amp; Methoden</a>
+        <a class="nav-link" href="1.4-datentypen.html"><span class="ln">1.4</span>Datentypen</a>
+        <a class="nav-link" href="1.5-signatur-ueberladen.html"><span class="ln">1.5</span>Methoden, Signatur &amp; &Uuml;berladen</a>
+        <a class="nav-link" href="1.6-bedingungen-berechnungen.html"><span class="ln">1.6</span>Bedingungen &amp; Berechnungen</a>
+        <a class="nav-link" href="1.7-debugger-testklassen.html"><span class="ln">1.7</span>Debugger &amp; Testklassen</a>
+        <a class="nav-link" href="1.8-strings-random.html"><span class="ln">1.8</span>Strings &amp; Random</a>
+        <a class="nav-link" href="1.9-objekt-beziehungen.html"><span class="ln">1.9</span>Objekt-Beziehungen</a>
+        <a class="nav-link" href="1.10-schleifen.html"><span class="ln">1.10</span>Schleifen</a>
+        <a class="nav-link" href="1.11-statische-methoden.html"><span class="ln">1.11</span>Statische Methoden &amp; main</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label css-label">Teil 2 &mdash; Datenstrukturen &amp; OOP</div>
+        <a class="nav-link" href="2.1-intellij-junit.html"><span class="ln">2.1</span>IntelliJ, Maven &amp; JUnit</a>
+        <a class="nav-link" href="2.2-arrays.html"><span class="ln">2.2</span>Arrays</a>
+        <a class="nav-link" href="2.3-arrays-einfuegen-entfernen.html"><span class="ln">2.3</span>Arrays: Einf&uuml;gen &amp; Entfernen</a>
+        <a class="nav-link" href="2.4-sortieralgorithmen.html"><span class="ln">2.4</span>Sortieralgorithmen</a>
+        <a class="nav-link" href="2.5-objekt-arrays.html"><span class="ln">2.5</span>Objekt-Arrays</a>
+        <a class="nav-link" href="2.6-assoziation-equals.html"><span class="ln">2.6</span>Beidseitige Assoziation &amp; equals</a>
+        <a class="nav-link" href="2.7-collections.html"><span class="ln">2.7</span>Collections: ArrayList &amp; Co.</a>
+        <a class="nav-link" href="2.8-vererbung.html"><span class="ln">2.8</span>Vererbung &amp; Polymorphismus</a>
+        <a class="nav-link" href="2.9-abstrakt-interfaces.html"><span class="ln">2.9</span>Abstrakte Klassen &amp; Interfaces</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label rn-label">Teil 3 &mdash; Fortgeschrittene Konzepte</div>
+        <a class="nav-link" href="3.0-fail-early.html"><span class="ln">3.0</span>Fail Early statt Happy Path</a>
+        <a class="nav-link" href="3.1-exceptions.html"><span class="ln">3.1</span>Exceptions</a>
+        <a class="nav-link" href="3.2-hashset-treeset.html"><span class="ln">3.2</span>HashSet, TreeSet &amp; hashCode</a>
+        <a class="nav-link" href="3.3-serialisierung-dateien.html"><span class="ln">3.3</span>Serialisierung &amp; Dateien</a>
+        <a class="nav-link" href="3.4-git.html"><span class="ln">3.4</span>Versionsverwaltung mit Git</a>
+        <a class="nav-link" href="3.5-lambdas.html"><span class="ln">3.5</span>Lambda-Ausdr&uuml;cke</a>
+        <a class="nav-link" href="3.6-streams.html"><span class="ln">3.6</span>Die Streams-API</a>
+        <a class="nav-link" href="3.7-design-patterns.html"><span class="ln">3.7</span>Design-Patterns</a>
+        <a class="nav-link" href="3.8-model-klassen.html"><span class="ln">3.8</span>Model-Klassen f&uuml;r die GUI</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label react-label">Teil 4 &mdash; Webanwendungen mit Vaadin</div>
+        <a class="nav-link" href="4.1-web-grundlagen.html"><span class="ln">4.1</span>Grundprinzipien des Web</a>
+        <a class="nav-link" href="4.2-vaadin-einstieg.html"><span class="ln">4.2</span>Vaadin Flow &amp; Start-Paket</a>
+        <a class="nav-link" href="4.3-komponenten-layouts.html"><span class="ln">4.3</span>Komponenten &amp; Layouts</a>
+        <a class="nav-link" href="4.4-grid-routing-binding.html"><span class="ln">4.4</span>Tabellen, Routing &amp; Binding</a>
+        <a class="nav-link" href="4.5-mitarbeiterverwaltung.html"><span class="ln">4.5</span>Mitarbeiterverwaltung</a>
+      </div>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <header class="lesson-header">
+      <p class="lesson-eyebrow">Lektion 2.7 &mdash; Teil 2: Datenstrukturen &amp; OOP</p>
+      <h1>Collections: ArrayList &amp; Co.</h1>
+      <div class="lesson-tags">
+        <span class="tag tag-css">Collections</span>
+        <span class="tag tag-time">ca. 2 &times; 90 min</span>
+        <span class="tag tag-level">Fortgeschritten</span>
+      </div>
+    </header>
+
+    <div class="content-area">
+      <section class="section section-lernziele">
+        <h2>Lernziele</h2>
+        <ul class="lernziele-list">
+          <li><a class="lernziel-link" href="#abschnitt-1">erklären, was Collections sind und welchen Vorteil sie gegenüber Arrays bieten<span class="lernziel-ziel">Abschnitt 1</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-2">eine <code>ArrayList&lt;E&gt;</code> mit Typparameter anlegen und ihre wichtigsten Methoden nutzen<span class="lernziel-ziel">Abschnitt 2</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-3">alle Elemente mit der for-each-Schleife und mit einem <code>Iterator</code> durchlaufen<span class="lernziel-ziel">Abschnitt 3</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-2">Aufzählungstypen (<code>enum</code>) und <code>switch</code> einsetzen<span class="lernziel-ziel">Abschnitt 2</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-4"><code>ArrayList</code> und <code>LinkedList</code> vergleichen und <code>Set</code>/<code>Map</code> einordnen<span class="lernziel-ziel">Abschnitt 4</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-6">Boxing, Unboxing und Autoboxing mit <code>Integer</code> &amp; Co. erklären<span class="lernziel-ziel">Abschnitt 6</span></a></li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-1">1 &mdash; Collections</h2>
+        <p>
+          <strong>Collections</strong> ist der Überbegriff für Klassen der Java-Bibliothek, die das strukturierte
+          Speichern mehrerer (gleichartiger) Objekte ermöglichen. Sie sind einfacher zu verwenden als Arrays: Um die
+          Organisation der Daten &ndash; Weiterschieben beim Einfügen, Vorrücken beim Löschen &ndash; muss man sich
+          nicht kümmern, das ist schon umgesetzt.
+        </p>
+        <p>
+          Collections sind nicht für einen bestimmten Datentyp gebaut. Bei der Verwendung gibt man den Typ als
+          <strong>Typparameter</strong> in spitzen Klammern an: <code>ArrayList&lt;Student&gt;</code> ist eine ArrayList von
+          Studenten, <code>LinkedList&lt;Fahrzeug&gt;</code> eine LinkedList von Fahrzeugen.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-2">2 &mdash; ArrayList: Beispiel Schulklasse</h2>
+        <p>
+          Die <code>ArrayList</code> ist eine der am häufigsten verwendeten Collections &ndash; sie setzt die
+          Funktionalität der Objekt-Arrays aus Lektion 2.5 um. Das Beispiel: eine Verwaltungsklasse
+          <code>Klasse</code> (eine Schulklasse) mit beliebig vielen Studenten.
+        </p>
+        <p>
+          <code>Student</code> hat neben dem Namen ein Geschlecht, umgesetzt als <strong>Aufzählungstyp</strong>
+          <code>enum</code>: Der Programmierer legt fest, welche Werte dieser Datentyp annehmen kann &ndash; hier
+          <code>M</code>, <code>W</code>, <code>D</code> (männlich, weiblich, divers). <code>setKlasse</code> ist Teil der
+          beidseitigen Assoziation und soll nur von <code>Klasse</code> verwendet werden.
+        </p>
+        <p>
+          In <code>toString</code> wird <code>switch</code>&ndash;<code>case</code> verwendet, um Kaskaden von
+          <code>if</code>-Statements zu vermeiden: Nach <code>switch</code> steht eine Variable, deren mögliche Werte
+          unterschiedliche Aktionen auslösen. Nach jedem <code>case</code> folgt der Code für diesen Wert.
+          <strong>Achtung:</strong> Jeder Block muss mit <code>break</code> beendet werden! Der optionale
+          <code>default</code>-Block wird ausgeführt, wenn keiner der Werte zutrifft.
+        </p>
+        <details class="code-collapse">
+  <summary><span class="code-filename">Student.java</span> <span class="code-collapse-hint">Code anzeigen (82 Zeilen)</span></summary>
+<div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Student.java</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public class Student {
+
+    public enum Geschlecht { M, W, D }; // maennlich, weiblich, divers
+
+    private String name;
+    private Geschlecht geschlecht;
+
+    private Klasse klasse;
+
+    public Student() {
+        setName("n/a");
+        setGeschlecht(Geschlecht.D);
+        this.klasse = null;
+    }
+
+    public Student(String name, Geschlecht geschlecht) {
+        setName(name);
+        setGeschlecht(geschlecht);
+        this.klasse = null;
+    }
+
+    public void setName(String name) {
+        if (name != null) {
+            this.name = name;
+        } else {
+            System.out.println("Name ist null");
+        }
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setGeschlecht(Geschlecht geschlecht) {
+        this.geschlecht = geschlecht;
+    }
+
+    public Geschlecht getGeschlecht() {
+        return geschlecht;
+    }
+
+    public void setKlasse(Klasse klasse) {
+        if (klasse != null) {
+            if (klasse.enthaelt(this) == true) {
+                this.klasse = klasse;
+            } else {
+                System.out.println("Fehler: Student ist nicht in Klasse enthalten. Klasse kann also nicht bei Student gesetzt werden.");
+            }
+        } else {
+            if (this.klasse == null || !this.klasse.enthaelt(this)) {
+                this.klasse = null;
+            } else {
+                System.out.println("Fehler: Klasse kann nicht null gesetzt werden, da der Student noch in dieser Klasse vorhanden ist.");
+            }
+        }
+    }
+
+    public Klasse getKlasse() {
+        return klasse;
+    }
+
+    public String toString() {
+        String str = "Name: " + name;
+        switch (geschlecht) {
+            case M: str += " (maennlich)"; break;
+            case W: str += " (weiblich)"; break;
+            case D: str += " (divers)"; break;
+            default: System.out.println("Fehler: ungueltiges Geschlecht");
+        }
+        str += ", Klasse: ";
+        if (klasse != null) {
+            str += klasse.getName();
+        } else {
+            str += " n/a";
+        }
+        return str;
+    }
+
+    public void printStudent() {
+        System.out.println(this); // ruft toString() auf
+    }
+}</code></pre>
+</div>
+</details>
+        <p>
+          <code>Klasse</code> verwaltet die Studenten in einer <code>ArrayList&lt;Student&gt;</code>, die im Konstruktor erzeugt wird.
+          Beim Aufruf des Konstruktors kann der Typparameter weggelassen werden (<code>new ArrayList&lt;&gt;()</code>, &bdquo;Diamond&ldquo;).
+        </p>
+        <details class="code-collapse">
+  <summary><span class="code-filename">Klasse.java</span> <span class="code-collapse-hint">Code anzeigen (103 Zeilen)</span></summary>
+<div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Klasse.java</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">import java.util.*;
+
+public class Klasse {
+
+    private String name;
+    private ArrayList&lt;Student&gt; studenten;
+
+    public Klasse() {
+        setName("4ABIF");
+        studenten = new ArrayList&lt;&gt;();
+    }
+
+    public Klasse(String name) {
+        setName(name);
+        studenten = new ArrayList&lt;&gt;();
+    }
+
+    public void setName(String name) {
+        if (name != null) {
+            this.name = name;
+        } else {
+            System.out.println("Ungueltiger Parameter (Name): null");
+        }
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public boolean hinzufuegen(Student stud) {
+        return einfuegen(studenten.size(), stud);
+    }
+
+    public boolean einfuegen(int position, Student stud) {
+        boolean hinzugefuegt = false;
+        if (stud != null) {
+            if (position &gt;= 0 &amp;&amp; position &lt;= studenten.size()) {
+                if (stud.getKlasse() == null) {
+                    studenten.add(position, stud);
+                    stud.setKlasse(this);
+                    hinzugefuegt = true;
+                } else {
+                    System.out.println("Fehler: Student ist schon Teil einer anderen Klasse.");
+                }
+
+            } else {
+                System.out.println("Fehler: ungueltige position " + position);
+            }
+        } else {
+            System.out.println("Fehler: stud ist null.");
+        }
+        return hinzugefuegt;
+    }
+
+    public boolean entfernen(Student stud) {
+        if (stud != null) {
+            boolean entfernt = studenten.remove(stud);
+            if (entfernt) {
+                stud.setKlasse(null);
+            }
+            return entfernt;
+        } else {
+            System.out.println("Fehler: stud ist null.");
+        }
+        return false;
+    }
+
+    public Student getStudent(int idx) {
+        if (idx &gt;= 0 &amp;&amp; idx &lt; studenten.size()) {
+            return studenten.get(idx);
+        } else {
+            System.out.println("Fehler: kein Student an Stelle " + idx + " vorhanden");
+            return null;
+        }
+    }
+
+    public boolean enthaelt(Student stud) {
+        if (stud != null) {
+            return studenten.contains(stud);
+        } else {
+            System.out.println("Fehler: stud ist null.");
+        }
+        return false;
+    }
+
+    public String toString() {
+        String str = "Klasse: " + getName() + "\n";
+        str += "--------------------------------------\n";
+        if (studenten.size() &gt; 0) {
+            for (Student s : studenten) {
+                str += s + "\n";
+            }
+        } else {
+            str += "Keine Studenten im Kurs vorhanden.\n";
+        }
+        str += "--------------------------------------\n";
+        return str;
+    }
+
+    public void printKlasse() {
+        System.out.println(this);
+    }
+}</code></pre>
+</div>
+</details>
+        <p>
+          Die Implementierung ist im Vergleich zu Objekt-Arrays wesentlich kürzer und übersichtlicher.
+          <code>hinzufuegen</code> ruft <code>einfuegen</code> auf, da es ein Spezialfall davon ist. In
+          <code>einfuegen</code> werden im Wesentlichen die Parameter geprüft und die beidseitige Assoziation umgesetzt
+          &ndash; den Rest erledigt die <code>ArrayList</code>!
+        </p>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-3">3 &mdash; Wichtige Methoden und die for-each-Schleife</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Methode von <code>ArrayList&lt;E&gt;</code></th><th>Bedeutung</th></tr></thead>
+            <tbody>
+              <tr><td><code>ArrayList&lt;&gt;()</code></td><td>erzeugt eine <code>ArrayList</code> mit Anfangskapazität 10</td></tr>
+              <tr><td><code>ArrayList&lt;&gt;(int initialCapacity)</code></td><td>erzeugt eine <code>ArrayList</code> mit Kapazität <code>initialCapacity</code></td></tr>
+              <tr><td><code>add(E e)</code></td><td>fügt <code>e</code> am Ende hinzu</td></tr>
+              <tr><td><code>add(int index, E element)</code></td><td>fügt <code>element</code> an Stelle <code>index</code> ein</td></tr>
+              <tr><td><code>clear()</code></td><td>löscht alle Elemente</td></tr>
+              <tr><td><code>E get(int index)</code></td><td>Element an Stelle <code>index</code></td></tr>
+              <tr><td><code>E set(int index, E element)</code></td><td>ersetzt das Element an Stelle <code>index</code></td></tr>
+              <tr><td><code>boolean isEmpty()</code></td><td>ist die Liste leer?</td></tr>
+              <tr><td><code>E remove(int index)</code></td><td>entfernt das Element an Stelle <code>index</code> und gibt es zurück</td></tr>
+              <tr><td><code>boolean remove(Object o)</code></td><td>entfernt das erste Vorkommen von <code>o</code> (Vergleich mit <code>equals</code>)</td></tr>
+              <tr><td><code>boolean contains(Object o)</code></td><td>ist <code>o</code> enthalten? (Vergleich mit <code>equals</code>)</td></tr>
+              <tr><td><code>int size()</code></td><td>Anzahl der Elemente</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p><code>E</code> steht jeweils für den Typ, der bei der Deklaration in spitzen Klammern angegeben wurde.</p>
+        <p>
+          In <code>toString</code> von <code>Klasse</code> wird die <strong>for-each-Schleife</strong> verwendet. Weil
+          es sehr häufig vorkommt, <em>alle</em> Elemente einer Collection zu durchlaufen, bietet Java dafür eine
+          einfachere Syntax als die konventionelle <code>for</code>-Schleife. Über die Referenz <code>s</code> vom Typ
+          <code>Student</code> greift man in der Schleife der Reihe nach auf alle Objekte zu:
+        </p>
+        <div class="two-col">
+          <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">for mit Index</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">for (int i = 0; i &lt; studenten.size(); i++) {
+    Student s = studenten.get(i);
+    System.out.println(s);
+}</code></pre>
+</div>
+          <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">for-each</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">for (Student s : studenten) {
+    System.out.println(s);
+}</code></pre>
+</div>
+        </div>
+        <div class="callout callout-tip">
+  <div class="callout-icon">&#128161;</div>
+  <div class="callout-body">
+    <div class="callout-title">for-each auch für Arrays</div>
+    <p>Die for-each-Schleife funktioniert auch mit Arrays: <code>for (int w : werte) summe += w;</code>. Den Index
+          hat man darin allerdings nicht.</p>
+  </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-4">4 &mdash; LinkedList, Set und Map</h2>
+        <p>
+          Die <code>LinkedList&lt;E&gt;</code> unterscheidet sich von der <code>ArrayList&lt;E&gt;</code> durch die interne Verwaltung: Die ArrayList
+          enthält (wie der Name sagt) ein Array, die LinkedList eine <strong>verkettete Liste</strong>, in der zu jedem
+          Element sein Nachfolger und Vorgänger gespeichert ist.
+        </p>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/linked-list-figure.png" alt="Verkettete Liste: jedes Element kennt Vorgänger und Nachfolger" loading="lazy" style="max-width:460px"></div>
+  <figcaption>Verkettete Liste: jedes Element kennt Vorgänger und Nachfolger</figcaption>
+</figure>
+        <p>
+          Die Elemente können daher nicht direkt über einen Index angesprochen werden (<code>get(i)</code> muss sich
+          durchhanteln) &ndash; meist eine erhebliche Einschränkung. Vorteile gibt es beim Einfügen an der Stelle, an
+          der man gerade steht: Bei der ArrayList müssen alle folgenden Elemente nach hinten verschoben werden, bei der
+          LinkedList werden nur die Referenzen auf Vorgänger und Nachfolger aktualisiert.
+        </p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Collection</th><th>Eigenschaft</th><th>Mehr dazu</th></tr></thead>
+            <tbody>
+              <tr><td><code>Set&lt;E&gt;</code> (<code>HashSet</code>, <code>TreeSet</code>)</td><td>mathematische Menge: kein Element doppelt, Reihenfolge nicht festgelegt</td><td>Lektion 3.2 &ndash; Klassen brauchen dafür Vorkehrungen (<code>equals</code>, <code>hashCode</code>)</td></tr>
+              <tr><td><code>Map&lt;K, V&gt;</code> (meist <code>HashMap</code>)</td><td>mathematische Abbildung: jedem Schlüssel (Key) ist genau ein Wert (Value) zugeordnet; Werte werden über ihren Schlüssel besonders schnell gefunden, ohne eine Liste zu durchsuchen</td><td>z.&nbsp;B. <code>Map&lt;Long, Employee&gt;</code> Id &rarr; Mitarbeiter</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">HashMap – kurzer Vorgeschmack</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">HashMap&lt;String, Integer&gt; telefon = new HashMap&lt;&gt;();
+telefon.put("Karl", 4711);
+telefon.put("Susi", 1234);
+System.out.println(telefon.get("Karl"));   // 4711</code></pre>
+</div>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-5">5 &mdash; Iterator</h2>
+        <p>
+          Ein <code>Iterator</code> durchläuft eine Collection unabhängig von ihrer internen Struktur (das
+          <em>Iterator-Pattern</em>, Lektion 3.7). Die for-each-Schleife verwendet intern einen Iterator. Explizit
+          braucht man ihn, wenn man <strong>während des Durchlaufens Elemente entfernen</strong> will &ndash; mit einer
+          for-each-Schleife führt das zu einer <code>ConcurrentModificationException</code>.
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Alle Studenten mit Geschlecht D entfernen</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">Iterator&lt;Student&gt; it = studenten.iterator();
+while (it.hasNext()) {             // gibt es noch ein Element?
+    Student s = it.next();         // nächstes Element holen
+    if (s.getGeschlecht() == Student.Geschlecht.D) {
+        it.remove();               // aktuelles Element sicher entfernen
+    }
+}</code></pre>
+</div>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-6">6 &mdash; Boxing und Unboxing</h2>
+        <p>
+          Collections bzw. generische Klassen im Allgemeinen können nicht mit primitiven Datentypen verwendet werden
+          (<code>ArrayList&lt;int&gt;</code> geht nicht). Will man das dennoch, muss der Wert in eine Klasse &bdquo;eingepackt&ldquo;
+          werden, die ein Attribut dieses Typs hat. Für <code>int</code> könnte sie so aussehen:
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">IntegerBox.java</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">import java.util.ArrayList;
+
+class IntegerBox {
+    private int wert;
+
+    private IntegerBox(int wert) {
+        setWert(wert);
+    }
+
+    public static IntegerBox wertVon(int wert) {
+        return new IntegerBox(wert);
+    }
+
+    public int getWert() {
+        return wert;
+    }
+
+    public void setWert(int wert) {
+        this.wert = wert;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(wert);
+    }
+}</code></pre>
+</div>
+        <p>Objekte werden mit der statischen Methode <code>wertVon</code> erzeugt; der Konstruktor ist nach außen versteckt (<code>private</code>) und wird innerhalb dieser Methode aufgerufen:</p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">IntegerBox verwenden</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">IntegerBox a = IntegerBox.wertVon(3);
+IntegerBox b = IntegerBox.wertVon(5);
+
+ArrayList&lt;IntegerBox&gt; liste = new ArrayList&lt;&gt;();
+
+liste.add(a);
+liste.add(b);
+
+System.out.println("Liste: " + liste);</code></pre>
+</div>
+        <p>
+          Das &bdquo;Einpacken&ldquo; heißt <strong>Boxing</strong>, das Auslesen <strong>Unboxing</strong>. Die
+          passenden Klassen gibt es schon in der Java-Bibliothek: <code>Integer</code>, <code>Double</code>,
+          <code>Boolean</code>, <code>Character</code>, &hellip; dein Vorteil: Boxing und Unboxing passieren
+          <em>automatisch</em> &ndash; das nennt man <strong>Autoboxing</strong>.
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Autoboxing</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">Integer a = Integer.valueOf(3);
+Integer b = 5;
+Integer nullTest = null;
+
+ArrayList&lt;Integer&gt; liste = new ArrayList&lt;&gt;();
+liste.add(a);
+liste.add(b);
+liste.add(7); // auto-boxing
+liste.add(nullTest);
+int x = 12;
+liste.add(x); // auto-boxing
+System.out.println("Liste: " + liste);
+
+int z = liste.get(4); // auto-unboxing
+System.out.println("z: " + z);</code></pre>
+</div>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Ausgabe</span>
+    <span class="code-lang">Text</span>
+  </div>
+  <pre><code class="language-plaintext">Liste: [3, 5, 7, null, 12]
+z: 12</code></pre>
+</div>
+        <div class="callout callout-warning">
+  <div class="callout-icon">&#9888;</div>
+  <div class="callout-body">
+    <div class="callout-title">null beim Unboxing</div>
+    <code>int y = liste.get(3);</code> würde hier eine <code>NullPointerException</code> werfen: Ein
+          <code>Integer</code> kann <code>null</code> sein, ein <code>int</code> nicht.
+  </div>
+</div>
+      </section>
+
+      <section class="section section-projekt">
+        <h2 id="projektschritt">Projektschritt</h2>
+<div class="projekt-box">
+  <div class="projekt-box-header">
+    <span class="projekt-step">Projektschritt 2.7</span>
+    <h3>Firma mit ArrayList</h3>
+  </div>
+<p>Das Array mit <code>anzahl</code> wird durch eine <code>ArrayList&lt;Mitarbeiter&gt;</code> ersetzt. Die Firma hat damit keine Obergrenze mehr, alle Methoden werden kürzer (kein Verschieben, kein Zählen), und die Schleifen werden zu for-each-Schleifen. Die beidseitige Assoziation bleibt unverändert.</p>
+  <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">src/main/java/Firma.java (Auszug)</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">import java.util.ArrayList;
+
+public class Firma {
+
+    private String name;
+    private ArrayList&lt;Mitarbeiter&gt; personal;
+
+    public Firma(String name) {
+        setName(name);
+        personal = new ArrayList&lt;&gt;();
+    }
+
+    public int anzahlMitarbeiter() {
+        return personal.size();
+    }
+
+    public boolean einstellen(Mitarbeiter m) {
+        return einfuegen(personal.size(), m);
+    }
+
+    public boolean einfuegen(int position, Mitarbeiter m) {
+        // ... Prüfungen wie bisher ...
+        personal.add(position, m);       // ArrayList verschiebt selbst
+        m.setFirma(this);
+        return true;
+    }
+
+    public Mitarbeiter kuendigen(int position) {
+        if (position &gt;= 0 &amp;&amp; position &lt; personal.size()) {
+            Mitarbeiter m = personal.remove(position);
+            m.setFirma(null);
+            return m;
+        }
+        // ...
+    }
+
+    // Achtung: contains vergleicht mit equals (Inhaltsgleichheit)
+    public boolean enthaelt(Mitarbeiter m) {
+        return personal.contains(m);
+    }
+
+    public int summeKosten() {
+        int summe = 0;
+        for (Mitarbeiter m : personal) {         // for-each-Schleife
+            summe += m.getKostenProMonat();
+        }
+        return summe;
+    }</code></pre>
+</div>
+  <p>Vergleiche selbst: Die vollständige Klasse ist rund 40 Zeilen kürzer als in 2.6.</p>
+  <p class="mb-0">&#128193; Stand nach dieser Lektion: <a href="beispiele/2.7/src/main/java/Firma.java" target="_blank">beispiele/2.7/</a></p>
+</div>
+      </section>
+
+      <section class="section section-fehler">
+        <h2>Häufige Fehler</h2>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: ArrayList nicht erzeugt</div>
+  <p><code>private ArrayList&lt;Student&gt; studenten;</code> und dann <code>studenten.add(s)</code> &rarr; <code>NullPointerException</code>.</p>
+          <p class="fehler-fix">Im Konstruktor <code>studenten = new ArrayList&lt;&gt;();</code> aufrufen.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Entfernen in der for-each-Schleife</div>
+  <p><code>for (Student s : studenten) if (&hellip;) studenten.remove(s);</code> &rarr; <code>ConcurrentModificationException</code>.</p>
+          <p class="fehler-fix">Einen <code>Iterator</code> mit <code>it.remove()</code> verwenden (oder <code>studenten.removeIf(s -&gt; &hellip;)</code>, Lektion 3.5).</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: break vergessen</div>
+  <p>Bei <code>case M:</code> wird &bdquo;(maennlich) (weiblich) (divers)&ldquo; angehängt.</p>
+          <p class="fehler-fix">Ohne <code>break</code> &bdquo;fällt&ldquo; die Ausführung in die nächsten <code>case</code>-Blöcke durch. Jeden Block mit <code>break;</code> beenden.</p>
+</div>
+      </section>
+
+      <section class="section section-aufgaben">
+        <h2>Aufgaben</h2>
+        <div class="aufgaben-list">
+          <div class="aufgabe">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Aufgabe 1</span>
+    <span class="aufgabe-title">Klasse mit Studenten</span>
+  </div>
+  <p>Eine Schulklasse verwaltet ihre Studenten in einer <code>ArrayList</code>: hinzufügen, einfügen, entfernen, abfragen &ndash; ohne <code>null</code>-Werte; das Geschlecht wird als <code>enum</code> umgesetzt; dazu die beidseitige Assoziation zwischen Klasse und Student.</p>
+            <p class="mb-0"><a href="uebungen/lektion-2.7-uebung-1-klasse-arraylist.pdf" target="_blank">&#128196; Übung 2.7-1 (PDF)</a></p>
+</div>
+        </div>
+      </section>
+
+      <section class="section section-quiz">
+        <h2>Wissenskontrolle</h2>
+        <div class="quiz" id="quiz-18">
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 1</span> Was ist der wichtigste Vorteil einer <code>ArrayList</code> gegenüber einem Array?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-18-1"> <span>Sie kann nur primitive Werte speichern.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-18-1"> <span>Sie wächst und schrumpft automatisch; Einfügen und Entfernen erledigt sie selbst.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-18-1"> <span>Sie ist immer schneller.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-18-1"> <span>Sie braucht keinen Typparameter.</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Das Verschieben von Elementen und Mitzählen der Anzahl übernimmt die <code>ArrayList</code>. Mit dem Typparameter, z.&nbsp;B. <code>ArrayList&lt;String&gt;</code>, legt man fest, welche Objekte hinein dürfen.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 2</span> Welche Zeile gibt alle Elemente einer <code>ArrayList&lt;String&gt; namen</code> mit der for-each-Schleife aus?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-18-2"> <span><code>for (int n : namen) { System.out.println(n); }</code></span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-18-2"> <span><code>for (String n : namen) { System.out.println(n); }</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-18-2"> <span><code>for (String n = namen) { System.out.println(n); }</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-18-2"> <span><code>for (namen : String n) { System.out.println(n); }</code></span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Die for-each-Schleife lautet <code>for (Typ variable : sammlung)</code>. Sie durchläuft jedes Element einmal, ohne Index.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 3</span> Warum verwendet man einen <code>Iterator</code>, um während des Durchlaufens Elemente zu entfernen?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-18-3"> <span>weil die for-each-Schleife keine Elemente lesen kann</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-18-3"> <span>weil <code>liste.remove(&hellip;)</code> in einer for-each-Schleife eine <code>ConcurrentModificationException</code> auslöst, <code>iterator.remove()</code> aber erlaubt ist</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-18-3"> <span>weil ein Iterator die Liste sortiert</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-18-3"> <span>weil <code>ArrayList</code> keine <code>remove</code>-Methode hat</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Die for-each-Schleife verwendet intern selbst einen Iterator. Ändert man die Liste an ihm vorbei, merkt er das und bricht ab.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 4</span> Warum schreibt man <code>ArrayList&lt;Integer&gt;</code> statt <code>ArrayList&lt;int&gt;</code>?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-18-4"> <span>weil <code>Integer</code> schneller ist</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-18-4"> <span>weil Collections nur Objekte speichern; <code>Integer</code> ist die Hüllklasse zu <code>int</code>, Werte werden automatisch umgewandelt (Autoboxing)</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-18-4"> <span>weil <code>int</code> in Java nicht existiert</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-18-4"> <span>Beides funktioniert gleich.</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Typparameter müssen Referenztypen sein. Beim Hinzufügen wird ein <code>int</code> automatisch in ein <code>Integer</code>-Objekt verpackt (Boxing) und beim Lesen wieder ausgepackt (Unboxing).</div>
+  </div>
+  <div class="quiz-summary"><span class="quiz-score"></span><button type="button" class="quiz-reset">Zur&uuml;cksetzen</button></div>
+</div>
+      </section>
+
+    </div>
+
+    <nav class="lesson-nav">
+      <a class="nav-btn" href="2.6-assoziation-equals.html">&larr; Lektion 2.6: Beidseitige Assoziation &amp; equals</a>
+      <span class="nav-center-info">Lektion 2.7</span>
+      <a class="nav-btn primary" href="2.8-vererbung.html">Lektion 2.8: Vererbung &amp; Polymorphismus &rarr;</a>
+    </nav>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>
+    const ham = document.getElementById('hamburger');
+    const sb = document.getElementById('sidebar');
+    const ov = document.getElementById('overlay');
+    ham.addEventListener('click', () => { sb.classList.toggle('open'); ov.classList.toggle('visible'); });
+    ov.addEventListener('click', () => { sb.classList.remove('open'); ov.classList.remove('visible'); });
+    const cur = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-link').forEach(l => {
+      if (l.getAttribute('href') === cur) l.classList.add('active');
+    });
+    const themeBtn = document.getElementById('theme-toggle');
+    const applyTheme = (t) => {
+      document.documentElement.setAttribute('data-theme', t);
+      if (themeBtn) themeBtn.innerHTML = t === 'dark' ? '&#9728;' : '&#9790;';
+    };
+    applyTheme(localStorage.getItem('kurs-theme') || 'dark');
+    setTimeout(() => document.documentElement.classList.add('theme-transitions'), 50);
+    if (themeBtn) themeBtn.addEventListener('click', () => {
+      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('kurs-theme', next);
+      applyTheme(next);
+    });
+    hljs.highlightAll();
+  </script>
+  <script>
+    document.querySelectorAll('.quiz').forEach((quiz) => {
+      const fragen = [...quiz.querySelectorAll('.quiz-frage')];
+      const score = quiz.querySelector('.quiz-score');
+      const update = () => {
+        const done = fragen.filter((f) => f.dataset.state).length;
+        const ok = fragen.filter((f) => f.dataset.state === 'ok').length;
+        score.textContent = done === 0
+          ? fragen.length + ' Fragen – wähle eine Antwort und prüfe sie.'
+          : ok + ' von ' + fragen.length + ' richtig'
+            + (done < fragen.length ? ' (' + done + ' von ' + fragen.length + ' bearbeitet)' : '');
+      };
+      fragen.forEach((f) => {
+        const inputs = [...f.querySelectorAll('input')];
+        const check = f.querySelector('.quiz-check');
+        const reveal = f.querySelector('.quiz-reveal');
+        const fb = f.querySelector('.quiz-feedback');
+        const exp = f.querySelector('.quiz-erklaerung');
+        inputs.forEach((i) => i.addEventListener('change', () => {
+          check.disabled = !inputs.some((x) => x.checked);
+        }));
+        const finish = (graded) => {
+          let allOk = true;
+          f.querySelectorAll('.quiz-opt').forEach((li) => {
+            const input = li.querySelector('input');
+            const corr = li.dataset.correct === '1';
+            if (corr !== input.checked) allOk = false;
+            if (corr) li.classList.add('opt-correct');
+            else if (input.checked) li.classList.add('opt-wrong');
+            input.disabled = true;
+          });
+          f.dataset.state = !graded ? 'shown' : (allOk ? 'ok' : 'wrong');
+          fb.className = 'quiz-feedback fb-' + f.dataset.state;
+          fb.textContent = !graded ? 'Lösung angezeigt.'
+            : (allOk ? '✔ Richtig!' : '✘ Leider nicht ganz – die richtige Lösung ist markiert.');
+          fb.hidden = false;
+          exp.hidden = false;
+          check.disabled = true;
+          reveal.disabled = true;
+          update();
+        };
+        check.addEventListener('click', () => finish(true));
+        reveal.addEventListener('click', () => finish(false));
+      });
+      quiz.querySelector('.quiz-reset').addEventListener('click', () => {
+        fragen.forEach((f) => {
+          delete f.dataset.state;
+          f.querySelectorAll('.quiz-opt').forEach((li) => li.classList.remove('opt-correct', 'opt-wrong'));
+          f.querySelectorAll('input').forEach((i) => { i.checked = false; i.disabled = false; });
+          f.querySelector('.quiz-check').disabled = true;
+          f.querySelector('.quiz-reveal').disabled = false;
+          f.querySelector('.quiz-feedback').hidden = true;
+          f.querySelector('.quiz-erklaerung').hidden = true;
+        });
+        update();
+      });
+      update();
+    });
+  </script>
+</body>
+
+</html>

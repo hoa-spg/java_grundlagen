@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<!-- GENERIERT von java/kurs/_build (java-grundlagen) – nicht direkt bearbeiten!
+     Quelle: java/kurs/_build/java-grundlagen/lessons/, bauen: python3 _build/build.py java-grundlagen -->
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.1 &ndash; IntelliJ, Maven &amp; JUnit | Java-Grundlagen Kurs</title>
+  <script>(function () { var t = localStorage.getItem('kurs-theme') || 'dark'; document.documentElement.setAttribute('data-theme', t); })();</script>
+  <link rel="stylesheet" href="assets/kurs.css">
+  <link rel="stylesheet" id="hljs-theme"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+
+<body>
+
+  <button class="hamburger" id="hamburger" aria-label="Navigation &ouml;ffnen">&#9776;</button>
+  <div class="sidebar-overlay" id="overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html">
+        <span class="brand-icon">J</span>
+        <div>
+          <div class="brand-name">Java</div>
+          <div class="brand-sub">Grundlagen der Programmierung</div>
+        </div>
+      </a>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Dark/Light Mode"
+        title="Theme wechseln">&#9728;</button>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-group">
+        <div class="nav-group-label html-label">Teil 1 &mdash; Grundlagen</div>
+        <a class="nav-link" href="1.1-einfuehrung-entwicklungsumgebung.html"><span class="ln">1.1</span>Einf&uuml;hrung &amp; Entwicklungsumgebung</a>
+        <a class="nav-link" href="1.2-klassen-objekte.html"><span class="ln">1.2</span>Klassen, Objekte, Get &amp; Set</a>
+        <a class="nav-link" href="1.3-konstruktoren-methoden.html"><span class="ln">1.3</span>Konstruktoren, this &amp; Methoden</a>
+        <a class="nav-link" href="1.4-datentypen.html"><span class="ln">1.4</span>Datentypen</a>
+        <a class="nav-link" href="1.5-signatur-ueberladen.html"><span class="ln">1.5</span>Methoden, Signatur &amp; &Uuml;berladen</a>
+        <a class="nav-link" href="1.6-bedingungen-berechnungen.html"><span class="ln">1.6</span>Bedingungen &amp; Berechnungen</a>
+        <a class="nav-link" href="1.7-debugger-testklassen.html"><span class="ln">1.7</span>Debugger &amp; Testklassen</a>
+        <a class="nav-link" href="1.8-strings-random.html"><span class="ln">1.8</span>Strings &amp; Random</a>
+        <a class="nav-link" href="1.9-objekt-beziehungen.html"><span class="ln">1.9</span>Objekt-Beziehungen</a>
+        <a class="nav-link" href="1.10-schleifen.html"><span class="ln">1.10</span>Schleifen</a>
+        <a class="nav-link" href="1.11-statische-methoden.html"><span class="ln">1.11</span>Statische Methoden &amp; main</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label css-label">Teil 2 &mdash; Datenstrukturen &amp; OOP</div>
+        <a class="nav-link" href="2.1-intellij-junit.html"><span class="ln">2.1</span>IntelliJ, Maven &amp; JUnit</a>
+        <a class="nav-link" href="2.2-arrays.html"><span class="ln">2.2</span>Arrays</a>
+        <a class="nav-link" href="2.3-arrays-einfuegen-entfernen.html"><span class="ln">2.3</span>Arrays: Einf&uuml;gen &amp; Entfernen</a>
+        <a class="nav-link" href="2.4-sortieralgorithmen.html"><span class="ln">2.4</span>Sortieralgorithmen</a>
+        <a class="nav-link" href="2.5-objekt-arrays.html"><span class="ln">2.5</span>Objekt-Arrays</a>
+        <a class="nav-link" href="2.6-assoziation-equals.html"><span class="ln">2.6</span>Beidseitige Assoziation &amp; equals</a>
+        <a class="nav-link" href="2.7-collections.html"><span class="ln">2.7</span>Collections: ArrayList &amp; Co.</a>
+        <a class="nav-link" href="2.8-vererbung.html"><span class="ln">2.8</span>Vererbung &amp; Polymorphismus</a>
+        <a class="nav-link" href="2.9-abstrakt-interfaces.html"><span class="ln">2.9</span>Abstrakte Klassen &amp; Interfaces</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label rn-label">Teil 3 &mdash; Fortgeschrittene Konzepte</div>
+        <a class="nav-link" href="3.0-fail-early.html"><span class="ln">3.0</span>Fail Early statt Happy Path</a>
+        <a class="nav-link" href="3.1-exceptions.html"><span class="ln">3.1</span>Exceptions</a>
+        <a class="nav-link" href="3.2-hashset-treeset.html"><span class="ln">3.2</span>HashSet, TreeSet &amp; hashCode</a>
+        <a class="nav-link" href="3.3-serialisierung-dateien.html"><span class="ln">3.3</span>Serialisierung &amp; Dateien</a>
+        <a class="nav-link" href="3.4-git.html"><span class="ln">3.4</span>Versionsverwaltung mit Git</a>
+        <a class="nav-link" href="3.5-lambdas.html"><span class="ln">3.5</span>Lambda-Ausdr&uuml;cke</a>
+        <a class="nav-link" href="3.6-streams.html"><span class="ln">3.6</span>Die Streams-API</a>
+        <a class="nav-link" href="3.7-design-patterns.html"><span class="ln">3.7</span>Design-Patterns</a>
+        <a class="nav-link" href="3.8-model-klassen.html"><span class="ln">3.8</span>Model-Klassen f&uuml;r die GUI</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label react-label">Teil 4 &mdash; Webanwendungen mit Vaadin</div>
+        <a class="nav-link" href="4.1-web-grundlagen.html"><span class="ln">4.1</span>Grundprinzipien des Web</a>
+        <a class="nav-link" href="4.2-vaadin-einstieg.html"><span class="ln">4.2</span>Vaadin Flow &amp; Start-Paket</a>
+        <a class="nav-link" href="4.3-komponenten-layouts.html"><span class="ln">4.3</span>Komponenten &amp; Layouts</a>
+        <a class="nav-link" href="4.4-grid-routing-binding.html"><span class="ln">4.4</span>Tabellen, Routing &amp; Binding</a>
+        <a class="nav-link" href="4.5-mitarbeiterverwaltung.html"><span class="ln">4.5</span>Mitarbeiterverwaltung</a>
+      </div>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <header class="lesson-header">
+      <p class="lesson-eyebrow">Lektion 2.1 &mdash; Teil 2: Datenstrukturen &amp; OOP</p>
+      <h1>IntelliJ, Maven &amp; JUnit</h1>
+      <div class="lesson-tags">
+        <span class="tag tag-css">Werkzeuge</span>
+        <span class="tag tag-time">ca. 45 min</span>
+        <span class="tag tag-level">Grundlagen</span>
+      </div>
+    </header>
+
+    <div class="content-area">
+      <section class="section section-lernziele">
+        <h2>Lernziele</h2>
+        <ul class="lernziele-list">
+          <li><a class="lernziel-link" href="#abschnitt-1">den Aufbau der <code>pom.xml</code> erklären: Java-Version, Abhängigkeiten, Plugins<span class="lernziel-ziel">Abschnitt 1</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-1">beschreiben, wozu ein Build-Werkzeug wie Maven dient, und den Build auf der Konsole ausführen<span class="lernziel-ziel">Abschnitt 1</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-2">Konstruktoren, Getter und Setter generieren lassen und anschließend überarbeiten<span class="lernziel-ziel">Abschnitt 2</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-2">Refactoring (Umbenennen), Quick-Fix (<kbd>Alt</kbd>+<kbd>Enter</kbd>) und Live-Templates nutzen<span class="lernziel-ziel">Abschnitt 2</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-3">Testklassen erzeugen und die Testabdeckung (Coverage) auswerten<span class="lernziel-ziel">Abschnitt 3</span></a></li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-1">1 &mdash; Maven und die pom.xml</h2>
+        <p>
+          Seit Lektion 1.1 sind unsere Projekte Maven-Projekte. <strong>Maven</strong> ist ein <em>Build-Werkzeug</em>:
+          Es übersetzt das Projekt, führt die Tests aus, baut daraus eine auslieferbare <code>.jar</code>-Datei und
+          verwaltet alle <strong>Abhängigkeiten</strong>. Braucht ein Projekt eine externe Bibliothek (für Tests,
+          Oberflächen, Logfiles &hellip;), trägt man sie in die <code>pom.xml</code> ein; Maven lädt sie automatisch
+          herunter und macht sie im Projekt verfügbar &ndash; so wie JUnit in Lektion 1.7.
+        </p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Teil der pom.xml</th><th>Bedeutung</th></tr></thead>
+            <tbody>
+              <tr><td><code>groupId</code>, <code>artifactId</code>, <code>version</code></td><td>Name des Projekts (Organisation, Projektname, Version)</td></tr>
+              <tr><td><code>maven.compiler.release</code></td><td>für welche Java-Version übersetzt wird</td></tr>
+              <tr><td><code>&lt;dependencies&gt;</code></td><td>Abhängigkeiten; <code>&lt;scope&gt;test&lt;/scope&gt;</code> = nur für Testklassen</td></tr>
+              <tr><td><code>&lt;build&gt;&lt;plugins&gt;</code></td><td>Werkzeuge, die Maven beim Build verwendet (Compiler, Testausführung &hellip;) in fest eingetragenen Versionen</td></tr>
+              <tr><td><code>target/</code></td><td>Ordner, in den Maven die Ergebnisse schreibt &ndash; nie von Hand ändern</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Die einzelnen Schritte des Builds heißen <em>Lifecycle-Phasen</em>. In IntelliJ findest du sie im Maven-Fenster am rechten Rand; auf der Konsole ruft man sie mit <code>mvn &lt;phase&gt;</code> auf.</p>
+        <div class="figure-row">
+          <figure class="figure">
+  <div class="figure-img"><img src="assets/img/intellij-06.png" alt="Maven-Fenster am rechten Rand" loading="lazy" style="max-width:380px"></div>
+  <figcaption>Maven-Fenster am rechten Rand</figcaption>
+</figure>
+          <figure class="figure">
+  <div class="figure-img"><img src="assets/img/intellij-07.png" alt="Lifecycle-Phasen, z. B. install" loading="lazy" style="max-width:340px"></div>
+  <figcaption>Lifecycle-Phasen, z. B. install</figcaption>
+</figure>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Befehl</th><th>Wirkung</th></tr></thead>
+            <tbody>
+              <tr><td><code>mvn compile</code></td><td>übersetzt <code>src/main/java</code> nach <code>target/classes</code></td></tr>
+              <tr><td><code>mvn test</code></td><td>übersetzt auch die Tests und führt sie aus</td></tr>
+              <tr><td><code>mvn package</code></td><td>baut zusätzlich die <code>.jar</code>-Datei in <code>target/</code></td></tr>
+              <tr><td><code>mvn clean</code></td><td>löscht <code>target/</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout callout-tip">
+  <div class="callout-icon">&#128161;</div>
+  <div class="callout-body">
+    <div class="callout-title">Nach Änderungen an der pom.xml</div>
+    <p>IntelliJ übernimmt Änderungen an der <code>pom.xml</code> erst nach einem <em>Reload</em> (Maven-Symbol im
+          Editor oder im Maven-Fenster).</p>
+  </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-2">2 &mdash; Code generieren, umbenennen, korrigieren</h2>
+        <p>
+          Konstruktoren, Getter und Setter kannst du jetzt selbst schreiben &ndash; ab hier darfst du sie dir auch
+          erzeugen lassen: <kbd>Alt</kbd>+<kbd>Einfg</kbd> (<em>Generate</em>) in der Klasse, Art wählen, Attribute
+          auswählen, <em>OK</em>.
+        </p>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/intellij-03.png" alt="Generate: Getter and Setter" loading="lazy" style="max-width:620px"></div>
+  <figcaption>Generate: Getter and Setter</figcaption>
+</figure>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/intellij-04.png" alt="Attribute auswählen" loading="lazy" style="max-width:400px"></div>
+  <figcaption>Attribute auswählen</figcaption>
+</figure>
+        <p>Aus einer Klasse mit den Attributen <code>name</code> und <code>wert</code> entsteht so:</p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">TestClass1.java (generiert)</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public class TestClass1 {
+
+    private String name;
+    private int wert;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getWert() {
+        return wert;
+    }
+
+    public void setWert(int wert) {
+        this.wert = wert;
+    }
+}</code></pre>
+</div>
+        <div class="callout callout-warning">
+  <div class="callout-icon">&#9888;</div>
+  <div class="callout-body">
+    <div class="callout-title">Nur eine Vorlage</div>
+    <p>Die generierten Methoden sind Vorlagen, die du überarbeiten musst &ndash; insbesondere fehlen die
+          <strong>Parameterprüfungen</strong>.</p>
+  </div>
+</div>
+        <p>
+          <strong>Refactoring</strong> heißt, die Struktur von Code zu überarbeiten, ohne sein Verhalten zu ändern. Der
+          häufigste Fall ist das Umbenennen von Variablen, Methoden oder Klassen (<kbd>Shift</kbd>+<kbd>F6</kbd>): Alle
+          Vorkommen im Projekt werden mitgeändert.
+        </p>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/intellij-08.png" alt="Refactor &rarr; Rename" loading="lazy" style="max-width:420px"></div>
+  <figcaption>Refactor &rarr; Rename</figcaption>
+</figure>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Kürzel</th><th>Funktion</th></tr></thead>
+            <tbody>
+              <tr><td><kbd>Alt</kbd>+<kbd>Einfg</kbd></td><td>Generate: Konstruktor, Getter/Setter, <code>toString</code>, <code>equals</code>, Test &hellip;</td></tr>
+              <tr><td><kbd>Alt</kbd>+<kbd>Enter</kbd></td><td>Quick-Fix: Korrekturvorschläge zu Fehlern, z.&nbsp;B. fehlenden <code>import</code> ergänzen</td></tr>
+              <tr><td><kbd>Shift</kbd>+<kbd>F6</kbd></td><td>Umbenennen (Refactoring)</td></tr>
+              <tr><td><kbd>Strg</kbd>+<kbd>Alt</kbd>+<kbd>L</kbd></td><td>Code formatieren</td></tr>
+              <tr><td><code>sout</code>, <code>psvm</code>, <code>fori</code> + <kbd>Tab</kbd></td><td>Live-Templates: <code>System.out.println</code>, <code>main</code>-Methode, <code>for</code>-Schleife</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-3">3 &mdash; Testklassen erzeugen und Testabdeckung</h2>
+        <p>
+          Eine JUnit-Testklasse lässt sich ebenfalls erzeugen: in der zu testenden Klasse <kbd>Alt</kbd>+<kbd>Einfg</kbd>
+          &rarr; <em>Test&hellip;</em>, dann <em>setUp/@BeforeEach</em> und die Methoden anhaken, zu denen Testmethoden
+          angelegt werden sollen. IntelliJ legt die Klasse mit leeren Testmethoden in <code>src/test/java</code> an.
+        </p>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/intellij-create-junit-test.png" alt="Generate &rarr; Test&hellip;" loading="lazy" style="max-width:300px"></div>
+  <figcaption>Generate &rarr; Test&hellip;</figcaption>
+</figure>
+        <p>
+          Mit <em>Run with Coverage</em> im Kontextmenü der Testklasse (oder des Ordners <code>src/test/java</code>)
+          werden die Tests ausgeführt und zusätzlich die <strong>Testabdeckung</strong> gemessen: welcher Anteil der
+          Klassen, Methoden und Zeilen beim Testen durchlaufen wurde. Nicht getestete Zeilen werden im Editor am Rand
+          markiert.
+        </p>
+        <div class="figure-row">
+          <figure class="figure">
+  <div class="figure-img"><img src="assets/img/test-06.png" alt="Run with Coverage" loading="lazy" style="max-width:320px"></div>
+  <figcaption>Run with Coverage</figcaption>
+</figure>
+          <figure class="figure">
+  <div class="figure-img"><img src="assets/img/test-07.png" alt="Grün: Tests bestanden" loading="lazy" style="max-width:320px"></div>
+  <figcaption>Grün: Tests bestanden</figcaption>
+</figure>
+        </div>
+        <p>
+          Ziel ist eine möglichst hohe Testabdeckung: Dann liefert das Ausführen aller Tests per Knopfdruck die Antwort,
+          ob nach einer Änderung noch alles funktioniert. Ohne IDE erledigt das <code>mvn test</code>.
+        </p>
+      </section>
+
+      <section class="section section-projekt">
+        <h2 id="projektschritt">Projektschritt</h2>
+<div class="projekt-box">
+  <div class="projekt-box-header">
+    <span class="projekt-step">Projektschritt 2.1</span>
+    <h3>Die pom.xml verstehen und aufräumen</h3>
+  </div>
+<p>Die Personalverwaltung ist seit Lektion 1.1 ein Maven-Projekt &ndash; jetzt verstehst du ihre <code>pom.xml</code>: Java-Version, die JUnit-Abhängigkeit aus Lektion 1.7 und die fest eingetragenen Plugin-Versionen. Zum Aufräumen entfallen die einfachen Testklassen <code>TestMitarbeiter</code> und <code>TestFirma</code> mit ihren <code>main</code>-Methoden &ndash; ihre Fälle stecken jetzt in den JUnit-Tests. Führe die Tests einmal mit <em>Run with Coverage</em> und einmal auf der Konsole mit <code>mvn test</code> aus.</p>
+  <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">personalverwaltung/pom.xml</span>
+    <span class="code-lang">XML</span>
+  </div>
+  <pre><code class="language-xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd"&gt;
+    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+
+    &lt;groupId&gt;at.spengergasse&lt;/groupId&gt;
+    &lt;artifactId&gt;personalverwaltung&lt;/artifactId&gt;
+    &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+
+    &lt;properties&gt;
+        &lt;maven.compiler.release&gt;25&lt;/maven.compiler.release&gt;
+        &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
+    &lt;/properties&gt;
+
+    &lt;dependencies&gt;
+        &lt;!-- JUnit 5 für die Unit-Tests (nur im Test-Classpath) --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.junit.jupiter&lt;/groupId&gt;
+            &lt;artifactId&gt;junit-jupiter&lt;/artifactId&gt;
+            &lt;version&gt;5.12.2&lt;/version&gt;
+            &lt;scope&gt;test&lt;/scope&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+
+    &lt;build&gt;
+        &lt;plugins&gt;
+            &lt;plugin&gt;
+                &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+                &lt;artifactId&gt;maven-resources-plugin&lt;/artifactId&gt;
+                &lt;version&gt;3.3.1&lt;/version&gt;
+            &lt;/plugin&gt;
+            &lt;plugin&gt;
+                &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+                &lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;
+                &lt;version&gt;3.13.0&lt;/version&gt;
+            &lt;/plugin&gt;
+            &lt;!-- führt die JUnit-5-Tests bei "mvn test" aus --&gt;
+            &lt;plugin&gt;
+                &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+                &lt;artifactId&gt;maven-surefire-plugin&lt;/artifactId&gt;
+                &lt;version&gt;3.2.5&lt;/version&gt;
+            &lt;/plugin&gt;
+        &lt;/plugins&gt;
+    &lt;/build&gt;
+&lt;/project&gt;</code></pre>
+</div>
+  <p class="mb-0">&#128193; Stand nach dieser Lektion: <a href="beispiele/2.1/pom.xml" target="_blank">beispiele/2.1/</a></p>
+</div>
+      </section>
+
+      <section class="section section-fehler">
+        <h2>Häufige Fehler</h2>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Bibliothek wird nicht gefunden</div>
+  <p>Nach dem Eintragen einer Abhängigkeit in die <code>pom.xml</code> sind die Klassen weiterhin rot markiert (<code>cannot find symbol</code>).</p>
+          <p class="fehler-fix">Maven-Projekt neu laden (<em>Reload</em>). Hilft das nicht: Schreibweise von <code>groupId</code>, <code>artifactId</code> und <code>version</code> prüfen.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Generierter Setter ohne Prüfung</div>
+  <p>Nach dem Generieren lassen sich wieder ungültige Werte setzen, z.&nbsp;B. ein negatives Geburtsjahr.</p>
+          <p class="fehler-fix">Generierter Code ist nur eine Vorlage: Parameterprüfungen nachtragen und die Tests laufen lassen.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Tests laufen in Maven nicht</div>
+  <p><code>mvn test</code> meldet <em>Tests run: 0</em>, obwohl IntelliJ die Tests ausführt.</p>
+          <p class="fehler-fix">Ein zu altes Surefire-Plugin erkennt JUnit 5 nicht. In der <code>pom.xml</code> <code>maven-surefire-plugin</code> ab Version 3 eintragen (siehe Projektschritt) und Testklassen auf <code>Test</code> enden lassen.</p>
+</div>
+      </section>
+
+      <section class="section section-quiz">
+        <h2>Wissenskontrolle</h2>
+        <div class="quiz" id="quiz-12">
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 1</span> Wozu dient die Datei <code>pom.xml</code> in einem Maven-Projekt?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-12-1"> <span>Sie enthält den Java-Quelltext des Programms.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-12-1"> <span>Sie beschreibt das Projekt: Java-Version, Abhängigkeiten wie JUnit und die verwendeten Plugins.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-12-1"> <span>Sie speichert die Einstellungen von IntelliJ.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-12-1"> <span>Sie enthält die Testergebnisse.</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Maven liest die <code>pom.xml</code> und weiß dadurch, wie das Projekt übersetzt und getestet wird und welche Bibliotheken es braucht. So lässt sich das Projekt auf jedem Rechner gleich bauen &ndash; auch ohne IntelliJ.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 2</span> Was macht der Befehl <code>mvn test</code>?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-12-2"> <span>Er startet die <code>main</code>-Methode.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-12-2"> <span>Er übersetzt das Projekt und führt alle JUnit-Tests aus.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-12-2"> <span>Er erzeugt automatisch Testklassen.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-12-2"> <span>Er lädt das Projekt auf GitHub hoch.</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Maven arbeitet in Phasen: Vor <code>test</code> kommt <code>compile</code>. Schlägt ein Test fehl, bricht der Build mit einer Meldung ab.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 3</span> Was solltest du tun, nachdem IntelliJ Getter, Setter und Konstruktoren generiert hat?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-12-3"> <span>nichts &ndash; generierter Code ist immer fertig</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-12-3"> <span>den Code überarbeiten, z.&nbsp;B. Parameterprüfungen ergänzen und Konstruktoren die Set-Methoden aufrufen lassen</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-12-3"> <span>alle generierten Methoden <code>private</code> setzen</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-12-3"> <span>den generierten Code löschen und neu generieren</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Generierte Setter weisen den Wert einfach zu. Die fachlichen Prüfungen kennt nur du &ndash; sie müssen nachträglich ergänzt werden.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 4</span> Was sagt die <strong>Testabdeckung</strong> (Coverage) aus?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-12-4"> <span>wie viele Tests grün sind</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-12-4"> <span>welcher Anteil des Codes beim Ausführen der Tests tatsächlich durchlaufen wurde</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-12-4"> <span>dass das Programm fehlerfrei ist</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-12-4"> <span>wie schnell die Tests laufen</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Die Coverage zeigt Code, den kein Test erreicht &ndash; dort fehlen Testfälle. 100&nbsp;% Abdeckung heißt aber nicht, dass alles richtig ist: Ein Test kann Code durchlaufen, ohne das Ergebnis zu prüfen.</div>
+  </div>
+  <div class="quiz-summary"><span class="quiz-score"></span><button type="button" class="quiz-reset">Zur&uuml;cksetzen</button></div>
+</div>
+      </section>
+
+    </div>
+
+    <nav class="lesson-nav">
+      <a class="nav-btn" href="1.11-statische-methoden.html">&larr; Lektion 1.11: Statische Methoden &amp; main</a>
+      <span class="nav-center-info">Lektion 2.1</span>
+      <a class="nav-btn primary" href="2.2-arrays.html">Lektion 2.2: Arrays &rarr;</a>
+    </nav>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>
+    const ham = document.getElementById('hamburger');
+    const sb = document.getElementById('sidebar');
+    const ov = document.getElementById('overlay');
+    ham.addEventListener('click', () => { sb.classList.toggle('open'); ov.classList.toggle('visible'); });
+    ov.addEventListener('click', () => { sb.classList.remove('open'); ov.classList.remove('visible'); });
+    const cur = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-link').forEach(l => {
+      if (l.getAttribute('href') === cur) l.classList.add('active');
+    });
+    const themeBtn = document.getElementById('theme-toggle');
+    const applyTheme = (t) => {
+      document.documentElement.setAttribute('data-theme', t);
+      if (themeBtn) themeBtn.innerHTML = t === 'dark' ? '&#9728;' : '&#9790;';
+    };
+    applyTheme(localStorage.getItem('kurs-theme') || 'dark');
+    setTimeout(() => document.documentElement.classList.add('theme-transitions'), 50);
+    if (themeBtn) themeBtn.addEventListener('click', () => {
+      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('kurs-theme', next);
+      applyTheme(next);
+    });
+    hljs.highlightAll();
+  </script>
+  <script>
+    document.querySelectorAll('.quiz').forEach((quiz) => {
+      const fragen = [...quiz.querySelectorAll('.quiz-frage')];
+      const score = quiz.querySelector('.quiz-score');
+      const update = () => {
+        const done = fragen.filter((f) => f.dataset.state).length;
+        const ok = fragen.filter((f) => f.dataset.state === 'ok').length;
+        score.textContent = done === 0
+          ? fragen.length + ' Fragen – wähle eine Antwort und prüfe sie.'
+          : ok + ' von ' + fragen.length + ' richtig'
+            + (done < fragen.length ? ' (' + done + ' von ' + fragen.length + ' bearbeitet)' : '');
+      };
+      fragen.forEach((f) => {
+        const inputs = [...f.querySelectorAll('input')];
+        const check = f.querySelector('.quiz-check');
+        const reveal = f.querySelector('.quiz-reveal');
+        const fb = f.querySelector('.quiz-feedback');
+        const exp = f.querySelector('.quiz-erklaerung');
+        inputs.forEach((i) => i.addEventListener('change', () => {
+          check.disabled = !inputs.some((x) => x.checked);
+        }));
+        const finish = (graded) => {
+          let allOk = true;
+          f.querySelectorAll('.quiz-opt').forEach((li) => {
+            const input = li.querySelector('input');
+            const corr = li.dataset.correct === '1';
+            if (corr !== input.checked) allOk = false;
+            if (corr) li.classList.add('opt-correct');
+            else if (input.checked) li.classList.add('opt-wrong');
+            input.disabled = true;
+          });
+          f.dataset.state = !graded ? 'shown' : (allOk ? 'ok' : 'wrong');
+          fb.className = 'quiz-feedback fb-' + f.dataset.state;
+          fb.textContent = !graded ? 'Lösung angezeigt.'
+            : (allOk ? '✔ Richtig!' : '✘ Leider nicht ganz – die richtige Lösung ist markiert.');
+          fb.hidden = false;
+          exp.hidden = false;
+          check.disabled = true;
+          reveal.disabled = true;
+          update();
+        };
+        check.addEventListener('click', () => finish(true));
+        reveal.addEventListener('click', () => finish(false));
+      });
+      quiz.querySelector('.quiz-reset').addEventListener('click', () => {
+        fragen.forEach((f) => {
+          delete f.dataset.state;
+          f.querySelectorAll('.quiz-opt').forEach((li) => li.classList.remove('opt-correct', 'opt-wrong'));
+          f.querySelectorAll('input').forEach((i) => { i.checked = false; i.disabled = false; });
+          f.querySelector('.quiz-check').disabled = true;
+          f.querySelector('.quiz-reveal').disabled = false;
+          f.querySelector('.quiz-feedback').hidden = true;
+          f.querySelector('.quiz-erklaerung').hidden = true;
+        });
+        update();
+      });
+      update();
+    });
+  </script>
+</body>
+
+</html>

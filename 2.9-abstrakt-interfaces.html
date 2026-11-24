@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<!-- GENERIERT von java/kurs/_build (java-grundlagen) – nicht direkt bearbeiten!
+     Quelle: java/kurs/_build/java-grundlagen/lessons/, bauen: python3 _build/build.py java-grundlagen -->
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.9 &ndash; Abstrakte Klassen &amp; Interfaces | Java-Grundlagen Kurs</title>
+  <script>(function () { var t = localStorage.getItem('kurs-theme') || 'dark'; document.documentElement.setAttribute('data-theme', t); })();</script>
+  <link rel="stylesheet" href="assets/kurs.css">
+  <link rel="stylesheet" id="hljs-theme"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+
+<body>
+
+  <button class="hamburger" id="hamburger" aria-label="Navigation &ouml;ffnen">&#9776;</button>
+  <div class="sidebar-overlay" id="overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html">
+        <span class="brand-icon">J</span>
+        <div>
+          <div class="brand-name">Java</div>
+          <div class="brand-sub">Grundlagen der Programmierung</div>
+        </div>
+      </a>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Dark/Light Mode"
+        title="Theme wechseln">&#9728;</button>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-group">
+        <div class="nav-group-label html-label">Teil 1 &mdash; Grundlagen</div>
+        <a class="nav-link" href="1.1-einfuehrung-entwicklungsumgebung.html"><span class="ln">1.1</span>Einf&uuml;hrung &amp; Entwicklungsumgebung</a>
+        <a class="nav-link" href="1.2-klassen-objekte.html"><span class="ln">1.2</span>Klassen, Objekte, Get &amp; Set</a>
+        <a class="nav-link" href="1.3-konstruktoren-methoden.html"><span class="ln">1.3</span>Konstruktoren, this &amp; Methoden</a>
+        <a class="nav-link" href="1.4-datentypen.html"><span class="ln">1.4</span>Datentypen</a>
+        <a class="nav-link" href="1.5-signatur-ueberladen.html"><span class="ln">1.5</span>Methoden, Signatur &amp; &Uuml;berladen</a>
+        <a class="nav-link" href="1.6-bedingungen-berechnungen.html"><span class="ln">1.6</span>Bedingungen &amp; Berechnungen</a>
+        <a class="nav-link" href="1.7-debugger-testklassen.html"><span class="ln">1.7</span>Debugger &amp; Testklassen</a>
+        <a class="nav-link" href="1.8-strings-random.html"><span class="ln">1.8</span>Strings &amp; Random</a>
+        <a class="nav-link" href="1.9-objekt-beziehungen.html"><span class="ln">1.9</span>Objekt-Beziehungen</a>
+        <a class="nav-link" href="1.10-schleifen.html"><span class="ln">1.10</span>Schleifen</a>
+        <a class="nav-link" href="1.11-statische-methoden.html"><span class="ln">1.11</span>Statische Methoden &amp; main</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label css-label">Teil 2 &mdash; Datenstrukturen &amp; OOP</div>
+        <a class="nav-link" href="2.1-intellij-junit.html"><span class="ln">2.1</span>IntelliJ, Maven &amp; JUnit</a>
+        <a class="nav-link" href="2.2-arrays.html"><span class="ln">2.2</span>Arrays</a>
+        <a class="nav-link" href="2.3-arrays-einfuegen-entfernen.html"><span class="ln">2.3</span>Arrays: Einf&uuml;gen &amp; Entfernen</a>
+        <a class="nav-link" href="2.4-sortieralgorithmen.html"><span class="ln">2.4</span>Sortieralgorithmen</a>
+        <a class="nav-link" href="2.5-objekt-arrays.html"><span class="ln">2.5</span>Objekt-Arrays</a>
+        <a class="nav-link" href="2.6-assoziation-equals.html"><span class="ln">2.6</span>Beidseitige Assoziation &amp; equals</a>
+        <a class="nav-link" href="2.7-collections.html"><span class="ln">2.7</span>Collections: ArrayList &amp; Co.</a>
+        <a class="nav-link" href="2.8-vererbung.html"><span class="ln">2.8</span>Vererbung &amp; Polymorphismus</a>
+        <a class="nav-link" href="2.9-abstrakt-interfaces.html"><span class="ln">2.9</span>Abstrakte Klassen &amp; Interfaces</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label rn-label">Teil 3 &mdash; Fortgeschrittene Konzepte</div>
+        <a class="nav-link" href="3.0-fail-early.html"><span class="ln">3.0</span>Fail Early statt Happy Path</a>
+        <a class="nav-link" href="3.1-exceptions.html"><span class="ln">3.1</span>Exceptions</a>
+        <a class="nav-link" href="3.2-hashset-treeset.html"><span class="ln">3.2</span>HashSet, TreeSet &amp; hashCode</a>
+        <a class="nav-link" href="3.3-serialisierung-dateien.html"><span class="ln">3.3</span>Serialisierung &amp; Dateien</a>
+        <a class="nav-link" href="3.4-git.html"><span class="ln">3.4</span>Versionsverwaltung mit Git</a>
+        <a class="nav-link" href="3.5-lambdas.html"><span class="ln">3.5</span>Lambda-Ausdr&uuml;cke</a>
+        <a class="nav-link" href="3.6-streams.html"><span class="ln">3.6</span>Die Streams-API</a>
+        <a class="nav-link" href="3.7-design-patterns.html"><span class="ln">3.7</span>Design-Patterns</a>
+        <a class="nav-link" href="3.8-model-klassen.html"><span class="ln">3.8</span>Model-Klassen f&uuml;r die GUI</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label react-label">Teil 4 &mdash; Webanwendungen mit Vaadin</div>
+        <a class="nav-link" href="4.1-web-grundlagen.html"><span class="ln">4.1</span>Grundprinzipien des Web</a>
+        <a class="nav-link" href="4.2-vaadin-einstieg.html"><span class="ln">4.2</span>Vaadin Flow &amp; Start-Paket</a>
+        <a class="nav-link" href="4.3-komponenten-layouts.html"><span class="ln">4.3</span>Komponenten &amp; Layouts</a>
+        <a class="nav-link" href="4.4-grid-routing-binding.html"><span class="ln">4.4</span>Tabellen, Routing &amp; Binding</a>
+        <a class="nav-link" href="4.5-mitarbeiterverwaltung.html"><span class="ln">4.5</span>Mitarbeiterverwaltung</a>
+      </div>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <header class="lesson-header">
+      <p class="lesson-eyebrow">Lektion 2.9 &mdash; Teil 2: Datenstrukturen &amp; OOP</p>
+      <h1>Abstrakte Klassen &amp; Interfaces</h1>
+      <div class="lesson-tags">
+        <span class="tag tag-css">Vererbung</span>
+        <span class="tag tag-time">ca. 2 &times; 90 min</span>
+        <span class="tag tag-level">Fortgeschritten</span>
+      </div>
+    </header>
+
+    <div class="content-area">
+      <section class="section section-lernziele">
+        <h2>Lernziele</h2>
+        <ul class="lernziele-list">
+          <li><a class="lernziel-link" href="#abschnitt-1">abstrakte Klassen und abstrakte Methoden einsetzen und begründen, wann sie sinnvoll sind<span class="lernziel-ziel">Abschnitt 1</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-2">Interfaces als reine Schnittstellen verstehen und mit <code>implements</code> umsetzen<span class="lernziel-ziel">Abschnitt 2</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-2">den Unterschied &bdquo;eine Basisklasse, aber mehrere Interfaces&ldquo; erklären<span class="lernziel-ziel">Abschnitt 2</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-2"><code>Comparable&lt;T&gt;</code> mit <code>compareTo</code> implementieren und mit <code>Collections.sort</code> sortieren<span class="lernziel-ziel">Abschnitt 2</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-3">eine mehrstufige Klassenhierarchie modellieren<span class="lernziel-ziel">Abschnitt 3</span></a></li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-1">1 &mdash; Abstrakte Methoden und abstrakte Klassen</h2>
+        <p>
+          Wird eine Klasse als <code>abstract</code> deklariert, kann man <strong>keine Instanzen</strong> von ihr
+          erzeugen. Sie dient nur als mögliche Basisklasse; ihre öffentlichen Methoden stehen in allen ableitenden
+          Klassen zur Verfügung.
+        </p>
+        <p>
+          Manchmal will man erzwingen, dass bestimmte Methoden von allen Unterklassen implementiert werden
+          <em>müssen</em>. Dafür gibt es <strong>abstrakte Methoden</strong>: Sie haben <em>keine</em> Implementierung,
+          also keinen Methodenrumpf. Sinnvoll ist das, wenn eine (abstrakte) Klasse festlegen will, dass alle
+          konkreten Unterklassen eine bestimmte Methode anbieten, an dieser Stelle aber keine sinnvolle
+          Implementierung möglich ist.
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Person.java (Skizze)</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public abstract class Person {
+
+    // Instanzvariablen
+
+    // Konstruktoren
+
+    // Get/Set-Methoden
+
+    public abstract int getKostenProMonat();
+}</code></pre>
+</div>
+        <div class="callout callout-info">
+  <div class="callout-icon">&#8505;</div>
+  <div class="callout-body">
+    <div class="callout-title">Regeln</div>
+    <p>Eine Klasse mit mindestens einer abstrakten Methode muss selbst <code>abstract</code> sein. Eine Unterklasse
+          ist nur dann <em>konkret</em> (instanziierbar), wenn sie alle geerbten abstrakten Methoden implementiert
+          &ndash; sonst muss auch sie <code>abstract</code> sein.</p>
+  </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-2">2 &mdash; Interfaces</h2>
+        <p>
+          Manchmal will man <em>rein</em> abstrakte Klassen definieren, die ausschließlich abstrakte Methoden (und
+          keine Attribute) besitzen. Sie zwingen ableitende Klassen, eine bestimmte Funktionalität über eine
+          festgelegte <strong>Schnittstelle</strong> anzubieten &ndash; deshalb heißen sie <strong>Interfaces</strong>.
+        </p>
+        <p>
+          Beispiel: Objekte einer Klasse sollen <em>verglichen</em> und <em>sortiert</em> werden können. Ein passendes
+          Interface stellt die Java-Bibliothek bereit; es sieht in etwa so aus:
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Comparable.java (vereinfacht)</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public interface Comparable&lt;T&gt; {
+
+    int compareTo(T o);
+
+}</code></pre>
+</div>
+        <p>
+          Klassen, die dieses Interface implementieren, müssen eine konkrete Implementierung von <code>compareTo</code>
+          anbieten. Statt <code>extends</code> verwendet man dabei das Schlüsselwort <code>implements</code>. Der
+          wesentliche Unterschied zur Vererbung: Man kann nur von <strong>einer Klasse ableiten</strong>, aber eine
+          Klasse kann <strong>mehrere Interfaces implementieren</strong>.
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Person.java</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">import java.lang.Comparable;
+
+public abstract class Person implements Comparable&lt;Person&gt; {
+    private String name;
+    private int geburtsjahr;
+
+    // Konstruktoren, Getter/Setter, weitere Methoden
+    @Override
+    public int compareTo(Person other) {
+        if (other != null) {
+            int c = this.getName().compareTo(other.getName());
+            if (c == 0) {
+                return this.getGeburtsjahr() - other.getGeburtsjahr();
+            } else {
+                return c;
+            }
+        } else {
+            return Integer.MIN_VALUE; // spaeter werden wir das besser loesen
+        }
+    }
+}</code></pre>
+</div>
+        <p>
+          Die Methode verwendet <code>compareTo</code> von <code>String</code> &ndash; auch <code>String</code>
+          implementiert <code>Comparable&lt;String&gt;</code>. Der <code>int</code>-Rückgabewert ist
+        </p>
+        <ul>
+          <li><strong>kleiner als 0</strong>, wenn <code>this</code> <em>vor</em> <code>other</code> zu sortieren ist,</li>
+          <li><strong>größer als 0</strong>, wenn es danach kommen soll,</li>
+          <li><strong>0</strong> bei Gleichheit &ndash; dann wird hier das Geburtsjahr für einen genaueren Vergleich herangezogen; die Differenz der beiden <code>int</code>-Werte verhält sich genauso.</li>
+        </ul>
+        <div class="callout callout-tip">
+  <div class="callout-icon">&#128161;</div>
+  <div class="callout-body">
+    <div class="callout-title">import java.lang</div>
+    <code>import java.lang.Comparable;</code> ist erlaubt, aber überflüssig &ndash; <code>java.lang</code> ist immer importiert.
+  </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-3">3 &mdash; Klassenhierarchien</h2>
+        <p>
+          Angenommen, auch ein <code>Freelancer</code> soll zum Personal gehören. Auch er hat Name und Geburtsjahr,
+          aber keinen festen Stundenlohn und keine fixe Wochenstundenanzahl: Er arbeitet auf Projektbasis und bekommt
+          eine Projektpauschale. Die Lösung ist eine <strong>mehrstufige Vererbungshierarchie</strong>: Gemeinsamer
+          Basistyp von <code>Freelancer</code> und <code>Mitarbeiter</code> wird <code>Person</code> (Name,
+          Geburtsjahr). Stundenlohn und Wochenstunden &ndash; gemeinsam für Arbeiter und Angestellte &ndash; liegen in
+          <code>Mitarbeiter</code>, das von <code>Person</code> ableitet.
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Vererbungshierarchie (Pfeil = extends)</span>
+    <span class="code-lang">Text</span>
+  </div>
+  <pre><code class="language-plaintext">Firma ----personal----&gt; &lt;&lt;abstract&gt;&gt; Person
+                            ^         ^
+                            |         |
+                     Freelancer   &lt;&lt;abstract&gt;&gt; Mitarbeiter
+                                    ^        ^         ^
+                                    |        |         |
+                              Angestellter Arbeiter Praktikant</code></pre>
+</div>
+        <details class="code-collapse">
+  <summary><span class="code-filename">Person.java</span> <span class="code-collapse-hint">Code anzeigen (61 Zeilen)</span></summary>
+<div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Person.java</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public abstract class Person implements Comparable&lt;Person&gt; {
+
+    private String name;
+    private int geburtsjahr;
+
+    public Person() {
+        setName("n/a");
+        setGeburtsjahr(1900);
+    }
+
+    public Person(String name, int geburtsjahr) {
+        setName(name);
+        setGeburtsjahr(geburtsjahr);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        if (name != null &amp;&amp; !name.isEmpty()) {
+            this.name = name;
+        } else {
+            System.out.println("Fehler: ungueltiger Name: " + name);
+        }
+    }
+
+    public int getGeburtsjahr() {
+        return geburtsjahr;
+    }
+
+    public void setGeburtsjahr(int geburtsjahr) {
+        if (geburtsjahr &gt;= 1900 &amp;&amp; geburtsjahr &lt;= 2050) {
+            this.geburtsjahr = geburtsjahr;
+        } else {
+            System.out.println("Fehler: ungueltiges Geburtsjahr: " + geburtsjahr);
+        }
+    }
+
+    public abstract int getKostenProMonat();
+
+    @Override
+    public int compareTo(Person o) {
+        if (o != null) {
+            int c = this.getName().compareTo(o.getName());
+            if (c == 0) {
+                return this.getGeburtsjahr() - o.getGeburtsjahr();
+            } else {
+                return c;
+            }
+        } else {
+            return -1; // spaeter werden wir das besser loesen
+        }
+    }
+
+    @Override
+    public String toString() {
+        String str = getName() + " (Geb.Jahr: " + getGeburtsjahr() + ")";
+        return str;
+    }
+}</code></pre>
+</div>
+</details>
+        <p>
+          <code>Person</code> enthält die abstrakte Methode zur Berechnung der monatlichen Kosten: Einerseits sollen
+          alle konkreten Unterklassen sie implementieren <em>müssen</em>, andererseits fehlen hier die nötigen
+          Attribute (Stundenlohn, Projektpauschale) für eine sinnvolle Implementierung. <code>compareTo</code> aus
+          <code>Comparable&lt;Person&gt;</code> steht allen Unterklassen zur Verfügung; der Typparameter ist <code>Person</code>, da
+          mit Personen bzw. deren Untertypen verglichen wird.
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Freelancer.java</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public class Freelancer extends Person {
+
+    private int anzahlProjekte;
+    private int projektPauschale;
+
+    public Freelancer() {
+        super();
+        setAnzahlProjekte(1);
+        setProjektPauschale(500);
+    }
+
+    public Freelancer(String name, int geburtsjahr, int anzahlProjekte,
+                      int projektPauschale)
+    {
+        super(name, geburtsjahr);
+        setAnzahlProjekte(anzahlProjekte);
+        setProjektPauschale(projektPauschale);
+    }
+
+    public int getAnzahlProjekte() {
+        return anzahlProjekte;
+    }
+
+    public void setAnzahlProjekte(int anzahlProjekte) {
+        if (anzahlProjekte &gt;= 0) {
+            this.anzahlProjekte = anzahlProjekte;
+        } else {
+            System.out.println("Fehler: ungueltige Anzahl an Projekten: "
+                               + anzahlProjekte);
+        }
+    }
+
+    public int getProjektPauschale() {
+        return projektPauschale;
+    }
+
+    public void setProjektPauschale(int projektPauschale) {
+        if (projektPauschale &gt; 200) {
+            this.projektPauschale = projektPauschale;
+        } else {
+            System.out.println("Fehler: ungueltige Projektpauschale: "
+                               + projektPauschale);
+        }
+    }
+
+    // abstrakte Methode getKostenProMonat aus Person muss hier implementiert werden!
+    @Override
+    public int getKostenProMonat() {
+        return getAnzahlProjekte() * getProjektPauschale();
+    }
+
+    @Override
+    public String toString() {
+        String str = super.toString();
+        str += ", " + anzahlProjekte + " Projekte (Projektpauschale: "
+               + projektPauschale + ")";
+        return str;
+    }
+}</code></pre>
+</div>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Mitarbeiter.java</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public abstract class Mitarbeiter extends Person {
+
+    private int stundenlohn;
+    private int anzahlWochenStunden;
+
+    public Mitarbeiter() {
+        super();
+        setStundenlohn(10);
+        setAnzahlWochenStunden(40);
+    }
+
+    public Mitarbeiter(String name, int geburtsjahr, int stundenlohn,
+                       int anzahlWochenStunden)
+    {
+        super(name, geburtsjahr);
+        setStundenlohn(stundenlohn);
+        setAnzahlWochenStunden(anzahlWochenStunden);
+    }
+
+    // Get-/Set-Methoden fuer stundenlohn und anzahlWochenStunden
+    // mit den Pruefungen aus Lektion 2.8
+
+    @Override
+    public int getKostenProMonat() {
+        // eigentlich 4.35 Wochen pro Monat
+        // hier der Einfachkeit halber * 4
+        int kosten = 4 * getStundenlohn() * getAnzahlWochenStunden();
+        return kosten;
+    }
+
+    @Override
+    public String toString() {
+        String str = super.toString();
+        str += " Stundenlohn: " + getStundenlohn() + ", "
+               + getAnzahlWochenStunden() + " h/W";
+        return str;
+    }
+
+    public void print() {
+        System.out.println(this);
+    }
+}</code></pre>
+</div>
+        <p>
+          <code>Angestellter</code> und <code>Arbeiter</code> bleiben wie in Lektion 2.8 (sie leiten weiterhin von
+          <code>Mitarbeiter</code> ab; in <code>Angestellter.toString</code> wird zusätzlich &bdquo;Angestellter&ldquo;
+          angehängt). Neu ist ein <code>Praktikant</code>, der nichts Eigenes braucht:
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Praktikant.java</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public class Praktikant extends Mitarbeiter {
+
+    public Praktikant() {
+        super();
+    }
+
+    public Praktikant(String name, int geburtsjahr, int stundenlohn,
+                      int anzahlWochenStunden)
+    {
+        super(name, geburtsjahr, stundenlohn, anzahlWochenStunden);
+    }
+
+    @Override
+    public String toString() {
+        String str = super.toString() + " (Praktikant)";
+        return str;
+    }
+}</code></pre>
+</div>
+        <p>Die <code>Firma</code> verwaltet jetzt <code>ArrayList&lt;Person&gt;</code>, berechnet die Gesamtkosten und kann sortieren:</p>
+        <details class="code-collapse">
+  <summary><span class="code-filename">Firma.java</span> <span class="code-collapse-hint">Code anzeigen (64 Zeilen)</span></summary>
+<div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Firma.java</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">import java.util.ArrayList;
+import java.util.Collections;
+
+public class Firma {
+
+    private String name;
+    private ArrayList&lt;Person&gt; personal;
+
+    public Firma() {
+        personal = new ArrayList&lt;&gt;();
+        setName("Default GmbH");
+    }
+
+    public Firma(String name) {
+        personal = new ArrayList&lt;&gt;();
+        setName(name);
+    }
+
+    // getName, setName wie bisher
+
+    public void einstellen(Person m) {
+        if (m != null) {
+            personal.add(m);
+        } else {
+            System.out.println("Fehler: ungueltiger Mitarbeiter: " + m);
+        }
+    }
+
+    public boolean kuendigen(Person m) {
+        if (m != null) {
+            return personal.remove(m);
+        } else {
+            System.out.println("Fehler: ungueltiger Mitarbeiter: " + m);
+        }
+        return false;
+    }
+
+    public String toString() {
+        String str = "Firma: " + getName()
+                     + "\n-----------------------------------------\n";
+
+        for (Person m : personal) {
+            str += m + "\n";
+        }
+        str += "\n";
+
+        int kosten = 0;
+        for (Person m : personal) {
+            kosten += m.getKostenProMonat();
+        }
+        str += "Kosten pro Monat: " + kosten + "\n";
+        str += "-----------------------------------------\n";
+
+        return str;
+    }
+
+    public void print() {
+        System.out.println(this);
+    }
+
+    public void sortieren() {
+        Collections.sort(personal);
+    }
+}</code></pre>
+</div>
+</details>
+        <p>
+          <code>sortieren</code> verwendet die statische Methode <code>sort</code> der Klasse <code>Collections</code>.
+          Sie funktioniert nur mit Collections von Klassen, die das <code>Comparable</code>-Interface implementieren:
+          So erfährt der Sortieralgorithmus, wie zwei Objekte dieser Klasse (oder ihrer Unterklassen) in die richtige
+          Reihenfolge zu bringen sind. Die Kostenberechnung ruft für jede Person <code>getKostenProMonat()</code> auf
+          &ndash; für Freelancer, Arbeiter, Angestellte und Praktikanten jeweils die passende Implementierung.
+        </p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th></th><th>abstrakte Klasse</th><th>Interface</th></tr></thead>
+            <tbody>
+              <tr><td>Attribute</td><td>ja</td><td>nein (nur Konstanten)</td></tr>
+              <tr><td>implementierte Methoden</td><td>ja</td><td>nein (Ausnahme: <code>default</code>-Methoden, seit Java 8)</td></tr>
+              <tr><td>Verwendung</td><td><code>extends</code> &ndash; nur eine Basisklasse</td><td><code>implements</code> &ndash; beliebig viele</td></tr>
+              <tr><td>Aussage</td><td>&bdquo;ist ein&ldquo; (Arbeiter <em>ist eine</em> Person)</td><td>&bdquo;kann&ldquo; (Person <em>kann verglichen werden</em>)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section section-projekt">
+        <h2 id="projektschritt">Projektschritt</h2>
+<div class="projekt-box">
+  <div class="projekt-box-header">
+    <span class="projekt-step">Projektschritt 2.9</span>
+    <h3>Person, Freelancer und Sortieren</h3>
+  </div>
+<p>Die Personalverwaltung übernimmt die Hierarchie: Die abstrakte Klasse <code>Person</code> enthält jetzt alles Gemeinsame (Name, Geburtsjahr, Personalnummer, Firma, Initialen, Kürzel, <code>equals</code>, <code>compareTo</code>, Kostenbalken), <code>Mitarbeiter</code> wird ebenfalls abstrakt, und neu kommt der <code>Freelancer</code> dazu. Die Firma verwaltet <code>ArrayList&lt;Person&gt;</code> und sortiert mit <code>Collections.sort</code>. Weil <code>Mitarbeiter</code> nicht mehr instanziierbar ist, verwenden alle Tests jetzt <code>Angestellter</code>, <code>Arbeiter</code> oder <code>Freelancer</code>.</p>
+  <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">src/main/java/Person.java (Auszug)</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public abstract class Person implements Comparable&lt;Person&gt; {
+
+    private String name;
+    private int geburtsjahr;
+    private int personalNummer;
+    private Firma firma;
+
+    // ... Konstruktoren, Get/Set, setFirma, initialen, kuerzel ...
+
+    // abstrakt: jede konkrete Unterklasse MUSS die Kosten berechnen können
+    public abstract int getKostenProMonat();
+
+    // verwendet die abstrakte Methode – funktioniert für alle Unterklassen
+    public String kostenBalken() {
+        String balken = "";
+        for (int i = 0; i &lt; getKostenProMonat(); i += 500) {
+            balken += "#";
+        }
+        return balken;
+    }
+
+    // Comparable: zuerst nach Name, bei gleichem Namen nach Geburtsjahr
+    @Override
+    public int compareTo(Person other) {
+        if (other != null) {
+            int c = this.getName().compareTo(other.getName());
+            if (c == 0) {
+                return this.getGeburtsjahr() - other.getGeburtsjahr();
+            } else {
+                return c;
+            }
+        } else {
+            return -1; // spaeter loesen wir das mit Exceptions
+        }
+    }</code></pre>
+</div>
+  <details class="code-collapse">
+  <summary><span class="code-filename">src/main/java/Freelancer.java</span> <span class="code-collapse-hint">Code anzeigen (63 Zeilen)</span></summary>
+<div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">src/main/java/Freelancer.java</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">/*
+  Personalverwaltung – ein Freelancer ist eine Person, aber kein
+  Mitarbeiter: er wird pro Projekt bezahlt.
+  Stand: Lektion 2.9 (Klassenhierarchie)
+*/
+public class Freelancer extends Person {
+
+    private int anzahlProjekte;
+    private int projektPauschale;
+
+    public Freelancer() {
+        super();
+        setAnzahlProjekte(1);
+        setProjektPauschale(500);
+    }
+
+    public Freelancer(String name, int geburtsjahr, int anzahlProjekte,
+                      int projektPauschale)
+    {
+        super(name, geburtsjahr);
+        setAnzahlProjekte(anzahlProjekte);
+        setProjektPauschale(projektPauschale);
+    }
+
+    public int getAnzahlProjekte() {
+        return anzahlProjekte;
+    }
+
+    public void setAnzahlProjekte(int anzahlProjekte) {
+        if (anzahlProjekte &gt;= 0) {
+            this.anzahlProjekte = anzahlProjekte;
+        } else {
+            System.out.println("Fehler: ungueltige Anzahl an Projekten: "
+                               + anzahlProjekte);
+        }
+    }
+
+    public int getProjektPauschale() {
+        return projektPauschale;
+    }
+
+    public void setProjektPauschale(int projektPauschale) {
+        if (projektPauschale &gt; 200) {
+            this.projektPauschale = projektPauschale;
+        } else {
+            System.out.println("Fehler: ungueltige Projektpauschale: "
+                               + projektPauschale);
+            this.projektPauschale = 500;
+        }
+    }
+
+    // abstrakte Methode aus Person muss hier implementiert werden!
+    @Override
+    public int getKostenProMonat() {
+        return getAnzahlProjekte() * getProjektPauschale();
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + ", Freelancer: " + anzahlProjekte
+               + " Projekte (Projektpauschale: " + projektPauschale + ")";
+    }
+}</code></pre>
+</div>
+</details>
+  <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Ausgabe von Programm (gekürzt)</span>
+    <span class="code-lang">Text</span>
+  </div>
+  <pre><code class="language-plaintext">Firma: Spengergasse OG
+-----------------------------------------------
+1: #5810 ANN Anna Novak (Geb.Jahr: 2001), Firma: Spengergasse OG, 14 Euro/h, 20 h/Woche (Teilzeit), Angestellter (Ueberstundenpauschale)
+2: #2297 KAR Karl Maier (Geb.Jahr: 1989), Firma: Spengergasse OG, 15 Euro/h, 40 h/Woche (Vollzeit), Facharbeiter
+3: #7410 SEP Sepp Gruber (Geb.Jahr: 1981), Firma: Spengergasse OG, Freelancer: 3 Projekte (Projektpauschale: 300)
+4: #3925 SUS Susanne Huber (Geb.Jahr: 1991), Firma: Spengergasse OG, 20 Euro/h, 30 h/Woche (Teilzeit), Angestellter (keine Uestd.-Pauschale)
+-----------------------------------------------
+Kosten pro Monat: 7120 Euro (4 Personen)</code></pre>
+</div>
+  <p class="mb-0">&#128193; Stand nach dieser Lektion (Ende Teil 2): <a href="beispiele/2.9/src/main/java/Person.java" target="_blank">beispiele/2.9/</a></p>
+</div>
+      </section>
+
+      <section class="section section-fehler">
+        <h2>Häufige Fehler</h2>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Abstrakte Klasse instanziiert</div>
+  <p><code>new Person("Anna", 1990)</code> &rarr; <code>Person is abstract; cannot be instantiated</code>.</p>
+          <p class="fehler-fix">Nur konkrete Unterklassen können erzeugt werden: <code>Person p = new Freelancer(&hellip;);</code> &ndash; die Variable darf den abstrakten Typ haben.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Abstrakte Methode nicht implementiert</div>
+  <p><code>Freelancer is not abstract and does not override abstract method getKostenProMonat() in Person</code>.</p>
+          <p class="fehler-fix">Die Methode mit gleicher Signatur in der Unterklasse implementieren (<kbd>Alt</kbd>+<kbd>Enter</kbd> &rarr; <em>Implement methods</em>) oder die Unterklasse ebenfalls <code>abstract</code> machen.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Collections.sort übersetzt nicht</div>
+  <p><code>no suitable method found for sort(ArrayList&lt;Person&gt;)</code>.</p>
+          <p class="fehler-fix">Die Elementklasse muss <code>Comparable&lt;Person&gt;</code> implementieren (mit Typparameter!) und <code>compareTo(Person o)</code> anbieten.</p>
+</div>
+      </section>
+
+      <section class="section section-aufgaben">
+        <h2>Aufgaben</h2>
+        <div class="aufgaben-list">
+          <div class="aufgabe">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Aufgabe 1</span>
+    <span class="aufgabe-title">Immobilienverwaltung</span>
+  </div>
+  <p>Immobilien (<code>Wohnung</code>, <code>Einfamilienhaus</code>) mit Wert und Maklerprovision, verwaltet in einer Verwaltungsklasse mit Einfügen, Entfernen, Suchen und Gesamtwert. Der Teil zur Fehlerbehandlung gehört zu Lektion 3.1.</p>
+            <p class="mb-0"><a href="uebungen/lektion-2.9-uebung-1-immobilienverwaltung.pdf" target="_blank">&#128196; Übung 2.9-1 (PDF)</a></p>
+</div>
+        </div>
+      </section>
+
+      <section class="section section-quiz">
+        <h2>Wissenskontrolle</h2>
+        <div class="quiz" id="quiz-20">
+  <div class="quiz-frage" data-multi="1">
+    <p class="quiz-q"><span class="quiz-num">Frage 1</span> Was gilt für eine <strong>abstrakte</strong> Klasse?</p>
+    <p class="quiz-hint">Mehrere Antworten sind richtig.</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-20-1"> <span>Von ihr können keine Objekte erzeugt werden.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-20-1"> <span>Sie darf abstrakte Methoden ohne Rumpf enthalten, die jede konkrete Unterklasse implementieren muss.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-20-1"> <span>Sie darf keine Attribute haben.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-20-1"> <span>Sie darf keine normalen Methoden mit Rumpf haben.</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Eine abstrakte Klasse ist ein unvollständiger Bauplan: gemeinsame Attribute und Methoden plus Methoden, die erst die Unterklassen konkret umsetzen.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 2</span> Wie viele Basisklassen und wie viele Interfaces kann eine Java-Klasse haben?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-20-2"> <span>beliebig viele Basisklassen, ein Interface</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-20-2"> <span>genau eine Basisklasse (<code>extends</code>), aber beliebig viele Interfaces (<code>implements</code>)</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-20-2"> <span>je genau eins</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-20-2"> <span>keine Basisklasse, wenn sie Interfaces implementiert</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Java erlaubt keine Mehrfachvererbung von Klassen. Interfaces beschreiben nur, was eine Klasse können muss, deshalb darf eine Klasse mehrere davon implementieren.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 3</span> Welche Methode muss eine Klasse implementieren, die <code>Comparable&lt;Person&gt;</code> implementiert?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-20-3"> <span><code>boolean equals(Person p)</code></span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-20-3"> <span><code>int compareTo(Person p)</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-20-3"> <span><code>void sort()</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-20-3"> <span><code>int compare(Person a, Person b)</code></span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> <code>compareTo</code> legt die natürliche Reihenfolge fest. Danach kann <code>Collections.sort(liste)</code> die Liste sortieren.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 4</span> Was ist ein Interface?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-20-4"> <span>eine Klasse mit lauter <code>private</code>-Methoden</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-20-4"> <span>eine Schnittstelle, die festlegt, welche Methoden eine Klasse anbieten muss, ohne sie selbst zu implementieren</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-20-4"> <span>die Benutzeroberfläche eines Programms</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-20-4"> <span>eine Unterklasse von <code>Object</code> mit Attributen</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Ein Interface ist ein Vertrag. Jede Klasse, die es implementiert, garantiert die Methoden &ndash; so kann man Objekte verschiedener Klassen einheitlich verwenden.</div>
+  </div>
+  <div class="quiz-summary"><span class="quiz-score"></span><button type="button" class="quiz-reset">Zur&uuml;cksetzen</button></div>
+</div>
+      </section>
+
+    </div>
+
+    <nav class="lesson-nav">
+      <a class="nav-btn" href="2.8-vererbung.html">&larr; Lektion 2.8: Vererbung &amp; Polymorphismus</a>
+      <span class="nav-center-info">Lektion 2.9</span>
+      <a class="nav-btn primary" href="3.0-fail-early.html">Lektion 3.0: Fail Early statt Happy Path &rarr;</a>
+    </nav>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>
+    const ham = document.getElementById('hamburger');
+    const sb = document.getElementById('sidebar');
+    const ov = document.getElementById('overlay');
+    ham.addEventListener('click', () => { sb.classList.toggle('open'); ov.classList.toggle('visible'); });
+    ov.addEventListener('click', () => { sb.classList.remove('open'); ov.classList.remove('visible'); });
+    const cur = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-link').forEach(l => {
+      if (l.getAttribute('href') === cur) l.classList.add('active');
+    });
+    const themeBtn = document.getElementById('theme-toggle');
+    const applyTheme = (t) => {
+      document.documentElement.setAttribute('data-theme', t);
+      if (themeBtn) themeBtn.innerHTML = t === 'dark' ? '&#9728;' : '&#9790;';
+    };
+    applyTheme(localStorage.getItem('kurs-theme') || 'dark');
+    setTimeout(() => document.documentElement.classList.add('theme-transitions'), 50);
+    if (themeBtn) themeBtn.addEventListener('click', () => {
+      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('kurs-theme', next);
+      applyTheme(next);
+    });
+    hljs.highlightAll();
+  </script>
+  <script>
+    document.querySelectorAll('.quiz').forEach((quiz) => {
+      const fragen = [...quiz.querySelectorAll('.quiz-frage')];
+      const score = quiz.querySelector('.quiz-score');
+      const update = () => {
+        const done = fragen.filter((f) => f.dataset.state).length;
+        const ok = fragen.filter((f) => f.dataset.state === 'ok').length;
+        score.textContent = done === 0
+          ? fragen.length + ' Fragen – wähle eine Antwort und prüfe sie.'
+          : ok + ' von ' + fragen.length + ' richtig'
+            + (done < fragen.length ? ' (' + done + ' von ' + fragen.length + ' bearbeitet)' : '');
+      };
+      fragen.forEach((f) => {
+        const inputs = [...f.querySelectorAll('input')];
+        const check = f.querySelector('.quiz-check');
+        const reveal = f.querySelector('.quiz-reveal');
+        const fb = f.querySelector('.quiz-feedback');
+        const exp = f.querySelector('.quiz-erklaerung');
+        inputs.forEach((i) => i.addEventListener('change', () => {
+          check.disabled = !inputs.some((x) => x.checked);
+        }));
+        const finish = (graded) => {
+          let allOk = true;
+          f.querySelectorAll('.quiz-opt').forEach((li) => {
+            const input = li.querySelector('input');
+            const corr = li.dataset.correct === '1';
+            if (corr !== input.checked) allOk = false;
+            if (corr) li.classList.add('opt-correct');
+            else if (input.checked) li.classList.add('opt-wrong');
+            input.disabled = true;
+          });
+          f.dataset.state = !graded ? 'shown' : (allOk ? 'ok' : 'wrong');
+          fb.className = 'quiz-feedback fb-' + f.dataset.state;
+          fb.textContent = !graded ? 'Lösung angezeigt.'
+            : (allOk ? '✔ Richtig!' : '✘ Leider nicht ganz – die richtige Lösung ist markiert.');
+          fb.hidden = false;
+          exp.hidden = false;
+          check.disabled = true;
+          reveal.disabled = true;
+          update();
+        };
+        check.addEventListener('click', () => finish(true));
+        reveal.addEventListener('click', () => finish(false));
+      });
+      quiz.querySelector('.quiz-reset').addEventListener('click', () => {
+        fragen.forEach((f) => {
+          delete f.dataset.state;
+          f.querySelectorAll('.quiz-opt').forEach((li) => li.classList.remove('opt-correct', 'opt-wrong'));
+          f.querySelectorAll('input').forEach((i) => { i.checked = false; i.disabled = false; });
+          f.querySelector('.quiz-check').disabled = true;
+          f.querySelector('.quiz-reveal').disabled = false;
+          f.querySelector('.quiz-feedback').hidden = true;
+          f.querySelector('.quiz-erklaerung').hidden = true;
+        });
+        update();
+      });
+      update();
+    });
+  </script>
+</body>
+
+</html>

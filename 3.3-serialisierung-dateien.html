@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<!-- GENERIERT von java/kurs/_build (java-grundlagen) – nicht direkt bearbeiten!
+     Quelle: java/kurs/_build/java-grundlagen/lessons/, bauen: python3 _build/build.py java-grundlagen -->
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3.3 &ndash; Serialisierung &amp; Dateien | Java-Grundlagen Kurs</title>
+  <script>(function () { var t = localStorage.getItem('kurs-theme') || 'dark'; document.documentElement.setAttribute('data-theme', t); })();</script>
+  <link rel="stylesheet" href="assets/kurs.css">
+  <link rel="stylesheet" id="hljs-theme"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+
+<body>
+
+  <button class="hamburger" id="hamburger" aria-label="Navigation &ouml;ffnen">&#9776;</button>
+  <div class="sidebar-overlay" id="overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html">
+        <span class="brand-icon">J</span>
+        <div>
+          <div class="brand-name">Java</div>
+          <div class="brand-sub">Grundlagen der Programmierung</div>
+        </div>
+      </a>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Dark/Light Mode"
+        title="Theme wechseln">&#9728;</button>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-group">
+        <div class="nav-group-label html-label">Teil 1 &mdash; Grundlagen</div>
+        <a class="nav-link" href="1.1-einfuehrung-entwicklungsumgebung.html"><span class="ln">1.1</span>Einf&uuml;hrung &amp; Entwicklungsumgebung</a>
+        <a class="nav-link" href="1.2-klassen-objekte.html"><span class="ln">1.2</span>Klassen, Objekte, Get &amp; Set</a>
+        <a class="nav-link" href="1.3-konstruktoren-methoden.html"><span class="ln">1.3</span>Konstruktoren, this &amp; Methoden</a>
+        <a class="nav-link" href="1.4-datentypen.html"><span class="ln">1.4</span>Datentypen</a>
+        <a class="nav-link" href="1.5-signatur-ueberladen.html"><span class="ln">1.5</span>Methoden, Signatur &amp; &Uuml;berladen</a>
+        <a class="nav-link" href="1.6-bedingungen-berechnungen.html"><span class="ln">1.6</span>Bedingungen &amp; Berechnungen</a>
+        <a class="nav-link" href="1.7-debugger-testklassen.html"><span class="ln">1.7</span>Debugger &amp; Testklassen</a>
+        <a class="nav-link" href="1.8-strings-random.html"><span class="ln">1.8</span>Strings &amp; Random</a>
+        <a class="nav-link" href="1.9-objekt-beziehungen.html"><span class="ln">1.9</span>Objekt-Beziehungen</a>
+        <a class="nav-link" href="1.10-schleifen.html"><span class="ln">1.10</span>Schleifen</a>
+        <a class="nav-link" href="1.11-statische-methoden.html"><span class="ln">1.11</span>Statische Methoden &amp; main</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label css-label">Teil 2 &mdash; Datenstrukturen &amp; OOP</div>
+        <a class="nav-link" href="2.1-intellij-junit.html"><span class="ln">2.1</span>IntelliJ, Maven &amp; JUnit</a>
+        <a class="nav-link" href="2.2-arrays.html"><span class="ln">2.2</span>Arrays</a>
+        <a class="nav-link" href="2.3-arrays-einfuegen-entfernen.html"><span class="ln">2.3</span>Arrays: Einf&uuml;gen &amp; Entfernen</a>
+        <a class="nav-link" href="2.4-sortieralgorithmen.html"><span class="ln">2.4</span>Sortieralgorithmen</a>
+        <a class="nav-link" href="2.5-objekt-arrays.html"><span class="ln">2.5</span>Objekt-Arrays</a>
+        <a class="nav-link" href="2.6-assoziation-equals.html"><span class="ln">2.6</span>Beidseitige Assoziation &amp; equals</a>
+        <a class="nav-link" href="2.7-collections.html"><span class="ln">2.7</span>Collections: ArrayList &amp; Co.</a>
+        <a class="nav-link" href="2.8-vererbung.html"><span class="ln">2.8</span>Vererbung &amp; Polymorphismus</a>
+        <a class="nav-link" href="2.9-abstrakt-interfaces.html"><span class="ln">2.9</span>Abstrakte Klassen &amp; Interfaces</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label rn-label">Teil 3 &mdash; Fortgeschrittene Konzepte</div>
+        <a class="nav-link" href="3.0-fail-early.html"><span class="ln">3.0</span>Fail Early statt Happy Path</a>
+        <a class="nav-link" href="3.1-exceptions.html"><span class="ln">3.1</span>Exceptions</a>
+        <a class="nav-link" href="3.2-hashset-treeset.html"><span class="ln">3.2</span>HashSet, TreeSet &amp; hashCode</a>
+        <a class="nav-link" href="3.3-serialisierung-dateien.html"><span class="ln">3.3</span>Serialisierung &amp; Dateien</a>
+        <a class="nav-link" href="3.4-git.html"><span class="ln">3.4</span>Versionsverwaltung mit Git</a>
+        <a class="nav-link" href="3.5-lambdas.html"><span class="ln">3.5</span>Lambda-Ausdr&uuml;cke</a>
+        <a class="nav-link" href="3.6-streams.html"><span class="ln">3.6</span>Die Streams-API</a>
+        <a class="nav-link" href="3.7-design-patterns.html"><span class="ln">3.7</span>Design-Patterns</a>
+        <a class="nav-link" href="3.8-model-klassen.html"><span class="ln">3.8</span>Model-Klassen f&uuml;r die GUI</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label react-label">Teil 4 &mdash; Webanwendungen mit Vaadin</div>
+        <a class="nav-link" href="4.1-web-grundlagen.html"><span class="ln">4.1</span>Grundprinzipien des Web</a>
+        <a class="nav-link" href="4.2-vaadin-einstieg.html"><span class="ln">4.2</span>Vaadin Flow &amp; Start-Paket</a>
+        <a class="nav-link" href="4.3-komponenten-layouts.html"><span class="ln">4.3</span>Komponenten &amp; Layouts</a>
+        <a class="nav-link" href="4.4-grid-routing-binding.html"><span class="ln">4.4</span>Tabellen, Routing &amp; Binding</a>
+        <a class="nav-link" href="4.5-mitarbeiterverwaltung.html"><span class="ln">4.5</span>Mitarbeiterverwaltung</a>
+      </div>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <header class="lesson-header">
+      <p class="lesson-eyebrow">Lektion 3.3 &mdash; Teil 3: Fortgeschrittene Konzepte</p>
+      <h1>Serialisierung &amp; Dateien</h1>
+      <div class="lesson-tags">
+        <span class="tag tag-rn">Dateien</span>
+        <span class="tag tag-time">ca. 2 &times; 90 min</span>
+        <span class="tag tag-level">Fortgeschritten</span>
+      </div>
+    </header>
+
+    <div class="content-area">
+      <section class="section section-lernziele">
+        <h2>Lernziele</h2>
+        <ul class="lernziele-list">
+          <li><a class="lernziel-link" href="#abschnitt-1">erklären, was Serialisierung ist und wozu man sie braucht<span class="lernziel-ziel">Abschnitt 1</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-1">Objekte mit <code>ObjectOutputStream</code>/<code>ObjectInputStream</code> in Dateien schreiben und wieder lesen<span class="lernziel-ziel">Abschnitt 1</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-2">Ressourcen mit <code>finally</code> bzw. <em>try-with-resources</em> sicher schließen<span class="lernziel-ziel">Abschnitt 2</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-1">das Marker-Interface <code>Serializable</code>, <code>transient</code> und <code>serialVersionUID</code> einsetzen<span class="lernziel-ziel">Abschnitt 1</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-3">Textdateien im CSV-Format mit <code>BufferedWriter</code>/<code>BufferedReader</code> schreiben und einlesen<span class="lernziel-ziel">Abschnitt 3</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-3">technische Exceptions in fachliche Exceptions umwandeln<span class="lernziel-ziel">Abschnitt 3</span></a></li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-1">1 &mdash; Serialisierung</h2>
+        <p>
+          <strong>Serialisierung</strong> bedeutet, dass <em>Objekte</em> (die als Daten im Hauptspeicher vorliegen) in
+          eine sequentielle Form gebracht werden, die es ermöglicht, sie in Dateien zu schreiben oder über das Netzwerk
+          zu übertragen. Die erste der folgenden Methoden speichert die Firma samt ihrer Mitarbeiter in einem binären
+          Format in einer Datei. Mit der zweiten wird das Firmen-Objekt mit allen Mitarbeitern wieder hergestellt &ndash;
+          auch nach einem Neustart des Programms oder auf einem anderen Rechner, da alle nötigen Daten in der Datei
+          stehen.
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Firma.java – Serialisierung mit finally</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public void serialize() throws FirmaException {
+    ObjectOutputStream oos = null;
+    try {
+        oos = new ObjectOutputStream(new FileOutputStream("firma.ser"));
+        oos.writeObject(this);
+    } catch (IOException e) {
+        throw new FirmaException("I/O Error: " + e.getMessage());
+    } finally {
+        try {
+            if (oos != null) {
+                oos.flush();
+                oos.close();
+            }
+        } catch (IOException e) {
+            throw new FirmaException("I/O Error: " + e.getMessage());
+        }
+    }
+}
+
+public static Firma deserialize() throws FirmaException {
+    Firma firma = null; // implements Serializable
+    ObjectInputStream ois = null;
+    try {
+        ois = new ObjectInputStream(new FileInputStream("firma.ser"));
+        firma = (Firma) ois.readObject();
+    } catch (FileNotFoundException e) {
+        throw new FirmaException("Datei nicht gefunden. " + e.getMessage());
+    } catch (IOException e) {
+        throw new FirmaException("I/O Error: " + e.getMessage());
+    } catch (ClassNotFoundException e) {
+        throw new FirmaException("Fehler bei der Konvertierung. "
+                                 + e.getMessage());
+    } finally {
+        try {
+            if (ois != null) {
+                ois.close();
+            }
+        } catch (IOException e) {
+            throw new FirmaException("I/O Error: " + e.getMessage());
+        }
+    }
+    return firma;
+}</code></pre>
+</div>
+        <p>
+          Verwendet werden <code>ObjectOutputStream</code> in Kombination mit <code>FileOutputStream</code> sowie
+          <code>ObjectInputStream</code> mit <code>FileInputStream</code>. Der wesentliche Code ist
+          <code>oos.writeObject(this)</code> &ndash; das aktuelle Objekt wird in den Stream geschrieben &ndash; und
+          <code>(Firma) ois.readObject()</code> zum Einlesen; dabei ist eine explizite Typkonvertierung nötig.
+        </p>
+        <p>
+          Der restliche Code betrifft die Ausnahmebehandlung: Beim Schreiben oder Lesen kann es zu Ausnahmefällen
+          kommen &ndash; volle Festplatte, entfernter USB-Stick, fehlende Schreibrechte u.&nbsp;v.&nbsp;m. Die Streams
+          müssen jedenfalls geschlossen werden, was im <code>finally</code>-Block passiert. Da auch dabei Ausnahmen
+          auftreten können, enthält er wiederum ein <code>try</code>-<code>catch</code> &ndash; zugegeben umständlich.
+        </p>
+        <div class="callout callout-warning">
+  <div class="callout-icon">&#9888;</div>
+  <div class="callout-body">
+    <div class="callout-title">NotSerializableException</div>
+    <p>Bei der Ausführung erhält man zunächst eine <code>NotSerializableException</code>: Es ist nicht sichergestellt,
+          dass sich die betroffenen Objekte tatsächlich serialisieren lassen. Dazu müssen <strong>alle beteiligten
+          Klassen</strong> (<code>Firma</code>, <code>Person</code> und damit alle Unterklassen) das Interface
+          <code>Serializable</code> implementieren. Es enthält keine Methoden &ndash; es ist ein
+          <strong>Marker-Interface</strong>, das angibt, dass die Klasse sinnvoll serialisiert werden kann.</p>
+  </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-2">2 &mdash; try-with-resources</h2>
+        <p>
+          Mit dem <strong>try-with-resources</strong>-Statement geht es kompakter. Ressourcen sind Objekte, die nach der
+          Verwendung geschlossen werden müssen; sie werden in runden Klammern direkt nach <code>try</code> angegeben und
+          am Ende automatisch geschlossen. Der <code>finally</code>-Block entfällt.
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Firma.java – mit try-with-resources</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public void serialize() throws FirmaException {
+    try (FileOutputStream fos = new FileOutputStream("firma.ser");
+         ObjectOutputStream oos = new ObjectOutputStream(fos))
+    {
+        oos.writeObject(this);
+    } catch (IOException e) {
+        throw new FirmaException("I/O Error: " + e.getMessage());
+    }
+}
+
+public static Firma deserialize() throws FirmaException {
+    Firma firma = null;
+    try (FileInputStream fis = new FileInputStream("firma.ser");
+         ObjectInputStream ois = new ObjectInputStream(fis))
+    {
+        firma = (Firma) ois.readObject();
+    } catch (FileNotFoundException e) {
+        throw new FirmaException("Datei nicht gefunden. " + e.getMessage());
+    } catch (IOException e) {
+        throw new FirmaException("I/O Error: " + e.getMessage());
+    } catch (ClassNotFoundException e) {
+        throw new FirmaException("Fehler bei der Konvertierung. "
+                                 + e.getMessage());
+    }
+    return firma;
+}</code></pre>
+</div>
+        <ul>
+          <li>Mit dem Schlüsselwort <strong><code>transient</code></strong> werden Attribute markiert, die <em>nicht</em> (de-)serialisiert werden sollen (z.&nbsp;B. Passwörter, Caches).</li>
+          <li>Mit <code>private static final long serialVersionUID = 42L;</code> vergibt man eine &bdquo;Versionsnummer&ldquo; für die Klasse, um die Kompatibilität mit bestimmten Softwareversionen sicherzustellen. Ändert sich die Klasse inkompatibel, erhöht man sie &ndash; alte Dateien werden dann mit einer klaren Fehlermeldung abgewiesen.</li>
+          <li>Die Reihenfolge der <code>catch</code>-Blöcke ist wichtig: <code>FileNotFoundException</code> ist eine Unterklasse von <code>IOException</code> und muss daher <em>vorher</em> stehen.</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-3">3 &mdash; Textdateien im CSV-Format</h2>
+        <p>
+          Die serialisierte Datei ist für Menschen nicht (oder nur teilweise) lesbar &ndash; ein Binärformat. Oft möchte
+          man aber <em>human-readable</em> Textdateien schreiben, z.&nbsp;B. <code>xml</code>, <code>json</code> oder
+          <code>csv</code>. CSV steht für <em>Comma-Separated Values</em>: Die Elemente einer Zeile sind durch ein
+          Trennzeichen getrennt, im deutschen Sprachraum meist <code>;</code> (oft auch <code>,</code>). Solche Dateien
+          lassen sich mit Texteditoren bearbeiten, aber auch mit Tabellenkalkulationen wie Excel, die die Trennzeichen
+          als Spalten interpretieren.
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">firma.csv</span>
+    <span class="code-lang">CSV</span>
+  </div>
+  <pre><code class="language-plaintext">Spengergasse OG
+Arbeiter;Karl;1989;15;40;Hilfsarbeiter
+Angestellter;Susanne;1991;20;30;keine Ueberstundenpauschale
+Freelancer;Sepp;1981;3;300</code></pre>
+</div>
+        <p>Zum Schreiben und Lesen erweitern wir die Klasse <code>Firma</code>:</p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Firma.java – CSV schreiben und lesen</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public void writeToFile(String filename) throws FirmaException {
+    try (FileWriter fw = new FileWriter(filename);
+         BufferedWriter bw = new BufferedWriter(fw))
+    {
+        bw.write(this.toCSVString());
+    } catch (IOException e) {
+        throw new FirmaException("I/O Error: " + e.getMessage());
+    }
+}
+
+public static Firma readFromFile(String filename) throws FirmaException {
+    Firma firma = null;
+    try (FileReader fr = new FileReader(filename);
+         BufferedReader br = new BufferedReader(fr))
+    {
+        String line = br.readLine();
+        if (line == null || line.isEmpty() || line.isBlank()) {
+            throw new FirmaException("Ungueltige Eingabedatei: "
+                         + " ungueltiger Firmenname in erster Zeile");
+        }
+        firma = new Firma(line);
+        line = br.readLine();
+        while (line != null) {
+
+            Person p = null;
+            if (line.startsWith("Arbeiter")) {
+                p = new Arbeiter(line);
+            } else if (line.startsWith("Angestellter")) {
+                p = new Angestellter(line);
+            } else if (line.startsWith("Freelancer")) {
+                p = new Freelancer(line);
+            } else {
+                throw new FirmaException("Ungueltiger Mitarbeitertyp in Zeile "
+                                         + line);
+            }
+            firma.einstellen(p);
+            line = br.readLine();
+        }
+    } catch (FileNotFoundException e) {
+        throw new FirmaException("File " + filename + " not found. "
+                                 + e.getMessage());
+    } catch (IOException e) {
+        throw new FirmaException("I/O Error: " + e.getMessage());
+    }
+    return firma;
+}</code></pre>
+</div>
+        <p>
+          Diese Methoden setzen voraus, dass die beteiligten Klassen (<code>Firma</code>, <code>Arbeiter</code>,
+          <code>Angestellter</code>, <code>Freelancer</code>) jeweils <code>toCSVString()</code> enthalten und
+          Konstruktoren haben, die ein Objekt aus einem einzelnen CSV-String erzeugen.
+        </p>
+        <h3>Schreiben: toCSVString über die ganze Hierarchie</h3>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Firma.java</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public String toCSVString() {
+    String s = getName() + "\n";
+    for (Person p : personal) {
+        s += p.toCSVString() + "\n";
+    }
+    return s;
+}</code></pre>
+</div>
+        <p>Dabei wird für jede <code>Person</code> ebenfalls <code>toCSVString()</code> aufgerufen &ndash; dank Polymorphismus die passende Version:</p>
+        <div class="two-col">
+          <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Arbeiter.java</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">@Override
+public String toCSVString() {
+    return super.toCSVString() + ";"
+           + (isFacharbeiter() ? "Facharbeiter"
+                               : "Hilfsarbeiter");
+}</code></pre>
+</div>
+          <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Mitarbeiter.java</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">@Override
+public String toCSVString() {
+    return super.toCSVString() + ";" + getStundenlohn()
+           + ";" + getAnzahlWochenStunden();
+}</code></pre>
+</div>
+        </div>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Person.java</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public String toCSVString() {
+    return this.getClass().getName() + ";" + getName() + ";" + getGeburtsjahr();
+}</code></pre>
+</div>
+        <p>
+          Jede Ebene ruft die Methode der Basisklasse auf und hängt ihre eigenen Spalten an. <code>Person</code>
+          schreibt mit <code>this.getClass().getName()</code> den Namen der (tatsächlichen!) Klasse in die erste Spalte
+          &ndash; daran erkennt <code>readFromFile</code> später, welches Objekt zu erzeugen ist.
+        </p>
+        <h3>Lesen: Konstruktor mit CSV-Zeile</h3>
+        <p>
+          <code>readFromFile</code> prüft zuerst die erste Zeile und erzeugt daraus (falls nicht <code>null</code> und
+          nicht leer) die <code>Firma</code>. In der <code>while</code>-Schleife werden die weiteren Zeilen gelesen; die
+          If-Bedingungen unterscheiden den Mitarbeitertyp, und der Konstruktor mit einem String-Parameter erzeugt das
+          Objekt. Bei <code>Angestellter</code>:
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Angestellter.java</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public Angestellter(String csv) throws FirmaException {
+    String[] tokens = csv.split(";");
+    if (tokens.length != 6) {
+        throw new FirmaException("Ungueltige Zeile: " + csv
+                                 + ". 6 Spalten erwartet.");
+    }
+
+    String name = tokens[1];
+    setName(name);
+
+    int geburtsjahr = 0;
+    try {
+        geburtsjahr = Integer.parseInt(tokens[2]);
+    } catch (NumberFormatException e) {
+        throw new FirmaException("Ungueltige Zeile: " + csv
+                    + ". Geburtsjahr in der 3. Spalte erwartet.");
+    }
+    setGeburtsjahr(geburtsjahr);
+
+    int stundenlohn;
+    try {
+        stundenlohn = Integer.parseInt(tokens[3]);
+    } catch (NumberFormatException e) {
+        throw new FirmaException("Ungueltige Zeile: " + csv
+                    + ". Stundenlohn in der 4. Spalte erwartet.");
+    }
+    setStundenlohn(stundenlohn);
+
+    int anzahlWochenstunden;
+    try {
+        anzahlWochenstunden = Integer.parseInt(tokens[4]);
+    } catch (NumberFormatException e) {
+        throw new FirmaException("Ungueltige Zeile: " + csv
+                     + ". Anzahl Wochenstunden in der 5. Spalte erwartet.");
+    }
+    setAnzahlWochenStunden(anzahlWochenstunden);
+
+    boolean ueberstundenpauschale = true;
+    if (tokens[5] != null &amp;&amp; tokens[5].equals("keine Ueberstundenpauschale")) {
+        ueberstundenpauschale = false;
+    } else if (tokens[5] != null &amp;&amp; tokens[5].equals("Ueberstundenpauschale")) {
+        ueberstundenpauschale = true;
+    } else {
+        throw new FirmaException("Ungueltige Zeile: " + csv
+                    + ". Info zu Ueberstundenpauschale in 6. Spalte erwartet.");
+    }
+    setUeberstundenPauschale(ueberstundenpauschale);
+}</code></pre>
+</div>
+        <p>
+          Zuerst wird der CSV-String mit <code>split(";")</code> anhand des Trennzeichens in einzelne
+          <strong>Tokens</strong> zerlegt; jedes Array-Element enthält danach eine Spalte. Dann werden die Elemente
+          geprüft und im Fehlerfall Exceptions geworfen. <code>Integer.parseInt</code> wirft eine
+          <code>NumberFormatException</code>, wenn der String keine ganze Zahl ist; sie wird gefangen und in eine
+          <code>FirmaException</code> &bdquo;umgewandelt&ldquo;.
+        </p>
+      </section>
+
+      <section class="section section-projekt">
+        <h2 id="projektschritt">Projektschritt</h2>
+<div class="projekt-box">
+  <div class="projekt-box-header">
+    <span class="projekt-step">Projektschritt 3.3</span>
+    <h3>Speichern und Laden der Personalverwaltung</h3>
+  </div>
+<p><code>Firma</code> und <code>Person</code> implementieren <code>Serializable</code> (mit <code>serialVersionUID</code>); <code>serialize</code>/<code>deserialize</code> nehmen den Dateinamen als Parameter. Alle Klassen haben <code>toCSVString()</code>, und <code>Angestellter</code>, <code>Arbeiter</code> und <code>Freelancer</code> haben CSV-Konstruktoren. Um die sich wiederholenden <code>try</code>/<code>catch</code>-Blöcke für Zahlen zu vermeiden, gibt es in <code>Person</code> eine Hilfsmethode (Code-Wiederverwendung):</p>
+  <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">src/main/java/Person.java (Auszug)</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">// Hilfsmethode für die CSV-Konstruktoren der Unterklassen:
+// wandelt eine Spalte in eine Zahl um, sonst FirmaException
+protected static int zahlAusCsv(String wert, String spalte, String csv)
+    throws FirmaException
+{
+    try {
+        return Integer.parseInt(wert.trim());
+    } catch (NumberFormatException e) {
+        throw new FirmaException("Ungueltige Zeile: " + csv + ". " + spalte
+                                 + " muss eine ganze Zahl sein.", e);
+    }
+}</code></pre>
+</div>
+  <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">src/main/java/Arbeiter.java (Auszug)</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">// CSV-Zeile: Arbeiter;Karl Maier;1989;15;40;Facharbeiter
+public Arbeiter(String csv) throws FirmaException {
+    String[] tokens = csv.split(";");
+    if (tokens.length != 6) {
+        throw new FirmaException("Ungueltige Zeile: " + csv + ". 6 Spalten erwartet.");
+    }
+    setName(tokens[1]);
+    setGeburtsjahr(zahlAusCsv(tokens[2], "Geburtsjahr (3. Spalte)", csv));
+    setStundenlohn(zahlAusCsv(tokens[3], "Stundenlohn (4. Spalte)", csv));
+    setAnzahlWochenStunden(zahlAusCsv(tokens[4], "Wochenstunden (5. Spalte)", csv));
+    if (tokens[5].equals("Facharbeiter")) {
+        setFacharbeiter(true);
+    } else if (tokens[5].equals("Hilfsarbeiter")) {
+        setFacharbeiter(false);
+    } else {
+        throw new FirmaException("Ungueltige Zeile: " + csv
+                    + ". Facharbeiter/Hilfsarbeiter in 6. Spalte erwartet.");
+    }
+}</code></pre>
+</div>
+  <p><code>protected</code> heißt: sichtbar in der Klasse und in allen Unterklassen. Im Projektordner liegt eine Beispieldatei, die <code>Programm</code> einliest, erweitert, als CSV und binär speichert und wieder lädt. <code>DateiTest</code> schreibt in einen temporären Ordner (<code>@TempDir</code>).</p>
+  <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">firma.csv</span>
+    <span class="code-lang">CSV</span>
+  </div>
+  <pre><code class="language-plaintext">Spengergasse OG
+Angestellter;Susanne Huber;1991;20;30;keine Ueberstundenpauschale
+Arbeiter;Karl Maier;1989;15;40;Facharbeiter
+Freelancer;Sepp Gruber;1981;3;300
+Angestellter;Eva Maier;1995;18;38;Ueberstundenpauschale</code></pre>
+</div>
+  <p class="mb-0">&#128193; Stand nach dieser Lektion: <a href="beispiele/3.3/src/main/java/Firma.java" target="_blank">beispiele/3.3/</a></p>
+</div>
+      </section>
+
+      <section class="section section-fehler">
+        <h2>Häufige Fehler</h2>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: NotSerializableException</div>
+  <p><code>java.io.NotSerializableException: Arbeiter</code> beim Serialisieren der Firma.</p>
+          <p class="fehler-fix">Alle Klassen, deren Objekte mitgeschrieben werden (auch über Attribute erreichbare), müssen <code>Serializable</code> implementieren &ndash; es genügt, das bei der Basisklasse <code>Person</code> zu tun.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Datei nicht gefunden</div>
+  <p><code>FileNotFoundException: firma.csv</code>, obwohl die Datei existiert.</p>
+          <p class="fehler-fix">Relative Pfade beziehen sich auf das <em>Arbeitsverzeichnis</em> beim Programmstart (in IntelliJ meist der Projektordner, nicht <code>src</code>). Datei dorthin legen oder den Pfad in der Run-Konfiguration prüfen.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Spalten falsch gezählt</div>
+  <p><code>ArrayIndexOutOfBoundsException</code> bei <code>tokens[5]</code> für eine Freelancer-Zeile.</p>
+          <p class="fehler-fix">Vor dem Zugriff <code>tokens.length</code> prüfen; jede Klasse hat ihre eigene Spaltenanzahl (Freelancer 5, Arbeiter/Angestellter 6). Indizes beginnen bei 0 &ndash; die 3. Spalte ist <code>tokens[2]</code>.</p>
+</div>
+      </section>
+
+      <section class="section section-quiz">
+        <h2>Wissenskontrolle</h2>
+        <div class="quiz" id="quiz-24">
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 1</span> Was bedeutet <strong>Serialisierung</strong>?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-24-1"> <span>Objekte werden alphabetisch sortiert.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-24-1"> <span>Objekte werden in eine Folge von Bytes umgewandelt, z.&nbsp;B. um sie in einer Datei zu speichern und später wieder einzulesen.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-24-1"> <span>Objekte bekommen eine fortlaufende Seriennummer.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-24-1"> <span>Mehrere Programme laufen nacheinander.</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Mit <code>ObjectOutputStream</code> wird ein Objekt samt allen referenzierten Objekten geschrieben, mit <code>ObjectInputStream</code> wieder gelesen.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 2</span> Was muss eine Klasse tun, damit ihre Objekte serialisiert werden können?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-24-2"> <span>die Methode <code>serialize()</code> implementieren</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-24-2"> <span>das Marker-Interface <code>Serializable</code> implementieren</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-24-2"> <span>alle Attribute <code>public</code> setzen</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-24-2"> <span>von <code>File</code> erben</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> <code>Serializable</code> hat keine Methoden &ndash; es markiert nur, dass die Klasse serialisiert werden darf. Attribute, die nicht gespeichert werden sollen, bekommen das Schlüsselwort <code>transient</code>.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 3</span> Was ist der Vorteil von <em>try-with-resources</em>?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-24-3"> <span>Es fängt automatisch alle Exceptions.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-24-3"> <span>Die im <code>try(&hellip;)</code> geöffneten Ressourcen werden am Ende automatisch geschlossen &ndash; auch bei einer Exception.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-24-3"> <span>Dateien werden schneller gelesen.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-24-3"> <span>Man braucht keinen <code>catch</code>-Block, weil keine Exceptions auftreten.</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Es ersetzt den fehleranfälligen <code>finally</code>-Block mit <code>close()</code>. Exceptions müssen trotzdem behandelt oder weitergegeben werden.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 4</span> Eine Methode zum Laden von Daten fängt eine <code>IOException</code> und wirft stattdessen eine eigene, fachliche Exception. Warum?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-24-4"> <span>weil <code>IOException</code> nicht gefangen werden kann</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-24-4"> <span>damit der Aufrufer nur fachliche Fehler behandeln muss und nicht wissen muss, woher die Daten technisch kommen</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-24-4"> <span>damit die Datei gelöscht wird</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-24-4"> <span>weil eigene Exceptions schneller sind</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Ob die Daten aus einer Datei, einer Datenbank oder dem Netz kommen, ist ein Detail der Umsetzung. Die Meldung der technischen Exception wird dabei meist in die fachliche übernommen.</div>
+  </div>
+  <div class="quiz-summary"><span class="quiz-score"></span><button type="button" class="quiz-reset">Zur&uuml;cksetzen</button></div>
+</div>
+      </section>
+
+    </div>
+
+    <nav class="lesson-nav">
+      <a class="nav-btn" href="3.2-hashset-treeset.html">&larr; Lektion 3.2: HashSet, TreeSet &amp; hashCode</a>
+      <span class="nav-center-info">Lektion 3.3</span>
+      <a class="nav-btn primary" href="3.4-git.html">Lektion 3.4: Versionsverwaltung mit Git &rarr;</a>
+    </nav>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>
+    const ham = document.getElementById('hamburger');
+    const sb = document.getElementById('sidebar');
+    const ov = document.getElementById('overlay');
+    ham.addEventListener('click', () => { sb.classList.toggle('open'); ov.classList.toggle('visible'); });
+    ov.addEventListener('click', () => { sb.classList.remove('open'); ov.classList.remove('visible'); });
+    const cur = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-link').forEach(l => {
+      if (l.getAttribute('href') === cur) l.classList.add('active');
+    });
+    const themeBtn = document.getElementById('theme-toggle');
+    const applyTheme = (t) => {
+      document.documentElement.setAttribute('data-theme', t);
+      if (themeBtn) themeBtn.innerHTML = t === 'dark' ? '&#9728;' : '&#9790;';
+    };
+    applyTheme(localStorage.getItem('kurs-theme') || 'dark');
+    setTimeout(() => document.documentElement.classList.add('theme-transitions'), 50);
+    if (themeBtn) themeBtn.addEventListener('click', () => {
+      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('kurs-theme', next);
+      applyTheme(next);
+    });
+    hljs.highlightAll();
+  </script>
+  <script>
+    document.querySelectorAll('.quiz').forEach((quiz) => {
+      const fragen = [...quiz.querySelectorAll('.quiz-frage')];
+      const score = quiz.querySelector('.quiz-score');
+      const update = () => {
+        const done = fragen.filter((f) => f.dataset.state).length;
+        const ok = fragen.filter((f) => f.dataset.state === 'ok').length;
+        score.textContent = done === 0
+          ? fragen.length + ' Fragen – wähle eine Antwort und prüfe sie.'
+          : ok + ' von ' + fragen.length + ' richtig'
+            + (done < fragen.length ? ' (' + done + ' von ' + fragen.length + ' bearbeitet)' : '');
+      };
+      fragen.forEach((f) => {
+        const inputs = [...f.querySelectorAll('input')];
+        const check = f.querySelector('.quiz-check');
+        const reveal = f.querySelector('.quiz-reveal');
+        const fb = f.querySelector('.quiz-feedback');
+        const exp = f.querySelector('.quiz-erklaerung');
+        inputs.forEach((i) => i.addEventListener('change', () => {
+          check.disabled = !inputs.some((x) => x.checked);
+        }));
+        const finish = (graded) => {
+          let allOk = true;
+          f.querySelectorAll('.quiz-opt').forEach((li) => {
+            const input = li.querySelector('input');
+            const corr = li.dataset.correct === '1';
+            if (corr !== input.checked) allOk = false;
+            if (corr) li.classList.add('opt-correct');
+            else if (input.checked) li.classList.add('opt-wrong');
+            input.disabled = true;
+          });
+          f.dataset.state = !graded ? 'shown' : (allOk ? 'ok' : 'wrong');
+          fb.className = 'quiz-feedback fb-' + f.dataset.state;
+          fb.textContent = !graded ? 'Lösung angezeigt.'
+            : (allOk ? '✔ Richtig!' : '✘ Leider nicht ganz – die richtige Lösung ist markiert.');
+          fb.hidden = false;
+          exp.hidden = false;
+          check.disabled = true;
+          reveal.disabled = true;
+          update();
+        };
+        check.addEventListener('click', () => finish(true));
+        reveal.addEventListener('click', () => finish(false));
+      });
+      quiz.querySelector('.quiz-reset').addEventListener('click', () => {
+        fragen.forEach((f) => {
+          delete f.dataset.state;
+          f.querySelectorAll('.quiz-opt').forEach((li) => li.classList.remove('opt-correct', 'opt-wrong'));
+          f.querySelectorAll('input').forEach((i) => { i.checked = false; i.disabled = false; });
+          f.querySelector('.quiz-check').disabled = true;
+          f.querySelector('.quiz-reveal').disabled = false;
+          f.querySelector('.quiz-feedback').hidden = true;
+          f.querySelector('.quiz-erklaerung').hidden = true;
+        });
+        update();
+      });
+      update();
+    });
+  </script>
+</body>
+
+</html>

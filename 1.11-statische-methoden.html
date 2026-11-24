@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<!-- GENERIERT von java/kurs/_build (java-grundlagen) – nicht direkt bearbeiten!
+     Quelle: java/kurs/_build/java-grundlagen/lessons/, bauen: python3 _build/build.py java-grundlagen -->
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1.11 &ndash; Statische Methoden &amp; main | Java-Grundlagen Kurs</title>
+  <script>(function () { var t = localStorage.getItem('kurs-theme') || 'dark'; document.documentElement.setAttribute('data-theme', t); })();</script>
+  <link rel="stylesheet" href="assets/kurs.css">
+  <link rel="stylesheet" id="hljs-theme"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+
+<body>
+
+  <button class="hamburger" id="hamburger" aria-label="Navigation &ouml;ffnen">&#9776;</button>
+  <div class="sidebar-overlay" id="overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html">
+        <span class="brand-icon">J</span>
+        <div>
+          <div class="brand-name">Java</div>
+          <div class="brand-sub">Grundlagen der Programmierung</div>
+        </div>
+      </a>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Dark/Light Mode"
+        title="Theme wechseln">&#9728;</button>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-group">
+        <div class="nav-group-label html-label">Teil 1 &mdash; Grundlagen</div>
+        <a class="nav-link" href="1.1-einfuehrung-entwicklungsumgebung.html"><span class="ln">1.1</span>Einf&uuml;hrung &amp; Entwicklungsumgebung</a>
+        <a class="nav-link" href="1.2-klassen-objekte.html"><span class="ln">1.2</span>Klassen, Objekte, Get &amp; Set</a>
+        <a class="nav-link" href="1.3-konstruktoren-methoden.html"><span class="ln">1.3</span>Konstruktoren, this &amp; Methoden</a>
+        <a class="nav-link" href="1.4-datentypen.html"><span class="ln">1.4</span>Datentypen</a>
+        <a class="nav-link" href="1.5-signatur-ueberladen.html"><span class="ln">1.5</span>Methoden, Signatur &amp; &Uuml;berladen</a>
+        <a class="nav-link" href="1.6-bedingungen-berechnungen.html"><span class="ln">1.6</span>Bedingungen &amp; Berechnungen</a>
+        <a class="nav-link" href="1.7-debugger-testklassen.html"><span class="ln">1.7</span>Debugger &amp; Testklassen</a>
+        <a class="nav-link" href="1.8-strings-random.html"><span class="ln">1.8</span>Strings &amp; Random</a>
+        <a class="nav-link" href="1.9-objekt-beziehungen.html"><span class="ln">1.9</span>Objekt-Beziehungen</a>
+        <a class="nav-link" href="1.10-schleifen.html"><span class="ln">1.10</span>Schleifen</a>
+        <a class="nav-link" href="1.11-statische-methoden.html"><span class="ln">1.11</span>Statische Methoden &amp; main</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label css-label">Teil 2 &mdash; Datenstrukturen &amp; OOP</div>
+        <a class="nav-link" href="2.1-intellij-junit.html"><span class="ln">2.1</span>IntelliJ, Maven &amp; JUnit</a>
+        <a class="nav-link" href="2.2-arrays.html"><span class="ln">2.2</span>Arrays</a>
+        <a class="nav-link" href="2.3-arrays-einfuegen-entfernen.html"><span class="ln">2.3</span>Arrays: Einf&uuml;gen &amp; Entfernen</a>
+        <a class="nav-link" href="2.4-sortieralgorithmen.html"><span class="ln">2.4</span>Sortieralgorithmen</a>
+        <a class="nav-link" href="2.5-objekt-arrays.html"><span class="ln">2.5</span>Objekt-Arrays</a>
+        <a class="nav-link" href="2.6-assoziation-equals.html"><span class="ln">2.6</span>Beidseitige Assoziation &amp; equals</a>
+        <a class="nav-link" href="2.7-collections.html"><span class="ln">2.7</span>Collections: ArrayList &amp; Co.</a>
+        <a class="nav-link" href="2.8-vererbung.html"><span class="ln">2.8</span>Vererbung &amp; Polymorphismus</a>
+        <a class="nav-link" href="2.9-abstrakt-interfaces.html"><span class="ln">2.9</span>Abstrakte Klassen &amp; Interfaces</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label rn-label">Teil 3 &mdash; Fortgeschrittene Konzepte</div>
+        <a class="nav-link" href="3.0-fail-early.html"><span class="ln">3.0</span>Fail Early statt Happy Path</a>
+        <a class="nav-link" href="3.1-exceptions.html"><span class="ln">3.1</span>Exceptions</a>
+        <a class="nav-link" href="3.2-hashset-treeset.html"><span class="ln">3.2</span>HashSet, TreeSet &amp; hashCode</a>
+        <a class="nav-link" href="3.3-serialisierung-dateien.html"><span class="ln">3.3</span>Serialisierung &amp; Dateien</a>
+        <a class="nav-link" href="3.4-git.html"><span class="ln">3.4</span>Versionsverwaltung mit Git</a>
+        <a class="nav-link" href="3.5-lambdas.html"><span class="ln">3.5</span>Lambda-Ausdr&uuml;cke</a>
+        <a class="nav-link" href="3.6-streams.html"><span class="ln">3.6</span>Die Streams-API</a>
+        <a class="nav-link" href="3.7-design-patterns.html"><span class="ln">3.7</span>Design-Patterns</a>
+        <a class="nav-link" href="3.8-model-klassen.html"><span class="ln">3.8</span>Model-Klassen f&uuml;r die GUI</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label react-label">Teil 4 &mdash; Webanwendungen mit Vaadin</div>
+        <a class="nav-link" href="4.1-web-grundlagen.html"><span class="ln">4.1</span>Grundprinzipien des Web</a>
+        <a class="nav-link" href="4.2-vaadin-einstieg.html"><span class="ln">4.2</span>Vaadin Flow &amp; Start-Paket</a>
+        <a class="nav-link" href="4.3-komponenten-layouts.html"><span class="ln">4.3</span>Komponenten &amp; Layouts</a>
+        <a class="nav-link" href="4.4-grid-routing-binding.html"><span class="ln">4.4</span>Tabellen, Routing &amp; Binding</a>
+        <a class="nav-link" href="4.5-mitarbeiterverwaltung.html"><span class="ln">4.5</span>Mitarbeiterverwaltung</a>
+      </div>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <header class="lesson-header">
+      <p class="lesson-eyebrow">Lektion 1.11 &mdash; Teil 1: Grundlagen</p>
+      <h1>Statische Methoden &amp; main</h1>
+      <div class="lesson-tags">
+        <span class="tag tag-html">static</span>
+        <span class="tag tag-time">ca. 90 min</span>
+        <span class="tag tag-level">Grundlagen</span>
+      </div>
+    </header>
+
+    <div class="content-area">
+      <section class="section section-lernziele">
+        <h2>Lernziele</h2>
+        <ul class="lernziele-list">
+          <li><a class="lernziel-link" href="#abschnitt-1">Objektmethoden und statische Methoden unterscheiden und Aufrufe über Objekt bzw. Klassennamen schreiben<span class="lernziel-ziel">Abschnitt 1</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-1">begründen, wann eine Methode <code>static</code> sein darf &ndash; und warum das die Ausnahme bleibt<span class="lernziel-ziel">Abschnitt 1</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-2">erklären, warum die <code>main</code>-Methode statisch ist<span class="lernziel-ziel">Abschnitt 2</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-3">statische Methoden der Klasse <code>Math</code> verwenden<span class="lernziel-ziel">Abschnitt 3</span></a></li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-1">1 &mdash; Statische Methoden</h2>
+        <p>
+          Die bisherigen Methoden werden auf <strong>Objekten</strong> aufgerufen: <code>p1.setName("Max Maier");</code>
+          oder <code>p1.printPerson();</code>. Sie ändern den Objektzustand, geben Informationen dazu zurück
+          (<code>p1.getName()</code>) oder führen Berechnungen bzw. Aktionen aus (<code>p1.bmiBerechnen()</code>).
+        </p>
+        <p>
+          Manchmal will man eine Methode nicht einem Objekt zuordnen: wenn sie sinnvoll verwendet werden kann,
+          ohne dass es überhaupt ein Objekt gibt, oder wenn sie keinerlei Objekteigenschaften verwendet. Dann
+          gehört die Methode (nur) zur <strong>Klasse</strong> &ndash; man nennt sie <strong>statische
+          Methode</strong>.
+        </p>
+        <p>
+          Beispiel: Ein <code>Kurs</code> nimmt bis zu drei Studenten auf (analog zum Auto). Die Methode
+          <code>aufnehmen(Student student)</code> nimmt einen Studenten nur auf, wenn ein Platz frei ist und die
+          Zulassungsvoraussetzungen erfüllt sind: Matura und Geburtsjahr vor 2003. Vielleicht will man das schon
+          <em>vor</em> dem Aufnehmen prüfen:
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Kurs.java (Ausschnitt)</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public class Kurs {
+
+    ...
+
+    public static boolean zulassungMoeglich(Student stud) {
+        if (stud != null) {
+            if (stud.hasMatura() &amp;&amp; stud.getGeburtsjahr() &lt; 2003) {
+                return true;
+            }
+        } else {
+            // TODO Fehlermeldung ausgeben
+        }
+        return false;
+    }
+}</code></pre>
+</div>
+        <p>
+          Hier werden keine Objekteigenschaften von <code>Kurs</code> verwendet; die Methode funktioniert
+          unabhängig von konkreten Objekten. Das Schlüsselwort <strong><code>static</code></strong> erlaubt den
+          Aufruf ohne Objekt &ndash; statt einer Objektreferenz steht der <strong>Klassenname</strong> vor dem Punkt:
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">in der Testklasse oder sonstigen Klassen</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">Student std = new Student("Max Maier", true, 2002);
+boolean ok = Kurs.zulassungMoeglich(std);</code></pre>
+</div>
+        <p>
+          <code>Kurs</code> ist hier die Klasse, keine Objektreferenz. Innerhalb der eigenen Klasse kann der Klassenname
+          entfallen.
+        </p>
+        <div class="callout callout-warning">
+  <div class="callout-icon">&#9888;</div>
+  <div class="callout-body">
+    <div class="callout-title">Die absolute Ausnahme</div>
+    <p>Statische Methoden sollen für dich zunächst die <strong>absolute Ausnahme</strong> sein. Viele Aufgaben
+          ließen sich auch mit statischen Methoden lösen &ndash; das ist aber schlechtes (nicht objektorientiertes)
+          Design. Und: Eine statische Methode kann <em>nicht</em> auf Objekteigenschaften (ohne <code>this</code>)
+          zugreifen.</p>
+  </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-2">2 &mdash; Warum main statisch ist</h2>
+        <p>
+          Die <code>main</code>-Methode kennst du seit Lektion 1.5 als <strong>Einstiegspunkt</strong> eines
+          Programms &ndash; in der kurzen Form <code>void main() { &hellip; }</code> in einer eigenen Datei. In den
+          meisten Projekten und in älterem Code steht <code>main</code> dagegen in einer normalen Klasse und hat einen
+          fest vorgegebenen Kopf. Nur wenn er genau so lautet, erkennt Java die Methode als Einstiegspunkt:
+        </p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Teil</th><th>Bedeutung</th></tr></thead>
+            <tbody>
+              <tr><td><code>public</code></td><td>von überall sichtbar &ndash; auch für Java selbst, das die Methode beim Start aufruft (Lektion 1.5)</td></tr>
+              <tr><td><code>static</code></td><td>die Methode gehört zur Klasse und kann aufgerufen werden, ohne dass vorher ein Objekt erzeugt wurde</td></tr>
+              <tr><td><code>void</code></td><td>kein Rückgabewert</td></tr>
+              <tr><td><code>main</code></td><td>der Name ist vorgeschrieben (klein geschrieben!)</td></tr>
+              <tr><td><code>String[] args</code></td><td>Argumente, die beim Start übergeben werden können (siehe unten)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          Warum <code>static</code>? Beim Start eines Programms gibt es noch kein einziges Objekt. Java kann also
+          keine Objektmethode aufrufen, sondern nur eine statische Methode der Klasse. Wenn auf einem Server ein
+          Service gestartet wird oder auf deinem Rechner eine Desktop-Anwendung, geschieht das immer über eine
+          solche Main-Methode. Da der Einstiegspunkt eindeutig sein muss, wird pro Programmstart genau eine davon
+          ausgeführt. (Bei der kurzen Form erzeugt Java im Hintergrund selbst ein Objekt und ruft
+          <code>main()</code> darauf auf.)
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Programm.java</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public class Programm {
+
+    public static void main(String[] args) {
+        // erst hier entstehen die ersten Objekte, z. B.
+        // Kursverwaltung kv = new Kursverwaltung();
+        // kv.start();
+    }
+}</code></pre>
+</div>
+        <p>
+          Typischerweise erzeugt <code>main</code> nur die ersten Objekte und übergibt dann an deren
+          Objektmethoden &ndash; hier würde etwa die Benutzeroberfläche einer Kursverwaltung gestartet. Weil
+          <code>main</code> statisch ist, kann sie nicht direkt auf Attribute oder Objektmethoden ihrer eigenen
+          Klasse zugreifen (siehe &bdquo;Häufige Fehler&ldquo;). Der Parameter <code>String[] args</code> enthält
+          Argumente, die vom Betriebssystem oder der Entwicklungsumgebung übergeben werden können &ndash; etwa eine
+          zu öffnende Datei (was <code>[]</code> bedeutet, zeigt Lektion 2.2).
+        </p>
+        <div class="callout callout-tip">
+  <div class="callout-icon">&#128161;</div>
+  <div class="callout-body">
+    <div class="callout-title">Starten ohne IntelliJ</div>
+    <p>Auf der Konsole: <code>javac *.java</code> übersetzt alle Klassen, <code>java Programm</code> startet die
+          <code>main</code>-Methode der Klasse <code>Programm</code>.</p>
+  </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-3">3 &mdash; Die Klasse Math</h2>
+        <p>
+          Die Methoden der Klasse <code>Math</code> sind alle <em>statisch</em>, es werden also keine Instanzen von
+          <code>Math</code> erzeugt. Die Auflistung ist nicht annähernd vollständig &ndash; sieh dir unbedingt die
+          Javadoc dieser Klasse an!
+        </p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Methode</th><th>Bedeutung</th></tr></thead>
+            <tbody>
+              <tr><td><code>static double abs(double a)</code></td><td>Absolutbetrag von <code>a</code></td></tr>
+              <tr><td><code>static double cos(double a)</code>, <code>sin(double a)</code></td><td>Kosinus, Sinus (Winkel im Bogenmaß)</td></tr>
+              <tr><td><code>static double log(double a)</code></td><td>natürlicher Logarithmus von <code>a</code></td></tr>
+              <tr><td><code>static double exp(double a)</code></td><td>Exponentialfunktion zur Basis der eulerschen Zahl</td></tr>
+              <tr><td><code>static double ceil(double a)</code></td><td>Aufrunden von <code>a</code></td></tr>
+              <tr><td><code>static double floor(double a)</code></td><td>Abrunden von <code>a</code></td></tr>
+              <tr><td><code>static double sqrt(double a)</code></td><td>Quadratwurzel von <code>a</code></td></tr>
+              <tr><td><code>static double pow(double a, double b)</code></td><td>Potenz a<sup>b</sup></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Math verwenden</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">double c = Math.sqrt(3 * 3 + 4 * 4);   // 5.0 (Pythagoras)
+double r = Math.round(2.567 * 100) / 100.0;   // 2.57
+int betrag = Math.abs(-7);             // 7 (es gibt auch eine int-Variante)</code></pre>
+</div>
+        <div class="callout callout-info">
+  <div class="callout-icon">&#8505;</div>
+  <div class="callout-body">
+    <div class="callout-title">Math und Random</div>
+    <code>Math</code> ist eine Sammlung statischer Methoden &ndash; man ruft sie über den Klassennamen auf.
+          Bei <code>Random</code> (Lektion 1.8) braucht man dagegen zuerst ein Objekt
+          (<code>new Random()</code>), denn jeder Zufallszahlengenerator hat einen eigenen Zustand.
+  </div>
+</div>
+      </section>
+
+      <section class="section section-projekt">
+        <h2 id="projektschritt">Projektschritt</h2>
+<div class="projekt-box">
+  <div class="projekt-box-header">
+    <span class="projekt-step">Projektschritt 1.11</span>
+    <h3>Personalnummer, statische Prüfung und ein Hauptprogramm</h3>
+  </div>
+<p>Jeder Mitarbeiter bekommt im Konstruktor eine zufällige vierstellige Personalnummer. Die Prüfung des Geburtsjahrs wird eine statische Methode, die auch ohne Objekt verwendbar ist. Und die Klasse <code>Programm</code> mit <code>main</code> startet die Personalverwaltung erstmals als richtiges Programm.</p>
+  <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">src/main/java/Mitarbeiter.java (Auszug)</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">import java.util.Random;
+
+public class Mitarbeiter {
+
+    // ...
+    private int personalNummer;       // zufaellig, 4-stellig
+
+    public Mitarbeiter(String name, int geburtsjahr, int stundenlohn,
+                       int anzahlWochenStunden)
+    {
+        setName(name);
+        setGeburtsjahr(geburtsjahr);
+        setStundenlohn(stundenlohn);
+        setAnzahlWochenStunden(anzahlWochenStunden);
+        personalNummerVergeben();
+    }
+
+    private void personalNummerVergeben() {
+        Random rnd = new Random();
+        personalNummer = 1000 + rnd.nextInt(9000);   // 1000 .. 9999
+    }
+
+    // statische Methode: braucht kein Objekt, verwendet keine Attribute
+    public static boolean istGueltigesGeburtsjahr(int jahr) {
+        return jahr &gt;= 1900 &amp;&amp; jahr &lt;= 2050;
+    }
+
+    public void setGeburtsjahr(int geburtsjahr) {
+        if (istGueltigesGeburtsjahr(geburtsjahr)) {
+            // ...</code></pre>
+</div>
+  <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">src/main/java/Programm.java</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">/**
+ * Einstiegspunkt der Personalverwaltung.
+ * Starten: grüner Pfeil neben main (oder Shift+F10).
+ */
+public class Programm {
+
+    public static void main(String[] args) {
+        Firma firma = new Firma("Spengergasse OG");
+        firma.einstellen(new Mitarbeiter("Karl Maier", 1989, 15, 40));
+        firma.einstellen(new Mitarbeiter("Susanne Huber", 1991, 20, 30));
+        firma.einstellen(new Mitarbeiter("Sepp Gruber", 1981, 18, 38));
+
+        firma.print();
+        System.out.println();
+        firma.printKostenBalken();
+
+        // statische Methode: Aufruf über den Klassennamen
+        System.out.println("1789 gueltig? " + Mitarbeiter.istGueltigesGeburtsjahr(1789));
+    }
+}</code></pre>
+</div>
+  <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Ausgabe (Personalnummern zufällig)</span>
+    <span class="code-lang">Text</span>
+  </div>
+  <pre><code class="language-plaintext">Firma: Spengergasse OG
+-----------------------------------------------
+Platz 1: #3361 KAR Karl Maier (Geburtsjahr: 1989), 15 Euro/h, 40 h/Woche (Vollzeit)
+Platz 2: #7457 SUS Susanne Huber (Geburtsjahr: 1991), 20 Euro/h, 30 h/Woche (Teilzeit)
+Platz 3: #1479 SEP Sepp Gruber (Geburtsjahr: 1981), 18 Euro/h, 38 h/Woche (Vollzeit)
+-----------------------------------------------
+Kosten pro Monat: 7536 Euro
+...
+1789 gueltig? false</code></pre>
+</div>
+  <p class="mb-0">&#128193; Stand nach dieser Lektion (Ende Teil 1): <a href="beispiele/1.11/src/main/java/Programm.java" target="_blank">beispiele/1.11/</a></p>
+</div>
+      </section>
+
+      <section class="section section-fehler">
+        <h2>Häufige Fehler</h2>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: non-static from a static context</div>
+  <p>In <code>main</code> steht <code>print();</code> oder <code>name = "X";</code> &rarr; <code>non-static method print() cannot be referenced from a static context</code>.</p>
+          <p class="fehler-fix">Statische Methoden haben kein <code>this</code>. Zuerst ein Objekt erzeugen und die Methode darauf aufrufen: <code>Mitarbeiter m = new Mitarbeiter(); m.print();</code>.</p>
+</div>
+      </section>
+
+      <section class="section section-aufgaben">
+        <h2>Aufgaben</h2>
+        <div class="aufgaben-list">
+          <div class="aufgabe">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Aufgabe 1</span>
+    <span class="aufgabe-title">Würfeln</span>
+  </div>
+  <p>Wahrscheinlichkeiten beim Würfeln mit drei Würfeln werden durch Simulation ermittelt: 3er-Pasch, 3er-Pasch mit Sechsen und die durchschnittliche Anzahl an Würfen bis dahin.</p>
+            <p class="mb-0"><a href="uebungen/lektion-1.11-uebung-1-wuerfeln.pdf" target="_blank">&#128196; Übung 1.11-1 (PDF)</a></p>
+</div>
+          <div class="aufgabe">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Aufgabe 2</span>
+    <span class="aufgabe-title">Numerische Berechnung von &pi;</span>
+  </div>
+  <p>Zufällige Punkte im Einheitsquadrat: Der Anteil der Punkte im Viertelkreis nähert &pi;/4 an (Monte-Carlo-Methode).</p>
+            <p class="mb-0"><a href="uebungen/lektion-1.11-uebung-2-pi.pdf" target="_blank">&#128196; Übung 1.11-2 (PDF)</a></p>
+</div>
+          <div class="aufgabe">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Aufgabe 3</span>
+    <span class="aufgabe-title">Klasse Konto</span>
+  </div>
+  <p>Ein Bankkonto mit Überziehungsrahmen: einzahlen, abbuchen (nur innerhalb des Rahmens), Zinsen berechnen; der IBAN wird im Konstruktor zufällig erzeugt.</p>
+            <p class="mb-0"><a href="uebungen/lektion-1.11-uebung-3-konto.pdf" target="_blank">&#128196; Übung 1.11-3 (PDF)</a></p>
+</div>
+        </div>
+      </section>
+
+      <section class="section section-quiz">
+        <h2>Wissenskontrolle</h2>
+        <div class="quiz" id="quiz-11">
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 1</span> Wie ruft man eine statische Methode <code>quadrat(int x)</code> der Klasse <code>Rechner</code> von einer anderen Klasse aus auf?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-11-1"> <span><code>Rechner.quadrat(5)</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-11-1"> <span>nur über ein Objekt: <code>new Rechner().quadrat(5)</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-11-1"> <span><code>static.quadrat(5)</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-11-1"> <span><code>this.quadrat(5)</code></span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Statische Methoden gehören zur Klasse und werden über den Klassennamen aufgerufen. Es muss dafür kein Objekt existieren.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 2</span> Warum ist die klassische <code>main</code>-Methode <code>static</code>?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-11-2"> <span>damit sie schneller ausgeführt wird</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-11-2"> <span>weil es beim Programmstart noch kein Objekt gibt, auf dem Java eine Methode aufrufen könnte</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-11-2"> <span>weil sie <code>private</code> sein muss</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-11-2"> <span>weil sie einen Rückgabewert hat</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Eine statische Methode kann ohne Objekt aufgerufen werden &ndash; genau das braucht der Einstiegspunkt eines Programms.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 3</span> In <code>public static void main(String[] args)</code> steht die Anweisung <code>print();</code>, wobei <code>print()</code> eine normale Objektmethode derselben Klasse ist. Was passiert?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-11-3"> <span>Die Methode wird normal ausgeführt.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-11-3"> <span>Der Compiler meldet <em>non-static method print() cannot be referenced from a static context</em>.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-11-3"> <span>Java erzeugt automatisch ein Objekt.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-11-3"> <span>Das Programm stürzt erst zur Laufzeit ab.</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Eine statische Methode hat kein <code>this</code>. Zuerst muss ein Objekt erzeugt werden, auf dem man <code>print()</code> aufruft.</div>
+  </div>
+  <div class="quiz-frage" data-multi="1">
+    <p class="quiz-q"><span class="quiz-num">Frage 4</span> Welche Aussagen zur Klasse <code>Math</code> stimmen?</p>
+    <p class="quiz-hint">Mehrere Antworten sind richtig.</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-11-4"> <span>Ihre Methoden sind statisch, z.&nbsp;B. <code>Math.sqrt(16)</code>.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-11-4"> <span><code>Math.round(2.5)</code> rundet kaufmännisch auf 3.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-11-4"> <span>Man muss zuerst <code>new Math()</code> schreiben.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-11-4"> <span><code>Math.pow(2, 3)</code> liefert 6.</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Alle Methoden von <code>Math</code> sind statisch und werden über den Klassennamen aufgerufen. <code>Math.pow(2, 3)</code> ist 2 hoch 3, also 8.0.</div>
+  </div>
+  <div class="quiz-summary"><span class="quiz-score"></span><button type="button" class="quiz-reset">Zur&uuml;cksetzen</button></div>
+</div>
+      </section>
+
+    </div>
+
+    <nav class="lesson-nav">
+      <a class="nav-btn" href="1.10-schleifen.html">&larr; Lektion 1.10: Schleifen</a>
+      <span class="nav-center-info">Lektion 1.11</span>
+      <a class="nav-btn primary" href="2.1-intellij-junit.html">Lektion 2.1: IntelliJ, Maven &amp; JUnit &rarr;</a>
+    </nav>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>
+    const ham = document.getElementById('hamburger');
+    const sb = document.getElementById('sidebar');
+    const ov = document.getElementById('overlay');
+    ham.addEventListener('click', () => { sb.classList.toggle('open'); ov.classList.toggle('visible'); });
+    ov.addEventListener('click', () => { sb.classList.remove('open'); ov.classList.remove('visible'); });
+    const cur = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-link').forEach(l => {
+      if (l.getAttribute('href') === cur) l.classList.add('active');
+    });
+    const themeBtn = document.getElementById('theme-toggle');
+    const applyTheme = (t) => {
+      document.documentElement.setAttribute('data-theme', t);
+      if (themeBtn) themeBtn.innerHTML = t === 'dark' ? '&#9728;' : '&#9790;';
+    };
+    applyTheme(localStorage.getItem('kurs-theme') || 'dark');
+    setTimeout(() => document.documentElement.classList.add('theme-transitions'), 50);
+    if (themeBtn) themeBtn.addEventListener('click', () => {
+      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('kurs-theme', next);
+      applyTheme(next);
+    });
+    hljs.highlightAll();
+  </script>
+  <script>
+    document.querySelectorAll('.quiz').forEach((quiz) => {
+      const fragen = [...quiz.querySelectorAll('.quiz-frage')];
+      const score = quiz.querySelector('.quiz-score');
+      const update = () => {
+        const done = fragen.filter((f) => f.dataset.state).length;
+        const ok = fragen.filter((f) => f.dataset.state === 'ok').length;
+        score.textContent = done === 0
+          ? fragen.length + ' Fragen – wähle eine Antwort und prüfe sie.'
+          : ok + ' von ' + fragen.length + ' richtig'
+            + (done < fragen.length ? ' (' + done + ' von ' + fragen.length + ' bearbeitet)' : '');
+      };
+      fragen.forEach((f) => {
+        const inputs = [...f.querySelectorAll('input')];
+        const check = f.querySelector('.quiz-check');
+        const reveal = f.querySelector('.quiz-reveal');
+        const fb = f.querySelector('.quiz-feedback');
+        const exp = f.querySelector('.quiz-erklaerung');
+        inputs.forEach((i) => i.addEventListener('change', () => {
+          check.disabled = !inputs.some((x) => x.checked);
+        }));
+        const finish = (graded) => {
+          let allOk = true;
+          f.querySelectorAll('.quiz-opt').forEach((li) => {
+            const input = li.querySelector('input');
+            const corr = li.dataset.correct === '1';
+            if (corr !== input.checked) allOk = false;
+            if (corr) li.classList.add('opt-correct');
+            else if (input.checked) li.classList.add('opt-wrong');
+            input.disabled = true;
+          });
+          f.dataset.state = !graded ? 'shown' : (allOk ? 'ok' : 'wrong');
+          fb.className = 'quiz-feedback fb-' + f.dataset.state;
+          fb.textContent = !graded ? 'Lösung angezeigt.'
+            : (allOk ? '✔ Richtig!' : '✘ Leider nicht ganz – die richtige Lösung ist markiert.');
+          fb.hidden = false;
+          exp.hidden = false;
+          check.disabled = true;
+          reveal.disabled = true;
+          update();
+        };
+        check.addEventListener('click', () => finish(true));
+        reveal.addEventListener('click', () => finish(false));
+      });
+      quiz.querySelector('.quiz-reset').addEventListener('click', () => {
+        fragen.forEach((f) => {
+          delete f.dataset.state;
+          f.querySelectorAll('.quiz-opt').forEach((li) => li.classList.remove('opt-correct', 'opt-wrong'));
+          f.querySelectorAll('input').forEach((i) => { i.checked = false; i.disabled = false; });
+          f.querySelector('.quiz-check').disabled = true;
+          f.querySelector('.quiz-reveal').disabled = false;
+          f.querySelector('.quiz-feedback').hidden = true;
+          f.querySelector('.quiz-erklaerung').hidden = true;
+        });
+        update();
+      });
+      update();
+    });
+  </script>
+</body>
+
+</html>

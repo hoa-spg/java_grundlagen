@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<!-- GENERIERT von java/kurs/_build (java-grundlagen) – nicht direkt bearbeiten!
+     Quelle: java/kurs/_build/java-grundlagen/lessons/, bauen: python3 _build/build.py java-grundlagen -->
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3.6 &ndash; Die Streams-API | Java-Grundlagen Kurs</title>
+  <script>(function () { var t = localStorage.getItem('kurs-theme') || 'dark'; document.documentElement.setAttribute('data-theme', t); })();</script>
+  <link rel="stylesheet" href="assets/kurs.css">
+  <link rel="stylesheet" id="hljs-theme"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+
+<body>
+
+  <button class="hamburger" id="hamburger" aria-label="Navigation &ouml;ffnen">&#9776;</button>
+  <div class="sidebar-overlay" id="overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html">
+        <span class="brand-icon">J</span>
+        <div>
+          <div class="brand-name">Java</div>
+          <div class="brand-sub">Grundlagen der Programmierung</div>
+        </div>
+      </a>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Dark/Light Mode"
+        title="Theme wechseln">&#9728;</button>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-group">
+        <div class="nav-group-label html-label">Teil 1 &mdash; Grundlagen</div>
+        <a class="nav-link" href="1.1-einfuehrung-entwicklungsumgebung.html"><span class="ln">1.1</span>Einf&uuml;hrung &amp; Entwicklungsumgebung</a>
+        <a class="nav-link" href="1.2-klassen-objekte.html"><span class="ln">1.2</span>Klassen, Objekte, Get &amp; Set</a>
+        <a class="nav-link" href="1.3-konstruktoren-methoden.html"><span class="ln">1.3</span>Konstruktoren, this &amp; Methoden</a>
+        <a class="nav-link" href="1.4-datentypen.html"><span class="ln">1.4</span>Datentypen</a>
+        <a class="nav-link" href="1.5-signatur-ueberladen.html"><span class="ln">1.5</span>Methoden, Signatur &amp; &Uuml;berladen</a>
+        <a class="nav-link" href="1.6-bedingungen-berechnungen.html"><span class="ln">1.6</span>Bedingungen &amp; Berechnungen</a>
+        <a class="nav-link" href="1.7-debugger-testklassen.html"><span class="ln">1.7</span>Debugger &amp; Testklassen</a>
+        <a class="nav-link" href="1.8-strings-random.html"><span class="ln">1.8</span>Strings &amp; Random</a>
+        <a class="nav-link" href="1.9-objekt-beziehungen.html"><span class="ln">1.9</span>Objekt-Beziehungen</a>
+        <a class="nav-link" href="1.10-schleifen.html"><span class="ln">1.10</span>Schleifen</a>
+        <a class="nav-link" href="1.11-statische-methoden.html"><span class="ln">1.11</span>Statische Methoden &amp; main</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label css-label">Teil 2 &mdash; Datenstrukturen &amp; OOP</div>
+        <a class="nav-link" href="2.1-intellij-junit.html"><span class="ln">2.1</span>IntelliJ, Maven &amp; JUnit</a>
+        <a class="nav-link" href="2.2-arrays.html"><span class="ln">2.2</span>Arrays</a>
+        <a class="nav-link" href="2.3-arrays-einfuegen-entfernen.html"><span class="ln">2.3</span>Arrays: Einf&uuml;gen &amp; Entfernen</a>
+        <a class="nav-link" href="2.4-sortieralgorithmen.html"><span class="ln">2.4</span>Sortieralgorithmen</a>
+        <a class="nav-link" href="2.5-objekt-arrays.html"><span class="ln">2.5</span>Objekt-Arrays</a>
+        <a class="nav-link" href="2.6-assoziation-equals.html"><span class="ln">2.6</span>Beidseitige Assoziation &amp; equals</a>
+        <a class="nav-link" href="2.7-collections.html"><span class="ln">2.7</span>Collections: ArrayList &amp; Co.</a>
+        <a class="nav-link" href="2.8-vererbung.html"><span class="ln">2.8</span>Vererbung &amp; Polymorphismus</a>
+        <a class="nav-link" href="2.9-abstrakt-interfaces.html"><span class="ln">2.9</span>Abstrakte Klassen &amp; Interfaces</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label rn-label">Teil 3 &mdash; Fortgeschrittene Konzepte</div>
+        <a class="nav-link" href="3.0-fail-early.html"><span class="ln">3.0</span>Fail Early statt Happy Path</a>
+        <a class="nav-link" href="3.1-exceptions.html"><span class="ln">3.1</span>Exceptions</a>
+        <a class="nav-link" href="3.2-hashset-treeset.html"><span class="ln">3.2</span>HashSet, TreeSet &amp; hashCode</a>
+        <a class="nav-link" href="3.3-serialisierung-dateien.html"><span class="ln">3.3</span>Serialisierung &amp; Dateien</a>
+        <a class="nav-link" href="3.4-git.html"><span class="ln">3.4</span>Versionsverwaltung mit Git</a>
+        <a class="nav-link" href="3.5-lambdas.html"><span class="ln">3.5</span>Lambda-Ausdr&uuml;cke</a>
+        <a class="nav-link" href="3.6-streams.html"><span class="ln">3.6</span>Die Streams-API</a>
+        <a class="nav-link" href="3.7-design-patterns.html"><span class="ln">3.7</span>Design-Patterns</a>
+        <a class="nav-link" href="3.8-model-klassen.html"><span class="ln">3.8</span>Model-Klassen f&uuml;r die GUI</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label react-label">Teil 4 &mdash; Webanwendungen mit Vaadin</div>
+        <a class="nav-link" href="4.1-web-grundlagen.html"><span class="ln">4.1</span>Grundprinzipien des Web</a>
+        <a class="nav-link" href="4.2-vaadin-einstieg.html"><span class="ln">4.2</span>Vaadin Flow &amp; Start-Paket</a>
+        <a class="nav-link" href="4.3-komponenten-layouts.html"><span class="ln">4.3</span>Komponenten &amp; Layouts</a>
+        <a class="nav-link" href="4.4-grid-routing-binding.html"><span class="ln">4.4</span>Tabellen, Routing &amp; Binding</a>
+        <a class="nav-link" href="4.5-mitarbeiterverwaltung.html"><span class="ln">4.5</span>Mitarbeiterverwaltung</a>
+      </div>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <header class="lesson-header">
+      <p class="lesson-eyebrow">Lektion 3.6 &mdash; Teil 3: Fortgeschrittene Konzepte</p>
+      <h1>Die Streams-API</h1>
+      <div class="lesson-tags">
+        <span class="tag tag-rn">Streams</span>
+        <span class="tag tag-time">ca. 2 &times; 90 min</span>
+        <span class="tag tag-level">Fortgeschritten</span>
+      </div>
+    </header>
+
+    <div class="content-area">
+      <section class="section section-lernziele">
+        <h2>Lernziele</h2>
+        <ul class="lernziele-list">
+          <li><a class="lernziel-link" href="#abschnitt-1">erklären, was ein Stream ist und wie er sich von einer Collection und einer Schleife unterscheidet<span class="lernziel-ziel">Abschnitt 1</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-2">Zwischen- und Endoperationen unterscheiden und zu einer Pipeline verketten<span class="lernziel-ziel">Abschnitt 2</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-3">beschreiben, wie ein Stream dank Lazy Evaluation Element für Element abgearbeitet wird<span class="lernziel-ziel">Abschnitt 3</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-2">mit Streams filtern, abbilden, sortieren, zählen, summieren und sammeln<span class="lernziel-ziel">Abschnitt 2</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-4">mit <code>Optional</code>-Ergebnissen wie bei <code>max()</code>, <code>average()</code> oder <code>findFirst()</code> umgehen<span class="lernziel-ziel">Abschnitt 4</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-5">mit <code>groupingBy</code> und <code>partitioningBy</code> gruppierte Auswertungen erstellen<span class="lernziel-ziel">Abschnitt 5</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-6">Schleifen durch Streams ersetzen &ndash; und erkennen, wann eine Schleife lesbarer bleibt<span class="lernziel-ziel">Abschnitt 6</span></a></li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-1">1 &mdash; Was ist ein Stream?</h2>
+        <p>
+          Die <strong>Streams-API</strong> erlaubt es, viele häufige Operationen (meist mit Lambdas aus Lektion 3.5)
+          sehr kurz und prägnant anzuschreiben &ndash; das erspart zahlreiche Schleifen. Der Stil ist von der
+          <em>funktionalen Programmierung</em> geprägt und kam deshalb in der objektorientierten Sprache Java erst mit
+          Version 8. Der wichtigste Unterschied zur Schleife: Du beschreibst, <em>was</em> herauskommen soll, nicht
+          <em>wie</em> es Schritt für Schritt berechnet wird.
+        </p>
+        <p>Beispiel: die Namen aller Personen mit Kosten über 2000 Euro, alphabetisch sortiert &ndash; zuerst mit Schleife, dann mit Stream:</p>
+          <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">mit Schleife</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">List&lt;String&gt; namen = new ArrayList&lt;&gt;();
+for (Person p : personal) {
+    if (p.getKostenProMonat() &gt; 2000) {
+        namen.add(p.getName());
+    }
+}
+Collections.sort(namen);</code></pre>
+</div>
+          <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">mit Stream</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">List&lt;String&gt; namen = personal.stream()
+    .filter(p -&gt; p.getKostenProMonat() &gt; 2000)
+    .map(Person::getName)
+    .sorted()
+    .toList();</code></pre>
+</div>
+        <p>
+          Die Stream-Variante liest sich wie ein Satz: <em>Nimm das Personal, behalte die mit Kosten über 2000, nimm
+          davon die Namen, sortiere sie, mach eine Liste daraus.</em> Typisch ist der <em>fluent</em>-Stil mit
+          verketteten Methodenaufrufen (<em>method chaining</em>): Jeder Aufruf liefert wieder einen Stream, auf dem
+          direkt die nächste Methode aufgerufen wird. Man spricht von einer <strong>Pipeline</strong>:
+        </p>
+        <div class="stream-pipeline" role="img" aria-label="Pipeline: Quelle personal.stream(), Zwischenoperationen filter, map, sorted, Endoperation toList, Ergebnis List of String">
+          <span class="sp-step sp-quelle">personal.stream()<small>Quelle</small></span>
+          <span class="sp-arrow" aria-hidden="true">&rarr;</span>
+          <span class="sp-step sp-zwischen">filter(&hellip;)<small>Zwischenoperation</small></span>
+          <span class="sp-arrow" aria-hidden="true">&rarr;</span>
+          <span class="sp-step sp-zwischen">map(&hellip;)<small>Zwischenoperation</small></span>
+          <span class="sp-arrow" aria-hidden="true">&rarr;</span>
+          <span class="sp-step sp-zwischen">sorted()<small>Zwischenoperation</small></span>
+          <span class="sp-arrow" aria-hidden="true">&rarr;</span>
+          <span class="sp-step sp-ende">toList()<small>Endoperation</small></span>
+          <span class="sp-arrow" aria-hidden="true">&rarr;</span>
+          <span class="sp-step sp-ergebnis">List&lt;String&gt;<small>Ergebnis</small></span>
+        </div>
+        <p>
+          Ein Stream ist ein &bdquo;Datenstrom&ldquo; mit den Objekten einer Collection, die nacheinander abgearbeitet
+          werden. Er <strong>speichert selbst keine Daten</strong> und <strong>verändert die Collection nicht</strong>;
+          <code>personal</code> ist nach der Pipeline genau wie vorher. Erzeugt wird ein Stream meist mit
+          <code>stream()</code>:
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Streams erzeugen</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">personal.stream()                  // aus einer Collection
+Arrays.stream(new int[] {3, 1, 4}) // aus einem Array
+Stream.of("Anna", "Bert")          // aus einzelnen Werten
+IntStream.rangeClosed(1, 5)        // die Zahlen 1, 2, 3, 4, 5</code></pre>
+</div>
+        <div class="callout callout-info">
+  <div class="callout-icon">&#8505;</div>
+  <div class="callout-body">
+    <div class="callout-title">toList() oder collect(Collectors.toList())?</div>
+    <code>toList()</code> gibt es seit Java 16 und liefert eine <em>unveränderliche</em> Liste. In älterem Code
+          (und im Projekt) findest du <code>collect(Collectors.toList())</code>, das eine veränderbare
+          <code>ArrayList</code> liefert. Für reine Auswertungen sind beide gleichwertig.
+  </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-2">2 &mdash; Zwischen- und Endoperationen</h2>
+        <p>
+          Eine Pipeline besteht aus beliebig vielen <strong>Zwischenoperationen</strong>, die wieder einen Stream
+          liefern, und genau einer <strong>Endoperation</strong>, die ein Ergebnis liefert (eine Liste, eine Zahl
+          &hellip;) oder eine Aktion ausführt.
+        </p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Operation</th><th>Art</th><th>Wirkung</th></tr></thead>
+            <tbody>
+              <tr><td><code>filter(p -&gt; &hellip;)</code></td><td>Zwischenoperation</td><td>behält nur Elemente, für die die Bedingung gilt</td></tr>
+              <tr><td><code>map(x -&gt; &hellip;)</code>, <code>mapToInt(&hellip;)</code></td><td>Zwischenoperation</td><td>bildet jedes Element auf einen neuen Wert ab</td></tr>
+              <tr><td><code>sorted()</code>, <code>sorted(comparator)</code></td><td>Zwischenoperation</td><td>sortiert</td></tr>
+              <tr><td><code>distinct()</code>, <code>limit(n)</code></td><td>Zwischenoperation</td><td>entfernt Duplikate bzw. behält nur die ersten n Elemente</td></tr>
+              <tr><td><code>toList()</code>, <code>collect(&hellip;)</code></td><td>Endoperation</td><td>sammelt in eine Liste, einen String, eine Map &hellip; (Abschnitt 5)</td></tr>
+              <tr><td><code>count()</code>, <code>sum()</code>, <code>max()</code>, <code>average()</code></td><td>Endoperation</td><td>zählt bzw. berechnet</td></tr>
+              <tr><td><code>anyMatch(&hellip;)</code>, <code>allMatch(&hellip;)</code>, <code>noneMatch(&hellip;)</code></td><td>Endoperation</td><td>prüft, ob mindestens eines / alle / keines der Elemente die Bedingung erfüllt</td></tr>
+              <tr><td><code>findFirst()</code></td><td>Endoperation</td><td>liefert das erste Element (als <code>Optional</code>, Abschnitt 4)</td></tr>
+              <tr><td><code>forEach(x -&gt; &hellip;)</code></td><td>Endoperation</td><td>führt eine Aktion für jedes Element aus</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Pipelines</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">// Namen aller Freelancer, alphabetisch, als ein String
+String freelancer = personal.stream()
+                            .filter(p -&gt; p instanceof Freelancer)
+                            .map(Person::getName)
+                            .sorted()
+                            .collect(Collectors.joining(", "));
+
+// Gibt es jemanden, der vor 1960 geboren ist?
+boolean alt = personal.stream().anyMatch(p -&gt; p.getGeburtsjahr() &lt; 1960);
+
+// Verdienen alle mindestens 1000 Euro?
+boolean alleUeber1000 = personal.stream().allMatch(p -&gt; p.getKostenProMonat() &gt;= 1000);
+
+// die drei teuersten Personen ausgeben
+personal.stream()
+        .sorted((a, b) -&gt; b.getKostenProMonat() - a.getKostenProMonat())
+        .limit(3)
+        .forEach(System.out::println);</code></pre>
+</div>
+        <p>
+          <code>instanceof</code> prüft, ob ein Objekt zu einer Klasse (oder Unterklasse) gehört.
+          <code>map</code> kann den Typ ändern: Aus einem Stream von <code>Person</code> wird ein Stream von
+          <code>String</code>. Ein Stream kann nur <strong>einmal</strong> durchlaufen werden &ndash; für eine zweite
+          Auswertung erzeugt man einfach mit <code>stream()</code> einen neuen.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-3">3 &mdash; Lazy Evaluation: Wie ein Stream abgearbeitet wird</h2>
+        <p>
+          Man könnte meinen, <code>filter</code> geht zuerst alle Elemente durch, dann <code>map</code> alle
+          übrigen usw. Tatsächlich wandert <strong>jedes Element einzeln durch die ganze Pipeline</strong>, und zwar erst
+          dann, wenn die Endoperation ein Ergebnis braucht (<strong>Lazy Evaluation</strong>, dt. <em>verzögerte
+          Auswertung</em>). Mit <code>peek</code>, das jedes Element nur &bdquo;anschaut&ldquo;, lässt sich das
+          sichtbar machen:
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Lazy Evaluation sichtbar machen</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">// personal: Susanne Huber (2500), Karl Maier (2600), Sepp Gruber (900), Eva Maier (2280)
+List&lt;String&gt; namen = personal.stream()
+        .peek(p -&gt; System.out.println("filter: " + p.getName()))
+        .filter(p -&gt; p.getKostenProMonat() &gt; 2000)
+        .peek(p -&gt; System.out.println("  map:  " + p.getName()))
+        .map(Person::getName)
+        .limit(2)
+        .toList();
+System.out.println(namen);</code></pre>
+</div>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Ausgabe</span>
+    <span class="code-lang">Text</span>
+  </div>
+  <pre><code class="language-plaintext">filter: Susanne Huber
+  map:  Susanne Huber
+filter: Karl Maier
+  map:  Karl Maier
+[Susanne Huber, Karl Maier]</code></pre>
+</div>
+        <p>
+          Sepp Gruber und Eva Maier werden gar nicht mehr angesehen: Nach zwei Treffern ist <code>limit(2)</code> erfüllt
+          und der Stream hört auf. Ohne Endoperation (<code>toList()</code>) würde überhaupt nichts ausgegeben.
+          <code>peek</code> ist nur zum Nachvollziehen und Debuggen gedacht &ndash; im fertigen Code hat es nichts
+          verloren.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-4">4 &mdash; Zahlen-Streams und Optional</h2>
+        <p>
+          Für Berechnungen gibt es eigene Zahlen-Streams (<code>IntStream</code>, <code>DoubleStream</code>), die man
+          mit <code>mapToInt</code> bzw. <code>mapToDouble</code> erhält. Sie kennen <code>sum()</code>,
+          <code>max()</code>, <code>min()</code> und <code>average()</code>:
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">mapToInt, sum, max, average</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">int summe = personal.stream()
+                    .mapToInt(Person::getKostenProMonat)
+                    .sum();
+
+int hoechsteNummer = personal.stream()
+                             .mapToInt(Person::getPersonalNummer)
+                             .max()
+                             .orElseThrow(NoSuchElementException::new);
+
+double schnitt = personal.stream()
+                         .mapToInt(Person::getGeburtsjahr)
+                         .average()
+                         .orElse(0);
+
+// alles auf einmal: Anzahl, Summe, Minimum, Durchschnitt, Maximum
+IntSummaryStatistics stat = personal.stream()
+                                    .mapToInt(Person::getKostenProMonat)
+                                    .summaryStatistics();
+System.out.println(stat.getMax() + " / " + stat.getAverage());</code></pre>
+</div>
+        <p>
+          Bei einer leeren Liste gibt es kein Maximum und keinen Durchschnitt. <code>max()</code>,
+          <code>average()</code> und <code>findFirst()</code> liefern deshalb ein <strong>Optional</strong> &ndash; eine
+          &bdquo;Schachtel&ldquo;, die einen Wert enthalten kann oder leer ist. So erzwingt der Compiler, dass du dir
+          überlegst, was bei einer leeren Liste passieren soll. <code>sum()</code> und <code>count()</code> liefern bei
+          einer leeren Liste einfach 0.
+        </p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Methode von Optional</th><th>Wirkung</th></tr></thead>
+            <tbody>
+              <tr><td><code>orElse(wert)</code></td><td>Inhalt oder &ndash; wenn leer &ndash; der Ersatzwert</td></tr>
+              <tr><td><code>orElseThrow(&hellip;)</code></td><td>Inhalt oder &ndash; wenn leer &ndash; eine Exception</td></tr>
+              <tr><td><code>isPresent()</code>, <code>isEmpty()</code></td><td>prüft, ob ein Wert enthalten ist</td></tr>
+              <tr><td><code>map(&hellip;)</code></td><td>wandelt den Inhalt um, falls vorhanden</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Optional bei Objekten</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">String teuerste = personal.stream()
+                          .max(Comparator.comparing(Person::getKostenProMonat))
+                          .map(Person::getName)
+                          .orElse("niemand");               // "Karl Maier"
+
+String ersterMaier = personal.stream()
+                             .map(Person::getName)
+                             .filter(n -&gt; n.endsWith("Maier"))
+                             .findFirst()
+                             .orElse("-");                  // "Karl Maier"</code></pre>
+</div>
+        <p>
+          <code>IntStream.range</code> ersetzt einfache Zählschleifen: <code>IntStream.range(0, 5)</code> liefert
+          0 bis 4, <code>rangeClosed(1, 5)</code> 1 bis 5 (inklusive).
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">IntStream.range</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">int quadratsumme = IntStream.rangeClosed(1, 5)
+                            .map(i -&gt; i * i)
+                            .sum();                          // 1 + 4 + 9 + 16 + 25 = 55</code></pre>
+</div>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-5">5 &mdash; Sammeln und Gruppieren mit Collectors</h2>
+        <p>
+          <code>collect</code> nimmt einen <strong>Collector</strong>, der festlegt, wie die Elemente zusammengefasst
+          werden. Die Klasse <code>Collectors</code> bietet fertige Collectors an &ndash; neben <code>toList()</code> und
+          <code>joining</code> vor allem zum <strong>Gruppieren</strong>: Das Ergebnis ist eine <code>Map</code>, deren
+          Schlüssel die Gruppen sind.
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">groupingBy und partitioningBy</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">// Anzahl Personen pro Typ
+Map&lt;String, Long&gt; anzahlProTyp = personal.stream()
+        .collect(Collectors.groupingBy(p -&gt; p.getClass().getSimpleName(),
+                                       Collectors.counting()));
+// {Arbeiter=1, Freelancer=1, Angestellter=2}
+
+// Namen pro Typ
+Map&lt;String, List&lt;String&gt;&gt; namenProTyp = personal.stream()
+        .collect(Collectors.groupingBy(p -&gt; p.getClass().getSimpleName(),
+                                       Collectors.mapping(Person::getName,
+                                                          Collectors.toList())));
+// {Angestellter=[Susanne Huber, Eva Maier], Arbeiter=[Karl Maier], Freelancer=[Sepp Gruber]}
+
+// in genau zwei Gruppen teilen: true / false
+Map&lt;Boolean, List&lt;Person&gt;&gt; teuer = personal.stream()
+        .collect(Collectors.partitioningBy(p -&gt; p.getKostenProMonat() &gt; 2400));</code></pre>
+</div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Collector</th><th>Ergebnis</th></tr></thead>
+            <tbody>
+              <tr><td><code>Collectors.toList()</code>, <code>toSet()</code></td><td>Liste bzw. Menge</td></tr>
+              <tr><td><code>Collectors.joining(", ")</code></td><td>ein String (nur für Streams von Strings)</td></tr>
+              <tr><td><code>Collectors.groupingBy(schlüssel)</code></td><td><code>Map&lt;Schlüssel, List&lt;Element&gt;&gt;</code></td></tr>
+              <tr><td><code>Collectors.groupingBy(schlüssel, Collectors.counting())</code></td><td><code>Map&lt;Schlüssel, Long&gt;</code> mit der Anzahl pro Gruppe</td></tr>
+              <tr><td><code>Collectors.groupingBy(schlüssel, Collectors.summingInt(&hellip;))</code></td><td>Summe pro Gruppe</td></tr>
+              <tr><td><code>Collectors.partitioningBy(bedingung)</code></td><td><code>Map&lt;Boolean, List&lt;Element&gt;&gt;</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          <code>groupingBy</code> liefert eine <code>HashMap</code>; die Reihenfolge der Schlüssel bei der Ausgabe ist
+          daher nicht festgelegt. Für sortierte Schlüssel übergibt man <code>TreeMap::new</code> als zweites Argument:
+          <code>groupingBy(schlüssel, TreeMap::new, Collectors.counting())</code>.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-6">6 &mdash; Spickzettel: von der Schleife zum Stream</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Aufgabe</th><th>typische Schleife</th><th>Stream</th></tr></thead>
+            <tbody>
+              <tr><td>Summe</td><td><code>summe += p.getKosten&hellip;()</code></td><td><code>mapToInt(&hellip;).sum()</code></td></tr>
+              <tr><td>Zählen mit Bedingung</td><td><code>if (&hellip;) anzahl++</code></td><td><code>filter(&hellip;).count()</code></td></tr>
+              <tr><td>Teilliste</td><td><code>if (&hellip;) liste.add(p)</code></td><td><code>filter(&hellip;).toList()</code></td></tr>
+              <tr><td>Umwandeln</td><td><code>namen.add(p.getName())</code></td><td><code>map(Person::getName).toList()</code></td></tr>
+              <tr><td>Maximum suchen</td><td><code>if (p.get&hellip;() &gt; max) max = &hellip;</code></td><td><code>max(Comparator.comparing(&hellip;))</code></td></tr>
+              <tr><td>Gibt es eines?</td><td><code>if (&hellip;) { gefunden = true; break; }</code></td><td><code>anyMatch(&hellip;)</code></td></tr>
+              <tr><td>erstes passendes</td><td><code>if (&hellip;) return p;</code></td><td><code>filter(&hellip;).findFirst()</code></td></tr>
+              <tr><td>Text zusammenbauen</td><td><code>s += name + ", "</code></td><td><code>collect(Collectors.joining(", "))</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout callout-tip">
+  <div class="callout-icon">&#128161;</div>
+  <div class="callout-body">
+    <div class="callout-title">Stream oder Schleife?</div>
+    <p>Streams sind ideal für Auswertungen: filtern, umwandeln, zählen, sammeln, gruppieren. Muss man dagegen während
+          des Durchlaufs Objekte verändern, Exceptions behandeln oder mit dem Index arbeiten, ist eine normale Schleife
+          oft lesbarer. Beides ist richtig &ndash; wähle, was sich besser liest. Streams sind ein umfangreiches Kapitel
+          der modernen Java-Programmierung; diese Lektion zeigt die wichtigsten Werkzeuge.</p>
+  </div>
+</div>
+      </section>
+
+      <section class="section section-projekt">
+        <h2 id="projektschritt">Projektschritt</h2>
+<div class="projekt-box">
+  <div class="projekt-box-header">
+    <span class="projekt-step">Projektschritt 3.6</span>
+    <h3>Auswertungen mit Streams</h3>
+  </div>
+<p>Die Firma bekommt Auswertungen in wenigen Zeilen: Filtern nach Kosten, Zählen der Freelancer und eine sortierte Namensliste. <code>summeKosten()</code> wird mit einem Stream statt einer Schleife berechnet.</p>
+  <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">src/main/java/Firma.java (Auszug)</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public int summeKosten() {
+    // Stream statt Schleife: jede Person -&gt; Kosten (int), dann aufsummieren
+    return personal.stream()
+                   .mapToInt(p -&gt; p.getKostenProMonat())
+                   .sum();
+}
+
+public List&lt;Person&gt; personalMitKostenUeber(int minKosten) {
+    return personal.stream()
+                   .filter(p -&gt; p.getKostenProMonat() &gt; minKosten)
+                   .collect(Collectors.toList());
+}
+
+public long anzahlFreelancer() {
+    return personal.stream()
+                   .filter(p -&gt; p instanceof Freelancer)
+                   .count();
+}
+
+public List&lt;String&gt; namen() {
+    return personal.stream()
+                   .map(Person::getName)
+                   .sorted()
+                   .collect(Collectors.toList());
+}</code></pre>
+</div>
+  <p>Das Hauptprogramm gibt die Auswertungen aus und nutzt für die nach Kosten sortierte Liste aus Lektion 3.5 eine Pipeline mit <code>map</code> und <code>forEach</code>. <code>StreamTest</code> prüft alle neuen Methoden.</p>
+  <p class="mb-0">&#128193; Stand nach dieser Lektion: <a href="beispiele/3.6/src/main/java/Firma.java" target="_blank">beispiele/3.6/</a></p>
+</div>
+      </section>
+
+      <section class="section section-fehler">
+        <h2>Häufige Fehler</h2>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Stream ohne Endoperation</div>
+  <p><code>personal.stream().filter(&hellip;).map(&hellip;);</code> bewirkt nichts.</p>
+          <p class="fehler-fix">Wegen der Lazy Evaluation passiert erst etwas bei einer Endoperation (<code>collect</code>, <code>count</code>, <code>forEach</code>, <code>sum</code> &hellip;).</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Stream zweimal verwendet</div>
+  <p><code>Stream&lt;Person&gt; s = personal.stream(); s.count(); s.count();</code> &rarr; <code>IllegalStateException: stream has already been operated upon or closed</code>.</p>
+          <p class="fehler-fix">Für jede Auswertung mit <code>personal.stream()</code> einen neuen Stream erzeugen.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Checked Exception im Lambda</div>
+  <p><code>personal.forEach(p -&gt; p.setName(&hellip;));</code> &rarr; <code>unreported exception FirmaException</code>.</p>
+          <p class="fehler-fix">Die Methoden der Stream-/Collection-API erlauben keine checked Exceptions im Lambda. Innerhalb des Lambdas mit <code>try</code>/<code>catch</code> behandeln oder in eine <code>RuntimeException</code> verpacken (siehe <code>Company.increaseSalaryByPercent</code>, Lektion 3.8) &ndash; oder eine normale Schleife verwenden.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: toList()-Ergebnis verändert</div>
+  <p><code>List&lt;Person&gt; l = personal.stream().filter(&hellip;).toList(); l.add(p);</code> &rarr; <code>UnsupportedOperationException</code>.</p>
+          <p class="fehler-fix"><code>toList()</code> liefert eine unveränderliche Liste. Soll die Liste verändert werden: <code>collect(Collectors.toList())</code> oder <code>new ArrayList&lt;&gt;(&hellip;toList())</code>.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Optional statt Zahl</div>
+  <p><code>int max = personal.stream().mapToInt(&hellip;).max();</code> &rarr; <code>incompatible types: OptionalInt cannot be converted to int</code>.</p>
+          <p class="fehler-fix"><code>max()</code> liefert ein Optional. Mit <code>.orElse(0)</code> oder <code>.orElseThrow()</code> den Wert herausholen.</p>
+</div>
+      </section>
+
+      <section class="section section-quiz">
+        <h2>Wissenskontrolle</h2>
+        <div class="quiz" id="quiz-27">
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 1</span> Was gilt für einen Stream?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-27-1"> <span>Er speichert die Elemente dauerhaft wie eine Liste.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-27-1"> <span>Er beschreibt eine Verarbeitung der Elemente einer Quelle; erst eine Endoperation stößt die Verarbeitung an.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-27-1"> <span>Er kann beliebig oft wiederverwendet werden.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-27-1"> <span>Er verändert automatisch die ursprüngliche Liste.</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Ein Stream ist keine Datensammlung, sondern eine Pipeline. Nach der Endoperation ist er verbraucht; die Quelle bleibt unverändert.</div>
+  </div>
+  <div class="quiz-frage" data-multi="1">
+    <p class="quiz-q"><span class="quiz-num">Frage 2</span> Welche Operationen sind <strong>Zwischenoperationen</strong>?</p>
+    <p class="quiz-hint">Mehrere Antworten sind richtig.</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-27-2"> <span><code>filter</code></span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-27-2"> <span><code>map</code></span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-27-2"> <span><code>sorted</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-27-2"> <span><code>count</code></span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Zwischenoperationen liefern wieder einen Stream und lassen sich verketten. <code>count</code>, <code>collect</code>, <code>forEach</code> oder <code>toList</code> sind Endoperationen und liefern ein Ergebnis.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 3</span> Warum liefert <code>mapToInt(&hellip;).max()</code> ein <code>OptionalInt</code> und nicht einfach ein <code>int</code>?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-27-3"> <span>weil das Maximum immer eine Kommazahl ist</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-27-3"> <span>weil der Stream leer sein kann &ndash; dann gibt es kein Maximum</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-27-3"> <span>weil <code>int</code> in Streams nicht erlaubt ist</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-27-3"> <span>weil das schneller ist</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Ein <code>Optional</code> macht sichtbar, dass vielleicht kein Wert existiert. Mit <code>orElse(0)</code> oder <code>isPresent()</code> entscheidet man, was dann passieren soll.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 4</span> Was liefert <code>personen.stream().collect(Collectors.groupingBy(Person::getAbteilung))</code>?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-27-4"> <span>eine sortierte Liste</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-27-4"> <span>eine <code>Map</code>: zu jeder Abteilung die Liste der Personen</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-27-4"> <span>die Anzahl der Abteilungen</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-27-4"> <span>ein <code>Set</code> aller Abteilungen</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> <code>groupingBy</code> ordnet jedes Element einem Schlüssel zu und sammelt die Elemente je Schlüssel. <code>partitioningBy</code> teilt dagegen nur in zwei Gruppen (<code>true</code>/<code>false</code>).</div>
+  </div>
+  <div class="quiz-summary"><span class="quiz-score"></span><button type="button" class="quiz-reset">Zur&uuml;cksetzen</button></div>
+</div>
+      </section>
+
+    </div>
+
+    <nav class="lesson-nav">
+      <a class="nav-btn" href="3.5-lambdas.html">&larr; Lektion 3.5: Lambda-Ausdr&uuml;cke</a>
+      <span class="nav-center-info">Lektion 3.6</span>
+      <a class="nav-btn primary" href="3.7-design-patterns.html">Lektion 3.7: Design-Patterns &rarr;</a>
+    </nav>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>
+    const ham = document.getElementById('hamburger');
+    const sb = document.getElementById('sidebar');
+    const ov = document.getElementById('overlay');
+    ham.addEventListener('click', () => { sb.classList.toggle('open'); ov.classList.toggle('visible'); });
+    ov.addEventListener('click', () => { sb.classList.remove('open'); ov.classList.remove('visible'); });
+    const cur = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-link').forEach(l => {
+      if (l.getAttribute('href') === cur) l.classList.add('active');
+    });
+    const themeBtn = document.getElementById('theme-toggle');
+    const applyTheme = (t) => {
+      document.documentElement.setAttribute('data-theme', t);
+      if (themeBtn) themeBtn.innerHTML = t === 'dark' ? '&#9728;' : '&#9790;';
+    };
+    applyTheme(localStorage.getItem('kurs-theme') || 'dark');
+    setTimeout(() => document.documentElement.classList.add('theme-transitions'), 50);
+    if (themeBtn) themeBtn.addEventListener('click', () => {
+      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('kurs-theme', next);
+      applyTheme(next);
+    });
+    hljs.highlightAll();
+  </script>
+  <script>
+    document.querySelectorAll('.quiz').forEach((quiz) => {
+      const fragen = [...quiz.querySelectorAll('.quiz-frage')];
+      const score = quiz.querySelector('.quiz-score');
+      const update = () => {
+        const done = fragen.filter((f) => f.dataset.state).length;
+        const ok = fragen.filter((f) => f.dataset.state === 'ok').length;
+        score.textContent = done === 0
+          ? fragen.length + ' Fragen – wähle eine Antwort und prüfe sie.'
+          : ok + ' von ' + fragen.length + ' richtig'
+            + (done < fragen.length ? ' (' + done + ' von ' + fragen.length + ' bearbeitet)' : '');
+      };
+      fragen.forEach((f) => {
+        const inputs = [...f.querySelectorAll('input')];
+        const check = f.querySelector('.quiz-check');
+        const reveal = f.querySelector('.quiz-reveal');
+        const fb = f.querySelector('.quiz-feedback');
+        const exp = f.querySelector('.quiz-erklaerung');
+        inputs.forEach((i) => i.addEventListener('change', () => {
+          check.disabled = !inputs.some((x) => x.checked);
+        }));
+        const finish = (graded) => {
+          let allOk = true;
+          f.querySelectorAll('.quiz-opt').forEach((li) => {
+            const input = li.querySelector('input');
+            const corr = li.dataset.correct === '1';
+            if (corr !== input.checked) allOk = false;
+            if (corr) li.classList.add('opt-correct');
+            else if (input.checked) li.classList.add('opt-wrong');
+            input.disabled = true;
+          });
+          f.dataset.state = !graded ? 'shown' : (allOk ? 'ok' : 'wrong');
+          fb.className = 'quiz-feedback fb-' + f.dataset.state;
+          fb.textContent = !graded ? 'Lösung angezeigt.'
+            : (allOk ? '✔ Richtig!' : '✘ Leider nicht ganz – die richtige Lösung ist markiert.');
+          fb.hidden = false;
+          exp.hidden = false;
+          check.disabled = true;
+          reveal.disabled = true;
+          update();
+        };
+        check.addEventListener('click', () => finish(true));
+        reveal.addEventListener('click', () => finish(false));
+      });
+      quiz.querySelector('.quiz-reset').addEventListener('click', () => {
+        fragen.forEach((f) => {
+          delete f.dataset.state;
+          f.querySelectorAll('.quiz-opt').forEach((li) => li.classList.remove('opt-correct', 'opt-wrong'));
+          f.querySelectorAll('input').forEach((i) => { i.checked = false; i.disabled = false; });
+          f.querySelector('.quiz-check').disabled = true;
+          f.querySelector('.quiz-reveal').disabled = false;
+          f.querySelector('.quiz-feedback').hidden = true;
+          f.querySelector('.quiz-erklaerung').hidden = true;
+        });
+        update();
+      });
+      update();
+    });
+  </script>
+</body>
+
+</html>

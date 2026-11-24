@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<!-- GENERIERT von java/kurs/_build (java-grundlagen) – nicht direkt bearbeiten!
+     Quelle: java/kurs/_build/java-grundlagen/lessons/, bauen: python3 _build/build.py java-grundlagen -->
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3.0 &ndash; Fail Early statt Happy Path | Java-Grundlagen Kurs</title>
+  <script>(function () { var t = localStorage.getItem('kurs-theme') || 'dark'; document.documentElement.setAttribute('data-theme', t); })();</script>
+  <link rel="stylesheet" href="assets/kurs.css">
+  <link rel="stylesheet" id="hljs-theme"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+
+<body>
+
+  <button class="hamburger" id="hamburger" aria-label="Navigation &ouml;ffnen">&#9776;</button>
+  <div class="sidebar-overlay" id="overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html">
+        <span class="brand-icon">J</span>
+        <div>
+          <div class="brand-name">Java</div>
+          <div class="brand-sub">Grundlagen der Programmierung</div>
+        </div>
+      </a>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Dark/Light Mode"
+        title="Theme wechseln">&#9728;</button>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-group">
+        <div class="nav-group-label html-label">Teil 1 &mdash; Grundlagen</div>
+        <a class="nav-link" href="1.1-einfuehrung-entwicklungsumgebung.html"><span class="ln">1.1</span>Einf&uuml;hrung &amp; Entwicklungsumgebung</a>
+        <a class="nav-link" href="1.2-klassen-objekte.html"><span class="ln">1.2</span>Klassen, Objekte, Get &amp; Set</a>
+        <a class="nav-link" href="1.3-konstruktoren-methoden.html"><span class="ln">1.3</span>Konstruktoren, this &amp; Methoden</a>
+        <a class="nav-link" href="1.4-datentypen.html"><span class="ln">1.4</span>Datentypen</a>
+        <a class="nav-link" href="1.5-signatur-ueberladen.html"><span class="ln">1.5</span>Methoden, Signatur &amp; &Uuml;berladen</a>
+        <a class="nav-link" href="1.6-bedingungen-berechnungen.html"><span class="ln">1.6</span>Bedingungen &amp; Berechnungen</a>
+        <a class="nav-link" href="1.7-debugger-testklassen.html"><span class="ln">1.7</span>Debugger &amp; Testklassen</a>
+        <a class="nav-link" href="1.8-strings-random.html"><span class="ln">1.8</span>Strings &amp; Random</a>
+        <a class="nav-link" href="1.9-objekt-beziehungen.html"><span class="ln">1.9</span>Objekt-Beziehungen</a>
+        <a class="nav-link" href="1.10-schleifen.html"><span class="ln">1.10</span>Schleifen</a>
+        <a class="nav-link" href="1.11-statische-methoden.html"><span class="ln">1.11</span>Statische Methoden &amp; main</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label css-label">Teil 2 &mdash; Datenstrukturen &amp; OOP</div>
+        <a class="nav-link" href="2.1-intellij-junit.html"><span class="ln">2.1</span>IntelliJ, Maven &amp; JUnit</a>
+        <a class="nav-link" href="2.2-arrays.html"><span class="ln">2.2</span>Arrays</a>
+        <a class="nav-link" href="2.3-arrays-einfuegen-entfernen.html"><span class="ln">2.3</span>Arrays: Einf&uuml;gen &amp; Entfernen</a>
+        <a class="nav-link" href="2.4-sortieralgorithmen.html"><span class="ln">2.4</span>Sortieralgorithmen</a>
+        <a class="nav-link" href="2.5-objekt-arrays.html"><span class="ln">2.5</span>Objekt-Arrays</a>
+        <a class="nav-link" href="2.6-assoziation-equals.html"><span class="ln">2.6</span>Beidseitige Assoziation &amp; equals</a>
+        <a class="nav-link" href="2.7-collections.html"><span class="ln">2.7</span>Collections: ArrayList &amp; Co.</a>
+        <a class="nav-link" href="2.8-vererbung.html"><span class="ln">2.8</span>Vererbung &amp; Polymorphismus</a>
+        <a class="nav-link" href="2.9-abstrakt-interfaces.html"><span class="ln">2.9</span>Abstrakte Klassen &amp; Interfaces</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label rn-label">Teil 3 &mdash; Fortgeschrittene Konzepte</div>
+        <a class="nav-link" href="3.0-fail-early.html"><span class="ln">3.0</span>Fail Early statt Happy Path</a>
+        <a class="nav-link" href="3.1-exceptions.html"><span class="ln">3.1</span>Exceptions</a>
+        <a class="nav-link" href="3.2-hashset-treeset.html"><span class="ln">3.2</span>HashSet, TreeSet &amp; hashCode</a>
+        <a class="nav-link" href="3.3-serialisierung-dateien.html"><span class="ln">3.3</span>Serialisierung &amp; Dateien</a>
+        <a class="nav-link" href="3.4-git.html"><span class="ln">3.4</span>Versionsverwaltung mit Git</a>
+        <a class="nav-link" href="3.5-lambdas.html"><span class="ln">3.5</span>Lambda-Ausdr&uuml;cke</a>
+        <a class="nav-link" href="3.6-streams.html"><span class="ln">3.6</span>Die Streams-API</a>
+        <a class="nav-link" href="3.7-design-patterns.html"><span class="ln">3.7</span>Design-Patterns</a>
+        <a class="nav-link" href="3.8-model-klassen.html"><span class="ln">3.8</span>Model-Klassen f&uuml;r die GUI</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label react-label">Teil 4 &mdash; Webanwendungen mit Vaadin</div>
+        <a class="nav-link" href="4.1-web-grundlagen.html"><span class="ln">4.1</span>Grundprinzipien des Web</a>
+        <a class="nav-link" href="4.2-vaadin-einstieg.html"><span class="ln">4.2</span>Vaadin Flow &amp; Start-Paket</a>
+        <a class="nav-link" href="4.3-komponenten-layouts.html"><span class="ln">4.3</span>Komponenten &amp; Layouts</a>
+        <a class="nav-link" href="4.4-grid-routing-binding.html"><span class="ln">4.4</span>Tabellen, Routing &amp; Binding</a>
+        <a class="nav-link" href="4.5-mitarbeiterverwaltung.html"><span class="ln">4.5</span>Mitarbeiterverwaltung</a>
+      </div>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <header class="lesson-header">
+      <p class="lesson-eyebrow">Lektion 3.0 &mdash; Teil 3: Fortgeschrittene Konzepte</p>
+      <h1>Fail Early statt Happy Path</h1>
+      <div class="lesson-tags">
+        <span class="tag tag-rn">Code-Stil</span>
+        <span class="tag tag-time">ca. 45 min</span>
+        <span class="tag tag-level">Fortgeschritten</span>
+      </div>
+    </header>
+
+    <div class="content-area">
+      <section class="section section-lernziele">
+        <h2>Lernziele</h2>
+        <ul class="lernziele-list">
+          <li><a class="lernziel-link" href="#abschnitt-1">den Unterschied zwischen <em>Happy-Path</em>-Prüfungen und <em>Fail Early</em> (Guard Clauses) erklären<span class="lernziel-ziel">Abschnitt 1</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-2">begründen, warum Fail Early tiefe Verschachtelungen vermeidet und lesbareren Code ergibt<span class="lernziel-ziel">Abschnitt 2</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-3">Bedingungen korrekt umkehren (Vergleichsoperatoren, De Morgan)<span class="lernziel-ziel">Abschnitt 3</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-4">verschachtelte <code>if</code>/<code>else</code>-Kaskaden in Guard Clauses mit <code>return</code> umbauen<span class="lernziel-ziel">Abschnitt 4</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-4">erkennen, wann eine normale Fallunterscheidung (<code>else if</code>) trotzdem richtig ist<span class="lernziel-ziel">Abschnitt 4</span></a></li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-1">1 &mdash; Zwei Arten, Parameter zu prüfen</h2>
+        <p>
+          In Teil 1 und 2 haben wir Parameter immer nach demselben Muster geprüft: Im <code>if</code> steht der
+          <strong>positive Fall</strong> (&bdquo;der Wert ist gültig&ldquo;), darin der normale Code, und im
+          <code>else</code> die Fehlerbehandlung. Man nennt das den <strong>Happy Path</strong> &ndash; der
+          &bdquo;glückliche&ldquo; Weg steht innen.
+        </p>
+        <p>
+          Die Alternative: Man prüft zuerst auf den <strong>Fehlerfall</strong> und verlässt die Methode sofort mit
+          <code>return</code> (oder, ab Lektion 3.1, mit einer Exception). Der normale Code steht danach &ndash; ohne
+          <code>else</code> und ohne zusätzliche Einrückung. Das heißt <strong>Fail Early</strong> (früh scheitern), die
+          Prüfungen am Methodenanfang heißen <strong>Guard Clauses</strong> (Wächter).
+        </p>
+        <div class="two-col">
+          <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Happy Path (Teil 1 und 2)</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public void setStundenlohn(int stundenlohn) {
+    if (stundenlohn &gt; 7 &amp;&amp; stundenlohn &lt; 1000) {
+        this.stundenlohn = stundenlohn;
+    } else {
+        System.out.println("Fehler: ungueltiger Stundenlohn: "
+                           + stundenlohn);
+    }
+}</code></pre>
+</div>
+          <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Fail Early (ab Teil 3)</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public void setStundenlohn(int stundenlohn) {
+    if (stundenlohn &lt;= 7 || stundenlohn &gt;= 1000) {
+        System.out.println("Fehler: ungueltiger Stundenlohn: "
+                           + stundenlohn);
+        return;
+    }
+    this.stundenlohn = stundenlohn;
+}</code></pre>
+</div>
+        </div>
+        <div class="callout callout-tip">
+  <div class="callout-icon">&#128161;</div>
+  <div class="callout-body">
+    <div class="callout-title">Fail Early ist der modernere Weg</div>
+    <p>In aktuellem, professionellem Code ist Fail Early der übliche Stil &ndash; Code-Richtlinien und Werkzeuge zur
+          Codeanalyse empfehlen ihn ausdrücklich. Dass wir am Anfang anders vorgegangen sind, hatte
+          <strong>nur didaktische Gründe</strong>: Eine positiv formulierte Bedingung (&bdquo;gültig ist 8 bis 999&ldquo;)
+          ist für Einsteiger leichter zu lesen als ihre Umkehrung, und jede Methode hat genau einen Weg nach unten bis
+          zum Ende. <strong>Ab Teil 3 ist aller Code in diesem Kurs im Fail-Early-Stil geschrieben.</strong></p>
+  </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-2">2 &mdash; Warum? Verschachtelung vermeiden</h2>
+        <p>
+          Bei einer einzigen Prüfung ist der Unterschied klein. Richtig deutlich wird er, wenn mehrere Bedingungen
+          zusammenkommen. Hier <code>hinzufuegen</code> des Markts mit beidseitiger Assoziation aus Lektion 2.6 im Happy-Path-Stil:
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Happy Path: jede Prüfung rückt den Code weiter nach rechts</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public boolean hinzufuegen(Stand stand) {
+    boolean hinzugefuegt = false;
+    if (stand != null) {
+        if (anzahl &lt; staende.length) {
+            if (stand.getMarkt() == null) {
+                staende[anzahl++] = stand;
+                stand.setMarkt(this);
+                hinzugefuegt = true;
+            } else {
+                System.out.println("Stand steht schon auf Markt " + stand.getMarkt().getName());
+            }
+        } else {
+            System.out.println("Stand konnte nicht eingefuegt werden, kein Platz vorhanden.");
+        }
+    } else {
+        System.out.println("Fehler: uebergebener Stand ist null.");
+    }
+    return hinzugefuegt;
+}</code></pre>
+</div>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Fail Early: erst alle Fehlerfälle ausschließen, dann der normale Ablauf</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public boolean hinzufuegen(Stand stand) {
+    if (stand == null) {
+        System.out.println("Fehler: uebergebener Stand ist null.");
+        return false;
+    }
+    if (anzahl &gt;= staende.length) {
+        System.out.println("Stand konnte nicht eingefuegt werden, kein Platz vorhanden.");
+        return false;
+    }
+    if (stand.getMarkt() != null) {
+        System.out.println("Stand steht schon auf Markt " + stand.getMarkt().getName());
+        return false;
+    }
+    staende[anzahl++] = stand;
+    stand.setMarkt(this);
+    return true;
+}</code></pre>
+</div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th></th><th>Happy Path</th><th>Fail Early</th></tr></thead>
+            <tbody>
+              <tr><td>Verschachtelung</td><td>eine Ebene pro Prüfung (&bdquo;Pfeil-Code&ldquo;, der nach rechts wandert)</td><td>maximal eine Ebene</td></tr>
+              <tr><td>Fehlermeldung</td><td>weit weg von ihrer Prüfung, in umgekehrter Reihenfolge</td><td>direkt bei der Prüfung</td></tr>
+              <tr><td>normaler Ablauf</td><td>versteckt in der innersten Ebene</td><td>am Ende, ohne Einrückung, gut lesbar</td></tr>
+              <tr><td>Hilfsvariablen</td><td>oft nötig (<code>hinzugefuegt</code>)</td><td>entfallen &ndash; <code>return</code> liefert das Ergebnis sofort</td></tr>
+              <tr><td>neue Prüfung ergänzen</td><td>alles einrücken, passendes <code>else</code> suchen</td><td>eine weitere Guard Clause davorsetzen</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          Die Methode liest sich jetzt wie eine Checkliste: <em>Kein Stand? Abbruch. Kein Platz? Abbruch. Steht schon
+          woanders? Abbruch. Sonst: einfügen.</em>
+        </p>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-3">3 &mdash; Bedingungen umkehren</h2>
+        <p>
+          Beim Umbau muss die Bedingung <strong>negiert</strong> werden. Am lesbarsten ist es, sie umzuformen, statt nur
+          <code>!( &hellip; )</code> davorzuschreiben:
+        </p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>gültig, wenn &hellip;</th><th>Fehler, wenn &hellip;</th><th>Regel</th></tr></thead>
+            <tbody>
+              <tr><td><code>x &gt; 7</code></td><td><code>x &lt;= 7</code></td><td>Vergleich umdrehen: <code>&gt;</code> &harr; <code>&lt;=</code>, <code>&lt;</code> &harr; <code>&gt;=</code>, <code>==</code> &harr; <code>!=</code></td></tr>
+              <tr><td><code>name != null &amp;&amp; !name.isBlank()</code></td><td><code>name == null || name.isBlank()</code></td><td>De Morgan: aus <code>&amp;&amp;</code> wird <code>||</code>, jeder Teil wird umgekehrt</td></tr>
+              <tr><td><code>x &gt;= 1900 &amp;&amp; x &lt;= 2050</code></td><td><code>x &lt; 1900 || x &gt; 2050</code></td><td>Bereich: außerhalb heißt &bdquo;zu klein <em>oder</em> zu groß&ldquo;</td></tr>
+              <tr><td><code>firma.enthaelt(this)</code></td><td><code>!firma.enthaelt(this)</code></td><td>Methodenaufruf: <code>!</code> davor</td></tr>
+              <tr><td><code>a == null || a.isEmpty()</code></td><td><code>a != null &amp;&amp; !a.isEmpty()</code></td><td>De Morgan in die andere Richtung</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout callout-warning">
+  <div class="callout-icon">&#9888;</div>
+  <div class="callout-body">
+    <div class="callout-title">Kurzschlussauswertung beachten</div>
+    <p>In <code>name == null || name.isBlank()</code> ist die Reihenfolge wichtig: Ist <code>name</code>
+          <code>null</code>, ist die Bedingung schon wahr und <code>name.isBlank()</code> wird gar nicht mehr aufgerufen
+          &ndash; sonst gäbe es eine <code>NullPointerException</code>. Die <code>null</code>-Prüfung steht immer zuerst.</p>
+  </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-4">4 &mdash; Muster und Grenzen</h2>
+        <h3>Mit Rückgabewert</h3>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Fail Early mit return-Wert</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public int wert(int index) {
+    if (index &lt; 0 || index &gt;= anzahl) {
+        System.out.println("Fehler, ungueltiger Index: " + index);
+        return -1;
+    }
+    return werte[index];
+}</code></pre>
+</div>
+        <h3>Mit Exceptions (ab Lektion 3.1)</h3>
+        <p>Statt einer Meldung und <code>return</code> wirft die Guard Clause eine Exception &ndash; auch <code>throw</code> verlässt die Methode sofort:</p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Fail Early mit throw</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public void setName(String name) throws FirmaException {
+    if (name == null || name.isBlank()) {
+        throw new FirmaException("Fehler: ungueltiger Name: " + name);
+    }
+    this.name = name;
+}</code></pre>
+</div>
+        <h3>In Schleifen: continue</h3>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Elemente überspringen statt verschachteln</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">for (Person p : personal) {
+    if (!(p instanceof Mitarbeiter)) {
+        continue;              // nächster Schleifendurchlauf
+    }
+    // ... nur Mitarbeiter verarbeiten
+}</code></pre>
+</div>
+        <h3>Wann nicht?</h3>
+        <p>
+          Fail Early gilt für <strong>Prüfungen</strong>, nach denen die Methode nicht sinnvoll weiterarbeiten kann. Eine
+          <strong>Fallunterscheidung zwischen gleichwertigen Fällen</strong> bleibt eine <code>if</code>/<code>else if</code>-Kette
+          &ndash; etwa die Zuordnung eines Textes zu einem Wert:
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Fallunterscheidung: else if ist hier richtig</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">if (tokens[5].equals("Facharbeiter")) {
+    setFacharbeiter(true);
+} else if (tokens[5].equals("Hilfsarbeiter")) {
+    setFacharbeiter(false);
+} else {
+    throw new FirmaException("Facharbeiter/Hilfsarbeiter in 6. Spalte erwartet.");
+}</code></pre>
+</div>
+        <div class="callout callout-info">
+  <div class="callout-icon">&#8505;</div>
+  <div class="callout-body">
+    <div class="callout-title">Ein return oder mehrere?</div>
+    <p>Früher galt die Regel &bdquo;eine Methode, ein <code>return</code> am Ende&ldquo;. Heute gilt sie als überholt:
+          Mehrere <code>return</code>-Anweisungen sind unproblematisch, solange sie als Guard Clauses am Anfang stehen und
+          die Methode kurz ist.</p>
+  </div>
+</div>
+      </section>
+
+      <section class="section section-projekt">
+        <h2 id="projektschritt">Projektschritt</h2>
+<div class="projekt-box">
+  <div class="projekt-box-header">
+    <span class="projekt-step">Projektschritt 3.0</span>
+    <h3>Der Projektcode im Fail-Early-Stil</h3>
+  </div>
+<p>Für diese Lektion gibt es keinen eigenen Beispielordner: Ab dem nächsten Stand (<a href="beispiele/3.1/src/main/java/Person.java" target="_blank">beispiele/3.1/</a>) sind alle Prüfungen der Personalverwaltung &ndash; und später auch von <code>Company</code> und <code>Employee</code> &ndash; als Guard Clauses geschrieben. So sehen zwei Methoden der Personalverwaltung vorher (2.9) und nachher (3.1) aus:</p>
+  <div class="two-col">
+    <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Person.setGeburtsjahr (Stand 2.9)</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public void setGeburtsjahr(int geburtsjahr) {
+    if (istGueltigesGeburtsjahr(geburtsjahr)) {
+        this.geburtsjahr = geburtsjahr;
+    } else {
+        System.out.println("Fehler: ungueltiges Geburtsjahr: "
+                           + geburtsjahr);
+        this.geburtsjahr = 1970;
+    }
+}</code></pre>
+</div>
+    <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Person.setGeburtsjahr (Stand 3.1)</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public void setGeburtsjahr(int geburtsjahr)
+        throws FirmaException {
+    if (!istGueltigesGeburtsjahr(geburtsjahr)) {
+        throw new FirmaException(
+            "Fehler: ungueltiges Geburtsjahr: " + geburtsjahr);
+    }
+    this.geburtsjahr = geburtsjahr;
+}</code></pre>
+</div>
+  </div>
+  <div class="two-col">
+    <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Person.compareTo (Stand 2.9)</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public int compareTo(Person other) {
+    if (other != null) {
+        int c = this.getName().compareTo(other.getName());
+        if (c == 0) {
+            return this.getGeburtsjahr()
+                   - other.getGeburtsjahr();
+        } else {
+            return c;
+        }
+    } else {
+        return -1;
+    }
+}</code></pre>
+</div>
+    <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Person.compareTo (Stand 3.1)</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public int compareTo(Person other) {
+    if (other == null) {
+        throw new NullPointerException(
+            "Vergleich mit null nicht moeglich");
+    }
+    int c = this.getName().compareTo(other.getName());
+    if (c != 0) {
+        return c;
+    }
+    return this.getGeburtsjahr() - other.getGeburtsjahr();
+}</code></pre>
+</div>
+  </div>
+  <p class="mb-0">Probiere es selbst: Baue in deiner eigenen Personalverwaltung (Stand 2.9) <code>setFirma</code> und <code>Firma.kuendigen(String)</code> im Fail-Early-Stil um und lass die Tests laufen &ndash; sie müssen danach genauso grün sein wie vorher.</p>
+</div>
+      </section>
+
+      <section class="section section-fehler">
+        <h2>Häufige Fehler</h2>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: return vergessen</div>
+  <p>Die Fehlermeldung erscheint, aber der ungültige Wert wird trotzdem gesetzt.</p>
+          <p class="fehler-fix">Eine Guard Clause muss die Methode verlassen: <code>return</code> (bzw. <code>throw</code>) am Ende des Fehler-Blocks nicht vergessen.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Falsch negiert</div>
+  <p>Aus <code>x &gt;= 1900 &amp;&amp; x &lt;= 2050</code> wird <code>x &lt; 1900 &amp;&amp; x &gt; 2050</code> &ndash; diese Bedingung ist nie wahr, ungültige Werte rutschen durch.</p>
+          <p class="fehler-fix">De Morgan: Beim Umkehren wird <code>&amp;&amp;</code> zu <code>||</code> (und umgekehrt). Im Zweifel mit einem gültigen und zwei ungültigen Werten (zu klein, zu groß) testen.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: else nach return</div>
+  <p><code>if (x == null) { return; } else { &hellip; }</code> &ndash; der Code ist wieder eingerückt, der Vorteil verloren.</p>
+          <p class="fehler-fix">Nach einem <code>return</code> oder <code>throw</code> ist <code>else</code> überflüssig. Den normalen Code einfach nach dem <code>if</code>-Block schreiben.</p>
+</div>
+      </section>
+
+      <section class="section section-quiz">
+        <h2>Wissenskontrolle</h2>
+        <div class="quiz" id="quiz-21">
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 1</span> Was kennzeichnet den <strong>Fail-Early</strong>-Stil (Guard Clauses)?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-21-1"> <span>Der normale Fall steht im <code>if</code>, der Fehler ganz am Ende im <code>else</code>.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-21-1"> <span>Fehlerfälle werden am Anfang geprüft und beenden die Methode sofort; der normale Code folgt danach ohne Verschachtelung.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-21-1"> <span>Fehler werden ignoriert, damit das Programm weiterläuft.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-21-1"> <span>Jede Methode hat genau ein <code>return</code> am Ende.</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Guard Clauses klären zuerst, was nicht passieren darf (<code>if (fehler) { return; }</code> bzw. später <code>throw</code>). Danach liest sich der eigentliche Code geradlinig.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 2</span> Wie lautet die Umkehrung von <code>alter &gt;= 18</code>?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-21-2"> <span><code>alter &lt;= 18</code></span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-21-2"> <span><code>alter &lt; 18</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-21-2"> <span><code>alter &gt; 18</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-21-2"> <span><code>alter != 18</code></span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Das Gegenteil von „mindestens 18“ ist „weniger als 18“. Bei <code>&lt;=</code> wäre 18 in beiden Fällen enthalten.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 3</span> Ein gültiger Wert liegt zwischen 10 und 100: <code>wert &gt;= 10 &amp;&amp; wert &lt;= 100</code>. Welche Guard-Bedingung erkennt einen <strong>ungültigen</strong> Wert?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-21-3"> <span><code>wert &lt; 10 &amp;&amp; wert &gt; 100</code></span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-21-3"> <span><code>wert &lt; 10 || wert &gt; 100</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-21-3"> <span><code>wert &lt;= 10 || wert &gt;= 100</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-21-3"> <span><code>!(wert &gt;= 10) &amp;&amp; !(wert &lt;= 100)</code></span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Nach De Morgan wird aus der Negation von <code>A &amp;&amp; B</code> der Ausdruck <code>!A || !B</code>. Ein Wert kann nie gleichzeitig kleiner als 10 und größer als 100 sein &ndash; mit <code>&amp;&amp;</code> würde die Prüfung nie anschlagen.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 4</span> Wann bleibt eine <code>else if</code>-Kette trotz Fail Early richtig?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-21-4"> <span>nie &ndash; <code>else</code> ist ab Teil 3 verboten</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-21-4"> <span>bei einer Fallunterscheidung zwischen gleichwertigen Fällen, z.&nbsp;B. Noten oder BMI-Bereichen</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-21-4"> <span>nur in Konstruktoren</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-21-4"> <span>nur, wenn die Methode <code>void</code> ist</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Guard Clauses sind für Fehlerfälle gedacht. Sind alle Zweige normale, gleichberechtigte Fälle, ist <code>else if</code> die klarste Schreibweise.</div>
+  </div>
+  <div class="quiz-summary"><span class="quiz-score"></span><button type="button" class="quiz-reset">Zur&uuml;cksetzen</button></div>
+</div>
+      </section>
+
+    </div>
+
+    <nav class="lesson-nav">
+      <a class="nav-btn" href="2.9-abstrakt-interfaces.html">&larr; Lektion 2.9: Abstrakte Klassen &amp; Interfaces</a>
+      <span class="nav-center-info">Lektion 3.0</span>
+      <a class="nav-btn primary" href="3.1-exceptions.html">Lektion 3.1: Exceptions &rarr;</a>
+    </nav>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>
+    const ham = document.getElementById('hamburger');
+    const sb = document.getElementById('sidebar');
+    const ov = document.getElementById('overlay');
+    ham.addEventListener('click', () => { sb.classList.toggle('open'); ov.classList.toggle('visible'); });
+    ov.addEventListener('click', () => { sb.classList.remove('open'); ov.classList.remove('visible'); });
+    const cur = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-link').forEach(l => {
+      if (l.getAttribute('href') === cur) l.classList.add('active');
+    });
+    const themeBtn = document.getElementById('theme-toggle');
+    const applyTheme = (t) => {
+      document.documentElement.setAttribute('data-theme', t);
+      if (themeBtn) themeBtn.innerHTML = t === 'dark' ? '&#9728;' : '&#9790;';
+    };
+    applyTheme(localStorage.getItem('kurs-theme') || 'dark');
+    setTimeout(() => document.documentElement.classList.add('theme-transitions'), 50);
+    if (themeBtn) themeBtn.addEventListener('click', () => {
+      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('kurs-theme', next);
+      applyTheme(next);
+    });
+    hljs.highlightAll();
+  </script>
+  <script>
+    document.querySelectorAll('.quiz').forEach((quiz) => {
+      const fragen = [...quiz.querySelectorAll('.quiz-frage')];
+      const score = quiz.querySelector('.quiz-score');
+      const update = () => {
+        const done = fragen.filter((f) => f.dataset.state).length;
+        const ok = fragen.filter((f) => f.dataset.state === 'ok').length;
+        score.textContent = done === 0
+          ? fragen.length + ' Fragen – wähle eine Antwort und prüfe sie.'
+          : ok + ' von ' + fragen.length + ' richtig'
+            + (done < fragen.length ? ' (' + done + ' von ' + fragen.length + ' bearbeitet)' : '');
+      };
+      fragen.forEach((f) => {
+        const inputs = [...f.querySelectorAll('input')];
+        const check = f.querySelector('.quiz-check');
+        const reveal = f.querySelector('.quiz-reveal');
+        const fb = f.querySelector('.quiz-feedback');
+        const exp = f.querySelector('.quiz-erklaerung');
+        inputs.forEach((i) => i.addEventListener('change', () => {
+          check.disabled = !inputs.some((x) => x.checked);
+        }));
+        const finish = (graded) => {
+          let allOk = true;
+          f.querySelectorAll('.quiz-opt').forEach((li) => {
+            const input = li.querySelector('input');
+            const corr = li.dataset.correct === '1';
+            if (corr !== input.checked) allOk = false;
+            if (corr) li.classList.add('opt-correct');
+            else if (input.checked) li.classList.add('opt-wrong');
+            input.disabled = true;
+          });
+          f.dataset.state = !graded ? 'shown' : (allOk ? 'ok' : 'wrong');
+          fb.className = 'quiz-feedback fb-' + f.dataset.state;
+          fb.textContent = !graded ? 'Lösung angezeigt.'
+            : (allOk ? '✔ Richtig!' : '✘ Leider nicht ganz – die richtige Lösung ist markiert.');
+          fb.hidden = false;
+          exp.hidden = false;
+          check.disabled = true;
+          reveal.disabled = true;
+          update();
+        };
+        check.addEventListener('click', () => finish(true));
+        reveal.addEventListener('click', () => finish(false));
+      });
+      quiz.querySelector('.quiz-reset').addEventListener('click', () => {
+        fragen.forEach((f) => {
+          delete f.dataset.state;
+          f.querySelectorAll('.quiz-opt').forEach((li) => li.classList.remove('opt-correct', 'opt-wrong'));
+          f.querySelectorAll('input').forEach((i) => { i.checked = false; i.disabled = false; });
+          f.querySelector('.quiz-check').disabled = true;
+          f.querySelector('.quiz-reveal').disabled = false;
+          f.querySelector('.quiz-feedback').hidden = true;
+          f.querySelector('.quiz-erklaerung').hidden = true;
+        });
+        update();
+      });
+      update();
+    });
+  </script>
+</body>
+
+</html>

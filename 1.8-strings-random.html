@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<!-- GENERIERT von java/kurs/_build (java-grundlagen) – nicht direkt bearbeiten!
+     Quelle: java/kurs/_build/java-grundlagen/lessons/, bauen: python3 _build/build.py java-grundlagen -->
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1.8 &ndash; Strings &amp; Random | Java-Grundlagen Kurs</title>
+  <script>(function () { var t = localStorage.getItem('kurs-theme') || 'dark'; document.documentElement.setAttribute('data-theme', t); })();</script>
+  <link rel="stylesheet" href="assets/kurs.css">
+  <link rel="stylesheet" id="hljs-theme"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+
+<body>
+
+  <button class="hamburger" id="hamburger" aria-label="Navigation &ouml;ffnen">&#9776;</button>
+  <div class="sidebar-overlay" id="overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html">
+        <span class="brand-icon">J</span>
+        <div>
+          <div class="brand-name">Java</div>
+          <div class="brand-sub">Grundlagen der Programmierung</div>
+        </div>
+      </a>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Dark/Light Mode"
+        title="Theme wechseln">&#9728;</button>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-group">
+        <div class="nav-group-label html-label">Teil 1 &mdash; Grundlagen</div>
+        <a class="nav-link" href="1.1-einfuehrung-entwicklungsumgebung.html"><span class="ln">1.1</span>Einf&uuml;hrung &amp; Entwicklungsumgebung</a>
+        <a class="nav-link" href="1.2-klassen-objekte.html"><span class="ln">1.2</span>Klassen, Objekte, Get &amp; Set</a>
+        <a class="nav-link" href="1.3-konstruktoren-methoden.html"><span class="ln">1.3</span>Konstruktoren, this &amp; Methoden</a>
+        <a class="nav-link" href="1.4-datentypen.html"><span class="ln">1.4</span>Datentypen</a>
+        <a class="nav-link" href="1.5-signatur-ueberladen.html"><span class="ln">1.5</span>Methoden, Signatur &amp; &Uuml;berladen</a>
+        <a class="nav-link" href="1.6-bedingungen-berechnungen.html"><span class="ln">1.6</span>Bedingungen &amp; Berechnungen</a>
+        <a class="nav-link" href="1.7-debugger-testklassen.html"><span class="ln">1.7</span>Debugger &amp; Testklassen</a>
+        <a class="nav-link" href="1.8-strings-random.html"><span class="ln">1.8</span>Strings &amp; Random</a>
+        <a class="nav-link" href="1.9-objekt-beziehungen.html"><span class="ln">1.9</span>Objekt-Beziehungen</a>
+        <a class="nav-link" href="1.10-schleifen.html"><span class="ln">1.10</span>Schleifen</a>
+        <a class="nav-link" href="1.11-statische-methoden.html"><span class="ln">1.11</span>Statische Methoden &amp; main</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label css-label">Teil 2 &mdash; Datenstrukturen &amp; OOP</div>
+        <a class="nav-link" href="2.1-intellij-junit.html"><span class="ln">2.1</span>IntelliJ, Maven &amp; JUnit</a>
+        <a class="nav-link" href="2.2-arrays.html"><span class="ln">2.2</span>Arrays</a>
+        <a class="nav-link" href="2.3-arrays-einfuegen-entfernen.html"><span class="ln">2.3</span>Arrays: Einf&uuml;gen &amp; Entfernen</a>
+        <a class="nav-link" href="2.4-sortieralgorithmen.html"><span class="ln">2.4</span>Sortieralgorithmen</a>
+        <a class="nav-link" href="2.5-objekt-arrays.html"><span class="ln">2.5</span>Objekt-Arrays</a>
+        <a class="nav-link" href="2.6-assoziation-equals.html"><span class="ln">2.6</span>Beidseitige Assoziation &amp; equals</a>
+        <a class="nav-link" href="2.7-collections.html"><span class="ln">2.7</span>Collections: ArrayList &amp; Co.</a>
+        <a class="nav-link" href="2.8-vererbung.html"><span class="ln">2.8</span>Vererbung &amp; Polymorphismus</a>
+        <a class="nav-link" href="2.9-abstrakt-interfaces.html"><span class="ln">2.9</span>Abstrakte Klassen &amp; Interfaces</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label rn-label">Teil 3 &mdash; Fortgeschrittene Konzepte</div>
+        <a class="nav-link" href="3.0-fail-early.html"><span class="ln">3.0</span>Fail Early statt Happy Path</a>
+        <a class="nav-link" href="3.1-exceptions.html"><span class="ln">3.1</span>Exceptions</a>
+        <a class="nav-link" href="3.2-hashset-treeset.html"><span class="ln">3.2</span>HashSet, TreeSet &amp; hashCode</a>
+        <a class="nav-link" href="3.3-serialisierung-dateien.html"><span class="ln">3.3</span>Serialisierung &amp; Dateien</a>
+        <a class="nav-link" href="3.4-git.html"><span class="ln">3.4</span>Versionsverwaltung mit Git</a>
+        <a class="nav-link" href="3.5-lambdas.html"><span class="ln">3.5</span>Lambda-Ausdr&uuml;cke</a>
+        <a class="nav-link" href="3.6-streams.html"><span class="ln">3.6</span>Die Streams-API</a>
+        <a class="nav-link" href="3.7-design-patterns.html"><span class="ln">3.7</span>Design-Patterns</a>
+        <a class="nav-link" href="3.8-model-klassen.html"><span class="ln">3.8</span>Model-Klassen f&uuml;r die GUI</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label react-label">Teil 4 &mdash; Webanwendungen mit Vaadin</div>
+        <a class="nav-link" href="4.1-web-grundlagen.html"><span class="ln">4.1</span>Grundprinzipien des Web</a>
+        <a class="nav-link" href="4.2-vaadin-einstieg.html"><span class="ln">4.2</span>Vaadin Flow &amp; Start-Paket</a>
+        <a class="nav-link" href="4.3-komponenten-layouts.html"><span class="ln">4.3</span>Komponenten &amp; Layouts</a>
+        <a class="nav-link" href="4.4-grid-routing-binding.html"><span class="ln">4.4</span>Tabellen, Routing &amp; Binding</a>
+        <a class="nav-link" href="4.5-mitarbeiterverwaltung.html"><span class="ln">4.5</span>Mitarbeiterverwaltung</a>
+      </div>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <header class="lesson-header">
+      <p class="lesson-eyebrow">Lektion 1.8 &mdash; Teil 1: Grundlagen</p>
+      <h1>Strings &amp; Random</h1>
+      <div class="lesson-tags">
+        <span class="tag tag-html">Strings, Random</span>
+        <span class="tag tag-time">ca. 2 &times; 90 min</span>
+        <span class="tag tag-level">Grundlagen</span>
+      </div>
+    </header>
+
+    <div class="content-area">
+      <section class="section section-lernziele">
+        <h2>Lernziele</h2>
+        <ul class="lernziele-list">
+          <li><a class="lernziel-link" href="#abschnitt-1">in der Java-API-Dokumentation Klassen und Methoden nachschlagen<span class="lernziel-ziel">Abschnitt 1</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-2">die wichtigsten Methoden der Klasse <code>String</code> anwenden (<code>length</code>, <code>charAt</code>, <code>indexOf</code>, <code>substring</code>, <code>strip</code>, <code>contains</code>, &hellip;)<span class="lernziel-ziel">Abschnitt 2</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-3">einzelne Zeichen (<code>char</code>) eines Strings untersuchen und vergleichen<span class="lernziel-ziel">Abschnitt 3</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-4">Laufzeitfehler bei zu kurzen oder <code>null</code>-Strings durch Prüfungen vermeiden<span class="lernziel-ziel">Abschnitt 4</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-5">erklären, warum Strings mit <code>equals</code> und nicht mit <code>==</code> verglichen werden<span class="lernziel-ziel">Abschnitt 5</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-5">den String-Pool als Besonderheit von <code>String</code> beschreiben<span class="lernziel-ziel">Abschnitt 5</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-6">mit <code>import java.util.Random</code> Pseudo-Zufallszahlen erzeugen<span class="lernziel-ziel">Abschnitt 6</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-6">das aktuelle Jahr mit <code>LocalDate</code> ermitteln<span class="lernziel-ziel">Abschnitt 6</span></a></li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-1">1 &mdash; Die Java-API-Dokumentation</h2>
+        <p>
+          Die Klasse <code>String</code> ist Teil der Java-Bibliothek und enthält zahlreiche nützliche Methoden
+          zur Bearbeitung und Analyse von Zeichenketten. Alle Strings sind Instanzen dieser Klasse &ndash; mit
+          einigen Besonderheiten, auf die Abschnitt 5 eingeht.
+        </p>
+        <p>
+          Die verfügbaren Methoden sind in der <strong>Java API</strong> (<em>Application Programming
+          Interface</em>) Dokumentation aufgelistet, in der alle Klassen der Java-Bibliothek ausführlich
+          beschrieben sind:
+          <a href="https://docs.oracle.com/en/java/javase/25/docs/api/index.html">docs.oracle.com/en/java/javase/25/docs/api</a>.
+        </p>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/java-api.png" alt="Startseite der Java-API-Dokumentation" loading="lazy" style="max-width:640px"></div>
+  <figcaption>Startseite der Java-API-Dokumentation</figcaption>
+</figure>
+        <p>
+          Rechts oben kann nach Klassen gesucht werden. Wähle <code>java.lang.String</code> oder folge direkt dem
+          Link <a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/String.html">java.lang.String</a>.
+          Zunächst findet sich eine genaue Beschreibung des Zwecks der Klasse &ndash; vieles davon wird erst mit
+          mehr technischem Verständnis hilfreich. Ein Klick auf <em>Method</em> in der Menüleiste führt zur Liste
+          aller Methoden.
+        </p>
+        <div class="figure-row">
+          <figure class="figure">
+  <div class="figure-img"><img src="assets/img/java-api-string-1.png" alt="Beschreibung der Klasse String" loading="lazy" style="max-width:420px"></div>
+  <figcaption>Beschreibung der Klasse String</figcaption>
+</figure>
+          <figure class="figure">
+  <div class="figure-img"><img src="assets/img/java-api-string-2.png" alt="Übersicht der Methoden (Method Summary)" loading="lazy" style="max-width:420px"></div>
+  <figcaption>Übersicht der Methoden (Method Summary)</figcaption>
+</figure>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-2">2 &mdash; Wichtige String-Methoden</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Methode</th><th>Beschreibung</th><th>Beispiel mit <code>s = " Karl Maier "</code></th></tr></thead>
+            <tbody>
+              <tr><td><code>int length()</code></td><td>Länge des Strings</td><td><code>s.length()</code> &rarr; 12</td></tr>
+              <tr><td><code>char charAt(int index)</code></td><td>Zeichen an der Stelle <code>index</code> (erste Stelle hat Index 0!), sofern vorhanden</td><td><code>s.charAt(1)</code> &rarr; <code>'K'</code></td></tr>
+              <tr><td><code>int indexOf(String str)</code></td><td>Stelle des ersten Vorkommens von <code>str</code>, sonst -1</td><td><code>s.indexOf("M")</code> &rarr; 6</td></tr>
+              <tr><td><code>boolean contains(String str)</code></td><td>kommt <code>str</code> im String vor?</td><td><code>s.contains("ai")</code> &rarr; <code>true</code></td></tr>
+              <tr><td><code>String substring(int von, int bis)</code></td><td>Teilstring von <code>von</code> (inklusive) bis <code>bis</code> (exklusive)</td><td><code>s.substring(1, 5)</code> &rarr; <code>"Karl"</code></td></tr>
+              <tr><td><code>String strip()</code> / <code>trim()</code></td><td>Leerzeichen am Beginn und Ende werden abgeschnitten (<code>strip</code> seit Java 11, erkennt auch exotischere Leerzeichen)</td><td><code>s.strip()</code> &rarr; <code>"Karl Maier"</code></td></tr>
+              <tr><td><code>String toLowerCase()</code> / <code>toUpperCase()</code></td><td>neuer String nur mit Klein- bzw. Großbuchstaben</td><td><code>s.toUpperCase()</code> &rarr; <code>" KARL MAIER "</code></td></tr>
+              <tr><td><code>String replace(String alt, String neu)</code></td><td>ersetzt jedes Vorkommen von <code>alt</code> durch <code>neu</code></td><td><code>s.replace(" ", "_")</code> &rarr; <code>"_Karl_Maier_"</code></td></tr>
+              <tr><td><code>boolean isEmpty()</code></td><td>ist der String leer (Länge 0)?</td><td><code>"".isEmpty()</code> &rarr; <code>true</code></td></tr>
+              <tr><td><code>boolean isBlank()</code></td><td>leer oder nur Leerzeichen? (seit Java 11)</td><td><code>"  ".isBlank()</code> &rarr; <code>true</code></td></tr>
+              <tr><td><code>boolean equals(Object o)</code></td><td>inhaltlicher Vergleich</td><td><code>"Karl".equals(s.strip())</code> &rarr; <code>false</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout callout-info">
+  <div class="callout-icon">&#8505;</div>
+  <div class="callout-body">
+    <div class="callout-title">Strings sind unveränderlich</div>
+    <p>Keine dieser Methoden verändert den ursprünglichen String &ndash; sie liefern einen <em>neuen</em>.
+          <code>s.toUpperCase();</code> allein bewirkt nichts; richtig ist <code>s = s.toUpperCase();</code>.</p>
+  </div>
+</div>
+        <p>
+          Methoden lassen sich auch <strong>verketten</strong>: Jede Methode liefert einen neuen String, auf dem
+          gleich die nächste aufgerufen werden kann.
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Verkettung</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">String s = " Karl Maier ";
+String kurz = s.strip().substring(0, 3).toUpperCase();   // "KAR"
+int laenge = s.strip().length();                         // 10</code></pre>
+</div>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-3">3 &mdash; Einzelne Zeichen untersuchen</h2>
+        <p>
+          <code>charAt</code> liefert ein einzelnes Zeichen vom Typ <code>char</code> (Lektion 1.4). Hinter jedem
+          <code>char</code> steht ein Zahlencode: <code>'A'</code> ist 65, <code>'B'</code> 66, &hellip;,
+          <code>'a'</code> 97 usw. Die Buchstaben <code>'A'</code>&ndash;<code>'Z'</code>, <code>'a'</code>&ndash;<code>'z'</code>
+          und die Ziffern <code>'0'</code>&ndash;<code>'9'</code> liegen jeweils lückenlos hintereinander. Deshalb kann
+          man <code>char</code>-Werte mit <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code>
+          und <code>==</code> vergleichen:
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Zeichen vergleichen</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">// liefert true, wenn c eine Ziffer ist
+public boolean istZiffer(char c) {
+    return c &gt;= '0' &amp;&amp; c &lt;= '9';
+}
+
+// liefert true, wenn der Text mit einem Grossbuchstaben beginnt
+public boolean beginntGross(String text) {
+    if (text != null &amp;&amp; text.length() &gt; 0) {
+        char erstes = text.charAt(0);
+        return erstes &gt;= 'A' &amp;&amp; erstes &lt;= 'Z';
+    } else {
+        return false;
+    }
+}</code></pre>
+</div>
+        <p>
+          Die Umlaute (<code>'ä'</code>, <code>'Ö'</code>, &hellip;) und <code>'ß'</code> liegen <em>nicht</em> in diesen
+          Bereichen und müssen bei Bedarf einzeln geprüft werden (<code>c == 'ä' || c == 'ö' || &hellip;</code>).
+          Die Klasse <code>Character</code> bietet fertige Methoden wie <code>Character.isLetter(c)</code> oder
+          <code>Character.isDigit(c)</code> &ndash; selbst geschrieben versteht man aber besser, was passiert.
+        </p>
+        <h3>char und String verknüpfen</h3>
+        <p>
+          Wird ein <code>char</code> mit <code>+</code> an einen String gehängt, entsteht ein String. Werden aber zwei
+          <code>char</code>s addiert, rechnet Java mit den Zahlencodes:
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Vorsicht bei char + char</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">String name = "Karl";
+String a = name.charAt(0) + ".";               // "K."   (char + String = String)
+int b = name.charAt(0) + name.charAt(1);       // 172   (75 + 97, char + char = int!)
+String c = "" + name.charAt(0) + name.charAt(1); // "Ka" (zuerst String, dann anhaengen)
+String d = name.substring(0, 1).toUpperCase(); // "K"  (Teilstring, kein char)</code></pre>
+</div>
+        <p>
+          Für Groß-/Kleinschreibung ist <code>substring</code> oft praktischer als <code>charAt</code>, weil
+          <code>toUpperCase()</code> und <code>toLowerCase()</code> Methoden von <code>String</code> sind.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-4">4 &mdash; Beispiel: Person mit Vor- und Nachnamen</h2>
+        <p>
+          Die folgende Klasse modelliert eine Person mit Vor- und Nachnamen. Neben Konstruktoren und
+          Get-/Set-Methoden enthält sie Methoden, die String-Methoden verwenden.
+        </p>
+        <details class="code-collapse">
+  <summary><span class="code-filename">Person.java</span> <span class="code-collapse-hint">Code anzeigen (66 Zeilen)</span></summary>
+<div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Person.java</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public class Person {
+
+    private String vorname;
+    private String nachname;
+
+    public Person() {
+        setVorname("Max");
+        setNachname("Mustermann");
+    }
+
+    public Person(String vorname, String nachname) {
+        setVorname(vorname);
+        setNachname(nachname);
+    }
+
+    // Get/Set-Methoden
+    public String getVorname() {
+        return vorname;
+    }
+
+    public void setVorname(String vorname) {
+        if (vorname != null) {
+            this.vorname = vorname;
+        } else {
+            System.out.println("Fehler, vorname ist null");
+        }
+    }
+
+    public String getNachname() {
+        return nachname;
+    }
+
+    public void setNachname(String nachname) {
+        if (nachname != null) {
+            this.nachname = nachname;
+        } else {
+            System.out.println("Fehler, nachname ist null");
+        }
+    }
+
+    public String gesamterName() {
+        return vorname + " " + nachname;
+    }
+
+    public int laengeGesamterName() {
+        return gesamterName().length();
+    }
+
+    public String initialien() {
+        if (this.vorname.length() &gt; 0 &amp;&amp; this.nachname.length() &gt; 0) {
+            return this.vorname.charAt(0) + ". " + this.nachname.charAt(0) + ".";
+        } else {
+            System.out.println("Fehler, Vor- oder Nachname ist leer!");
+            return "n/a";
+        }
+    }
+
+    public String kuerzel() {
+        if (nachname.length() &gt;= 2 &amp;&amp; vorname.length() &gt;= 1) {
+            return nachname.substring(0, 2).toUpperCase() + this.vorname.charAt(0);
+        } else {
+            System.out.println("Fehler, kann Kuerzel nicht berechnen.");
+            return "n/a";
+        }
+    }
+}</code></pre>
+</div>
+</details>
+        <ul>
+          <li><code>laengeGesamterName()</code> gibt die Länge des Strings zurück, den <code>gesamterName()</code> liefert.</li>
+          <li><code>initialien()</code>: <code>charAt(0)</code> liefert jeweils den ersten Buchstaben. Mit <code>+</code> werden diese <code>char</code>s mit <code>". "</code> verknüpft und dabei implizit zu Strings umgewandelt. Vorher muss geprüft werden, ob beide Strings mindestens ein Zeichen haben &ndash; sonst liefert <code>charAt(0)</code> einen Laufzeitfehler.</li>
+          <li><code>kuerzel()</code> ermittelt ein Kürzel aus drei Großbuchstaben, die ersten zwei vom Nachnamen (Maier, Karl &rarr; <code>MAK</code>). Auch hier müssen die Strings lang genug sein.</li>
+        </ul>
+        <p>
+          Generell dürfen die String-Objekte, auf denen Methoden aufgerufen werden, nicht <code>null</code>
+          sein &ndash; sonst <code>NullPointerException</code>. Die Prüfungen in Konstruktoren und Set-Methoden
+          stellen das für diese Klasse bereits sicher; daher ist <code>!= null</code> in den anderen Methoden
+          nicht mehr nötig, was den Code übersichtlicher macht.
+        </p>
+        <div class="callout callout-tip">
+  <div class="callout-icon">&#128161;</div>
+  <div class="callout-body">
+    <div class="callout-title">Reihenfolge der Prüfungen</div>
+    <p>Soll ein Name ohne Leerzeichen am Rand mindestens 2 Zeichen haben, muss <em>zuerst</em> auf
+          <code>null</code> geprüft werden:
+          <code>if (name != null &amp;&amp; name.strip().length() &gt;= 2)</code>. Ist die linke Seite von
+          <code>&amp;&amp;</code> <code>false</code>, wertet Java die rechte gar nicht mehr aus
+          (<strong>Kurzschlussauswertung</strong>) &ndash; <code>strip()</code> wird also nie auf <code>null</code>
+          aufgerufen.</p>
+  </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-5">5 &mdash; Besonderheiten von <code>String</code></h2>
+        <p>
+          Neue Strings erzeugt man nicht mit dem Konstruktor (<code>String s = new String("ein Text");</code>),
+          sondern einfach mit <code>String s = "ein Text";</code>. Im Hintergrund verwaltet Java alle
+          String-Literale und vermeidet, dass gleiche Werte mehrfach gespeichert werden (<strong>String-Pool</strong>).
+        </p>
+        <p>
+          Für Inhaltsgleichheit muss <code>equals</code> verwendet werden. Vielleicht hast du bemerkt, dass auch
+          <code>==</code> oft zu funktionieren <em>scheint</em>! <code>==</code> prüft bei Referenztypen aber, ob es
+          sich um <em>dasselbe Objekt</em> handelt, nicht ob der Inhalt gleich ist. Wegen des String-Pools liegt bei
+          Inhaltsgleichheit oft auch Objektgleichheit vor &ndash; aber nicht immer:
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">StringVergleich</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">String a = "xyz";
+String b = "xy";
+b += "z";
+
+System.out.println("a: " + a);
+System.out.println("b: " + b);
+
+// dieser Stringvergleich funktioniert nicht
+System.out.println("a == b: " + (a == b));
+System.out.println("a.equals(b): " + a.equals(b));
+
+String c = "xyz";
+System.out.println("a: " + a);
+System.out.println("c: " + c);
+
+// In diesem Fall liefert auch der ==-Operator das
+// gewuenschte Ergebnis
+System.out.println("a == c: " + (a == c));
+System.out.println("a.equals(c): " + a.equals(c));</code></pre>
+</div>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Ausgabe</span>
+    <span class="code-lang">Text</span>
+  </div>
+  <pre><code class="language-plaintext">a: xyz
+b: xyz
+a == b: false
+a.equals(b): true
+a: xyz
+c: xyz
+a == c: true
+a.equals(c): true</code></pre>
+</div>
+        <p>
+          Durch <code>b += "z";</code> entsteht ein <em>neues</em> String-Objekt: <code>b</code> hat denselben
+          Inhalt wie <code>a</code> (<code>equals</code> liefert <code>true</code>), ist aber nicht dieselbe Instanz.
+        </p>
+        <div class="callout callout-tip">
+  <div class="callout-icon">&#128161;</div>
+  <div class="callout-body">
+    <div class="callout-title">Merksatz</div>
+    <p>Strings (und alle Objekte) <strong>immer mit <code>equals</code></strong> vergleichen. Steht ein Literal
+          zur Verfügung, schreibe es nach vorne: <code>"Karl".equals(name)</code> stürzt auch dann nicht ab, wenn
+          <code>name</code> <code>null</code> ist. Einzelne Zeichen (<code>char</code>) sind dagegen primitive Werte
+          und werden mit <code>==</code> verglichen: <code>c == 'x'</code>.</p>
+  </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-6">6 &mdash; Die Klasse Random</h2>
+        <p>
+          <code>Random</code> enthält den Zufallszahlengenerator der Java-Bibliothek. Genau genommen sind es
+          <strong>Pseudo-Zufallszahlen</strong>: Zahlen mit ähnlichen Eigenschaften wie echte Zufallszahlen, von
+          ihnen kaum unterscheidbar. Der Computer selbst arbeitet deterministisch, echten Zufall gibt es auf ihm
+          nicht &ndash; für die meisten Zwecke sind Pseudo-Zufallszahlen aber absolut ausreichend.
+        </p>
+        <p>Um <code>Random</code> zu verwenden, muss die Klasse am Beginn der Datei <strong>importiert</strong> werden:</p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Wuerfel.java</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">import java.util.Random;
+
+public class Wuerfel {
+
+    private Random rnd;
+
+    public Wuerfel() {
+        rnd = new Random();
+    }
+
+    public int wuerfeln() {
+        return rnd.nextInt(6) + 1;      // nextInt(6): 0..5, also +1 -&gt; 1..6
+    }
+
+    public double zufallsTemperatur() {
+        return 50.0 * rnd.nextDouble() - 20.0;   // nextDouble(): 0.0 &lt;= x &lt; 1.0
+    }
+
+    public String losnummer() {
+        // drei zufaellige Ziffern an einen String haengen
+        return "LOS-" + rnd.nextInt(10) + rnd.nextInt(10) + rnd.nextInt(10);
+    }
+}</code></pre>
+</div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Methode</th><th>liefert</th></tr></thead>
+            <tbody>
+              <tr><td><code>nextInt(n)</code></td><td>ganze Zahl von 0 bis <code>n - 1</code></td></tr>
+              <tr><td><code>nextDouble()</code></td><td>Kommazahl von 0.0 (inklusive) bis 1.0 (exklusive)</td></tr>
+              <tr><td><code>nextBoolean()</code></td><td><code>true</code> oder <code>false</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <ul>
+          <li>Für einen Bereich von <code>a</code> bis <code>b</code>: <code>a + rnd.nextInt(b - a + 1)</code>, z.&nbsp;B. <code>1 + rnd.nextInt(6)</code> für 1 bis 6.</li>
+          <li><code>"LOS-" + rnd.nextInt(10) + &hellip;</code>: Weil links schon ein String steht, wird jede Zahl <em>angehängt</em> und nicht addiert.</li>
+        </ul>
+        <div class="callout callout-info">
+  <div class="callout-icon">&#8505;</div>
+  <div class="callout-body">
+    <div class="callout-title">Warum import, aber nicht bei String?</div>
+    <p>Klassen aus dem Paket <code>java.lang</code> (<code>String</code>, <code>Math</code>, <code>System</code>, &hellip;)
+          sind automatisch verfügbar. Alle anderen &ndash; z.&nbsp;B. <code>java.util.Random</code> &ndash; müssen
+          importiert werden. IntelliJ ergänzt den Import mit <kbd>Alt</kbd>+<kbd>Enter</kbd>.</p>
+  </div>
+</div>
+        <h3>Das aktuelle Jahr</h3>
+        <p>
+          Ebenfalls importiert werden muss <code>java.time.LocalDate</code>. <code>LocalDate.now()</code> liefert das
+          heutige Datum, <code>getYear()</code> daraus das Jahr. So muss die Jahreszahl nicht fix im Code stehen:
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Aktuelles Jahr</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">import java.time.LocalDate;
+// ...
+int jahr = LocalDate.now().getYear();   // z. B. 2026</code></pre>
+</div>
+      </section>
+
+      <section class="section section-projekt">
+        <h2 id="projektschritt">Projektschritt</h2>
+<div class="projekt-box">
+  <div class="projekt-box-header">
+    <span class="projekt-step">Projektschritt 1.8</span>
+    <h3>Initialen und Kürzel</h3>
+  </div>
+<p>Der Name eines Mitarbeiters darf jetzt weder <code>null</code> noch leer sein (<code>isBlank()</code>) und wird mit <code>trim()</code> bereinigt. Dazu kommen <code>initialen()</code> (&bdquo;Karl Maier&ldquo; &rarr; &bdquo;K. M.&ldquo;) und <code>kuerzel()</code> (&rarr; &bdquo;KAR&ldquo;); <code>print()</code> gibt das Kürzel mit aus. Die JUnit-Tests bekommen eine Methode <code>testStrings</code>.</p>
+  <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">src/main/java/Mitarbeiter.java (Auszug)</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public void setName(String name) {
+    // isBlank() liefert true bei "" und bei reinen Leerzeichen
+    if (name != null &amp;&amp; !name.isBlank()) {
+        this.name = name.trim();
+    } else {
+        System.out.println("Fehler: ungueltiger Name: " + name);
+        this.name = "n/a";
+    }
+}
+
+// "Karl Maier" -&gt; "K. M."
+public String initialen() {
+    int leerzeichen = name.indexOf(" ");
+    if (leerzeichen &gt; 0 &amp;&amp; leerzeichen &lt; name.length() - 1) {
+        return name.charAt(0) + ". " + name.charAt(leerzeichen + 1) + ".";
+    } else {
+        return name.charAt(0) + ".";
+    }
+}
+
+// "Karl Maier" -&gt; "KAR"
+public String kuerzel() {
+    if (name.length() &gt;= 3) {
+        return name.substring(0, 3).toUpperCase();
+    } else {
+        return name.toUpperCase();
+    }
+}</code></pre>
+</div>
+  <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">src/test/java/MitarbeiterTest.java (neue Testmethode)</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">@Test
+public void testStrings() {
+    assertEquals("K. M.", m.initialen());
+    assertEquals("KAR", m.kuerzel());
+    m.setName("   ");                 // nur Leerzeichen -&gt; ungueltig
+    assertEquals("n/a", m.getName());
+}</code></pre>
+</div>
+  <p class="mb-0">&#128193; Stand nach dieser Lektion: <a href="beispiele/1.8/src/main/java/Mitarbeiter.java" target="_blank">beispiele/1.8/</a></p>
+</div>
+      </section>
+
+      <section class="section section-fehler">
+        <h2>Häufige Fehler</h2>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Strings mit == verglichen</div>
+  <p><code>if (name == "Karl")</code> funktioniert manchmal, manchmal nicht &ndash; je nachdem, wie der String entstanden ist.</p>
+          <p class="fehler-fix">Immer <code>"Karl".equals(name)</code> bzw. <code>name.equals(&hellip;)</code> verwenden (bei Bedarf <code>equalsIgnoreCase</code>).</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: StringIndexOutOfBoundsException</div>
+  <p><code>nachname.substring(0, 2)</code> oder <code>charAt(0)</code> stürzt bei einem leeren oder einbuchstabigen Namen ab.</p>
+          <p class="fehler-fix">Vorher die Länge prüfen (<code>length() &gt;= 2</code>). Indizes laufen von 0 bis <code>length() - 1</code>; bei <code>substring</code> ist das Ende exklusiv.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: NullPointerException bei der Prüfung</div>
+  <p><code>if (name.strip().length() &gt;= 2 &amp;&amp; name != null)</code> stürzt ab, wenn <code>name</code> <code>null</code> ist.</p>
+          <p class="fehler-fix">Die <code>null</code>-Prüfung muss <em>links</em> von <code>&amp;&amp;</code> stehen: <code>name != null &amp;&amp; name.strip().length() &gt;= 2</code>.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Ergebnis einer String-Methode verworfen</div>
+  <p>Nach <code>name.strip();</code> enthält <code>name</code> immer noch die Leerzeichen.</p>
+          <p class="fehler-fix">Strings sind unveränderlich. Das Ergebnis zuweisen: <code>name = name.strip();</code>.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Zahl statt Buchstaben</div>
+  <p><code>vorname.charAt(0) + nachname.charAt(0)</code> liefert z.&nbsp;B. <code>154</code> statt <code>"MM"</code>.</p>
+          <p class="fehler-fix"><code>char + char</code> addiert die Zahlencodes. Mit einem String beginnen: <code>"" + vorname.charAt(0) + nachname.charAt(0)</code>, oder <code>substring(0, 1)</code> verwenden.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Random ohne import</div>
+  <p><code>cannot find symbol: class Random</code>.</p>
+          <p class="fehler-fix"><code>import java.util.Random;</code> an den Anfang der Datei (vor <code>public class</code>) schreiben &ndash; IntelliJ ergänzt das mit <kbd>Alt</kbd>+<kbd>Enter</kbd>.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Würfel liefert 0 oder nie 6</div>
+  <p><code>rnd.nextInt(6)</code> liefert 0 bis 5, <code>rnd.nextInt(5) + 1</code> nur 1 bis 5.</p>
+          <p class="fehler-fix"><code>nextInt(n)</code> liefert Werte von 0 bis <code>n-1</code>. Für 1 bis 6: <code>rnd.nextInt(6) + 1</code>.</p>
+</div>
+      </section>
+
+      <section class="section section-aufgaben">
+        <h2>Aufgaben</h2>
+        <div class="aufgaben-list">
+          <div class="aufgabe">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Aufgabe 1</span>
+    <span class="aufgabe-title">Klasse Student</span>
+  </div>
+  <p>Eine Klasse <code>Student</code> mit Vor- und Nachnamen, Geschlecht (<code>char</code>), Geburtsjahr und Inskriptionsstatus: String-Methoden für Initialen, Doppelnamen und Anrede, Altersberechnung und eine E-Mail-Adresse mit Zufallsziffern.</p>
+            <p class="mb-0"><a href="uebungen/lektion-1.8-uebung-1-student.pdf" target="_blank">&#128196; Übung 1.8-1 (PDF)</a> &middot; <a href="uebungen/lektion-1.8-uebung-1-student/Student.java" target="_blank">Vorlage <code>Student.java</code></a></p>
+</div>
+        </div>
+      </section>
+
+      <section class="section section-quiz">
+        <h2>Wissenskontrolle</h2>
+        <div class="quiz" id="quiz-8">
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 1</span> Was liefert <code>"Spengergasse".substring(2, 5)</code>?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-8-1"> <span><code>"eng"</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-8-1"> <span><code>"enge"</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-8-1"> <span><code>"pen"</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-8-1"> <span><code>"peng"</code></span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Die Positionen zählen ab 0, das Ende ist exklusiv. <code>substring(2, 5)</code> liefert die Zeichen an den Positionen 2, 3 und 4: <code>e</code>, <code>n</code>, <code>g</code>.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 2</span> Wie vergleicht man den Inhalt zweier Strings <code>a</code> und <code>b</code> richtig?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-8-2"> <span><code>a == b</code></span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-8-2"> <span><code>a.equals(b)</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-8-2"> <span><code>a = b</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-8-2"> <span><code>a.length() == b.length()</code></span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> <code>==</code> prüft bei Objekten, ob es <em>dasselbe</em> Objekt ist. Wegen des String-Pools stimmt das manchmal zufällig, aber nicht immer. Gleichen Text prüft <code>equals</code>.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 3</span> Welcher Aufruf kann bei <code>String s = "";</code> abstürzen?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-8-3"> <span><code>s.length()</code></span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-8-3"> <span><code>s.charAt(0)</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-8-3"> <span><code>s.isEmpty()</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-8-3"> <span><code>s.strip()</code></span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Ein leerer String hat kein Zeichen an Position 0 &ndash; <code>charAt(0)</code> wirft eine <code>StringIndexOutOfBoundsException</code>. Vorher die Länge prüfen!</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 4</span> Welche Werte kann <code>new Random().nextInt(6) + 1</code> liefern?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-8-4"> <span>0 bis 6</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-8-4"> <span>0 bis 5</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-8-4"> <span>1 bis 6</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-8-4"> <span>1 bis 7</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> <code>nextInt(6)</code> liefert eine Zahl von 0 bis 5 (die Obergrenze ist exklusiv). Plus 1 ergibt die Augenzahlen eines Würfels.</div>
+  </div>
+  <div class="quiz-summary"><span class="quiz-score"></span><button type="button" class="quiz-reset">Zur&uuml;cksetzen</button></div>
+</div>
+      </section>
+
+    </div>
+
+    <nav class="lesson-nav">
+      <a class="nav-btn" href="1.7-debugger-testklassen.html">&larr; Lektion 1.7: Debugger &amp; Testklassen</a>
+      <span class="nav-center-info">Lektion 1.8</span>
+      <a class="nav-btn primary" href="1.9-objekt-beziehungen.html">Lektion 1.9: Objekt-Beziehungen &rarr;</a>
+    </nav>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>
+    const ham = document.getElementById('hamburger');
+    const sb = document.getElementById('sidebar');
+    const ov = document.getElementById('overlay');
+    ham.addEventListener('click', () => { sb.classList.toggle('open'); ov.classList.toggle('visible'); });
+    ov.addEventListener('click', () => { sb.classList.remove('open'); ov.classList.remove('visible'); });
+    const cur = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-link').forEach(l => {
+      if (l.getAttribute('href') === cur) l.classList.add('active');
+    });
+    const themeBtn = document.getElementById('theme-toggle');
+    const applyTheme = (t) => {
+      document.documentElement.setAttribute('data-theme', t);
+      if (themeBtn) themeBtn.innerHTML = t === 'dark' ? '&#9728;' : '&#9790;';
+    };
+    applyTheme(localStorage.getItem('kurs-theme') || 'dark');
+    setTimeout(() => document.documentElement.classList.add('theme-transitions'), 50);
+    if (themeBtn) themeBtn.addEventListener('click', () => {
+      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('kurs-theme', next);
+      applyTheme(next);
+    });
+    hljs.highlightAll();
+  </script>
+  <script>
+    document.querySelectorAll('.quiz').forEach((quiz) => {
+      const fragen = [...quiz.querySelectorAll('.quiz-frage')];
+      const score = quiz.querySelector('.quiz-score');
+      const update = () => {
+        const done = fragen.filter((f) => f.dataset.state).length;
+        const ok = fragen.filter((f) => f.dataset.state === 'ok').length;
+        score.textContent = done === 0
+          ? fragen.length + ' Fragen – wähle eine Antwort und prüfe sie.'
+          : ok + ' von ' + fragen.length + ' richtig'
+            + (done < fragen.length ? ' (' + done + ' von ' + fragen.length + ' bearbeitet)' : '');
+      };
+      fragen.forEach((f) => {
+        const inputs = [...f.querySelectorAll('input')];
+        const check = f.querySelector('.quiz-check');
+        const reveal = f.querySelector('.quiz-reveal');
+        const fb = f.querySelector('.quiz-feedback');
+        const exp = f.querySelector('.quiz-erklaerung');
+        inputs.forEach((i) => i.addEventListener('change', () => {
+          check.disabled = !inputs.some((x) => x.checked);
+        }));
+        const finish = (graded) => {
+          let allOk = true;
+          f.querySelectorAll('.quiz-opt').forEach((li) => {
+            const input = li.querySelector('input');
+            const corr = li.dataset.correct === '1';
+            if (corr !== input.checked) allOk = false;
+            if (corr) li.classList.add('opt-correct');
+            else if (input.checked) li.classList.add('opt-wrong');
+            input.disabled = true;
+          });
+          f.dataset.state = !graded ? 'shown' : (allOk ? 'ok' : 'wrong');
+          fb.className = 'quiz-feedback fb-' + f.dataset.state;
+          fb.textContent = !graded ? 'Lösung angezeigt.'
+            : (allOk ? '✔ Richtig!' : '✘ Leider nicht ganz – die richtige Lösung ist markiert.');
+          fb.hidden = false;
+          exp.hidden = false;
+          check.disabled = true;
+          reveal.disabled = true;
+          update();
+        };
+        check.addEventListener('click', () => finish(true));
+        reveal.addEventListener('click', () => finish(false));
+      });
+      quiz.querySelector('.quiz-reset').addEventListener('click', () => {
+        fragen.forEach((f) => {
+          delete f.dataset.state;
+          f.querySelectorAll('.quiz-opt').forEach((li) => li.classList.remove('opt-correct', 'opt-wrong'));
+          f.querySelectorAll('input').forEach((i) => { i.checked = false; i.disabled = false; });
+          f.querySelector('.quiz-check').disabled = true;
+          f.querySelector('.quiz-reveal').disabled = false;
+          f.querySelector('.quiz-feedback').hidden = true;
+          f.querySelector('.quiz-erklaerung').hidden = true;
+        });
+        update();
+      });
+      update();
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<!-- GENERIERT von java/kurs/_build (java-grundlagen) – nicht direkt bearbeiten!
+     Quelle: java/kurs/_build/java-grundlagen/lessons/, bauen: python3 _build/build.py java-grundlagen -->
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.3 &ndash; Arrays: Einf&uuml;gen &amp; Entfernen | Java-Grundlagen Kurs</title>
+  <script>(function () { var t = localStorage.getItem('kurs-theme') || 'dark'; document.documentElement.setAttribute('data-theme', t); })();</script>
+  <link rel="stylesheet" href="assets/kurs.css">
+  <link rel="stylesheet" id="hljs-theme"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+
+<body>
+
+  <button class="hamburger" id="hamburger" aria-label="Navigation &ouml;ffnen">&#9776;</button>
+  <div class="sidebar-overlay" id="overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html">
+        <span class="brand-icon">J</span>
+        <div>
+          <div class="brand-name">Java</div>
+          <div class="brand-sub">Grundlagen der Programmierung</div>
+        </div>
+      </a>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Dark/Light Mode"
+        title="Theme wechseln">&#9728;</button>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-group">
+        <div class="nav-group-label html-label">Teil 1 &mdash; Grundlagen</div>
+        <a class="nav-link" href="1.1-einfuehrung-entwicklungsumgebung.html"><span class="ln">1.1</span>Einf&uuml;hrung &amp; Entwicklungsumgebung</a>
+        <a class="nav-link" href="1.2-klassen-objekte.html"><span class="ln">1.2</span>Klassen, Objekte, Get &amp; Set</a>
+        <a class="nav-link" href="1.3-konstruktoren-methoden.html"><span class="ln">1.3</span>Konstruktoren, this &amp; Methoden</a>
+        <a class="nav-link" href="1.4-datentypen.html"><span class="ln">1.4</span>Datentypen</a>
+        <a class="nav-link" href="1.5-signatur-ueberladen.html"><span class="ln">1.5</span>Methoden, Signatur &amp; &Uuml;berladen</a>
+        <a class="nav-link" href="1.6-bedingungen-berechnungen.html"><span class="ln">1.6</span>Bedingungen &amp; Berechnungen</a>
+        <a class="nav-link" href="1.7-debugger-testklassen.html"><span class="ln">1.7</span>Debugger &amp; Testklassen</a>
+        <a class="nav-link" href="1.8-strings-random.html"><span class="ln">1.8</span>Strings &amp; Random</a>
+        <a class="nav-link" href="1.9-objekt-beziehungen.html"><span class="ln">1.9</span>Objekt-Beziehungen</a>
+        <a class="nav-link" href="1.10-schleifen.html"><span class="ln">1.10</span>Schleifen</a>
+        <a class="nav-link" href="1.11-statische-methoden.html"><span class="ln">1.11</span>Statische Methoden &amp; main</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label css-label">Teil 2 &mdash; Datenstrukturen &amp; OOP</div>
+        <a class="nav-link" href="2.1-intellij-junit.html"><span class="ln">2.1</span>IntelliJ, Maven &amp; JUnit</a>
+        <a class="nav-link" href="2.2-arrays.html"><span class="ln">2.2</span>Arrays</a>
+        <a class="nav-link" href="2.3-arrays-einfuegen-entfernen.html"><span class="ln">2.3</span>Arrays: Einf&uuml;gen &amp; Entfernen</a>
+        <a class="nav-link" href="2.4-sortieralgorithmen.html"><span class="ln">2.4</span>Sortieralgorithmen</a>
+        <a class="nav-link" href="2.5-objekt-arrays.html"><span class="ln">2.5</span>Objekt-Arrays</a>
+        <a class="nav-link" href="2.6-assoziation-equals.html"><span class="ln">2.6</span>Beidseitige Assoziation &amp; equals</a>
+        <a class="nav-link" href="2.7-collections.html"><span class="ln">2.7</span>Collections: ArrayList &amp; Co.</a>
+        <a class="nav-link" href="2.8-vererbung.html"><span class="ln">2.8</span>Vererbung &amp; Polymorphismus</a>
+        <a class="nav-link" href="2.9-abstrakt-interfaces.html"><span class="ln">2.9</span>Abstrakte Klassen &amp; Interfaces</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label rn-label">Teil 3 &mdash; Fortgeschrittene Konzepte</div>
+        <a class="nav-link" href="3.0-fail-early.html"><span class="ln">3.0</span>Fail Early statt Happy Path</a>
+        <a class="nav-link" href="3.1-exceptions.html"><span class="ln">3.1</span>Exceptions</a>
+        <a class="nav-link" href="3.2-hashset-treeset.html"><span class="ln">3.2</span>HashSet, TreeSet &amp; hashCode</a>
+        <a class="nav-link" href="3.3-serialisierung-dateien.html"><span class="ln">3.3</span>Serialisierung &amp; Dateien</a>
+        <a class="nav-link" href="3.4-git.html"><span class="ln">3.4</span>Versionsverwaltung mit Git</a>
+        <a class="nav-link" href="3.5-lambdas.html"><span class="ln">3.5</span>Lambda-Ausdr&uuml;cke</a>
+        <a class="nav-link" href="3.6-streams.html"><span class="ln">3.6</span>Die Streams-API</a>
+        <a class="nav-link" href="3.7-design-patterns.html"><span class="ln">3.7</span>Design-Patterns</a>
+        <a class="nav-link" href="3.8-model-klassen.html"><span class="ln">3.8</span>Model-Klassen f&uuml;r die GUI</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label react-label">Teil 4 &mdash; Webanwendungen mit Vaadin</div>
+        <a class="nav-link" href="4.1-web-grundlagen.html"><span class="ln">4.1</span>Grundprinzipien des Web</a>
+        <a class="nav-link" href="4.2-vaadin-einstieg.html"><span class="ln">4.2</span>Vaadin Flow &amp; Start-Paket</a>
+        <a class="nav-link" href="4.3-komponenten-layouts.html"><span class="ln">4.3</span>Komponenten &amp; Layouts</a>
+        <a class="nav-link" href="4.4-grid-routing-binding.html"><span class="ln">4.4</span>Tabellen, Routing &amp; Binding</a>
+        <a class="nav-link" href="4.5-mitarbeiterverwaltung.html"><span class="ln">4.5</span>Mitarbeiterverwaltung</a>
+      </div>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <header class="lesson-header">
+      <p class="lesson-eyebrow">Lektion 2.3 &mdash; Teil 2: Datenstrukturen &amp; OOP</p>
+      <h1>Arrays: Einf&uuml;gen &amp; Entfernen</h1>
+      <div class="lesson-tags">
+        <span class="tag tag-css">Arrays</span>
+        <span class="tag tag-time">ca. 90 min</span>
+        <span class="tag tag-level">Grundlagen</span>
+      </div>
+    </header>
+
+    <div class="content-area">
+      <section class="section section-lernziele">
+        <h2>Lernziele</h2>
+        <ul class="lernziele-list">
+          <li><a class="lernziel-link" href="#abschnitt-1">ein Array mit fester Maximalgröße und einer Variable <code>anzahl</code> als dynamische Liste verwenden<span class="lernziel-ziel">Abschnitt 1</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-2">Werte am Ende hinzufügen und dabei auf freien Platz prüfen<span class="lernziel-ziel">Abschnitt 2</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-3">Werte an einer Position einfügen (nach hinten verschieben) und entfernen (nach vorne ziehen)<span class="lernziel-ziel">Abschnitt 3</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-4">begründen, warum eine Klasse ihr internes Array nicht nach außen herausgibt<span class="lernziel-ziel">Abschnitt 4</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-5">mit <code>toString()</code> eine Textdarstellung eines Objekts erzeugen und von <code>print()</code> abgrenzen<span class="lernziel-ziel">Abschnitt 5</span></a></li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-1">1 &mdash; Feste Größe, variable Anzahl</h2>
+        <p>
+          Die Größe eines Arrays wird beim Erzeugen (<code>new int[10]</code>) festgelegt und kann nachträglich
+          nicht verändert werden. Häufig will man aber zur Laufzeit Werte hinzufügen oder löschen &ndash; etwa in
+          einem Programm, das laufend Messwerte erfasst.
+        </p>
+        <p>
+          Die Lösung: Zuerst ein Array mit der <em>Maximalanzahl</em> zulässiger Werte anlegen und zusätzlich
+          speichern, wie viele Plätze aktuell mit <em>fachlich gültigen Werten</em> befüllt sind. Diese
+          <code>int</code>-Variable enthält den Index des ersten unbenutzten Platzes &ndash; anders gesagt, die
+          <strong>Anzahl der gültigen Werte</strong>. Wir nennen sie <code>anzahl</code> (möglich wäre auch
+          <code>next</code>).
+        </p>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-2">2 &mdash; Hinzufügen</h2>
+        <p>
+          Die Abbildung zeigt ein Array mit 5 Werten: gültige Indizes 0 bis 4. Da die Anzahl 5 ist, ist 5 zugleich der
+          Index, an dem das nächste Element eingefügt werden kann. Der neue Wert -3 kommt an Index 5, und
+          <code>anzahl</code> wird erhöht.
+        </p>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/arrays4.png" alt="Hinzufügen am Ende: Wert an Index anzahl speichern, dann anzahl++" loading="lazy" style="max-width:460px"></div>
+  <figcaption>Hinzufügen am Ende: Wert an Index anzahl speichern, dann anzahl++</figcaption>
+</figure>
+        <p>Natürlich muss geprüft werden, ob noch Platz ist &ndash; genau dann, wenn <code>anzahl &lt; a.length</code>:</p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">hinzufuegen</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public void hinzufuegen(int wert) {
+    if (wert &gt; -100 &amp;&amp; wert &lt; 100) { // Parameterpruefung
+        if (anzahl &lt; a.length) {
+            a[anzahl] = wert;
+            anzahl++;
+            // Anmerkung: kuerzer, in einer Zeile: a[anzahl++] = wert;
+        } else {
+            System.out.println("Array voll");
+        }
+    } else {
+        System.out.println("Ungueltiger Wert: " + wert);
+    }
+}</code></pre>
+</div>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-3">3 &mdash; Einfügen an einer Position</h2>
+        <p>
+          Soll ein Wert an einer bestimmten Stelle <code>index</code> eingefügt werden, müssen alle Werte danach um eine
+          Stelle nach hinten verschoben werden. Die Abbildung zeigt das Einfügen des Wertes 7 an Index 3 (die vierte
+          Stelle).
+        </p>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/arrays5.png" alt="Einfügen an Index 3: die nachfolgenden Werte rücken um eins nach hinten" loading="lazy" style="max-width:460px"></div>
+  <figcaption>Einfügen an Index 3: die nachfolgenden Werte rücken um eins nach hinten</figcaption>
+</figure>
+        <p>
+          Die Pfeile deuten das Verschieben an &ndash; diese Logik muss ausprogrammiert werden. Verschoben wird
+          <strong>von hinten nach vorne</strong>, da man sonst Werte überschreiben würde.
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">einfuegen</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public void einfuegen(int wert, int index) {
+    if (wert &gt; -100 &amp;&amp; wert &lt; 100) { // Parameterpruefung
+        if (anzahl &lt; a.length) {
+            if (index &gt;= 0 &amp;&amp; index &lt;= anzahl) {
+
+                for (int i = anzahl; i &gt; index; i--) {
+                    a[i] = a[i-1];
+                }
+                anzahl++;
+                a[index] = wert;
+
+            } else {
+                System.out.println("Ungueltiger Index: " + index);
+            }
+        } else {
+            System.out.println("Array voll");
+        }
+    } else {
+        System.out.println("Ungueltiger Wert: " + wert);
+    }
+}</code></pre>
+</div>
+        <p>
+          Weil Hinzufügen, Einfügen und Entfernen so häufig vorkommen, bietet Java fertige Komponenten mit dieser
+          Logik (<code>ArrayList</code>, Lektion 2.7). Zunächst soll der Umgang mit Arrays aber das Verständnis
+          für die algorithmische Vorgehensweise und die Anzahl der elementaren Operationen festigen.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-4">4 &mdash; Codebeispiel: Klasse Array</h2>
+        <details class="code-collapse">
+  <summary><span class="code-filename">Array.java</span> <span class="code-collapse-hint">Code anzeigen (97 Zeilen)</span></summary>
+<div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Array.java</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public class Array
+{
+    private int[] werte;
+    private int anzahl;
+
+    public Array(int groesse) {
+        if (groesse &gt; 0) {
+            werte = new int[groesse];
+            anzahl = 0;
+        } else {
+            System.out.println("Fehler, ungueltige Groesse");
+        }
+    }
+
+    public int getAnzahl() {
+        return anzahl;
+    }
+
+    // ACHTUNG! Auf keinen Fall eine derartige Methode implementieren!
+    // public int[] getWerte() {  }
+    // ... Wuerde interne Logik der Klasse beeintraechtigen,
+    // z.B. Wertebereiche verletzen, etc.
+
+    public int wert(int index) {
+        if (index &gt;= 0 &amp;&amp; index &lt; anzahl) {
+            return werte[index];
+        } else {
+            System.out.println("Fehler, ungueltiger Index: " + index);
+            return -1; // unschoen... spaeter machen wir es besser ;-)  (-&gt; Exceptions)
+        }
+    }
+
+    public void hinzufuegen(int wert) {
+        if (wert &gt;= -100 &amp;&amp; wert &lt;= 100) {
+            if (anzahl &lt; werte.length) {
+                werte[anzahl++] = wert;
+            } else {
+                System.out.println("Fehler: Array voll!");
+            }
+        } else {
+            System.out.println("Fehler: ungueltiger Wert: " + wert);
+        }
+    }
+
+    public void einfuegen(int index, int wert) {
+        if (wert &gt;= -100 &amp;&amp; wert &lt;= 100) {
+            if (index &gt;= 0 &amp;&amp; index &lt;= anzahl) {
+                if (anzahl &lt; werte.length) {
+                    for (int i = anzahl; i &gt; index; i--) {
+                        werte[i] = werte[i-1];
+                    }
+                    werte[index] = wert;
+                    anzahl++;
+                } else {
+                    System.out.println("Fehler: Array voll!");
+                }
+            } else {
+                System.out.println("Fehler, ungueltiger Index: " + index);
+            }
+        } else {
+            System.out.println("Fehler: ungueltiger Wert: " + wert);
+        }
+    }
+
+    public void entfernen(int index) {
+        // Parameterpruefungen
+        if (index &gt;= 0 &amp;&amp; index &lt; anzahl) {
+            for (int i = index; i &lt; anzahl-1; i++) {
+                werte[i] = werte[i+1];
+            }
+            anzahl--;
+        } else {
+            System.out.println("Fehler, ungueltiger Index: " + index);
+        }
+    }
+
+    public void print() {
+        // System.out.println(this.toString());
+        // oder kuerzer:
+        System.out.println(this);
+    }
+
+    public String toString() {
+        String str = "Werte: ";
+        if (anzahl &gt; 0) {
+            for (int i = 0; i &lt; anzahl; i++) {
+                if (i &gt; 0) {
+                    str += ", ";
+                }
+                str += werte[i];
+            }
+        } else {
+            str += " keine Werte vorhanden.";
+        }
+        return str;
+    }
+}</code></pre>
+</div>
+</details>
+        <ul>
+          <li><code>hinzufuegen</code> fügt nach der Parameterprüfung am Ende der gültigen Werte ein. <code>werte[anzahl++] = wert;</code> weist an der Stelle <code>anzahl</code> zu, <em>anschließend</em> (!) wird <code>anzahl</code> erhöht.</li>
+          <li><code>einfuegen</code> durchläuft das Array von hinten nach vorne und &bdquo;verschiebt&ldquo; (eigentlich: kopiert) die Inhalte um je einen Platz nach hinten &ndash; bis zur Stelle <code>index + 1</code>. Dann wird <code>wert</code> an <code>index</code> gesetzt und <code>anzahl</code> erhöht.</li>
+          <li><code>entfernen</code> zieht alle Werte nach <code>index</code> um einen Platz nach vorne und verringert <code>anzahl</code>. Der letzte Wert bleibt zwar physisch im Array, liegt aber außerhalb der gültigen Werte.</li>
+          <li>Eine Methode <code>getWerte()</code>, die das Array herausgibt, wäre fatal: Von außen könnten ungültige Werte hineingeschrieben werden, und <code>anzahl</code> würde nicht mehr stimmen.</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-5">5 &mdash; Die Methode toString</h2>
+        <p>
+          In diesem Beispiel wurde erstmals die spezielle Methode <code>String toString()</code> verwendet. Sie
+          liefert eine Darstellung des Objekts als reinen Text: Nach der Fallunterscheidung, ob überhaupt gültige
+          Werte vorhanden sind, werden die Werte mit einer Schleife in einen String geschrieben, der am Ende
+          zurückgegeben wird.
+        </p>
+        <div class="two-col">
+          <div>
+            <h4><code>print()</code></h4>
+            <p>schreibt eine Textdarstellung auf die Konsole. Was nur mit <code>System.out.println</code> ausgegeben wird, kann im Programm <em>nicht</em> weiterverarbeitet werden.</p>
+          </div>
+          <div>
+            <h4><code>toString()</code></h4>
+            <p>erstellt einen String und gibt ihn zurück. Er kann in anderen Objekten weiterverwendet werden &ndash; in einer Oberfläche, in einer Datei, in einem Test.</p>
+          </div>
+        </div>
+        <p>
+          Die <code>print</code>-Methode kann <code>toString</code> verwenden. Es ist nicht einmal nötig,
+          <code>toString</code> <em>explizit</em> aufzurufen: Übergibt man <code>System.out.println</code> eine
+          Objektreferenz (innerhalb der Klasse <code>this</code>), erkennt Java, dass ein String gebraucht wird, und
+          ruft selbst <code>toString()</code> auf. Dasselbe passiert bei der String-Verkettung: <code>"Array: " + a</code>.
+        </p>
+      </section>
+
+      <section class="section section-projekt">
+        <h2 id="projektschritt">Projektschritt</h2>
+<div class="projekt-box">
+  <div class="projekt-box-header">
+    <span class="projekt-step">Projektschritt 2.3</span>
+    <h3>Zeiterfassung als Liste von Buchungen</h3>
+  </div>
+<p>Warum umbauen? Ein Array mit einem Platz pro Kalendertag hat zwei Nachteile: Es lassen sich nur ganze Tage erfassen (zwei Einsätze an einem Tag gehen nicht), und viele Plätze bleiben leer (Wochenenden, Urlaub). Eine Liste der tatsächlichen Arbeitseinsätze passt besser &ndash; und genau dafür brauchen wir Hinzufügen, Einfügen und Entfernen aus dieser Lektion. Statt fester Kalendertage speichert die <code>Zeiterfassung</code> jetzt <em>Buchungen</em> (Arbeitseinsätze in Stunden) in Eingabereihenfolge &ndash; genau nach dem Muster der Klasse <code>Array</code>: Maximalgröße plus <code>anzahl</code>, Hinzufügen, Einfügen, Entfernen und <code>toString()</code>. Auch die Berechnungen laufen nur noch bis <code>anzahl</code>. Die Tests prüfen jetzt bequem den Text von <code>toString()</code>.</p>
+  <details class="code-collapse">
+  <summary><span class="code-filename">src/main/java/Zeiterfassung.java</span> <span class="code-collapse-hint">Code anzeigen (136 Zeilen)</span></summary>
+<div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">src/main/java/Zeiterfassung.java</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">/*
+  Personalverwaltung – Arbeitseinsätze (Buchungen) in Stunden.
+  Stand: Lektion 2.3: statt fester Tage eine "Liste" von Buchungen.
+  Das Array hat eine Maximalgröße, "anzahl" zählt die gültigen Einträge.
+*/
+public class Zeiterfassung {
+
+    private int[] buchungen;
+    private int anzahl;      // Anzahl gültiger Werte = Index des nächsten freien Platzes
+
+    public Zeiterfassung() {
+        buchungen = new int[50];
+        anzahl = 0;
+    }
+
+    public Zeiterfassung(int maxBuchungen) {
+        if (maxBuchungen &gt; 0) {
+            buchungen = new int[maxBuchungen];
+        } else {
+            System.out.println("Fehler: ungueltige Groesse: " + maxBuchungen);
+            buchungen = new int[50];
+        }
+        anzahl = 0;
+    }
+
+    public int getAnzahl() {
+        return anzahl;
+    }
+
+    // ACHTUNG: keine Methode getBuchungen(), die das Array herausgibt!
+    // Sonst könnte man von außen ungültige Werte hineinschreiben.
+
+    public int wert(int index) {
+        if (index &gt;= 0 &amp;&amp; index &lt; anzahl) {
+            return buchungen[index];
+        } else {
+            System.out.println("Fehler: ungueltiger Index: " + index);
+            return -1;
+        }
+    }
+
+    public void hinzufuegen(int stunden) {
+        if (stunden &gt;= 1 &amp;&amp; stunden &lt;= 12) {
+            if (anzahl &lt; buchungen.length) {
+                buchungen[anzahl++] = stunden;
+            } else {
+                System.out.println("Fehler: Zeiterfassung voll!");
+            }
+        } else {
+            System.out.println("Fehler: ungueltige Stundenanzahl: " + stunden);
+        }
+    }
+
+    public void einfuegen(int index, int stunden) {
+        if (stunden &gt;= 1 &amp;&amp; stunden &lt;= 12) {
+            if (index &gt;= 0 &amp;&amp; index &lt;= anzahl) {
+                if (anzahl &lt; buchungen.length) {
+                    // von hinten nach vorne um einen Platz nach hinten schieben
+                    for (int i = anzahl; i &gt; index; i--) {
+                        buchungen[i] = buchungen[i - 1];
+                    }
+                    buchungen[index] = stunden;
+                    anzahl++;
+                } else {
+                    System.out.println("Fehler: Zeiterfassung voll!");
+                }
+            } else {
+                System.out.println("Fehler: ungueltiger Index: " + index);
+            }
+        } else {
+            System.out.println("Fehler: ungueltige Stundenanzahl: " + stunden);
+        }
+    }
+
+    public void entfernen(int index) {
+        if (index &gt;= 0 &amp;&amp; index &lt; anzahl) {
+            // nachfolgende Werte um einen Platz nach vorne ziehen
+            for (int i = index; i &lt; anzahl - 1; i++) {
+                buchungen[i] = buchungen[i + 1];
+            }
+            anzahl--;
+        } else {
+            System.out.println("Fehler: ungueltiger Index: " + index);
+        }
+    }
+
+    public int summe() {
+        int summe = 0;
+        for (int i = 0; i &lt; anzahl; i++) {
+            summe += buchungen[i];
+        }
+        return summe;
+    }
+
+    public int maximum() {
+        if (anzahl == 0) {
+            return 0;
+        }
+        int max = buchungen[0];
+        for (int i = 1; i &lt; anzahl; i++) {
+            if (buchungen[i] &gt; max) {
+                max = buchungen[i];
+            }
+        }
+        return max;
+    }
+
+    public double durchschnitt() {
+        if (anzahl &gt; 0) {
+            return (double) summe() / anzahl;
+        } else {
+            return 0;
+        }
+    }
+
+    @Override
+    public String toString() {
+        String str = "Buchungen: ";
+        if (anzahl &gt; 0) {
+            for (int i = 0; i &lt; anzahl; i++) {
+                if (i &gt; 0) {
+                    str += ", ";
+                }
+                str += buchungen[i] + " h";
+            }
+            str += " (Summe: " + summe() + " h)";
+        } else {
+            str += "keine Buchungen vorhanden.";
+        }
+        return str;
+    }
+
+    public void print() {
+        System.out.println(this);   // ruft toString() auf
+    }
+}</code></pre>
+</div>
+</details>
+  <p class="mb-0">&#128193; Stand nach dieser Lektion: <a href="beispiele/2.3/src/test/java/ZeiterfassungTest.java" target="_blank">beispiele/2.3/</a></p>
+</div>
+      </section>
+
+      <section class="section section-fehler">
+        <h2>Häufige Fehler</h2>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Beim Einfügen von vorne verschoben</div>
+  <p>Nach dem Einfügen steht derselbe Wert mehrfach hintereinander im Array.</p>
+          <p class="fehler-fix">Von hinten nach vorne kopieren: <code>for (int i = anzahl; i &gt; index; i--) werte[i] = werte[i-1];</code>. Von vorne würde jeder Wert den nächsten überschreiben.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: anzahl vergessen</div>
+  <p>Nach <code>entfernen</code> erscheint der entfernte Wert noch in der Ausgabe, oder <code>hinzufuegen</code> überschreibt immer Platz 0.</p>
+          <p class="fehler-fix">Jede Operation muss <code>anzahl</code> anpassen (<code>++</code> bzw. <code>--</code>), und alle Schleifen laufen nur bis <code>anzahl</code>, nicht bis <code>length</code>.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: toString gibt aus statt zurück</div>
+  <p><code>toString()</code> enthält <code>System.out.println</code> &ndash; in der Ausgabe stehen die Werte doppelt oder an der falschen Stelle.</p>
+          <p class="fehler-fix"><code>toString()</code> baut nur einen String und gibt ihn mit <code>return</code> zurück. Ausgeben ist Aufgabe von <code>print()</code>.</p>
+</div>
+      </section>
+
+      <section class="section section-quiz">
+        <h2>Wissenskontrolle</h2>
+        <div class="quiz" id="quiz-14">
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 1</span> Ein Array mit Maximalgröße 10 wird mit der Variable <code>anzahl</code> als Liste verwendet. Wo kommt ein neuer Wert beim Hinzufügen hin?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-14-1"> <span>an Index 0</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-14-1"> <span>an Index <code>anzahl</code>; danach wird <code>anzahl</code> um 1 erhöht</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-14-1"> <span>an Index <code>anzahl + 1</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-14-1"> <span>an den letzten Index (9)</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Die gültigen Werte stehen an den Indizes 0 bis <code>anzahl - 1</code>. Der nächste freie Platz ist also <code>anzahl</code> &ndash; vorher muss geprüft werden, ob <code>anzahl &lt; werte.length</code> ist.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 2</span> Ein Wert soll an Position 2 eingefügt werden. Was muss vorher passieren?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-14-2"> <span>Der Wert an Position 2 wird überschrieben.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-14-2"> <span>Alle Werte ab Position 2 werden um eine Stelle nach hinten verschoben &ndash; von hinten beginnend.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-14-2"> <span>Alle Werte werden nach vorne verschoben.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-14-2"> <span>Das Array wird neu sortiert.</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Verschiebt man von vorne, überschreibt man die Werte, die man noch braucht. Deshalb läuft die Schleife vom Ende bis zur Einfügeposition rückwärts.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 3</span> Warum sollte eine Klasse ihr internes Array nicht mit einem Getter herausgeben?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-14-3"> <span>weil Arrays nicht zurückgegeben werden können</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-14-3"> <span>weil Code außerhalb dann das Array verändern könnte, ohne dass <code>anzahl</code> und die Prüfungen der Klasse mitspielen</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-14-3"> <span>weil das Array sonst gelöscht wird</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-14-3"> <span>weil Getter nur für <code>String</code> erlaubt sind</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Ein Array ist ein Objekt; der Getter gäbe nur die Referenz heraus. Jeder könnte dann Werte direkt ändern und so den Zustand der Klasse inkonsistent machen.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 4</span> Was ist der Unterschied zwischen <code>toString()</code> und <code>print()</code>?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-14-4"> <span>Es gibt keinen.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-14-4"> <span><code>toString()</code> liefert einen String mit <code>return</code>, <code>print()</code> gibt ihn auf der Konsole aus.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-14-4"> <span><code>toString()</code> gibt auf der Konsole aus, <code>print()</code> liefert einen String.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-14-4"> <span><code>print()</code> funktioniert nur mit Zahlen.</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Einen String kann man weiterverwenden (z.&nbsp;B. in einer Oberfläche oder einem Test), eine Konsolenausgabe nicht. <code>print()</code> ruft daher meist einfach <code>System.out.println(toString())</code> auf.</div>
+  </div>
+  <div class="quiz-summary"><span class="quiz-score"></span><button type="button" class="quiz-reset">Zur&uuml;cksetzen</button></div>
+</div>
+      </section>
+
+    </div>
+
+    <nav class="lesson-nav">
+      <a class="nav-btn" href="2.2-arrays.html">&larr; Lektion 2.2: Arrays</a>
+      <span class="nav-center-info">Lektion 2.3</span>
+      <a class="nav-btn primary" href="2.4-sortieralgorithmen.html">Lektion 2.4: Sortieralgorithmen &rarr;</a>
+    </nav>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>
+    const ham = document.getElementById('hamburger');
+    const sb = document.getElementById('sidebar');
+    const ov = document.getElementById('overlay');
+    ham.addEventListener('click', () => { sb.classList.toggle('open'); ov.classList.toggle('visible'); });
+    ov.addEventListener('click', () => { sb.classList.remove('open'); ov.classList.remove('visible'); });
+    const cur = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-link').forEach(l => {
+      if (l.getAttribute('href') === cur) l.classList.add('active');
+    });
+    const themeBtn = document.getElementById('theme-toggle');
+    const applyTheme = (t) => {
+      document.documentElement.setAttribute('data-theme', t);
+      if (themeBtn) themeBtn.innerHTML = t === 'dark' ? '&#9728;' : '&#9790;';
+    };
+    applyTheme(localStorage.getItem('kurs-theme') || 'dark');
+    setTimeout(() => document.documentElement.classList.add('theme-transitions'), 50);
+    if (themeBtn) themeBtn.addEventListener('click', () => {
+      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('kurs-theme', next);
+      applyTheme(next);
+    });
+    hljs.highlightAll();
+  </script>
+  <script>
+    document.querySelectorAll('.quiz').forEach((quiz) => {
+      const fragen = [...quiz.querySelectorAll('.quiz-frage')];
+      const score = quiz.querySelector('.quiz-score');
+      const update = () => {
+        const done = fragen.filter((f) => f.dataset.state).length;
+        const ok = fragen.filter((f) => f.dataset.state === 'ok').length;
+        score.textContent = done === 0
+          ? fragen.length + ' Fragen – wähle eine Antwort und prüfe sie.'
+          : ok + ' von ' + fragen.length + ' richtig'
+            + (done < fragen.length ? ' (' + done + ' von ' + fragen.length + ' bearbeitet)' : '');
+      };
+      fragen.forEach((f) => {
+        const inputs = [...f.querySelectorAll('input')];
+        const check = f.querySelector('.quiz-check');
+        const reveal = f.querySelector('.quiz-reveal');
+        const fb = f.querySelector('.quiz-feedback');
+        const exp = f.querySelector('.quiz-erklaerung');
+        inputs.forEach((i) => i.addEventListener('change', () => {
+          check.disabled = !inputs.some((x) => x.checked);
+        }));
+        const finish = (graded) => {
+          let allOk = true;
+          f.querySelectorAll('.quiz-opt').forEach((li) => {
+            const input = li.querySelector('input');
+            const corr = li.dataset.correct === '1';
+            if (corr !== input.checked) allOk = false;
+            if (corr) li.classList.add('opt-correct');
+            else if (input.checked) li.classList.add('opt-wrong');
+            input.disabled = true;
+          });
+          f.dataset.state = !graded ? 'shown' : (allOk ? 'ok' : 'wrong');
+          fb.className = 'quiz-feedback fb-' + f.dataset.state;
+          fb.textContent = !graded ? 'Lösung angezeigt.'
+            : (allOk ? '✔ Richtig!' : '✘ Leider nicht ganz – die richtige Lösung ist markiert.');
+          fb.hidden = false;
+          exp.hidden = false;
+          check.disabled = true;
+          reveal.disabled = true;
+          update();
+        };
+        check.addEventListener('click', () => finish(true));
+        reveal.addEventListener('click', () => finish(false));
+      });
+      quiz.querySelector('.quiz-reset').addEventListener('click', () => {
+        fragen.forEach((f) => {
+          delete f.dataset.state;
+          f.querySelectorAll('.quiz-opt').forEach((li) => li.classList.remove('opt-correct', 'opt-wrong'));
+          f.querySelectorAll('input').forEach((i) => { i.checked = false; i.disabled = false; });
+          f.querySelector('.quiz-check').disabled = true;
+          f.querySelector('.quiz-reveal').disabled = false;
+          f.querySelector('.quiz-feedback').hidden = true;
+          f.querySelector('.quiz-erklaerung').hidden = true;
+        });
+        update();
+      });
+      update();
+    });
+  </script>
+</body>
+
+</html>

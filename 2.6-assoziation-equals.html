@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<!-- GENERIERT von java/kurs/_build (java-grundlagen) – nicht direkt bearbeiten!
+     Quelle: java/kurs/_build/java-grundlagen/lessons/, bauen: python3 _build/build.py java-grundlagen -->
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.6 &ndash; Beidseitige Assoziation &amp; equals | Java-Grundlagen Kurs</title>
+  <script>(function () { var t = localStorage.getItem('kurs-theme') || 'dark'; document.documentElement.setAttribute('data-theme', t); })();</script>
+  <link rel="stylesheet" href="assets/kurs.css">
+  <link rel="stylesheet" id="hljs-theme"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+
+<body>
+
+  <button class="hamburger" id="hamburger" aria-label="Navigation &ouml;ffnen">&#9776;</button>
+  <div class="sidebar-overlay" id="overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html">
+        <span class="brand-icon">J</span>
+        <div>
+          <div class="brand-name">Java</div>
+          <div class="brand-sub">Grundlagen der Programmierung</div>
+        </div>
+      </a>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Dark/Light Mode"
+        title="Theme wechseln">&#9728;</button>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-group">
+        <div class="nav-group-label html-label">Teil 1 &mdash; Grundlagen</div>
+        <a class="nav-link" href="1.1-einfuehrung-entwicklungsumgebung.html"><span class="ln">1.1</span>Einf&uuml;hrung &amp; Entwicklungsumgebung</a>
+        <a class="nav-link" href="1.2-klassen-objekte.html"><span class="ln">1.2</span>Klassen, Objekte, Get &amp; Set</a>
+        <a class="nav-link" href="1.3-konstruktoren-methoden.html"><span class="ln">1.3</span>Konstruktoren, this &amp; Methoden</a>
+        <a class="nav-link" href="1.4-datentypen.html"><span class="ln">1.4</span>Datentypen</a>
+        <a class="nav-link" href="1.5-signatur-ueberladen.html"><span class="ln">1.5</span>Methoden, Signatur &amp; &Uuml;berladen</a>
+        <a class="nav-link" href="1.6-bedingungen-berechnungen.html"><span class="ln">1.6</span>Bedingungen &amp; Berechnungen</a>
+        <a class="nav-link" href="1.7-debugger-testklassen.html"><span class="ln">1.7</span>Debugger &amp; Testklassen</a>
+        <a class="nav-link" href="1.8-strings-random.html"><span class="ln">1.8</span>Strings &amp; Random</a>
+        <a class="nav-link" href="1.9-objekt-beziehungen.html"><span class="ln">1.9</span>Objekt-Beziehungen</a>
+        <a class="nav-link" href="1.10-schleifen.html"><span class="ln">1.10</span>Schleifen</a>
+        <a class="nav-link" href="1.11-statische-methoden.html"><span class="ln">1.11</span>Statische Methoden &amp; main</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label css-label">Teil 2 &mdash; Datenstrukturen &amp; OOP</div>
+        <a class="nav-link" href="2.1-intellij-junit.html"><span class="ln">2.1</span>IntelliJ, Maven &amp; JUnit</a>
+        <a class="nav-link" href="2.2-arrays.html"><span class="ln">2.2</span>Arrays</a>
+        <a class="nav-link" href="2.3-arrays-einfuegen-entfernen.html"><span class="ln">2.3</span>Arrays: Einf&uuml;gen &amp; Entfernen</a>
+        <a class="nav-link" href="2.4-sortieralgorithmen.html"><span class="ln">2.4</span>Sortieralgorithmen</a>
+        <a class="nav-link" href="2.5-objekt-arrays.html"><span class="ln">2.5</span>Objekt-Arrays</a>
+        <a class="nav-link" href="2.6-assoziation-equals.html"><span class="ln">2.6</span>Beidseitige Assoziation &amp; equals</a>
+        <a class="nav-link" href="2.7-collections.html"><span class="ln">2.7</span>Collections: ArrayList &amp; Co.</a>
+        <a class="nav-link" href="2.8-vererbung.html"><span class="ln">2.8</span>Vererbung &amp; Polymorphismus</a>
+        <a class="nav-link" href="2.9-abstrakt-interfaces.html"><span class="ln">2.9</span>Abstrakte Klassen &amp; Interfaces</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label rn-label">Teil 3 &mdash; Fortgeschrittene Konzepte</div>
+        <a class="nav-link" href="3.0-fail-early.html"><span class="ln">3.0</span>Fail Early statt Happy Path</a>
+        <a class="nav-link" href="3.1-exceptions.html"><span class="ln">3.1</span>Exceptions</a>
+        <a class="nav-link" href="3.2-hashset-treeset.html"><span class="ln">3.2</span>HashSet, TreeSet &amp; hashCode</a>
+        <a class="nav-link" href="3.3-serialisierung-dateien.html"><span class="ln">3.3</span>Serialisierung &amp; Dateien</a>
+        <a class="nav-link" href="3.4-git.html"><span class="ln">3.4</span>Versionsverwaltung mit Git</a>
+        <a class="nav-link" href="3.5-lambdas.html"><span class="ln">3.5</span>Lambda-Ausdr&uuml;cke</a>
+        <a class="nav-link" href="3.6-streams.html"><span class="ln">3.6</span>Die Streams-API</a>
+        <a class="nav-link" href="3.7-design-patterns.html"><span class="ln">3.7</span>Design-Patterns</a>
+        <a class="nav-link" href="3.8-model-klassen.html"><span class="ln">3.8</span>Model-Klassen f&uuml;r die GUI</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label react-label">Teil 4 &mdash; Webanwendungen mit Vaadin</div>
+        <a class="nav-link" href="4.1-web-grundlagen.html"><span class="ln">4.1</span>Grundprinzipien des Web</a>
+        <a class="nav-link" href="4.2-vaadin-einstieg.html"><span class="ln">4.2</span>Vaadin Flow &amp; Start-Paket</a>
+        <a class="nav-link" href="4.3-komponenten-layouts.html"><span class="ln">4.3</span>Komponenten &amp; Layouts</a>
+        <a class="nav-link" href="4.4-grid-routing-binding.html"><span class="ln">4.4</span>Tabellen, Routing &amp; Binding</a>
+        <a class="nav-link" href="4.5-mitarbeiterverwaltung.html"><span class="ln">4.5</span>Mitarbeiterverwaltung</a>
+      </div>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <header class="lesson-header">
+      <p class="lesson-eyebrow">Lektion 2.6 &mdash; Teil 2: Datenstrukturen &amp; OOP</p>
+      <h1>Beidseitige Assoziation &amp; equals</h1>
+      <div class="lesson-tags">
+        <span class="tag tag-css">Assoziation</span>
+        <span class="tag tag-time">ca. 90 min</span>
+        <span class="tag tag-level">Fortgeschritten</span>
+      </div>
+    </header>
+
+    <div class="content-area">
+      <section class="section section-lernziele">
+        <h2>Lernziele</h2>
+        <ul class="lernziele-list">
+          <li><a class="lernziel-link" href="#abschnitt-1">einseitige und beidseitige Assoziation unterscheiden und im UML-Diagramm erkennen<span class="lernziel-ziel">Abschnitt 1</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-3">eine beidseitige Assoziation so implementieren, dass beide Seiten immer konsistent sind<span class="lernziel-ziel">Abschnitt 3</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-2">verhindern, dass ein Objekt gleichzeitig zwei &bdquo;Besitzern&ldquo; zugeordnet ist<span class="lernziel-ziel">Abschnitt 2</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-4">Referenzgleichheit (<code>==</code>) und Inhaltsgleichheit (<code>equals</code>) unterscheiden<span class="lernziel-ziel">Abschnitt 4</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-4">eine eigene <code>equals</code>-Methode nach dem Standardmuster schreiben<span class="lernziel-ziel">Abschnitt 4</span></a></li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-1">1 &mdash; Einseitig reicht oft nicht</h2>
+        <p>
+          Beim Beispiel Markt &ndash; Stand wurde eine <strong>einseitige Assoziation</strong> umgesetzt. Der Pfeil im
+          UML-Diagramm von Markt zu Stand zeigt: Von einem <code>Markt</code> gelangt man zu seinen Ständen, aber
+          nicht umgekehrt. Hat man im Programm nur ein <code>Stand</code>-Objekt, kann man nicht feststellen, auf
+          welchem Markt es steht.
+        </p>
+        <p>
+          Außerdem wäre es möglich, ein und dasselbe Stand-Objekt auf <em>mehreren</em> Märkten zu platzieren
+          &ndash; nicht das gewünschte Verhalten.
+        </p>
+        <p>
+          Beide Probleme löst die <strong>beidseitige Assoziation</strong>: Der Stand bekommt eine Objekteigenschaft,
+          die auf den Markt verweist, dem er zugeordnet ist. Ist er keinem Markt zugeordnet, ist sie
+          <code>null</code>. Der Code muss sicherstellen, dass dieses Attribut <strong>immer konsistent</strong>
+          gesetzt ist.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-2">2 &mdash; Die Seite des Stands</h2>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Stand.java (Erweiterung)</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public class Stand {
+
+    // ...
+
+    private Markt markt; // enthaelt Markt auf dem der Stand steht
+
+    public Stand() {
+        setName("n/a");
+        setEssen(false);
+        setUmsatz(0);
+        markt = null; // &lt;--- Erweiterung fuer die beidseitige Assoziation
+    }
+
+    // in den anderen Konstruktoren ebenso: markt = null;
+
+    public Markt getMarkt() {
+        return markt;
+    }
+
+    public void setMarkt(Markt markt) {
+        if (markt != null) {
+            if (markt.hasStand(this)) {
+                this.markt = markt;
+            } else {
+                System.out.println("Fehler: Markt kann nicht gesetzt werden, da Stand "
+                                   + getName() + " nicht vorhanden in " + markt.getName());
+            }
+        } else {
+            if (this.markt == null || !this.markt.hasStand(this)) {
+                this.markt = null;
+            } else {
+                System.out.println("Fehler: Kann Markt nicht null setzten, weil Stand "
+                                   + getName() + " noch auf Markt " + this.markt.getName()
+                                   + " steht.");
+            }
+        }
+    }
+
+    // ...
+}</code></pre>
+</div>
+        <p>
+          <code>setMarkt</code> setzt den übergebenen Markt nur, wenn dieser Markt den Stand <em>tatsächlich
+          enthält</em>. Zum Entfernen wird <code>null</code> übergeben; dann wird <code>this.markt</code> nur auf
+          <code>null</code> gesetzt, wenn der bisherige Markt den Stand nicht mehr enthält. So kann niemand von außen
+          eine inkonsistente Zuordnung herstellen.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-3">3 &mdash; Die Seite des Markts</h2>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Markt.java (Ergänzungen)</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public class Markt {
+
+    // ...
+
+    public boolean hinzufuegen(Stand stand) {
+        boolean hinzugefuegt = false;
+        if (stand != null) {
+            if (anzahl &lt; staende.length) { // Platz vorhanden?
+                if (stand.getMarkt() == null) { // beidseitige Assoziation
+                    staende[anzahl++] = stand;
+                    stand.setMarkt(this); // beidseitige Assoziation
+
+                    hinzugefuegt = true;
+                } else {
+                    System.out.println("Stand steht schon auf Markt " + stand.getMarkt().getName());
+                }
+            } else {
+                System.out.println("Stand konnte nicht eingefuegt werden, kein Platz vorhanden.");
+            }
+        } else {
+            System.out.println("Fehler: uebergebener Stand ist null.");
+        }
+        return hinzugefuegt;
+    }
+
+    public Stand entfernen(String name) {
+        if (name != null) {
+            for (int i = 0; i &lt; anzahl; i++) {
+                if (name.equals(staende[i].getName())) {
+                    return entfernen(i);
+                }
+            }
+            System.out.println("Es wurde kein Stand mit dem uebergebenen Namen gefunden.");
+        } else {
+            System.out.println("Fehler: name ist null.");
+        }
+
+        return null;
+    }
+
+    public Stand entfernen(int pos) {
+        Stand s = null;
+        if (pos &gt;= 0 &amp;&amp; pos &lt; anzahl) {
+            s = staende[pos];
+            for (int i = pos; i &lt; anzahl - 1; i++) {
+                staende[i] = staende[i+1];
+            }
+            anzahl--;
+            staende[anzahl] = null;
+            s.setMarkt(null); // beidseitige Assoziation: erst NACH dem Entfernen
+        } else {
+            System.out.println("Fehler: ungueltige Position " + pos);
+        }
+
+        return s;
+    }
+
+    // ...
+}</code></pre>
+</div>
+        <p>
+          Vor dem Hinzufügen wird u.&nbsp;a. geprüft, ob <code>stand.getMarkt() == null</code> gilt, der Stand also
+          nicht schon auf einem anderen Markt steht. Dann wird er ins Array eingefügt (<code>staende[anzahl++] =
+          stand;</code>) und im Stand die Referenz auf diesen Markt gesetzt (<code>stand.setMarkt(this);</code>). Die
+          Reihenfolge ist wichtig: <code>setMarkt</code> akzeptiert den Markt nur, wenn er den Stand schon enthält
+          &ndash; beim Entfernen umgekehrt erst, wenn er ihn nicht mehr enthält.
+        </p>
+        <div class="callout callout-tip">
+  <div class="callout-icon">&#128161;</div>
+  <div class="callout-body">
+    <div class="callout-title">Merksatz</div>
+    <p>Eine Seite ist &bdquo;führend&ldquo; (hier: der Markt). Nur ihre Methoden (<code>hinzufuegen</code>,
+          <code>entfernen</code>) ändern die Zuordnung und rufen dabei die Set-Methode der anderen Seite auf. Die
+          andere Seite prüft nur, ob der Aufruf zum aktuellen Zustand passt.</p>
+  </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-4">4 &mdash; Inhaltsgleichheit vs. Referenzgleichheit</h2>
+        <p>
+          Bei primitiven Datentypen wird Gleichheit ausschließlich mit <code>==</code> geprüft. Für Referenzdatentypen
+          ist <code>==</code> auch definiert, hat aber eine speziellere Bedeutung: Es prüft, ob zwei Objektreferenzen
+          auf <strong>dasselbe Objekt</strong> verweisen.
+        </p>
+        <p>
+          Manchmal braucht man aber einen Test auf <strong>Inhaltsgleichheit</strong>. Dafür gibt es die
+          <code>equals</code>-Methode, die du schon von <code>String</code> kennst: Sie liefert <code>true</code>,
+          wenn das Objekt und der Parameter <em>inhaltlich</em> übereinstimmen &ndash; auch wenn es verschiedene
+          Instanzen sind. Damit eigene Klassen das können, muss <code>equals</code> implementiert werden:
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Student.java</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public class Student {
+    private String name;
+    private int geburtsjahr;
+
+    // Konstruktoren und Getter/Setter hier weggelassen
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == null) return false;
+        if (this == other) return true;
+        if (this.getClass() != other.getClass()) return false;
+
+        Student otherStud = (Student) other;
+
+        if (this.name.equals(otherStud.name) &amp;&amp; this.geburtsjahr == otherStud.geburtsjahr) {
+            return true;
+        }
+        return false;
+    }
+}</code></pre>
+</div>
+        <ol>
+          <li>Ist der Parameter <code>null</code>, wird <code>false</code> zurückgegeben.</li>
+          <li>Ist der Parameter dieselbe Referenz wie <code>this</code>, liegt auf jeden Fall Inhaltsgleichheit vor.</li>
+          <li>Stammen beide Objekte nicht aus derselben Klasse, sind sie verschieden. Sonst wird <code>other</code> in einen <code>Student</code> umgewandelt (Cast).</li>
+          <li>Dann werden die einzelnen Attribute verglichen &ndash; Strings wiederum mit <code>equals</code>, primitive Typen mit <code>==</code>.</li>
+        </ol>
+        <p>
+          <code>@Override</code> zeigt an, dass eine geerbte Methode überschrieben wird (Details in Lektion 2.8).
+          <code>equals</code> wird am besten von der IDE erzeugt (<kbd>Alt</kbd>+<kbd>Einfg</kbd> &rarr;
+          <em>equals() and hashCode()</em>) und eventuell geringfügig angepasst.
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Vergleich ==/equals</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">Student s1 = new Student("Peter", 2001);
+Student s2 = s1;
+Student s3 = new Student("Peter", 2001);
+Student s4 = new Student("Lisa", 2003);
+
+System.out.println("s1 == s2: " + (s1 == s2));
+System.out.println("s1 == s3: " + (s1 == s3));
+System.out.println("s1.equals(s3): " + (s1.equals(s3)));
+System.out.println("s1.equals(s4): " + (s1.equals(s4)));</code></pre>
+</div>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Ausgabe</span>
+    <span class="code-lang">Text</span>
+  </div>
+  <pre><code class="language-plaintext">s1 == s2: true
+s1 == s3: false
+s1.equals(s3): true
+s1.equals(s4): false</code></pre>
+</div>
+        <div class="callout callout-warning">
+  <div class="callout-icon">&#9888;</div>
+  <div class="callout-body">
+    <div class="callout-title">Regeln für equals</div>
+    <p>Bei der Implementierung ist darauf zu achten, dass aus <code>x.equals(y)</code> auch <code>y.equals(x)</code>
+          folgt (symmetrisch) und <code>x.equals(x)</code> klarerweise <code>true</code> liefert (reflexiv). Und:
+          Wer <code>equals</code> überschreibt, sollte auch <code>hashCode</code> überschreiben (Lektion 3.2).</p>
+  </div>
+</div>
+      </section>
+
+      <section class="section section-projekt">
+        <h2 id="projektschritt">Projektschritt</h2>
+<div class="projekt-box">
+  <div class="projekt-box-header">
+    <span class="projekt-step">Projektschritt 2.6</span>
+    <h3>Mitarbeiter kennt seine Firma</h3>
+  </div>
+<p>Jeder Mitarbeiter weiß jetzt, in welcher Firma er arbeitet (<code>getFirma()</code>), und kann nicht gleichzeitig bei zwei Firmen angestellt sein. Die Firma ist die führende Seite: <code>einfuegen</code> und <code>kuendigen(int)</code> halten beide Seiten konsistent. Außerdem bekommt der Mitarbeiter eine <code>equals</code>-Methode (gleicher Name und gleiches Geburtsjahr).</p>
+  <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">src/main/java/Mitarbeiter.java (Auszug)</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">private Firma firma;              // Firma, in der der Mitarbeiter arbeitet (oder null)
+
+public Firma getFirma() {
+    return firma;
+}
+
+// Wird von Firma.einfuegen/kuendigen aufgerufen und hält beide Seiten konsistent
+public void setFirma(Firma firma) {
+    if (firma != null) {
+        if (firma.enthaelt(this)) {
+            this.firma = firma;
+        } else {
+            System.out.println("Fehler: " + name + " ist nicht in Firma "
+                               + firma.getName() + " eingetragen.");
+        }
+    } else {
+        if (this.firma == null || !this.firma.enthaelt(this)) {
+            this.firma = null;
+        } else {
+            System.out.println("Fehler: " + name + " arbeitet noch in Firma "
+                               + this.firma.getName() + ".");
+        }
+    }
+}
+
+// Inhaltsgleichheit: gleicher Name und gleiches Geburtsjahr
+@Override
+public boolean equals(Object other) {
+    if (other == null) return false;
+    if (this == other) return true;
+    if (this.getClass() != other.getClass()) return false;
+
+    Mitarbeiter m = (Mitarbeiter) other;
+    return this.name.equals(m.name) &amp;&amp; this.geburtsjahr == m.geburtsjahr;
+}</code></pre>
+</div>
+  <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">src/main/java/Firma.java (Auszug)</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">    if (m.getFirma() != null) {      // beidseitige Assoziation
+        System.out.println("Fehler: " + m.getName() + " arbeitet schon bei "
+                           + m.getFirma().getName());
+        return false;
+    }
+    for (int i = anzahl; i &gt; position; i--) {
+        personal[i] = personal[i - 1];
+    }
+    personal[position] = m;
+    anzahl++;
+    m.setFirma(this);                // beidseitige Assoziation
+    return true;
+}
+
+// Referenz-Gleichheit (==): ist genau DIESES Objekt in der Firma?
+public boolean enthaelt(Mitarbeiter m) {
+    for (int i = 0; i &lt; anzahl; i++) {
+        if (personal[i] == m) {
+            return true;
+        }
+    }
+    return false;
+}</code></pre>
+</div>
+  <p>In <code>kuendigen(int position)</code> wird nach dem Entfernen aus dem Array <code>m.setFirma(null);</code> aufgerufen. Die Tests <code>AssoziationTest</code> und <code>MitarbeiterEqualsTest</code> prüfen beides.</p>
+  <p class="mb-0">&#128193; Stand nach dieser Lektion: <a href="beispiele/2.6/src/test/java/AssoziationTest.java" target="_blank">beispiele/2.6/</a></p>
+</div>
+      </section>
+
+      <section class="section section-fehler">
+        <h2>Häufige Fehler</h2>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Nur eine Seite aktualisiert</div>
+  <p>Nach <code>markt.entfernen("Langos")</code> liefert <code>stand.getMarkt()</code> immer noch den alten Markt; der Stand kann nirgends mehr hinzugefügt werden.</p>
+          <p class="fehler-fix">Jede Änderung der Zuordnung muss beide Seiten anpassen: Array <em>und</em> <code>setMarkt</code>. Am besten nur über die Methoden der führenden Seite ändern.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Falsche Reihenfolge</div>
+  <p><code>stand.setMarkt(this)</code> wird vor dem Einfügen ins Array aufgerufen &ndash; die Fehlermeldung &bdquo;Stand nicht vorhanden&ldquo; erscheint.</p>
+          <p class="fehler-fix">Beim Hinzufügen zuerst ins Array, dann <code>setMarkt(this)</code>; beim Entfernen zuerst aus dem Array, dann <code>setMarkt(null)</code>.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: equals mit falschem Parametertyp</div>
+  <p><code>public boolean equals(Student other)</code> wird von <code>ArrayList.contains</code> &amp; Co. nie aufgerufen.</p>
+          <p class="fehler-fix">Die Signatur muss exakt <code>equals(Object other)</code> lauten &ndash; sonst ist es eine Überladung, keine Überschreibung. <code>@Override</code> davor lässt den Compiler das prüfen.</p>
+</div>
+      </section>
+
+      <section class="section section-quiz">
+        <h2>Wissenskontrolle</h2>
+        <div class="quiz" id="quiz-17">
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 1</span> Was bedeutet eine <strong>beidseitige</strong> Assoziation zwischen zwei Klassen <code>A</code> und <code>B</code>?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-17-1"> <span>Ein <code>A</code> kennt seine <code>B</code>-Objekte, diese kennen ihr <code>A</code> nicht.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-17-1"> <span>Ein <code>A</code> kennt seine <code>B</code>-Objekte, und jedes <code>B</code> kennt sein <code>A</code>.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-17-1"> <span><code>A</code> und <code>B</code> erben voneinander.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-17-1"> <span>Ein <code>B</code> gehört immer zu zwei <code>A</code>-Objekten.</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Bei beidseitiger Assoziation hat jede Seite eine Referenz auf die andere. Damit das konsistent bleibt, müssen beide Seiten immer gemeinsam geändert werden.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 2</span> Bei einer beidseitigen Assoziation ist ein Objekt bereits dem „Besitzer“ X zugeordnet und soll zum Besitzer Y wechseln. Was muss passieren?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-17-2"> <span>Es wird zusätzlich bei Y eingetragen.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-17-2"> <span>Es wird bei X entfernt, bei Y eingetragen, und sein eigener Verweis zeigt danach auf Y.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-17-2"> <span>Nur der Verweis im Objekt wird auf Y geändert.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-17-2"> <span>Das ist grundsätzlich nicht möglich.</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Ein Objekt darf nicht gleichzeitig zwei Besitzern gehören, und beide Seiten der Beziehung müssen nach jeder Änderung zueinander passen.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 3</span> Zwei Objekte derselben Klasse wurden mit denselben Daten getrennt erzeugt. Was liefert <code>o1 == o2</code>?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-17-3"> <span><code>true</code>, weil die Daten gleich sind</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-17-3"> <span><code>false</code>, weil es zwei verschiedene Objekte sind</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-17-3"> <span>einen Compilerfehler</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-17-3"> <span>Das hängt von <code>toString()</code> ab.</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> <code>==</code> prüft Referenzgleichheit. Ob zwei Objekte inhaltlich gleich sind, beantwortet erst eine selbst geschriebene <code>equals</code>-Methode.</div>
+  </div>
+  <div class="quiz-frage" data-multi="1">
+    <p class="quiz-q"><span class="quiz-num">Frage 4</span> Welche Schritte gehören zum Standardmuster einer <code>equals(Object o)</code>-Methode?</p>
+    <p class="quiz-hint">Mehrere Antworten sind richtig.</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-17-4"> <span>prüfen, ob <code>o</code> dasselbe Objekt ist (<code>this == o</code>)</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-17-4"> <span>prüfen, ob <code>o</code> <code>null</code> ist oder eine andere Klasse hat</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-17-4"> <span>nach dem Cast die relevanten Attribute vergleichen</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-17-4"> <span>alle Attribute mit <code>==</code> vergleichen, auch Strings</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Nach den Prüfungen auf dasselbe Objekt, <code>null</code> und die Klasse werden die fachlich wichtigen Attribute verglichen &ndash; Strings und andere Objekte dabei wieder mit <code>equals</code>.</div>
+  </div>
+  <div class="quiz-summary"><span class="quiz-score"></span><button type="button" class="quiz-reset">Zur&uuml;cksetzen</button></div>
+</div>
+      </section>
+
+    </div>
+
+    <nav class="lesson-nav">
+      <a class="nav-btn" href="2.5-objekt-arrays.html">&larr; Lektion 2.5: Objekt-Arrays</a>
+      <span class="nav-center-info">Lektion 2.6</span>
+      <a class="nav-btn primary" href="2.7-collections.html">Lektion 2.7: Collections: ArrayList &amp; Co. &rarr;</a>
+    </nav>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>
+    const ham = document.getElementById('hamburger');
+    const sb = document.getElementById('sidebar');
+    const ov = document.getElementById('overlay');
+    ham.addEventListener('click', () => { sb.classList.toggle('open'); ov.classList.toggle('visible'); });
+    ov.addEventListener('click', () => { sb.classList.remove('open'); ov.classList.remove('visible'); });
+    const cur = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-link').forEach(l => {
+      if (l.getAttribute('href') === cur) l.classList.add('active');
+    });
+    const themeBtn = document.getElementById('theme-toggle');
+    const applyTheme = (t) => {
+      document.documentElement.setAttribute('data-theme', t);
+      if (themeBtn) themeBtn.innerHTML = t === 'dark' ? '&#9728;' : '&#9790;';
+    };
+    applyTheme(localStorage.getItem('kurs-theme') || 'dark');
+    setTimeout(() => document.documentElement.classList.add('theme-transitions'), 50);
+    if (themeBtn) themeBtn.addEventListener('click', () => {
+      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('kurs-theme', next);
+      applyTheme(next);
+    });
+    hljs.highlightAll();
+  </script>
+  <script>
+    document.querySelectorAll('.quiz').forEach((quiz) => {
+      const fragen = [...quiz.querySelectorAll('.quiz-frage')];
+      const score = quiz.querySelector('.quiz-score');
+      const update = () => {
+        const done = fragen.filter((f) => f.dataset.state).length;
+        const ok = fragen.filter((f) => f.dataset.state === 'ok').length;
+        score.textContent = done === 0
+          ? fragen.length + ' Fragen – wähle eine Antwort und prüfe sie.'
+          : ok + ' von ' + fragen.length + ' richtig'
+            + (done < fragen.length ? ' (' + done + ' von ' + fragen.length + ' bearbeitet)' : '');
+      };
+      fragen.forEach((f) => {
+        const inputs = [...f.querySelectorAll('input')];
+        const check = f.querySelector('.quiz-check');
+        const reveal = f.querySelector('.quiz-reveal');
+        const fb = f.querySelector('.quiz-feedback');
+        const exp = f.querySelector('.quiz-erklaerung');
+        inputs.forEach((i) => i.addEventListener('change', () => {
+          check.disabled = !inputs.some((x) => x.checked);
+        }));
+        const finish = (graded) => {
+          let allOk = true;
+          f.querySelectorAll('.quiz-opt').forEach((li) => {
+            const input = li.querySelector('input');
+            const corr = li.dataset.correct === '1';
+            if (corr !== input.checked) allOk = false;
+            if (corr) li.classList.add('opt-correct');
+            else if (input.checked) li.classList.add('opt-wrong');
+            input.disabled = true;
+          });
+          f.dataset.state = !graded ? 'shown' : (allOk ? 'ok' : 'wrong');
+          fb.className = 'quiz-feedback fb-' + f.dataset.state;
+          fb.textContent = !graded ? 'Lösung angezeigt.'
+            : (allOk ? '✔ Richtig!' : '✘ Leider nicht ganz – die richtige Lösung ist markiert.');
+          fb.hidden = false;
+          exp.hidden = false;
+          check.disabled = true;
+          reveal.disabled = true;
+          update();
+        };
+        check.addEventListener('click', () => finish(true));
+        reveal.addEventListener('click', () => finish(false));
+      });
+      quiz.querySelector('.quiz-reset').addEventListener('click', () => {
+        fragen.forEach((f) => {
+          delete f.dataset.state;
+          f.querySelectorAll('.quiz-opt').forEach((li) => li.classList.remove('opt-correct', 'opt-wrong'));
+          f.querySelectorAll('input').forEach((i) => { i.checked = false; i.disabled = false; });
+          f.querySelector('.quiz-check').disabled = true;
+          f.querySelector('.quiz-reveal').disabled = false;
+          f.querySelector('.quiz-feedback').hidden = true;
+          f.querySelector('.quiz-erklaerung').hidden = true;
+        });
+        update();
+      });
+      update();
+    });
+  </script>
+</body>
+
+</html>

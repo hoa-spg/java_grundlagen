@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<!-- GENERIERT von java/kurs/_build (java-grundlagen) – nicht direkt bearbeiten!
+     Quelle: java/kurs/_build/java-grundlagen/lessons/, bauen: python3 _build/build.py java-grundlagen -->
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3.8 &ndash; Model-Klassen f&uuml;r die GUI | Java-Grundlagen Kurs</title>
+  <script>(function () { var t = localStorage.getItem('kurs-theme') || 'dark'; document.documentElement.setAttribute('data-theme', t); })();</script>
+  <link rel="stylesheet" href="assets/kurs.css">
+  <link rel="stylesheet" id="hljs-theme"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+
+<body>
+
+  <button class="hamburger" id="hamburger" aria-label="Navigation &ouml;ffnen">&#9776;</button>
+  <div class="sidebar-overlay" id="overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html">
+        <span class="brand-icon">J</span>
+        <div>
+          <div class="brand-name">Java</div>
+          <div class="brand-sub">Grundlagen der Programmierung</div>
+        </div>
+      </a>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Dark/Light Mode"
+        title="Theme wechseln">&#9728;</button>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-group">
+        <div class="nav-group-label html-label">Teil 1 &mdash; Grundlagen</div>
+        <a class="nav-link" href="1.1-einfuehrung-entwicklungsumgebung.html"><span class="ln">1.1</span>Einf&uuml;hrung &amp; Entwicklungsumgebung</a>
+        <a class="nav-link" href="1.2-klassen-objekte.html"><span class="ln">1.2</span>Klassen, Objekte, Get &amp; Set</a>
+        <a class="nav-link" href="1.3-konstruktoren-methoden.html"><span class="ln">1.3</span>Konstruktoren, this &amp; Methoden</a>
+        <a class="nav-link" href="1.4-datentypen.html"><span class="ln">1.4</span>Datentypen</a>
+        <a class="nav-link" href="1.5-signatur-ueberladen.html"><span class="ln">1.5</span>Methoden, Signatur &amp; &Uuml;berladen</a>
+        <a class="nav-link" href="1.6-bedingungen-berechnungen.html"><span class="ln">1.6</span>Bedingungen &amp; Berechnungen</a>
+        <a class="nav-link" href="1.7-debugger-testklassen.html"><span class="ln">1.7</span>Debugger &amp; Testklassen</a>
+        <a class="nav-link" href="1.8-strings-random.html"><span class="ln">1.8</span>Strings &amp; Random</a>
+        <a class="nav-link" href="1.9-objekt-beziehungen.html"><span class="ln">1.9</span>Objekt-Beziehungen</a>
+        <a class="nav-link" href="1.10-schleifen.html"><span class="ln">1.10</span>Schleifen</a>
+        <a class="nav-link" href="1.11-statische-methoden.html"><span class="ln">1.11</span>Statische Methoden &amp; main</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label css-label">Teil 2 &mdash; Datenstrukturen &amp; OOP</div>
+        <a class="nav-link" href="2.1-intellij-junit.html"><span class="ln">2.1</span>IntelliJ, Maven &amp; JUnit</a>
+        <a class="nav-link" href="2.2-arrays.html"><span class="ln">2.2</span>Arrays</a>
+        <a class="nav-link" href="2.3-arrays-einfuegen-entfernen.html"><span class="ln">2.3</span>Arrays: Einf&uuml;gen &amp; Entfernen</a>
+        <a class="nav-link" href="2.4-sortieralgorithmen.html"><span class="ln">2.4</span>Sortieralgorithmen</a>
+        <a class="nav-link" href="2.5-objekt-arrays.html"><span class="ln">2.5</span>Objekt-Arrays</a>
+        <a class="nav-link" href="2.6-assoziation-equals.html"><span class="ln">2.6</span>Beidseitige Assoziation &amp; equals</a>
+        <a class="nav-link" href="2.7-collections.html"><span class="ln">2.7</span>Collections: ArrayList &amp; Co.</a>
+        <a class="nav-link" href="2.8-vererbung.html"><span class="ln">2.8</span>Vererbung &amp; Polymorphismus</a>
+        <a class="nav-link" href="2.9-abstrakt-interfaces.html"><span class="ln">2.9</span>Abstrakte Klassen &amp; Interfaces</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label rn-label">Teil 3 &mdash; Fortgeschrittene Konzepte</div>
+        <a class="nav-link" href="3.0-fail-early.html"><span class="ln">3.0</span>Fail Early statt Happy Path</a>
+        <a class="nav-link" href="3.1-exceptions.html"><span class="ln">3.1</span>Exceptions</a>
+        <a class="nav-link" href="3.2-hashset-treeset.html"><span class="ln">3.2</span>HashSet, TreeSet &amp; hashCode</a>
+        <a class="nav-link" href="3.3-serialisierung-dateien.html"><span class="ln">3.3</span>Serialisierung &amp; Dateien</a>
+        <a class="nav-link" href="3.4-git.html"><span class="ln">3.4</span>Versionsverwaltung mit Git</a>
+        <a class="nav-link" href="3.5-lambdas.html"><span class="ln">3.5</span>Lambda-Ausdr&uuml;cke</a>
+        <a class="nav-link" href="3.6-streams.html"><span class="ln">3.6</span>Die Streams-API</a>
+        <a class="nav-link" href="3.7-design-patterns.html"><span class="ln">3.7</span>Design-Patterns</a>
+        <a class="nav-link" href="3.8-model-klassen.html"><span class="ln">3.8</span>Model-Klassen f&uuml;r die GUI</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label react-label">Teil 4 &mdash; Webanwendungen mit Vaadin</div>
+        <a class="nav-link" href="4.1-web-grundlagen.html"><span class="ln">4.1</span>Grundprinzipien des Web</a>
+        <a class="nav-link" href="4.2-vaadin-einstieg.html"><span class="ln">4.2</span>Vaadin Flow &amp; Start-Paket</a>
+        <a class="nav-link" href="4.3-komponenten-layouts.html"><span class="ln">4.3</span>Komponenten &amp; Layouts</a>
+        <a class="nav-link" href="4.4-grid-routing-binding.html"><span class="ln">4.4</span>Tabellen, Routing &amp; Binding</a>
+        <a class="nav-link" href="4.5-mitarbeiterverwaltung.html"><span class="ln">4.5</span>Mitarbeiterverwaltung</a>
+      </div>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <header class="lesson-header">
+      <p class="lesson-eyebrow">Lektion 3.8 &mdash; Teil 3: Fortgeschrittene Konzepte</p>
+      <h1>Model-Klassen f&uuml;r die GUI</h1>
+      <div class="lesson-tags">
+        <span class="tag tag-rn">Model</span>
+        <span class="tag tag-time">ca. 90 min</span>
+        <span class="tag tag-level">Fortgeschritten</span>
+      </div>
+    </header>
+
+    <div class="content-area">
+      <section class="section section-lernziele">
+        <h2>Lernziele</h2>
+        <ul class="lernziele-list">
+          <li><a class="lernziel-link" href="#abschnitt-1">die Rolle von Model-Klassen als Basis für eine Benutzeroberfläche erklären<span class="lernziel-ziel">Abschnitt 1</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-2">das Singleton-Pattern in <code>Company</code> erkennen und verwenden<span class="lernziel-ziel">Abschnitt 2</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-2">mit einem <code>Iterator</code> mehrere Elemente sicher aus einer Liste entfernen<span class="lernziel-ziel">Abschnitt 2</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-2">eine defensive Kopie (<code>getStaff()</code>) begründen<span class="lernziel-ziel">Abschnitt 2</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-3"><code>enum</code>, <code>LocalDate</code> und <code>DateTimeFormatter</code> in einer Model-Klasse einsetzen<span class="lernziel-ziel">Abschnitt 3</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-2">Streams zum Sortieren, Filtern und Verändern von Mitarbeitern lesen<span class="lernziel-ziel">Abschnitt 2</span></a></li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-1">1 &mdash; Model-Klassen</h2>
+        <p>
+          In diesem Kapitel stehen die <strong>Model-Klassen</strong> für die folgenden Abschnitte der
+          Oberflächenentwicklung (Teil 4). Model-Klassen enthalten die Daten und die fachliche Logik (Prüfungen,
+          Berechnungen, Laden/Speichern) &ndash; aber keinen Code für die Oberfläche. Die Oberfläche (<em>View</em>) ruft
+          ihre Methoden auf und fängt ihre Exceptions, um Fehlermeldungen anzuzeigen. So lässt sich dieselbe Logik mit
+          JUnit testen und in verschiedenen Oberflächen verwenden.
+        </p>
+        <p>
+          Die Klassen <code>Company</code> und <code>Employee</code> entsprechen der Personalverwaltung aus den bisherigen
+          Lektionen, verwenden aber englische Namen und mehr Attribute (E-Mail, Telefon, Geburtsdatum, Rolle, Gehalt). Sie liegen im Package <code>at.spengergasse.company.model</code>.
+        </p>
+        <div class="callout callout-info">
+  <div class="callout-icon">&#8505;</div>
+  <div class="callout-body">
+    <div class="callout-title">Packages</div>
+    <p>Größere Projekte ordnen Klassen in <strong>Packages</strong> (Ordner) ein. Die erste Zeile
+          <code>package at.spengergasse.company.model;</code> muss zum Ordner
+          <code>src/main/java/at/spengergasse/company/model/</code> passen. Klassen aus anderen Packages werden mit
+          <code>import</code> verwendet, z.&nbsp;B. <code>import at.spengergasse.company.model.Company;</code>.</p>
+  </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-2">2 &mdash; Company: ein Singleton</h2>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Company.java (Auszug)</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public class Company implements Serializable {
+
+    public static final String CSV_DELIMITER = ";";
+
+    private String companyName;
+    private String companyAddress;
+    private ArrayList&lt;Employee&gt; staff;
+
+    private static Company companyInstance = null;
+
+    private Company() {
+        staff = new ArrayList&lt;&gt;();
+        companyName = "n/a";
+        companyAddress = "n/a";
+    }
+
+    public static Company getInstance() {
+        if (companyInstance == null) {
+            companyInstance = new Company();
+            // ... Testdaten einfüllen (fillDebugData)
+        }
+        return companyInstance;
+    }
+
+    public static void loadFromFile(String filename) throws CompanyException {
+        companyInstance = Company.readFromFile(filename);
+    }
+
+    public static void clearInstance() {
+        companyInstance = null;
+    }
+    // ...</code></pre>
+</div>
+        <p>
+          Gleich zu Beginn sieht man: Der Konstruktor ist <code>private</code>. Instanzen von <code>Company</code> erhält
+          man nur über <code>public static Company getInstance()</code>; intern ist sichergestellt, dass nur eine einzige
+          Instanz existiert (<strong>Singleton-Pattern</strong>, Lektion 3.7). Jede View der Webanwendung arbeitet so mit
+          derselben Firma. <code>CSV_DELIMITER</code> ist eine <strong>Konstante</strong> (<code>static final</code>,
+          Großbuchstaben).
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Company.java – Mitarbeiter einstellen und entlassen</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public void hire(Employee emp) throws CompanyException {
+    if (emp == null) {
+        throw new CompanyException("Error: invalid employee: null. ");
+    }
+    if (emp.getId() == null) {
+        emp.setId(Employee.idCounter++);
+    }
+    if (staff.contains(emp)) {
+        throw new CompanyException("Error: employee already exists in company. ");
+    }
+    staff.add(emp);
+}
+
+/**
+ * Alle (!) Mitarbeiter mit diesem Namen werden entfernt. Beim Entfernen
+ * während des Durchlaufens muss ein Iterator verwendet werden (keine
+ * for-each-Schleife -&gt; ConcurrentModificationException).
+ */
+public boolean fire(String firstName, String lastName) throws CompanyException {
+    if (firstName == null || lastName == null) {
+        throw new CompanyException("Error: invalid parameters "
+                                   + "(null values are not allowed). ");
+    }
+    boolean removed = false;
+    Iterator&lt;Employee&gt; it = staff.iterator();
+    while (it.hasNext()) {
+        Employee e = it.next();
+        if (e.getLastName().equals(lastName) &amp;&amp; e.getFirstName().equals(firstName)) {
+            it.remove();
+            removed = true;
+        }
+    }
+    return removed;
+}
+
+// Kopie der Liste: von außen kann die interne Liste nicht verändert werden
+public List&lt;Employee&gt; getStaff() {
+    return new ArrayList&lt;&gt;(staff);
+}</code></pre>
+</div>
+        <p>
+          <code>fire</code> verwendet einen <code>Iterator</code> (das Iterator-Pattern als Teil der Java-Bibliothek), um
+          alle <code>Employee</code>s zu durchlaufen und bei Namensgleichheit zu löschen. Will man mehrere Elemente aus
+          einer Collection löschen, darf keinesfalls eine for-each-Schleife verwendet werden &ndash; man erhält sonst eine
+          <code>ConcurrentModificationException</code>. <code>getStaff()</code> gibt eine <strong>Kopie</strong> zurück:
+          Wer die Liste von außen leert, ändert die Firma nicht (vgl. &bdquo;kein <code>getWerte()</code>&ldquo; in Lektion
+          2.3).
+        </p>
+        <p>Die Methoden danach verwenden die Streams-API zum Sortieren, Filtern und Verändern:</p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Company.java – Streams</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public int numberOfManagers() {
+    return (int) staff.stream()
+                      .filter(e -&gt; e.getRole().equals(Employee.Role.MANAGER))
+                      .count();
+}
+
+public List&lt;Employee&gt; employeesSortedLastName() {
+    ArrayList&lt;Employee&gt; sorted = new ArrayList&lt;&gt;(staff);
+    sorted.sort(Comparator.comparing(Employee::getLastName));
+    return sorted;
+}
+
+public List&lt;Employee&gt; employeesSortedSalaryDecreasing(int minSalary) {
+    return staff.stream()
+                .filter(e -&gt; (e.getSalary() &gt; minSalary))
+                .sorted((Employee a, Employee b) -&gt; (b.getSalary() - a.getSalary()))
+                .collect(Collectors.toList());
+}
+
+public void increaseSalaryByPercent(int percent) throws CompanyException {
+    if (percent &lt;= 0 || percent &gt; 100) {
+        throw new CompanyException("Error: invalid percentage provided. ");
+    }
+    // Im Lambda sind keine checked Exceptions erlaubt -&gt; umverpacken
+    staff.forEach(e -&gt; {
+        try {
+            e.setSalary((int) (e.getSalary() * (100 + percent) / 100.0));
+        } catch (CompanyException ex) {
+            throw new RuntimeException(ex);
+        }
+    });
+}</code></pre>
+</div>
+        <p>Die verwendete Exception-Klasse entspricht der <code>FirmaException</code> aus Lektion 3.1:</p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">CompanyException.java</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">package at.spengergasse.company.model;
+
+public class CompanyException extends Exception {
+
+    public CompanyException(String message) {
+        super(message);
+    }
+
+    public CompanyException(String message, Throwable cause) {
+        super(message, cause);
+    }
+}</code></pre>
+</div>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-3">3 &mdash; Employee</h2>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Employee.java (Auszug)</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public class Employee implements Serializable {
+
+    private static final int MAX_SALARY = 100000;
+    private static final int MIN_SALARY = 1500;
+    public static Long idCounter = 1000L;
+
+    // konsistent halten mit dem CSV-Konstruktor
+    public enum Role { ADMIN, ASSISTANT, DEVELOPER, ANALYST, MANAGER }
+
+    private Long id;               // null = noch nicht eingestellt
+    private String firstName;
+    private String lastName;
+    private String email;
+    private String phone;
+    private LocalDate dateOfBirth;
+    private Role role;
+    private int salary;            // Bruttogehalt pro Monat
+    private boolean subcontractor;
+    // ...</code></pre>
+</div>
+        <ul>
+          <li><strong><code>Long id</code></strong>: eine eindeutige Nummer. <code>Long</code> (nicht <code>long</code>), damit <code>null</code> &bdquo;noch nicht eingestellt&ldquo; bedeuten kann. <code>hire</code> vergibt die nächste freie Id.</li>
+          <li><strong><code>enum Role</code></strong>: nur die fünf festgelegten Rollen sind möglich. Im CSV-Konstruktor werden die Texte mit <code>switch</code> zugeordnet.</li>
+          <li><strong><code>LocalDate</code></strong> (aus <code>java.time</code>) für das Geburtsdatum, z.&nbsp;B. <code>LocalDate.of(1938, 1, 10)</code>. Für CSV wird es mit <code>DateTimeFormatter.ofPattern("yyyy-MM-dd")</code> formatiert bzw. mit <code>LocalDate.parse</code> gelesen; ein falsches Datum führt zu einer <code>DateTimeParseException</code>, die in eine <code>CompanyException</code> umgewandelt wird.</li>
+          <li><strong>JavaBeans-Konvention</strong>: Jedes Attribut <code>xyz</code> hat <code>getXyz()</code> und <code>setXyz(&hellip;)</code> (bei <code>boolean</code>: <code>isXyz()</code>). Daran erkennt der Vaadin-<code>Binder</code> in Teil 4 die Eigenschaften und bindet sie automatisch an gleichnamige Formularfelder.</li>
+          <li><strong><code>equals</code>/<code>hashCode</code></strong> über die Id: zwei <code>Employee</code>-Objekte mit gleicher Id sind derselbe Mitarbeiter.</li>
+        </ul>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">company.csv (Name, Adresse, dann ein Mitarbeiter pro Zeile)</span>
+    <span class="code-lang">CSV</span>
+  </div>
+  <pre><code class="language-plaintext">Spenger Inc.
+Spengergasse 20, 1050 Wien
+1001;Donald;Knuth;knuth@spengergasse.at;+43 1 54615 101;1938-01-10;DEVELOPER;12000;Employee
+1003;Dennis;Ritchie;ritchie@spengergasse.at;+43 1 54615 113;1941-09-09;DEVELOPER;9000;Subcontractor</code></pre>
+</div>
+      </section>
+
+      <section class="section section-projekt">
+        <h2 id="projektschritt">Projektschritt</h2>
+<div class="projekt-box">
+  <div class="projekt-box-header">
+    <span class="projekt-step">Projektschritt 3.8</span>
+    <h3>Das Model für die Weboberfläche</h3>
+  </div>
+<p>Ab hier arbeitet das Projekt mit den Model-Klassen <code>Company</code>, <code>Employee</code> und <code>CompanyException</code> in einem neuen Maven-Projekt <code>company-model</code>. Ein kleines <code>Main</code>-Programm und <code>CompanyTest</code> prüfen alles, bevor in Teil 4 die Oberfläche dazukommt. Die vollständigen Klassen:</p>
+  <details class="code-collapse">
+  <summary><span class="code-filename">src/main/java/at/spengergasse/company/model/Employee.java</span> <span class="code-collapse-hint">Code anzeigen (253 Zeilen)</span></summary>
+<div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">src/main/java/at/spengergasse/company/model/Employee.java</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">package at.spengergasse.company.model;
+
+import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.Objects;
+
+/**
+ * Model-Klasse für einen Mitarbeiter – Basis für die Weboberfläche (Teil 4).
+ * Die Get-/Set-Methoden folgen der JavaBeans-Konvention, damit der
+ * Vaadin-Binder die Attribute automatisch an Formularfelder binden kann.
+ */
+public class Employee implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
+    private static final int MAX_SALARY = 100000;
+    private static final int MIN_SALARY = 1500;
+    public static Long idCounter = 1000L;
+
+    // konsistent halten mit dem CSV-Konstruktor
+    public enum Role { ADMIN, ASSISTANT, DEVELOPER, ANALYST, MANAGER }
+
+    private Long id;               // null = noch nicht eingestellt
+    private String firstName;
+    private String lastName;
+    private String email;
+    private String phone;
+    private LocalDate dateOfBirth;
+    private Role role;
+    private int salary;            // Bruttogehalt pro Monat
+    private boolean subcontractor;
+
+    public Employee() {
+        id = null;
+        firstName = "[first name not set]";
+        lastName = "[last name not set]";
+        email = "office@spengergasse.at";
+        phone = "+43 1 54615 0";
+        dateOfBirth = LocalDate.of(1970, 1, 1);
+        role = Role.ADMIN;
+        salary = 2000;
+        subcontractor = false;
+    }
+
+    public Employee(String firstName, String lastName, String email,
+                    String phone, LocalDate dateOfBirth,
+                    Role role, int salary, boolean subcontractor)
+            throws CompanyException
+    {
+        this(Employee.idCounter, firstName, lastName, email, phone, dateOfBirth,
+             role, salary, subcontractor);
+    }
+
+    public Employee(Long id, String firstName, String lastName, String email,
+                    String phone, LocalDate dateOfBirth,
+                    Role role, int salary, boolean subcontractor)
+            throws CompanyException
+    {
+        setId(id);
+        setFirstName(firstName);
+        setLastName(lastName);
+        setEmail(email);
+        setPhone(phone);
+        setDateOfBirth(dateOfBirth);
+        setRole(role);
+        setSalary(salary);
+        setSubcontractor(subcontractor);
+    }
+
+    // CSV: 1001;Donald;Knuth;knuth@spengergasse.at;+43 1 54615 101;1938-01-10;DEVELOPER;12000;Employee
+    public Employee(String csvString) throws CompanyException {
+        if (csvString == null) {
+            throw new CompanyException("Error: csvString is null. ");
+        }
+        String[] tokens = csvString.split(Company.CSV_DELIMITER);
+        if (tokens.length &lt; 9) {
+            throw new CompanyException("Error: invalid csv line: " + csvString
+                                       + ". Not enough values (columns). ");
+        }
+        try {
+            setId(Long.parseLong(tokens[0]));
+        } catch (NumberFormatException e) {
+            throw new CompanyException("Error: invalid id in line " + csvString + ". ", e);
+        }
+        setFirstName(tokens[1]);
+        setLastName(tokens[2]);
+        setEmail(tokens[3]);
+        setPhone(tokens[4]);
+        try {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            setDateOfBirth(LocalDate.parse(tokens[5], formatter));
+        } catch (DateTimeParseException e) {
+            throw new CompanyException("Error: could not read date in line "
+                                       + csvString + ". ", e);
+        }
+        switch (tokens[6]) {
+            case "ADMIN": setRole(Role.ADMIN); break;
+            case "ASSISTANT": setRole(Role.ASSISTANT); break;
+            case "DEVELOPER": setRole(Role.DEVELOPER); break;
+            case "ANALYST": setRole(Role.ANALYST); break;
+            case "MANAGER": setRole(Role.MANAGER); break;
+            default: throw new CompanyException("Error: invalid role value in line "
+                                                + csvString + ". ");
+        }
+        try {
+            setSalary(Integer.parseInt(tokens[7]));
+        } catch (NumberFormatException e) {
+            throw new CompanyException("Error: invalid salary in line " + csvString + ". ", e);
+        }
+        if ("Employee".equals(tokens[8])) {
+            setSubcontractor(false);
+        } else if ("Subcontractor".equals(tokens[8])) {
+            setSubcontractor(true);
+        } else {
+            throw new CompanyException("Error: invalid employment status in line "
+                                       + csvString
+                                       + ". Expected: 'Employee' or 'Subcontractor'.");
+        }
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) throws CompanyException {
+        if (id == null || id &lt; 0) {
+            throw new CompanyException("Error: invalid id: " + id);
+        }
+        if (id &gt;= Employee.idCounter) {
+            Employee.idCounter = id + 1;   // nächste freie Id
+        }
+        this.id = id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) throws CompanyException {
+        if (firstName == null || firstName.length() &lt;= 2 || firstName.isBlank()) {
+            throw new CompanyException("Error: invalid first name: " + firstName);
+        }
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) throws CompanyException {
+        if (lastName == null || lastName.length() &lt;= 2 || lastName.isBlank()) {
+            throw new CompanyException("Error: invalid last name: " + lastName);
+        }
+        this.lastName = lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) throws CompanyException {
+        if (email == null || email.length() &lt;= 5 || !email.contains("@")
+            || !email.contains("."))
+        {
+            throw new CompanyException("Error: invalid email address: " + email);
+        }
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) throws CompanyException {
+        if (phone == null) {
+            throw new CompanyException("Error: invalid phone (null). ");
+        }
+        this.phone = phone;
+    }
+
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(LocalDate dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) throws CompanyException {
+        if (role == null) {
+            throw new CompanyException("Error: invalid role " + role);
+        }
+        this.role = role;
+    }
+
+    public int getSalary() {
+        return salary;
+    }
+
+    public void setSalary(int salary) throws CompanyException {
+        if (salary &lt;= MIN_SALARY || salary &gt;= MAX_SALARY) {
+            throw new CompanyException("Error: invalid salary: " + salary);
+        }
+        this.salary = salary;
+    }
+
+    public boolean isSubcontractor() {
+        return subcontractor;
+    }
+
+    public void setSubcontractor(boolean subcontractor) {
+        this.subcontractor = subcontractor;
+    }
+
+    // Zwei Employees sind gleich, wenn sie dieselbe Id haben
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        return id != null &amp;&amp; id.equals(employee.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
+    }
+
+    public String toCsvString() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String d = Company.CSV_DELIMITER;
+        return id + d + firstName + d + lastName + d + email + d + phone + d
+               + formatter.format(dateOfBirth) + d + role + d + salary + d
+               + (subcontractor ? "Subcontractor" : "Employee");
+    }
+
+    @Override
+    public String toString() {
+        return firstName + " " + lastName
+               + " (E: " + email + ", P: " + phone + "), "
+               + "date of birth: " + dateOfBirth
+               + ", role: " + role
+               + ", gross salary: " + salary + " per month, "
+               + (subcontractor ? "Subcontractor" : "Employee")
+               + ", id=" + id;
+    }
+}</code></pre>
+</div>
+</details>
+  <details class="code-collapse">
+  <summary><span class="code-filename">src/main/java/at/spengergasse/company/model/Company.java</span> <span class="code-collapse-hint">Code anzeigen (352 Zeilen)</span></summary>
+<div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">src/main/java/at/spengergasse/company/model/Company.java</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">package at.spengergasse.company.model;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.List;
+import java.util.stream.Collectors;
+
+/**
+ * Die Firma als Singleton: in der ganzen Anwendung gibt es genau eine
+ * Instanz, die über Company.getInstance() erreichbar ist.
+ */
+public class Company implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
+    public static final String CSV_DELIMITER = ";";
+
+    private String companyName;
+    private String companyAddress;
+    private ArrayList&lt;Employee&gt; staff;
+
+    // ---- Singleton ---------------------------------------------------------
+
+    private static Company companyInstance = null;
+
+    private Company() {
+        staff = new ArrayList&lt;&gt;();
+        companyName = "n/a";
+        companyAddress = "n/a";
+    }
+
+    public static Company getInstance() {
+        if (companyInstance == null) {
+            companyInstance = new Company();
+            try {
+                companyInstance.fillDebugData();
+            } catch (CompanyException e) {
+                e.printStackTrace();
+            }
+        }
+        return companyInstance;
+    }
+
+    public static void loadFromFile(InputStream is) throws CompanyException {
+        companyInstance = Company.readFromFile(is);
+    }
+
+    public static void loadFromFile(String filename) throws CompanyException {
+        companyInstance = Company.readFromFile(filename);
+    }
+
+    public static void clearInstance() {
+        companyInstance = null;
+    }
+
+    // ---- Get-/Set-Methoden ---------------------------------------------------
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) throws CompanyException {
+        if (companyName == null || companyName.isBlank()) {
+            throw new CompanyException("Invalid company name: null or empty. ");
+        }
+        this.companyName = companyName;
+    }
+
+    public String getCompanyAddress() {
+        return companyAddress;
+    }
+
+    public void setCompanyAddress(String companyAddress) throws CompanyException {
+        if (companyAddress == null || companyAddress.isBlank()) {
+            throw new CompanyException("Invalid company address: null or empty. ");
+        }
+        this.companyAddress = companyAddress;
+    }
+
+    // ---- Personal ------------------------------------------------------------
+
+    public void hire(Employee emp) throws CompanyException {
+        if (emp == null) {
+            throw new CompanyException("Error: invalid employee: null. ");
+        }
+        if (emp.getId() == null) {
+            emp.setId(Employee.idCounter++);
+        }
+        if (staff.contains(emp)) {
+            throw new CompanyException("Error: employee already exists in company. ");
+        }
+        staff.add(emp);
+    }
+
+    public boolean fire(Employee emp) throws CompanyException {
+        if (emp == null) {
+            throw new CompanyException("Error: employee is null. ");
+        }
+        return staff.remove(emp);   // nicht vorhanden ist kein Fehler
+    }
+
+    /**
+     * Alle (!) Mitarbeiter mit diesem Namen werden entfernt. Beim Entfernen
+     * während des Durchlaufens muss ein Iterator verwendet werden (keine
+     * for-each-Schleife -&gt; ConcurrentModificationException).
+     */
+    public boolean fire(String firstName, String lastName) throws CompanyException {
+        if (firstName == null || lastName == null) {
+            throw new CompanyException("Error: invalid parameters "
+                                       + "(null values are not allowed). ");
+        }
+        boolean removed = false;
+        Iterator&lt;Employee&gt; it = staff.iterator();
+        while (it.hasNext()) {
+            Employee e = it.next();
+            if (e.getLastName().equals(lastName) &amp;&amp; e.getFirstName().equals(firstName)) {
+                it.remove();
+                removed = true;
+            }
+        }
+        return removed;
+    }
+
+    public boolean fire(Long id) throws CompanyException {
+        if (id == null) {
+            throw new CompanyException("Error: provided id is null. ");
+        }
+        Iterator&lt;Employee&gt; it = staff.iterator();
+        while (it.hasNext()) {
+            if (id.equals(it.next().getId())) {
+                it.remove();
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public int numberOfEmployees() {
+        return staff.size();
+    }
+
+    public Employee getEmployee(int index) throws CompanyException {
+        if (index &lt; 0 || index &gt;= staff.size()) {
+            throw new CompanyException("Error: employee with index " + index
+                                       + " does not exist. ");
+        }
+        return staff.get(index);
+    }
+
+    public Employee getEmployee(Long id) throws CompanyException {
+        return staff.stream()
+                    .filter(e -&gt; e.getId().equals(id))
+                    .findFirst()
+                    .orElseThrow(() -&gt; new CompanyException("Error: no employee with id "
+                                                            + id + " exists. "));
+    }
+
+    // Kopie der Liste: von außen kann die interne Liste nicht verändert werden
+    public List&lt;Employee&gt; getStaff() {
+        return new ArrayList&lt;&gt;(staff);
+    }
+
+    // ---- Streams -------------------------------------------------------------
+
+    public int numberOfManagers() {
+        return (int) staff.stream()
+                          .filter(e -&gt; e.getRole().equals(Employee.Role.MANAGER))
+                          .count();
+    }
+
+    public List&lt;Employee&gt; employeesSortedLastName() {
+        ArrayList&lt;Employee&gt; sorted = new ArrayList&lt;&gt;(staff);
+        sorted.sort(Comparator.comparing(Employee::getLastName));
+        return sorted;
+    }
+
+    public List&lt;Employee&gt; employeesSortedSalaryDecreasing() {
+        ArrayList&lt;Employee&gt; sorted = new ArrayList&lt;&gt;(staff);
+        sorted.sort((Employee a, Employee b) -&gt; (b.getSalary() - a.getSalary()));
+        return sorted;
+    }
+
+    public List&lt;Employee&gt; employeesSortedSalaryDecreasing(int minSalary) {
+        return staff.stream()
+                    .filter(e -&gt; (e.getSalary() &gt; minSalary))
+                    .sorted((Employee a, Employee b) -&gt; (b.getSalary() - a.getSalary()))
+                    .collect(Collectors.toList());
+    }
+
+    public void increaseSalaryByPercent(int percent) throws CompanyException {
+        if (percent &lt;= 0 || percent &gt; 100) {
+            throw new CompanyException("Error: invalid percentage provided. ");
+        }
+        // Im Lambda sind keine checked Exceptions erlaubt -&gt; umverpacken
+        staff.forEach(e -&gt; {
+            try {
+                e.setSalary((int) (e.getSalary() * (100 + percent) / 100.0));
+            } catch (CompanyException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
+    }
+
+    // ---- Dateien -------------------------------------------------------------
+
+    public void serialize(String filename) throws CompanyException {
+        if (filename == null) {
+            throw new CompanyException("Error: filename is null. ");
+        }
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filename))) {
+            oos.writeObject(this);
+        } catch (IOException e) {
+            throw new CompanyException("Error: IO Exception. ", e);
+        }
+    }
+
+    public static Company deserialize(String filename) throws CompanyException {
+        if (filename == null) {
+            throw new CompanyException("Error: filename is null. ");
+        }
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filename))) {
+            return (Company) ois.readObject();
+        } catch (FileNotFoundException e) {
+            throw new CompanyException("Error: file not found: " + filename, e);
+        } catch (IOException e) {
+            throw new CompanyException("Error: IO Exception. ", e);
+        } catch (ClassNotFoundException e) {
+            throw new CompanyException("Error reading object from file. ", e);
+        }
+    }
+
+    public void writeToFile(String filename) throws CompanyException {
+        if (filename == null) {
+            throw new CompanyException("Error: filename is null. ");
+        }
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(filename))) {
+            bw.write(this.toCsvString());
+        } catch (IOException e) {
+            throw new CompanyException("Error: could not write " + filename, e);
+        }
+    }
+
+    public static Company readFromFile(String filename) throws CompanyException {
+        if (filename == null) {
+            throw new CompanyException("Error: filename is null. ");
+        }
+        // Code-Wiederverwendung: Datei öffnen und an die InputStream-Variante übergeben
+        try (InputStream is = new FileInputStream(filename)) {
+            return readFromFile(is);
+        } catch (FileNotFoundException e) {
+            throw new CompanyException("Error: file not found: " + filename, e);
+        } catch (IOException e) {
+            throw new CompanyException("Error: could not read " + filename, e);
+        }
+    }
+
+    // InputStream: funktioniert für Dateien UND für Uploads im Browser (Teil 4)
+    public static Company readFromFile(InputStream is) throws CompanyException {
+        if (is == null) {
+            throw new CompanyException("Error: input stream is null. ");
+        }
+        Company company = new Company();
+        try {
+            BufferedReader br = new BufferedReader(new InputStreamReader(is));
+            String line = br.readLine();
+            if (line == null || line.contains(CSV_DELIMITER)) {
+                throw new CompanyException("Invalid first line. "
+                                           + "Single column with company name expected. ");
+            }
+            company.setCompanyName(line);
+            line = br.readLine();
+            if (line == null || line.contains(CSV_DELIMITER)) {
+                throw new CompanyException("Invalid second line. "
+                                           + "Single column with company address expected. ");
+            }
+            company.setCompanyAddress(line);
+            line = br.readLine();
+            while (line != null) {
+                if (!line.isBlank()) {
+                    company.hire(new Employee(line));
+                }
+                line = br.readLine();
+            }
+        } catch (IOException e) {
+            throw new CompanyException("Error: could not read input. ", e);
+        }
+        return company;
+    }
+
+    public String toCsvString() {
+        String csv = companyName + "\n" + companyAddress + "\n";
+        for (Employee e : staff) {
+            csv += e.toCsvString() + "\n";
+        }
+        return csv;
+    }
+
+    @Override
+    public String toString() {
+        final String line = "------------------------------------------------";
+        String str = "Company Name: " + companyName + "\n";
+        str += "Address: " + companyAddress + "\n";
+        str += line + "\n";
+        str += "Staff: " + "\n";
+        for (Employee emp : staff) {
+            str += emp + "\n";
+        }
+        str += line + "\n";
+        return str;
+    }
+
+    public void print() {
+        System.out.println(this);
+    }
+
+    // Testdaten, damit die Oberfläche nicht leer ist
+    protected void fillDebugData() throws CompanyException {
+        if (staff.isEmpty()) {
+            setCompanyName("Spenger Inc.");
+            setCompanyAddress("Spengergasse 20, 1050 Wien");
+            hire(new Employee(1001L, "Donald", "Knuth", "knuth@spengergasse.at",
+                    "+43 1 54615 101", LocalDate.of(1938, 1, 10),
+                    Employee.Role.DEVELOPER, 12000, false));
+            hire(new Employee(1002L, "Bjarne", "Stroustrup", "stroustrup@spengergasse.at",
+                    "+43 1 54615 102", LocalDate.of(1950, 12, 30),
+                    Employee.Role.MANAGER, 13000, false));
+            hire(new Employee(1003L, "Dennis", "Ritchie", "ritchie@spengergasse.at",
+                    "+43 1 54615 113", LocalDate.of(1941, 9, 9),
+                    Employee.Role.DEVELOPER, 9000, true));
+            hire(new Employee(1004L, "Linus", "Torvalds", "torvalds@spengergasse.at",
+                    "+43 1 54615 121", LocalDate.of(1969, 12, 28),
+                    Employee.Role.MANAGER, 7000, false));
+            hire(new Employee(1005L, "Martin", "Fowler", "fowler@spengergasse.at",
+                    "+43 1 54615 127", LocalDate.of(1963, 12, 18),
+                    Employee.Role.ANALYST, 11000, false));
+        }
+    }
+}</code></pre>
+</div>
+</details>
+  <p class="mb-0">&#128193; Stand nach dieser Lektion (Ende Teil 3): <a href="beispiele/3.8/src/test/java/at/spengergasse/company/model/CompanyTest.java" target="_blank">beispiele/3.8/</a></p>
+</div>
+      </section>
+
+      <section class="section section-fehler">
+        <h2>Häufige Fehler</h2>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: new Company()</div>
+  <p><code>Company() has private access in Company</code>.</p>
+          <p class="fehler-fix">Beim Singleton gibt es keinen öffentlichen Konstruktor &ndash; immer <code>Company.getInstance()</code> verwenden.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Liste über getStaff() verändert</div>
+  <p><code>company.getStaff().add(e)</code> hat keine Wirkung, der Mitarbeiter fehlt in der Firma.</p>
+          <p class="fehler-fix"><code>getStaff()</code> liefert absichtlich eine Kopie. Einstellen und Entlassen nur über <code>hire</code> und <code>fire</code> &ndash; dort finden die Prüfungen statt.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Package passt nicht zum Ordner</div>
+  <p>IntelliJ meldet <code>Package name 'at.spengergasse.company.model' does not correspond to the file path</code>.</p>
+          <p class="fehler-fix">Die Datei muss in <code>src/main/java/at/spengergasse/company/model/</code> liegen. Klassen am besten über <em>New &rarr; Java Class</em> im richtigen Package anlegen; beim Verschieben IntelliJs Refactoring (<kbd>F6</kbd>) verwenden.</p>
+</div>
+      </section>
+
+      <section class="section section-quiz">
+        <h2>Wissenskontrolle</h2>
+        <div class="quiz" id="quiz-29">
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 1</span> Welche Aufgabe haben Model-Klassen in einer Anwendung mit Benutzeroberfläche?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-29-1"> <span>Sie zeichnen die Benutzeroberfläche.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-29-1"> <span>Sie enthalten Daten und fachliche Logik samt Prüfungen &ndash; unabhängig von der Oberfläche.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-29-1"> <span>Sie starten den Webserver.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-29-1"> <span>Sie speichern nur Konfigurationswerte.</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Die Oberfläche zeigt Daten an und ruft Methoden des Models auf. Die Regeln selbst liegen im Model und funktionieren auch ohne Oberfläche, z.&nbsp;B. in JUnit-Tests.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 2</span> Warum liefert ein Getter für eine interne Liste oft eine <strong>Kopie</strong> der Liste (defensive Kopie)?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-29-2"> <span>weil Listen nicht zurückgegeben werden können</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-29-2"> <span>damit niemand von außen die interne Liste an den Prüfungen der Klasse vorbei verändern kann</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-29-2"> <span>damit die Liste sortiert ist</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-29-2"> <span>weil die Kopie weniger Speicher braucht</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Ohne Kopie gäbe der Getter nur die Referenz heraus. Wer der Kopie Elemente hinzufügt oder sie löscht, ändert das ursprüngliche Objekt nicht.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 3</span> Welche Aufgabe erledigt ein <code>DateTimeFormatter</code>?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-29-3"> <span>Er berechnet die Differenz zweier Datumswerte in Jahren.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-29-3"> <span>Er wandelt ein <code>LocalDate</code> in einen Text in einem bestimmten Format um und liest solche Texte wieder ein.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-29-3"> <span>Er stellt die Systemuhr.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-29-3"> <span>Er vergleicht zwei Datumswerte.</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Mit einem Muster wie <code>"dd.MM.yyyy"</code> wird aus einem Datum der Text <code>24.11.2026</code> &ndash; und umgekehrt mit <code>LocalDate.parse(text, formatter)</code>.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 4</span> Mehrere Elemente sollen beim Durchlaufen aus einer Liste entfernt werden. Welcher Weg ist sicher?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-29-4"> <span>eine for-each-Schleife mit <code>liste.remove(e)</code></span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-29-4"> <span>ein <code>Iterator</code> mit <code>iterator.remove()</code> (oder <code>removeIf</code>)</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-29-4"> <span>eine vorwärts laufende <code>for</code>-Schleife, die bei jedem Treffer <code>remove(i)</code> aufruft, ohne den Index anzupassen</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-29-4"> <span>die Liste auf <code>null</code> setzen</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Die for-each-Schleife bricht mit <code>ConcurrentModificationException</code> ab, und beim vorwärts laufenden Index wird nach jedem Entfernen ein Element übersprungen. Der Iterator ist dafür gemacht.</div>
+  </div>
+  <div class="quiz-summary"><span class="quiz-score"></span><button type="button" class="quiz-reset">Zur&uuml;cksetzen</button></div>
+</div>
+      </section>
+
+    </div>
+
+    <nav class="lesson-nav">
+      <a class="nav-btn" href="3.7-design-patterns.html">&larr; Lektion 3.7: Design-Patterns</a>
+      <span class="nav-center-info">Lektion 3.8</span>
+      <a class="nav-btn primary" href="4.1-web-grundlagen.html">Lektion 4.1: Grundprinzipien des Web &rarr;</a>
+    </nav>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>
+    const ham = document.getElementById('hamburger');
+    const sb = document.getElementById('sidebar');
+    const ov = document.getElementById('overlay');
+    ham.addEventListener('click', () => { sb.classList.toggle('open'); ov.classList.toggle('visible'); });
+    ov.addEventListener('click', () => { sb.classList.remove('open'); ov.classList.remove('visible'); });
+    const cur = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-link').forEach(l => {
+      if (l.getAttribute('href') === cur) l.classList.add('active');
+    });
+    const themeBtn = document.getElementById('theme-toggle');
+    const applyTheme = (t) => {
+      document.documentElement.setAttribute('data-theme', t);
+      if (themeBtn) themeBtn.innerHTML = t === 'dark' ? '&#9728;' : '&#9790;';
+    };
+    applyTheme(localStorage.getItem('kurs-theme') || 'dark');
+    setTimeout(() => document.documentElement.classList.add('theme-transitions'), 50);
+    if (themeBtn) themeBtn.addEventListener('click', () => {
+      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('kurs-theme', next);
+      applyTheme(next);
+    });
+    hljs.highlightAll();
+  </script>
+  <script>
+    document.querySelectorAll('.quiz').forEach((quiz) => {
+      const fragen = [...quiz.querySelectorAll('.quiz-frage')];
+      const score = quiz.querySelector('.quiz-score');
+      const update = () => {
+        const done = fragen.filter((f) => f.dataset.state).length;
+        const ok = fragen.filter((f) => f.dataset.state === 'ok').length;
+        score.textContent = done === 0
+          ? fragen.length + ' Fragen – wähle eine Antwort und prüfe sie.'
+          : ok + ' von ' + fragen.length + ' richtig'
+            + (done < fragen.length ? ' (' + done + ' von ' + fragen.length + ' bearbeitet)' : '');
+      };
+      fragen.forEach((f) => {
+        const inputs = [...f.querySelectorAll('input')];
+        const check = f.querySelector('.quiz-check');
+        const reveal = f.querySelector('.quiz-reveal');
+        const fb = f.querySelector('.quiz-feedback');
+        const exp = f.querySelector('.quiz-erklaerung');
+        inputs.forEach((i) => i.addEventListener('change', () => {
+          check.disabled = !inputs.some((x) => x.checked);
+        }));
+        const finish = (graded) => {
+          let allOk = true;
+          f.querySelectorAll('.quiz-opt').forEach((li) => {
+            const input = li.querySelector('input');
+            const corr = li.dataset.correct === '1';
+            if (corr !== input.checked) allOk = false;
+            if (corr) li.classList.add('opt-correct');
+            else if (input.checked) li.classList.add('opt-wrong');
+            input.disabled = true;
+          });
+          f.dataset.state = !graded ? 'shown' : (allOk ? 'ok' : 'wrong');
+          fb.className = 'quiz-feedback fb-' + f.dataset.state;
+          fb.textContent = !graded ? 'Lösung angezeigt.'
+            : (allOk ? '✔ Richtig!' : '✘ Leider nicht ganz – die richtige Lösung ist markiert.');
+          fb.hidden = false;
+          exp.hidden = false;
+          check.disabled = true;
+          reveal.disabled = true;
+          update();
+        };
+        check.addEventListener('click', () => finish(true));
+        reveal.addEventListener('click', () => finish(false));
+      });
+      quiz.querySelector('.quiz-reset').addEventListener('click', () => {
+        fragen.forEach((f) => {
+          delete f.dataset.state;
+          f.querySelectorAll('.quiz-opt').forEach((li) => li.classList.remove('opt-correct', 'opt-wrong'));
+          f.querySelectorAll('input').forEach((i) => { i.checked = false; i.disabled = false; });
+          f.querySelector('.quiz-check').disabled = true;
+          f.querySelector('.quiz-reveal').disabled = false;
+          f.querySelector('.quiz-feedback').hidden = true;
+          f.querySelector('.quiz-erklaerung').hidden = true;
+        });
+        update();
+      });
+      update();
+    });
+  </script>
+</body>
+
+</html>

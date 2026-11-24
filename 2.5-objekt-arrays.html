@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<!-- GENERIERT von java/kurs/_build (java-grundlagen) – nicht direkt bearbeiten!
+     Quelle: java/kurs/_build/java-grundlagen/lessons/, bauen: python3 _build/build.py java-grundlagen -->
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.5 &ndash; Objekt-Arrays | Java-Grundlagen Kurs</title>
+  <script>(function () { var t = localStorage.getItem('kurs-theme') || 'dark'; document.documentElement.setAttribute('data-theme', t); })();</script>
+  <link rel="stylesheet" href="assets/kurs.css">
+  <link rel="stylesheet" id="hljs-theme"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+
+<body>
+
+  <button class="hamburger" id="hamburger" aria-label="Navigation &ouml;ffnen">&#9776;</button>
+  <div class="sidebar-overlay" id="overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html">
+        <span class="brand-icon">J</span>
+        <div>
+          <div class="brand-name">Java</div>
+          <div class="brand-sub">Grundlagen der Programmierung</div>
+        </div>
+      </a>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Dark/Light Mode"
+        title="Theme wechseln">&#9728;</button>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-group">
+        <div class="nav-group-label html-label">Teil 1 &mdash; Grundlagen</div>
+        <a class="nav-link" href="1.1-einfuehrung-entwicklungsumgebung.html"><span class="ln">1.1</span>Einf&uuml;hrung &amp; Entwicklungsumgebung</a>
+        <a class="nav-link" href="1.2-klassen-objekte.html"><span class="ln">1.2</span>Klassen, Objekte, Get &amp; Set</a>
+        <a class="nav-link" href="1.3-konstruktoren-methoden.html"><span class="ln">1.3</span>Konstruktoren, this &amp; Methoden</a>
+        <a class="nav-link" href="1.4-datentypen.html"><span class="ln">1.4</span>Datentypen</a>
+        <a class="nav-link" href="1.5-signatur-ueberladen.html"><span class="ln">1.5</span>Methoden, Signatur &amp; &Uuml;berladen</a>
+        <a class="nav-link" href="1.6-bedingungen-berechnungen.html"><span class="ln">1.6</span>Bedingungen &amp; Berechnungen</a>
+        <a class="nav-link" href="1.7-debugger-testklassen.html"><span class="ln">1.7</span>Debugger &amp; Testklassen</a>
+        <a class="nav-link" href="1.8-strings-random.html"><span class="ln">1.8</span>Strings &amp; Random</a>
+        <a class="nav-link" href="1.9-objekt-beziehungen.html"><span class="ln">1.9</span>Objekt-Beziehungen</a>
+        <a class="nav-link" href="1.10-schleifen.html"><span class="ln">1.10</span>Schleifen</a>
+        <a class="nav-link" href="1.11-statische-methoden.html"><span class="ln">1.11</span>Statische Methoden &amp; main</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label css-label">Teil 2 &mdash; Datenstrukturen &amp; OOP</div>
+        <a class="nav-link" href="2.1-intellij-junit.html"><span class="ln">2.1</span>IntelliJ, Maven &amp; JUnit</a>
+        <a class="nav-link" href="2.2-arrays.html"><span class="ln">2.2</span>Arrays</a>
+        <a class="nav-link" href="2.3-arrays-einfuegen-entfernen.html"><span class="ln">2.3</span>Arrays: Einf&uuml;gen &amp; Entfernen</a>
+        <a class="nav-link" href="2.4-sortieralgorithmen.html"><span class="ln">2.4</span>Sortieralgorithmen</a>
+        <a class="nav-link" href="2.5-objekt-arrays.html"><span class="ln">2.5</span>Objekt-Arrays</a>
+        <a class="nav-link" href="2.6-assoziation-equals.html"><span class="ln">2.6</span>Beidseitige Assoziation &amp; equals</a>
+        <a class="nav-link" href="2.7-collections.html"><span class="ln">2.7</span>Collections: ArrayList &amp; Co.</a>
+        <a class="nav-link" href="2.8-vererbung.html"><span class="ln">2.8</span>Vererbung &amp; Polymorphismus</a>
+        <a class="nav-link" href="2.9-abstrakt-interfaces.html"><span class="ln">2.9</span>Abstrakte Klassen &amp; Interfaces</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label rn-label">Teil 3 &mdash; Fortgeschrittene Konzepte</div>
+        <a class="nav-link" href="3.0-fail-early.html"><span class="ln">3.0</span>Fail Early statt Happy Path</a>
+        <a class="nav-link" href="3.1-exceptions.html"><span class="ln">3.1</span>Exceptions</a>
+        <a class="nav-link" href="3.2-hashset-treeset.html"><span class="ln">3.2</span>HashSet, TreeSet &amp; hashCode</a>
+        <a class="nav-link" href="3.3-serialisierung-dateien.html"><span class="ln">3.3</span>Serialisierung &amp; Dateien</a>
+        <a class="nav-link" href="3.4-git.html"><span class="ln">3.4</span>Versionsverwaltung mit Git</a>
+        <a class="nav-link" href="3.5-lambdas.html"><span class="ln">3.5</span>Lambda-Ausdr&uuml;cke</a>
+        <a class="nav-link" href="3.6-streams.html"><span class="ln">3.6</span>Die Streams-API</a>
+        <a class="nav-link" href="3.7-design-patterns.html"><span class="ln">3.7</span>Design-Patterns</a>
+        <a class="nav-link" href="3.8-model-klassen.html"><span class="ln">3.8</span>Model-Klassen f&uuml;r die GUI</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label react-label">Teil 4 &mdash; Webanwendungen mit Vaadin</div>
+        <a class="nav-link" href="4.1-web-grundlagen.html"><span class="ln">4.1</span>Grundprinzipien des Web</a>
+        <a class="nav-link" href="4.2-vaadin-einstieg.html"><span class="ln">4.2</span>Vaadin Flow &amp; Start-Paket</a>
+        <a class="nav-link" href="4.3-komponenten-layouts.html"><span class="ln">4.3</span>Komponenten &amp; Layouts</a>
+        <a class="nav-link" href="4.4-grid-routing-binding.html"><span class="ln">4.4</span>Tabellen, Routing &amp; Binding</a>
+        <a class="nav-link" href="4.5-mitarbeiterverwaltung.html"><span class="ln">4.5</span>Mitarbeiterverwaltung</a>
+      </div>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <header class="lesson-header">
+      <p class="lesson-eyebrow">Lektion 2.5 &mdash; Teil 2: Datenstrukturen &amp; OOP</p>
+      <h1>Objekt-Arrays</h1>
+      <div class="lesson-tags">
+        <span class="tag tag-css">Arrays</span>
+        <span class="tag tag-time">ca. 2 &times; 90 min</span>
+        <span class="tag tag-level">Grundlagen</span>
+      </div>
+    </header>
+
+    <div class="content-area">
+      <section class="section section-lernziele">
+        <h2>Lernziele</h2>
+        <ul class="lernziele-list">
+          <li><a class="lernziel-link" href="#abschnitt-1">Arrays von Objektreferenzen anlegen und dabei mit <code>null</code>-Einträgen umgehen<span class="lernziel-ziel">Abschnitt 1</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-2">Objekte ohne Lücken hinzufügen, an einer Position einfügen und entfernen<span class="lernziel-ziel">Abschnitt 2</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-3">Suchen nach einem Attribut (Name) mit Code-Wiederverwendung umsetzen<span class="lernziel-ziel">Abschnitt 3</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-2">über alle Objekte summieren, zählen und Durchschnitte bilden<span class="lernziel-ziel">Abschnitt 2</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-3">Objekte nach einem String-Attribut (<code>compareTo</code>) bzw. einer Zahl sortieren<span class="lernziel-ziel">Abschnitt 3</span></a></li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-1">1 &mdash; Arrays von Objekten</h2>
+        <p>
+          Objekt-Arrays enthalten keine primitiven Werte, sondern <strong>Objektreferenzen</strong>. Sie werden nahezu
+          gleich verwendet wie Arrays primitiver Typen. Der wesentliche Unterschied: Die Werte können
+          <code>null</code> sein &ndash; nach <code>new Stand[10]</code> sind alle zehn Plätze <code>null</code>, es
+          gibt noch kein einziges Stand-Objekt.
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Objekt-Array</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">Stand[] staende = new Stand[10];      // 10 Plätze, alle null
+staende[0] = new Stand("Langos", true);
+staende[0].getName();                 // ok
+staende[1].getName();                 // NullPointerException!</code></pre>
+</div>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-2">2 &mdash; Codebeispiel: Markt und Stand</h2>
+        <p>
+          Ein <code>Markt</code> hat ein Array an Marktständen (<code>staende</code>) sowie Name und Stadt. Ein
+          <code>Stand</code> hat einen Namen, ein Attribut <code>essen</code> (Essensstand?) und einen Umsatz.
+        </p>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/marktstand-01.png" alt="UML-Diagramm: Markt &rarr; Stand" loading="lazy" style="max-width:460px"></div>
+  <figcaption>UML-Diagramm: Markt &rarr; Stand</figcaption>
+</figure>
+        <details class="code-collapse">
+  <summary><span class="code-filename">Stand.java</span> <span class="code-collapse-hint">Code anzeigen (89 Zeilen)</span></summary>
+<div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Stand.java</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public class Stand {
+
+    private String name;
+    private boolean essen;
+    private int umsatz;
+
+    public Stand() {
+        setName("n/a");
+        setEssen(false);
+        setUmsatz(0);
+    }
+
+    public Stand(String name) {
+        if (name != null) {
+            setName(name);
+        } else {
+            System.out.println("Fehler: Name ist null");
+        }
+        setEssen(false);
+        setUmsatz(0);
+    }
+
+    public Stand(String name, boolean essen) {
+        if (name != null) {
+            setName(name);
+        } else {
+            System.out.println("Fehler: Name ist null");
+        }
+        setEssen(essen);
+        setUmsatz(0);
+    }
+
+    public void setName(String name) {
+        if (name != null) {
+            this.name = name;
+        } else {
+            System.out.println("Name ist null");
+        }
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setEssen(boolean essen) {
+        this.essen = essen;
+    }
+
+    public boolean isEssen() {
+        return essen;
+    }
+
+    public void setUmsatz(int umsatz) {
+        if (umsatz &gt;= 0) {
+            this.umsatz = umsatz;
+        } else {
+            System.out.println("Fehler: Ungueltiger Wert fuer Umsatz: " + umsatz);
+        }
+    }
+
+    public int getUmsatz() {
+        return umsatz;
+    }
+
+    public int getGewinn() {
+        // hier eine Umsetzung zum fuer dieses Beispiel etwas
+        // willkürlich definierten Gewinn
+        int gewinn = this.umsatz;
+        if (this.umsatz &gt; 500) {
+            gewinn -= 100;
+        }
+        return gewinn / 2;
+    }
+
+    public String toString() {
+        String str = name;
+        if (essen) {
+            str += " (Essensstand), ";
+        } else {
+            str += " (Marktstand), ";
+        }
+        str += " Umsatz: " + getUmsatz();
+        return str;
+    }
+
+    public void printStand() {
+        System.out.println(this); // ruft toString() auf
+    }
+}</code></pre>
+</div>
+</details>
+        <p>
+          <code>hinzufuegen(stand: Stand): boolean</code> prüft, ob ein freier Stellplatz vorhanden ist, und fügt den
+          Stand am ersten freien Platz ein. Der Rückgabewert gibt an, ob das geklappt hat; sonst gibt es zusätzlich
+          eine Fehlermeldung. Das Array wird so organisiert, dass <strong>keine Lücken</strong> entstehen: Alle
+          <code>null</code>-Werte befinden sich am Ende. Das gelingt wie bei den <code>int</code>-Arrays mit der
+          Variable <code>anzahl</code>.
+        </p>
+        <details class="code-collapse">
+  <summary><span class="code-filename">Markt.java</span> <span class="code-collapse-hint">Code anzeigen (286 Zeilen)</span></summary>
+<div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Markt.java</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public class Markt {
+
+    private String name;
+    private String stadt;
+    private Stand[] staende;
+
+    private int anzahl;
+
+    public Markt() {
+        setName("Heumarkt");
+        setStadt("Wien");
+        staende = new Stand[10];
+        anzahl = 0;
+    }
+
+    public Markt(String name, String stadt, int maxStaende) {
+        staende = new Stand[maxStaende];
+        setName(name);
+        setStadt(stadt);
+        anzahl = 0;
+    }
+
+    public Markt(int maxStaende) {
+        setName("Heumarkt");
+        setStadt("Wien");
+        staende = new Stand[maxStaende];
+        anzahl = 0;
+    }
+
+    public void setName(String name) {
+        if (name != null) {
+            this.name = name;
+        } else {
+            System.err.println("Ungueltiger Parameter (Name): null");
+        }
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setStadt(String stadt) {
+        if (stadt != null) {
+            this.stadt = stadt;
+        } else {
+            System.err.println("Ungueltiger Parameter (Stadt): null");
+        }
+    }
+
+    public String getStadt() {
+        return stadt;
+    }
+
+    public int anzahlStaende() {
+        return anzahl;
+    }
+
+    public int anzahlEssensStaende() {
+        int cnt = 0;
+        for (int i = 0; i &lt; anzahl; i++) {
+            if (staende[i].isEssen()) {
+                cnt++;
+            }
+        }
+        return cnt;
+    }
+
+    public int anzahlFreiePlaetze() {
+        return staende.length - anzahl;
+    }
+
+    public boolean hinzufuegen(Stand stand) {
+        boolean hinzugefuegt = false;
+        if (stand != null) {
+            if (anzahl &lt; staende.length) { // Platz vorhanden?
+                staende[anzahl++] = stand;
+                hinzugefuegt = true;
+            } else {
+                System.out.println("Stand konnte nicht eingefuegt werden, kein Platz vorhanden.");
+            }
+        } else {
+            System.out.println("Fehler: uebergebener Stand ist null.");
+        }
+        return hinzugefuegt;
+    }
+
+    public boolean einfuegen(int position, Stand stand) {
+        boolean hinzugefuegt = false;
+        if (stand != null) {
+            if (position &gt;= 0 &amp;&amp; position &lt;= anzahl) {
+                if (anzahlFreiePlaetze() &gt; 0) {
+                    for (int i = anzahl; i &gt; position; i--) {
+                        staende[i] = staende[i-1];
+                    }
+                    staende[position] = stand;
+                    anzahl++;
+                    hinzugefuegt = true;
+                } else {
+                    System.out.println("Fehler: kein freier Platz vorhanden.");
+                }
+            } else {
+                System.out.println("Fehler: ungueltige position " + position);
+            }
+        } else {
+            System.out.println("Fehler: stand ist null.");
+        }
+        return hinzugefuegt;
+    }
+
+    // Diese Methode kann zum Entfernen bezueglich Namen verwendet werden
+    public Stand entfernen(int pos) {
+        Stand s = null;
+        if (pos &gt;= 0 &amp;&amp; pos &lt; anzahl) {
+            s = staende[pos];
+            for (int i = pos; i &lt; anzahl - 1; i++) {
+                staende[i] = staende[i+1];
+            }
+            anzahl--;
+            staende[anzahl] = null;
+        } else {
+            System.out.println("Fehler: ungueltige Position " + pos);
+        }
+        return s;
+    }
+
+    // ohne Code-Reuse wird die Methode etwas komplizierter...
+    public Stand entfernen1(String name) {
+        Stand stand = null;
+        if (name != null) {
+            int pos = 0;
+            boolean gefunden = false;
+            while (!gefunden &amp;&amp; pos &lt; anzahl) {
+                if (staende[pos].getName().equals(name)) {
+                    gefunden = true;
+                } else {
+                    pos++;
+                }
+            }
+
+            if (gefunden) {
+                stand = staende[pos];
+                for (int i = pos; i &lt; anzahl-1; i++) {
+                    staende[i] = staende[i+1];
+                }
+                anzahl--;
+                staende[anzahl] = null;
+            } else {
+                System.out.println("Stand nicht gefunden");
+            }
+        } else {
+            System.out.println("Fehler: name ist null.");
+        }
+        return stand;
+    }
+
+    // ... mit Code-Reuse (Aufruf von entfernen(i)) ergibt sich eine wesentlich
+    // kuerzere und einfachere Implementierung
+    public Stand entfernen2(String name) {
+        if (name != null) {
+            for (int i = 0; i &lt; anzahl; i++) {
+                if (name.equals(staende[i].getName())) {
+                    return entfernen(i);
+                }
+            }
+            System.out.println("Es wurde kein Stand mit dem uebergebenen Namen gefunden.");
+        } else {
+            System.out.println("Fehler: name ist null.");
+        }
+        return null;
+    }
+
+    // Diese Methode ist zwar nicht im UML-Diagramm gegeben,
+    // erleichtert aber das Testen
+    public Stand getStand(int idx) {
+        if (idx &gt;= 0 &amp;&amp; idx &lt; anzahl) {
+            return staende[idx];
+        } else {
+            return null;
+        }
+    }
+
+    public boolean hasStand(Stand stand) {
+        if (stand != null) {
+            for (int i = 0; i &lt; anzahl; i++) {
+                if (staende[i] == stand) {
+                    return true;
+                }
+            }
+        } else {
+            System.out.println("Fehler: Stand ist null.");
+        }
+        return false;
+    }
+
+    public double durchschnittsUmsatz() {
+        double sum = 0;
+        for (int i = 0; i &lt; anzahl; i++) {
+            sum += staende[i].getUmsatz();
+        }
+        if (anzahl &gt; 0) {
+            return sum / anzahl;
+        } else {
+            System.out.println("Fehler: kein Stand vorhanden.");
+            return 0;
+        }
+    }
+
+    public double durchschnittsGewinn() {
+        double sum = 0;
+        for (int i = 0; i &lt; anzahl; i++) {
+            sum += staende[i].getGewinn();
+        }
+        if (anzahl &gt; 0) {
+            return sum / anzahl;
+        } else {
+            System.out.println("Fehler: kein Stand vorhanden.");
+            return 0;
+        }
+    }
+
+    public void sortierenNamen() { // Bubble-Sort
+        boolean getauscht = true;
+        while (getauscht) {
+            getauscht = false;
+            for (int i = 0; i &lt; anzahl-1; i++) {
+                if (staende[i].getName().compareTo(staende[i+1].getName()) &gt; 0) {
+                    vertausche(i, i+1);
+                    getauscht = true;
+                }
+            }
+        }
+    }
+
+    public Stand[] sortierenUmsatz() { // Selection-Sort
+
+        Stand[] sortierteStaende = new Stand[anzahl];
+
+        for (int i = 0; i &lt; anzahl; i++) {
+            sortierteStaende[i] = staende[i];
+        }
+
+        for (int i = 0; i &lt; anzahl-1; i++) {
+            int jMin = i;
+            for (int j = i+1; j &lt; anzahl; j++) {
+                if (sortierteStaende[j].getUmsatz() &lt; sortierteStaende[jMin].getUmsatz()) {
+                    jMin = j;
+                }
+            }
+
+            if (i != jMin) {
+                Stand tmp = sortierteStaende[i];
+                sortierteStaende[i] = sortierteStaende[jMin];
+                sortierteStaende[jMin] = tmp;
+            }
+        }
+
+        return sortierteStaende;
+    }
+
+    // diese Methode ist "private" weil sie nur von sortieren()
+    // aufgerufen werden soll, aber nicht von außerhalb der Klasse!
+    private void vertausche(int i, int j) {
+        if (i &gt;= 0 &amp;&amp; j &gt;= 0 &amp;&amp; i &lt; anzahl &amp;&amp; j &lt; anzahl) {
+            Stand tmp = staende[i];
+            staende[i] = staende[j];
+            staende[j] = tmp;
+        } else {
+            System.out.println("Fehler: ungueltige Indizes: i=" + i + ", j=" + j);
+        }
+    }
+
+    public void printMarkt() {
+        System.out.println("Name: " + getName());
+        System.out.println("Stadt: " + getStadt());
+        System.out.println("------------------------------------------------------");
+        for (int i = 0; i &lt; anzahl; i++) {
+            System.out.print("Stand " + (i+1) + ": ");
+            if (staende[i] != null) {
+                staende[i].printStand();
+            } else {
+                System.out.println("  LEER  ");
+            }
+        }
+        System.out.println("------------------------------------------------------");
+    }
+}</code></pre>
+</div>
+</details>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-3">3 &mdash; Was das Beispiel zeigt</h2>
+        <ul>
+          <li><strong>Keine Lücken:</strong> Alle Schleifen laufen nur bis <code>anzahl</code>; dort sind alle Einträge garantiert nicht <code>null</code>. Deshalb braucht <code>anzahlEssensStaende</code> keine <code>null</code>-Prüfung.</li>
+          <li><strong>Entfernen mit Rückgabe:</strong> <code>entfernen(int pos)</code> liefert den entfernten Stand zurück &ndash; der Aufrufer kann ihn weiterverwenden (z.&nbsp;B. auf einem anderen Markt aufstellen).</li>
+          <li><strong>Code-Wiederverwendung:</strong> <code>entfernen1(String)</code> setzt alles in einer Methode um und wird dadurch kompliziert. Besser ist <code>entfernen2</code>, die nur sucht und dann <code>entfernen(int pos)</code> aufruft.</li>
+          <li><strong>Referenzvergleich:</strong> <code>hasStand</code> prüft mit <code>==</code>, ob genau <em>dieses</em> Stand-Objekt auf dem Markt steht.</li>
+          <li><strong>Sortieren nach Text:</strong> <code>a.compareTo(b)</code> liefert einen Wert &lt; 0, wenn <code>a</code> alphabetisch vor <code>b</code> kommt, 0 bei Gleichheit und &gt; 0 sonst.</li>
+          <li><strong>Sortierte Kopie:</strong> <code>sortierenUmsatz</code> sortiert eine Kopie des Arrays und lässt die Reihenfolge am Markt unverändert.</li>
+        </ul>
+      </section>
+
+      <section class="section section-projekt">
+        <h2 id="projektschritt">Projektschritt</h2>
+<div class="projekt-box">
+  <div class="projekt-box-header">
+    <span class="projekt-step">Projektschritt 2.5</span>
+    <h3>Die Firma mit einem Mitarbeiter-Array</h3>
+  </div>
+<p>Die drei festen Plätze <code>ma1</code>&ndash;<code>ma3</code> werden durch ein Array <code>Mitarbeiter[] personal</code> mit <code>anzahl</code> ersetzt. Das macht die Firma kürzer <em>und</em> mächtiger: einstellen, an Position einfügen, kündigen nach Position, Name oder Referenz (Code-Wiederverwendung), Kosten summieren, nach Namen sortieren. Der Mitarbeiter erhält eine <code>toString()</code>-Methode, die die Firma für ihre Ausgabe nutzt.</p>
+  <details class="code-collapse">
+  <summary><span class="code-filename">src/main/java/Firma.java</span> <span class="code-collapse-hint">Code anzeigen (206 Zeilen)</span></summary>
+<div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">src/main/java/Firma.java</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">/*
+  Personalverwaltung – eine Firma mit einem Array an Mitarbeitern.
+  Stand: Lektion 2.5 (Objekt-Arrays)
+*/
+public class Firma {
+
+    private String name;
+    private Mitarbeiter[] personal;
+    private int anzahl;              // gültige Einträge, keine Lücken
+
+    public Firma() {
+        setName("n/a");
+        personal = new Mitarbeiter[10];
+        anzahl = 0;
+    }
+
+    public Firma(String name) {
+        setName(name);
+        personal = new Mitarbeiter[10];
+        anzahl = 0;
+    }
+
+    public Firma(String name, int maxMitarbeiter) {
+        setName(name);
+        if (maxMitarbeiter &gt; 0) {
+            personal = new Mitarbeiter[maxMitarbeiter];
+        } else {
+            System.out.println("Fehler: ungueltige Groesse: " + maxMitarbeiter);
+            personal = new Mitarbeiter[10];
+        }
+        anzahl = 0;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        if (name != null &amp;&amp; !name.isBlank()) {
+            this.name = name;
+        } else {
+            System.out.println("Fehler: ungueltiger Name: " + name);
+            this.name = "n/a";
+        }
+    }
+
+    public int anzahlMitarbeiter() {
+        return anzahl;
+    }
+
+    public int anzahlFreiePlaetze() {
+        return personal.length - anzahl;
+    }
+
+    public Mitarbeiter getMitarbeiter(int index) {
+        if (index &gt;= 0 &amp;&amp; index &lt; anzahl) {
+            return personal[index];
+        } else {
+            return null;
+        }
+    }
+
+    public boolean einstellen(Mitarbeiter m) {
+        return einfuegen(anzahl, m);     // Spezialfall von einfuegen
+    }
+
+    public boolean einfuegen(int position, Mitarbeiter m) {
+        if (m == null) {
+            System.out.println("Fehler: Mitarbeiter ist null.");
+            return false;
+        }
+        if (position &lt; 0 || position &gt; anzahl) {
+            System.out.println("Fehler: ungueltige Position " + position);
+            return false;
+        }
+        if (anzahlFreiePlaetze() == 0) {
+            System.out.println("Fehler: kein freier Platz vorhanden.");
+            return false;
+        }
+        for (int i = anzahl; i &gt; position; i--) {
+            personal[i] = personal[i - 1];
+        }
+        personal[position] = m;
+        anzahl++;
+        return true;
+    }
+
+    public Mitarbeiter kuendigen(int position) {
+        if (position &gt;= 0 &amp;&amp; position &lt; anzahl) {
+            Mitarbeiter m = personal[position];
+            for (int i = position; i &lt; anzahl - 1; i++) {
+                personal[i] = personal[i + 1];
+            }
+            anzahl--;
+            personal[anzahl] = null;     // letzten Platz freigeben
+            return m;
+        } else {
+            System.out.println("Fehler: ungueltige Position " + position);
+            return null;
+        }
+    }
+
+    // Code-Wiederverwendung: suchen und dann kuendigen(int) aufrufen
+    public Mitarbeiter kuendigen(String name) {
+        if (name != null) {
+            for (int i = 0; i &lt; anzahl; i++) {
+                if (name.equals(personal[i].getName())) {
+                    return kuendigen(i);
+                }
+            }
+            System.out.println("Fehler: kein Mitarbeiter mit Namen " + name);
+        } else {
+            System.out.println("Fehler: name ist null.");
+        }
+        return null;
+    }
+
+    public boolean kuendigen(Mitarbeiter m) {
+        for (int i = 0; i &lt; anzahl; i++) {
+            if (personal[i] == m) {
+                kuendigen(i);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public int summeKosten() {
+        int summe = 0;
+        for (int i = 0; i &lt; anzahl; i++) {
+            summe += personal[i].getKostenProMonat();
+        }
+        return summe;
+    }
+
+    public double durchschnittsKosten() {
+        if (anzahl &gt; 0) {
+            return (double) summeKosten() / anzahl;
+        } else {
+            return 0;
+        }
+    }
+
+    // Bubble-Sort nach Namen (String.compareTo)
+    public void sortierenNachName() {
+        boolean getauscht = true;
+        while (getauscht) {
+            getauscht = false;
+            for (int i = 0; i &lt; anzahl - 1; i++) {
+                if (personal[i].getName().compareTo(personal[i + 1].getName()) &gt; 0) {
+                    vertausche(i, i + 1);
+                    getauscht = true;
+                }
+            }
+        }
+    }
+
+    // private: nur für sortierenNachName gedacht
+    private void vertausche(int i, int j) {
+        Mitarbeiter tmp = personal[i];
+        personal[i] = personal[j];
+        personal[j] = tmp;
+    }
+
+    private String linie(char zeichen, int laenge) {
+        String s = "";
+        for (int i = 0; i &lt; laenge; i++) {
+            s += zeichen;
+        }
+        return s;
+    }
+
+    private String auffuellen(String text, int breite) {
+        String s = text;
+        while (s.length() &lt; breite) {
+            s += " ";
+        }
+        return s;
+    }
+
+    public void printKostenBalken() {
+        System.out.println("Kosten pro Monat (# = 500 Euro)");
+        System.out.println(linie('=', 47));
+        for (int i = 0; i &lt; anzahl; i++) {
+            System.out.println(auffuellen(personal[i].getName(), 16)
+                               + personal[i].kostenBalken());
+        }
+        System.out.println(linie('=', 47));
+    }
+
+    @Override
+    public String toString() {
+        String str = "Firma: " + name + "\n" + linie('-', 47) + "\n";
+        for (int i = 0; i &lt; anzahl; i++) {
+            str += (i + 1) + ": " + personal[i] + "\n";
+        }
+        str += linie('-', 47) + "\n";
+        str += "Kosten pro Monat: " + summeKosten() + " Euro (" + anzahl + " Mitarbeiter, "
+               + anzahlFreiePlaetze() + " Plaetze frei)";
+        return str;
+    }
+
+    public void print() {
+        System.out.println(this);
+    }
+}</code></pre>
+</div>
+</details>
+  <p class="mb-0">&#128193; Stand nach dieser Lektion: <a href="beispiele/2.5/src/main/java/Firma.java" target="_blank">beispiele/2.5/</a> (inkl. <code>FirmaTest</code> mit Einfügen, Kündigen ohne Lücken und Sortieren)</p>
+</div>
+      </section>
+
+      <section class="section section-fehler">
+        <h2>Häufige Fehler</h2>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Schleife bis length statt bis anzahl</div>
+  <p><code>for (int i = 0; i &lt; staende.length; i++) staende[i].getUmsatz()</code> &rarr; <code>NullPointerException</code>, sobald nicht alle Plätze belegt sind.</p>
+          <p class="fehler-fix">Nur bis <code>anzahl</code> laufen &ndash; dahinter stehen <code>null</code>-Einträge.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Lücke beim Entfernen</div>
+  <p>Der entfernte Platz wird nur auf <code>null</code> gesetzt; später stürzt eine Schleife an dieser Stelle ab.</p>
+          <p class="fehler-fix">Nach dem Entfernen alle folgenden Einträge um eins nach vorne ziehen und <code>anzahl</code> verringern; den letzten Platz auf <code>null</code> setzen.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Namen mit == gesucht</div>
+  <p><code>if (staende[i].getName() == name)</code> findet den Stand nicht, obwohl der Name gleich geschrieben ist.</p>
+          <p class="fehler-fix">Strings mit <code>equals</code> vergleichen: <code>name.equals(staende[i].getName())</code>.</p>
+</div>
+      </section>
+
+      <section class="section section-aufgaben">
+        <h2>Aufgaben</h2>
+        <div class="aufgaben-list">
+          <div class="aufgabe">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Aufgabe 1</span>
+    <span class="aufgabe-title">Markt mit Marktständen</span>
+  </div>
+  <p>Der Markt verwaltet seine Stände jetzt in einem Objekt-Array: hinzufügen, an einer Position einfügen, nach Namen entfernen, Durchschnittswerte berechnen und sortieren.</p>
+            <p class="mb-0"><a href="uebungen/lektion-2.5-uebung-1-markt-objektarrays.pdf" target="_blank">&#128196; Übung 2.5-1 (PDF)</a></p>
+</div>
+        </div>
+      </section>
+
+      <section class="section section-quiz">
+        <h2>Wissenskontrolle</h2>
+        <div class="quiz" id="quiz-16">
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 1</span> Was enthält ein Objekt-Array direkt nach <code>Kunde[] kunden = new Kunde[4];</code>?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-16-1"> <span>vier neue <code>Kunde</code>-Objekte mit Standardwerten</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-16-1"> <span>vier Plätze, die alle <code>null</code> sind</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-16-1"> <span>ein leeres Array der Länge 0</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-16-1"> <span>einen einzigen <code>Kunde</code></span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Das Array hat nur Platz für vier Referenzen. Die Objekte selbst müssen einzeln mit <code>new</code> erzeugt und eingetragen werden.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 2</span> Warum wird beim Summieren über ein lückenlos befülltes Objekt-Array nur bis <code>anzahl</code> statt bis <code>length</code> gezählt?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-16-2"> <span>weil <code>length</code> bei Objekt-Arrays nicht existiert</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-16-2"> <span>weil dahinter nur <code>null</code>-Einträge stehen, auf denen kein Methodenaufruf möglich ist</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-16-2"> <span>weil das schneller übersetzt</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-16-2"> <span>weil <code>anzahl</code> immer größer ist als <code>length</code></span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Nur die Plätze 0 bis <code>anzahl - 1</code> sind belegt. Ein Methodenaufruf auf einem leeren Platz würde eine <code>NullPointerException</code> auslösen.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 3</span> Was liefert <code>"Apfel".compareTo("Birne")</code>?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-16-3"> <span>0</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-16-3"> <span>eine negative Zahl</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-16-3"> <span>eine positive Zahl</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-16-3"> <span><code>false</code></span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> <code>compareTo</code> liefert eine negative Zahl, wenn der erste String alphabetisch vorher kommt, 0 bei Gleichheit und eine positive Zahl, wenn er danach kommt.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 4</span> Eine Klasse hat schon eine Methode <code>entfernen(int pos)</code>. Nun soll ein Objekt nach seinem Namen entfernt werden. Was ist die bessere Lösung?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-16-4"> <span>Die ganze Verschiebe-Logik in einer neuen Methode noch einmal schreiben.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-16-4"> <span>Die Position des Objekts mit dem Namen suchen und dann <code>entfernen(pos)</code> aufrufen.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-16-4"> <span>Das gefundene Objekt auf <code>null</code> setzen und die Lücke lassen.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-16-4"> <span>Das Array neu erzeugen.</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Code-Wiederverwendung: Das Verschieben ist schon gelöst. Doppelter Code müsste bei jeder Änderung an mehreren Stellen angepasst werden, und eine Lücke würde das lückenlose Speichern zerstören.</div>
+  </div>
+  <div class="quiz-summary"><span class="quiz-score"></span><button type="button" class="quiz-reset">Zur&uuml;cksetzen</button></div>
+</div>
+      </section>
+
+    </div>
+
+    <nav class="lesson-nav">
+      <a class="nav-btn" href="2.4-sortieralgorithmen.html">&larr; Lektion 2.4: Sortieralgorithmen</a>
+      <span class="nav-center-info">Lektion 2.5</span>
+      <a class="nav-btn primary" href="2.6-assoziation-equals.html">Lektion 2.6: Beidseitige Assoziation &amp; equals &rarr;</a>
+    </nav>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>
+    const ham = document.getElementById('hamburger');
+    const sb = document.getElementById('sidebar');
+    const ov = document.getElementById('overlay');
+    ham.addEventListener('click', () => { sb.classList.toggle('open'); ov.classList.toggle('visible'); });
+    ov.addEventListener('click', () => { sb.classList.remove('open'); ov.classList.remove('visible'); });
+    const cur = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-link').forEach(l => {
+      if (l.getAttribute('href') === cur) l.classList.add('active');
+    });
+    const themeBtn = document.getElementById('theme-toggle');
+    const applyTheme = (t) => {
+      document.documentElement.setAttribute('data-theme', t);
+      if (themeBtn) themeBtn.innerHTML = t === 'dark' ? '&#9728;' : '&#9790;';
+    };
+    applyTheme(localStorage.getItem('kurs-theme') || 'dark');
+    setTimeout(() => document.documentElement.classList.add('theme-transitions'), 50);
+    if (themeBtn) themeBtn.addEventListener('click', () => {
+      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('kurs-theme', next);
+      applyTheme(next);
+    });
+    hljs.highlightAll();
+  </script>
+  <script>
+    document.querySelectorAll('.quiz').forEach((quiz) => {
+      const fragen = [...quiz.querySelectorAll('.quiz-frage')];
+      const score = quiz.querySelector('.quiz-score');
+      const update = () => {
+        const done = fragen.filter((f) => f.dataset.state).length;
+        const ok = fragen.filter((f) => f.dataset.state === 'ok').length;
+        score.textContent = done === 0
+          ? fragen.length + ' Fragen – wähle eine Antwort und prüfe sie.'
+          : ok + ' von ' + fragen.length + ' richtig'
+            + (done < fragen.length ? ' (' + done + ' von ' + fragen.length + ' bearbeitet)' : '');
+      };
+      fragen.forEach((f) => {
+        const inputs = [...f.querySelectorAll('input')];
+        const check = f.querySelector('.quiz-check');
+        const reveal = f.querySelector('.quiz-reveal');
+        const fb = f.querySelector('.quiz-feedback');
+        const exp = f.querySelector('.quiz-erklaerung');
+        inputs.forEach((i) => i.addEventListener('change', () => {
+          check.disabled = !inputs.some((x) => x.checked);
+        }));
+        const finish = (graded) => {
+          let allOk = true;
+          f.querySelectorAll('.quiz-opt').forEach((li) => {
+            const input = li.querySelector('input');
+            const corr = li.dataset.correct === '1';
+            if (corr !== input.checked) allOk = false;
+            if (corr) li.classList.add('opt-correct');
+            else if (input.checked) li.classList.add('opt-wrong');
+            input.disabled = true;
+          });
+          f.dataset.state = !graded ? 'shown' : (allOk ? 'ok' : 'wrong');
+          fb.className = 'quiz-feedback fb-' + f.dataset.state;
+          fb.textContent = !graded ? 'Lösung angezeigt.'
+            : (allOk ? '✔ Richtig!' : '✘ Leider nicht ganz – die richtige Lösung ist markiert.');
+          fb.hidden = false;
+          exp.hidden = false;
+          check.disabled = true;
+          reveal.disabled = true;
+          update();
+        };
+        check.addEventListener('click', () => finish(true));
+        reveal.addEventListener('click', () => finish(false));
+      });
+      quiz.querySelector('.quiz-reset').addEventListener('click', () => {
+        fragen.forEach((f) => {
+          delete f.dataset.state;
+          f.querySelectorAll('.quiz-opt').forEach((li) => li.classList.remove('opt-correct', 'opt-wrong'));
+          f.querySelectorAll('input').forEach((i) => { i.checked = false; i.disabled = false; });
+          f.querySelector('.quiz-check').disabled = true;
+          f.querySelector('.quiz-reveal').disabled = false;
+          f.querySelector('.quiz-feedback').hidden = true;
+          f.querySelector('.quiz-erklaerung').hidden = true;
+        });
+        update();
+      });
+      update();
+    });
+  </script>
+</body>
+
+</html>

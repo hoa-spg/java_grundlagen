@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<!-- GENERIERT von java/kurs/_build (java-grundlagen) – nicht direkt bearbeiten!
+     Quelle: java/kurs/_build/java-grundlagen/lessons/, bauen: python3 _build/build.py java-grundlagen -->
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3.4 &ndash; Versionsverwaltung mit Git | Java-Grundlagen Kurs</title>
+  <script>(function () { var t = localStorage.getItem('kurs-theme') || 'dark'; document.documentElement.setAttribute('data-theme', t); })();</script>
+  <link rel="stylesheet" href="assets/kurs.css">
+  <link rel="stylesheet" id="hljs-theme"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+
+<body>
+
+  <button class="hamburger" id="hamburger" aria-label="Navigation &ouml;ffnen">&#9776;</button>
+  <div class="sidebar-overlay" id="overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html">
+        <span class="brand-icon">J</span>
+        <div>
+          <div class="brand-name">Java</div>
+          <div class="brand-sub">Grundlagen der Programmierung</div>
+        </div>
+      </a>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Dark/Light Mode"
+        title="Theme wechseln">&#9728;</button>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-group">
+        <div class="nav-group-label html-label">Teil 1 &mdash; Grundlagen</div>
+        <a class="nav-link" href="1.1-einfuehrung-entwicklungsumgebung.html"><span class="ln">1.1</span>Einf&uuml;hrung &amp; Entwicklungsumgebung</a>
+        <a class="nav-link" href="1.2-klassen-objekte.html"><span class="ln">1.2</span>Klassen, Objekte, Get &amp; Set</a>
+        <a class="nav-link" href="1.3-konstruktoren-methoden.html"><span class="ln">1.3</span>Konstruktoren, this &amp; Methoden</a>
+        <a class="nav-link" href="1.4-datentypen.html"><span class="ln">1.4</span>Datentypen</a>
+        <a class="nav-link" href="1.5-signatur-ueberladen.html"><span class="ln">1.5</span>Methoden, Signatur &amp; &Uuml;berladen</a>
+        <a class="nav-link" href="1.6-bedingungen-berechnungen.html"><span class="ln">1.6</span>Bedingungen &amp; Berechnungen</a>
+        <a class="nav-link" href="1.7-debugger-testklassen.html"><span class="ln">1.7</span>Debugger &amp; Testklassen</a>
+        <a class="nav-link" href="1.8-strings-random.html"><span class="ln">1.8</span>Strings &amp; Random</a>
+        <a class="nav-link" href="1.9-objekt-beziehungen.html"><span class="ln">1.9</span>Objekt-Beziehungen</a>
+        <a class="nav-link" href="1.10-schleifen.html"><span class="ln">1.10</span>Schleifen</a>
+        <a class="nav-link" href="1.11-statische-methoden.html"><span class="ln">1.11</span>Statische Methoden &amp; main</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label css-label">Teil 2 &mdash; Datenstrukturen &amp; OOP</div>
+        <a class="nav-link" href="2.1-intellij-junit.html"><span class="ln">2.1</span>IntelliJ, Maven &amp; JUnit</a>
+        <a class="nav-link" href="2.2-arrays.html"><span class="ln">2.2</span>Arrays</a>
+        <a class="nav-link" href="2.3-arrays-einfuegen-entfernen.html"><span class="ln">2.3</span>Arrays: Einf&uuml;gen &amp; Entfernen</a>
+        <a class="nav-link" href="2.4-sortieralgorithmen.html"><span class="ln">2.4</span>Sortieralgorithmen</a>
+        <a class="nav-link" href="2.5-objekt-arrays.html"><span class="ln">2.5</span>Objekt-Arrays</a>
+        <a class="nav-link" href="2.6-assoziation-equals.html"><span class="ln">2.6</span>Beidseitige Assoziation &amp; equals</a>
+        <a class="nav-link" href="2.7-collections.html"><span class="ln">2.7</span>Collections: ArrayList &amp; Co.</a>
+        <a class="nav-link" href="2.8-vererbung.html"><span class="ln">2.8</span>Vererbung &amp; Polymorphismus</a>
+        <a class="nav-link" href="2.9-abstrakt-interfaces.html"><span class="ln">2.9</span>Abstrakte Klassen &amp; Interfaces</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label rn-label">Teil 3 &mdash; Fortgeschrittene Konzepte</div>
+        <a class="nav-link" href="3.0-fail-early.html"><span class="ln">3.0</span>Fail Early statt Happy Path</a>
+        <a class="nav-link" href="3.1-exceptions.html"><span class="ln">3.1</span>Exceptions</a>
+        <a class="nav-link" href="3.2-hashset-treeset.html"><span class="ln">3.2</span>HashSet, TreeSet &amp; hashCode</a>
+        <a class="nav-link" href="3.3-serialisierung-dateien.html"><span class="ln">3.3</span>Serialisierung &amp; Dateien</a>
+        <a class="nav-link" href="3.4-git.html"><span class="ln">3.4</span>Versionsverwaltung mit Git</a>
+        <a class="nav-link" href="3.5-lambdas.html"><span class="ln">3.5</span>Lambda-Ausdr&uuml;cke</a>
+        <a class="nav-link" href="3.6-streams.html"><span class="ln">3.6</span>Die Streams-API</a>
+        <a class="nav-link" href="3.7-design-patterns.html"><span class="ln">3.7</span>Design-Patterns</a>
+        <a class="nav-link" href="3.8-model-klassen.html"><span class="ln">3.8</span>Model-Klassen f&uuml;r die GUI</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label react-label">Teil 4 &mdash; Webanwendungen mit Vaadin</div>
+        <a class="nav-link" href="4.1-web-grundlagen.html"><span class="ln">4.1</span>Grundprinzipien des Web</a>
+        <a class="nav-link" href="4.2-vaadin-einstieg.html"><span class="ln">4.2</span>Vaadin Flow &amp; Start-Paket</a>
+        <a class="nav-link" href="4.3-komponenten-layouts.html"><span class="ln">4.3</span>Komponenten &amp; Layouts</a>
+        <a class="nav-link" href="4.4-grid-routing-binding.html"><span class="ln">4.4</span>Tabellen, Routing &amp; Binding</a>
+        <a class="nav-link" href="4.5-mitarbeiterverwaltung.html"><span class="ln">4.5</span>Mitarbeiterverwaltung</a>
+      </div>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <header class="lesson-header">
+      <p class="lesson-eyebrow">Lektion 3.4 &mdash; Teil 3: Fortgeschrittene Konzepte</p>
+      <h1>Versionsverwaltung mit Git</h1>
+      <div class="lesson-tags">
+        <span class="tag tag-rn">Git</span>
+        <span class="tag tag-time">ca. 90 min</span>
+        <span class="tag tag-level">Fortgeschritten</span>
+      </div>
+    </header>
+
+    <div class="content-area">
+      <section class="section section-lernziele">
+        <h2>Lernziele</h2>
+        <ul class="lernziele-list">
+          <li><a class="lernziel-link" href="#abschnitt-1">Zweck und Nutzen eines Versionskontrollsystems erklären<span class="lernziel-ziel">Abschnitt 1</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-2">Git installieren und Benutzername sowie E-Mail konfigurieren<span class="lernziel-ziel">Abschnitt 2</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-3">Workspace, Index, lokales und entferntes Repository unterscheiden<span class="lernziel-ziel">Abschnitt 3</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-3">mit <code>add</code>, <code>commit</code>, <code>push</code>, <code>pull</code> und <code>clone</code> arbeiten<span class="lernziel-ziel">Abschnitt 3</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-3">Konflikte erkennen und auflösen; Branches für neue Features einsetzen<span class="lernziel-ziel">Abschnitt 3</span></a></li>
+          <li><a class="lernziel-link" href="#projektschritt">mit <code>.gitignore</code> festlegen, welche Dateien nicht versioniert werden<span class="lernziel-ziel">Projektschritt</span></a></li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-1">1 &mdash; Versionsverwaltung</h2>
+        <p>
+          Ein Versionskontrollsystem (<em>version control system</em>, VCS) unterstützt Entwickler bei der Zusammenarbeit
+          an einem Softwareprojekt und steigert ihre Effizienz. Es verfolgt jede Änderung am Code und speichert sie in einer
+          speziellen Datenbank. So kann man z.&nbsp;B. bei einem Fehler den aktuellen Code mit einer älteren Version
+          vergleichen oder auf einen älteren Stand zurückwechseln. Außerdem hat jeder Entwickler immer Zugriff auf den
+          aktuellen Softwarestand, egal wo er sich befindet.
+        </p>
+        <p>Der Nutzen von VCS:</p>
+        <ul>
+          <li>Historische Aufzeichnungen über alle Aktionen zu jeder Datei des Projekts.</li>
+          <li>Gleichzeitiges Arbeiten mehrerer Teammitglieder an einem Softwareprojekt.</li>
+          <li>Nachverfolgbarkeit der vorgenommenen Änderungen durch den Entwickler.</li>
+        </ul>
+        <p>
+          <strong>Git</strong> ist aktuell das meistverbreitete VCS. Das Open-Source-Projekt wurde 2005 ursprünglich von
+          Linus Torvalds (Entwickler des Linux-Kernels) ins Leben gerufen.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-2">2 &mdash; Installation und Konfiguration</h2>
+        <ul>
+          <li>Download: <a href="https://git-scm.com">git-scm.com</a></li>
+          <li>Die Installation erfolgt mit den Standardeinstellungen.</li>
+        </ul>
+        <p>Auf der Konsole wird nun ein Benutzer angelegt &hellip;</p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Konsole</span>
+    <span class="code-lang">Bash</span>
+  </div>
+  <pre><code class="language-bash">$ git config --global user.name "Hansi Hintermaeher"
+$ git config --global user.email hansi.hintermaeher@spengergasse.at</code></pre>
+</div>
+        <p>&hellip; und mit</p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Konsole</span>
+    <span class="code-lang">Bash</span>
+  </div>
+  <pre><code class="language-bash">$ git config --global user.name
+$ git config --global user.email</code></pre>
+</div>
+        <p>überprüft. Achtung: Das <code>$</code>-Zeichen wird nicht eingegeben, es ist Teil der Eingabeaufforderung der Konsole!</p>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-3">3 &mdash; Grundlegende Konzepte</h2>
+        <p>
+          Bei Git befindet sich ein Teil auf dem lokalen Computer (<em>LOCAL</em>), ein anderer auf einem Server
+          (<em>REMOTE</em>). Mit <code>git push</code> werden lokale Änderungen auf den Server übertragen, mit
+          <code>git pull</code> der aktuelle Stand vom Server ins lokale Repository. Den Inhalt eines entfernten
+          Repositorys holt man beim ersten Mal mit <code>git clone</code>.
+        </p>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/git.png" alt="Workspace, Index, lokales und entferntes Repository" loading="lazy" style="max-width:460px"></div>
+  <figcaption>Workspace, Index, lokales und entferntes Repository</figcaption>
+</figure>
+        <p>
+          Gängige Anbieter sind <em>GitHub</em>, <em>Bitbucket</em> und <em>GitLab</em>; sie können (mit Einschränkungen)
+          kostenlos verwendet werden. Alternativ kann man Git auf beliebigen Servern selbst betreiben. Die Cloud-Anbieter
+          bieten aber komfortable Web-Oberflächen mit Dashboards und Tools.
+        </p>
+        <p>Der lokale Teil der Grafik genauer:</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Bereich</th><th>Bedeutung</th><th>Befehl</th></tr></thead>
+            <tbody>
+              <tr><td>Workspace</td><td>das Verzeichnis mit allen Dateien; Änderungen werden hier nicht automatisch versioniert</td><td>&ndash;</td></tr>
+              <tr><td>Index (Staging Area)</td><td>vorgemerkte Änderungen für den nächsten Commit</td><td><code>git add Datei</code></td></tr>
+              <tr><td>lokales Repository</td><td>speichert jeden Zwischenstand, der &bdquo;committed&ldquo; wurde &ndash; zu jedem kann man zurückschalten</td><td><code>git commit -m "Nachricht"</code></td></tr>
+              <tr><td>entferntes Repository</td><td>der gemeinsame Stand auf dem Server</td><td><code>git push</code>, <code>git pull</code>, <code>git clone</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          Die mit <code>git commit</code> gespeicherten Änderungen sind zunächst nur lokal verfügbar. Mit
+          <code>git push</code> kommen sie ins entfernte Repository. Vorher muss lokal der aktuelle Stand vorliegen
+          (<code>git pull</code>). Dabei können <strong>Konflikte</strong> entstehen: Verschiedene Entwickler haben
+          unterschiedliche Änderungen vorgenommen, die nicht automatisch zusammengeführt werden können.
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Ein Konflikt in der Datei</span>
+    <span class="code-lang">Text</span>
+  </div>
+  <pre><code class="language-plaintext">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+public void foo() {
+    for (int i=0; i&lt;20; i++) {
+        System.out.println("Foo: " + i);
+    }
+}
+=======
+public void foo() {
+    int i=0;
+    while (i &lt; 40) {
+        System.out.println("f o o: " + i);
+        i += 2;
+    }
+}
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; df1806bd8ed8f89fbcc2ddd6d9ff1c5c92518e60</code></pre>
+</div>
+        <p>
+          Oben (<code>HEAD</code>) steht die eigene Version, unten die vom Server. Die Entwickler müssen entscheiden,
+          <em>wie</em> der Konflikt behoben wird (z.&nbsp;B. nach Absprache oder Entscheidung der Teamleitung): Datei
+          bearbeiten, Markierungen entfernen, dann erneut <code>add</code>, <code>commit</code> und <code>push</code>.
+        </p>
+        <div class="callout callout-warning">
+  <div class="callout-icon">&#9888;</div>
+  <div class="callout-body">
+    <div class="callout-title">Vor dem Push</div>
+    <p>Vor dem <code>push</code> muss der Code funktionsfähig sein: auf jeden Fall übersetzbar, und vorhandene
+          Funktionalität darf nicht beeinträchtigt werden. Das unterstreicht die Wichtigkeit von Testfällen
+          (<code>mvn test</code>), um sicherzustellen, dass keine neuen Fehler eingeführt wurden.</p>
+  </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-4">4 &mdash; Branches</h2>
+        <p>
+          Eine weitere wichtige Funktion sind <strong>Branches</strong>: Abzweigungen vom Hauptstamm der Software. Meist
+          werden sie für neue Features angelegt. Das soll nicht in der Hauptversion (<em>main branch</em>) passieren,
+          denn dort müssen möglicherweise Bugfixes für eine lauffähige Version gemacht werden. Das neue Feature entsteht
+          in einem eigenen Branch und wird bei Fertigstellung wieder mit dem main branch zusammengeführt
+          (<em>merge</em>).
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Typischer Ablauf</span>
+    <span class="code-lang">Bash</span>
+  </div>
+  <pre><code class="language-bash">$ git switch -c feature-csv        # neuen Branch anlegen und wechseln
+# ... programmieren, testen ...
+$ git add src/main/java/Firma.java
+$ git commit -m "CSV-Export der Firma"
+$ git switch main                  # zurück zum Hauptzweig
+$ git pull                         # aktuellen Stand holen
+$ git merge feature-csv            # Feature einarbeiten
+$ git push</code></pre>
+</div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Befehl</th><th>Wirkung</th></tr></thead>
+            <tbody>
+              <tr><td><code>git init</code></td><td>neues Repository im aktuellen Ordner anlegen</td></tr>
+              <tr><td><code>git status</code></td><td>zeigt geänderte, vorgemerkte und unbekannte Dateien</td></tr>
+              <tr><td><code>git log --oneline</code></td><td>Liste der Commits</td></tr>
+              <tr><td><code>git diff</code></td><td>Änderungen seit dem letzten Commit</td></tr>
+              <tr><td><code>git restore Datei</code></td><td>Änderungen an einer Datei verwerfen</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout callout-tip">
+  <div class="callout-icon">&#128161;</div>
+  <div class="callout-body">
+    <div class="callout-title">Git in IntelliJ</div>
+    <p>IntelliJ bringt eine komplette Git-Oberfläche mit: <em>VCS &rarr; Enable Version Control</em>,
+          Commit-Fenster (<kbd>Strg</kbd>+<kbd>K</kbd>), Push (<kbd>Strg</kbd>+<kbd>Shift</kbd>+<kbd>K</kbd>) und ein
+          komfortables Werkzeug zum Auflösen von Konflikten.</p>
+  </div>
+</div>
+      </section>
+
+      <section class="section section-projekt">
+        <h2 id="projektschritt">Projektschritt</h2>
+<div class="projekt-box">
+  <div class="projekt-box-header">
+    <span class="projekt-step">Projektschritt 3.4</span>
+    <h3>Die Personalverwaltung unter Versionskontrolle</h3>
+  </div>
+<p>Das Projekt kommt in ein Git-Repository. Damit nur Quellcode versioniert wird &ndash; keine Build-Ergebnisse, persönlichen IDE-Einstellungen oder vom Programm erzeugten Dateien &ndash;, legst du im Projektordner eine <code>.gitignore</code> an. Am Code ändert sich in dieser Lektion nichts.</p>
+  <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">personalverwaltung/.gitignore</span>
+    <span class="code-lang">Text</span>
+  </div>
+  <pre><code class="language-plaintext"># Build-Ergebnisse von Maven – werden bei jedem Build neu erzeugt
+target/
+
+# Einstellungen der Entwicklungsumgebung (persönlich)
+.idea/
+*.iml
+.vscode/
+
+# vom Programm erzeugte Dateien
+*.ser
+firma-neu.csv
+
+# Betriebssystem
+.DS_Store
+Thumbs.db</code></pre>
+</div>
+  <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Konsole (im Projektordner)</span>
+    <span class="code-lang">Bash</span>
+  </div>
+  <pre><code class="language-bash">$ git init
+$ git add .
+$ git status                       # target/ und .idea/ dürfen nicht auftauchen
+$ git commit -m "Personalverwaltung: Stand nach Lektion 3.3"
+# Repository auf GitHub/GitLab anlegen, dann:
+$ git remote add origin https://github.com/BENUTZER/personalverwaltung.git
+$ git push -u origin main</code></pre>
+</div>
+  <p class="mb-0">&#128193; Stand nach dieser Lektion: <a href="beispiele/3.4/pom.xml" target="_blank">beispiele/3.4/</a> (mit <code>.gitignore</code>)</p>
+</div>
+      </section>
+
+      <section class="section section-fehler">
+        <h2>Häufige Fehler</h2>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Push abgelehnt</div>
+  <p><code>! [rejected] main -&gt; main (fetch first)</code>.</p>
+          <p class="fehler-fix">Auf dem Server gibt es Commits, die lokal fehlen. Zuerst <code>git pull</code>, etwaige Konflikte lösen, testen, dann erneut <code>git push</code>.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: target/ und .idea/ im Repository</div>
+  <p>Jeder Build erzeugt Hunderte geänderte Dateien, Kolleginnen bekommen deine IDE-Einstellungen.</p>
+          <p class="fehler-fix"><code>.gitignore</code> anlegen <em>bevor</em> man das erste Mal committet. Bereits versionierte Dateien mit <code>git rm -r --cached target</code> aus dem Index nehmen.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Konfliktmarkierungen committed</div>
+  <p>Der Code übersetzt nicht mehr; im Quelltext stehen <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code> und <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>.</p>
+          <p class="fehler-fix">Beim Auflösen alle Markierungen entfernen, übersetzen und testen, erst dann <code>git add</code> und <code>git commit</code>.</p>
+</div>
+      </section>
+
+      <section class="section section-quiz">
+        <h2>Wissenskontrolle</h2>
+        <div class="quiz" id="quiz-25">
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 1</span> Was macht <code>git add Datei.java</code>?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-25-1"> <span>Es lädt die Datei auf GitHub hoch.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-25-1"> <span>Es nimmt den aktuellen Stand der Datei in den Index (Staging Area) für den nächsten Commit auf.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-25-1"> <span>Es erstellt eine neue Datei.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-25-1"> <span>Es speichert sofort eine neue Version im Repository.</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Git arbeitet in Stufen: Workspace &rarr; <code>add</code> &rarr; Index &rarr; <code>commit</code> &rarr; lokales Repository &rarr; <code>push</code> &rarr; entferntes Repository.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 2</span> Welcher Befehl überträgt deine lokalen Commits in das entfernte Repository?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-25-2"> <span><code>git pull</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-25-2"> <span><code>git commit</code></span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-25-2"> <span><code>git push</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-25-2"> <span><code>git clone</code></span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> <code>push</code> schickt Commits zum Server, <code>pull</code> holt neue Commits von dort, <code>clone</code> kopiert ein Repository zum ersten Mal auf den eigenen Rechner.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 3</span> <code>git push</code> wird mit <code>! [rejected] main -&gt; main (fetch first)</code> abgelehnt. Was ist zu tun?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-25-3"> <span>das lokale Repository löschen und neu klonen</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-25-3"> <span>zuerst mit <code>git pull</code> die neuen Commits holen, Konflikte ggf. auflösen, dann erneut pushen</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-25-3"> <span><code>git add</code> noch einmal ausführen</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-25-3"> <span>einen neuen Branch anlegen und dort weiterarbeiten</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Jemand anderer hat inzwischen gepusht. Git verlangt, dass du diese Änderungen zuerst mit deinen zusammenführst.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 4</span> Wofür ist die Datei <code>.gitignore</code> da?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-25-4"> <span>Sie listet Personen, die keinen Zugriff haben.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-25-4"> <span>Sie legt fest, welche Dateien Git nicht versionieren soll, z.&nbsp;B. den Ordner <code>target/</code> mit übersetzten Klassen.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-25-4"> <span>Sie enthält Commits, die rückgängig gemacht werden.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-25-4"> <span>Sie ignoriert Konflikte automatisch.</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Erzeugte Dateien und persönliche Einstellungen gehören nicht ins Repository &ndash; sie lassen sich jederzeit neu erzeugen und verursachen sonst unnötige Konflikte.</div>
+  </div>
+  <div class="quiz-summary"><span class="quiz-score"></span><button type="button" class="quiz-reset">Zur&uuml;cksetzen</button></div>
+</div>
+      </section>
+
+    </div>
+
+    <nav class="lesson-nav">
+      <a class="nav-btn" href="3.3-serialisierung-dateien.html">&larr; Lektion 3.3: Serialisierung &amp; Dateien</a>
+      <span class="nav-center-info">Lektion 3.4</span>
+      <a class="nav-btn primary" href="3.5-lambdas.html">Lektion 3.5: Lambda-Ausdr&uuml;cke &rarr;</a>
+    </nav>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>
+    const ham = document.getElementById('hamburger');
+    const sb = document.getElementById('sidebar');
+    const ov = document.getElementById('overlay');
+    ham.addEventListener('click', () => { sb.classList.toggle('open'); ov.classList.toggle('visible'); });
+    ov.addEventListener('click', () => { sb.classList.remove('open'); ov.classList.remove('visible'); });
+    const cur = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-link').forEach(l => {
+      if (l.getAttribute('href') === cur) l.classList.add('active');
+    });
+    const themeBtn = document.getElementById('theme-toggle');
+    const applyTheme = (t) => {
+      document.documentElement.setAttribute('data-theme', t);
+      if (themeBtn) themeBtn.innerHTML = t === 'dark' ? '&#9728;' : '&#9790;';
+    };
+    applyTheme(localStorage.getItem('kurs-theme') || 'dark');
+    setTimeout(() => document.documentElement.classList.add('theme-transitions'), 50);
+    if (themeBtn) themeBtn.addEventListener('click', () => {
+      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('kurs-theme', next);
+      applyTheme(next);
+    });
+    hljs.highlightAll();
+  </script>
+  <script>
+    document.querySelectorAll('.quiz').forEach((quiz) => {
+      const fragen = [...quiz.querySelectorAll('.quiz-frage')];
+      const score = quiz.querySelector('.quiz-score');
+      const update = () => {
+        const done = fragen.filter((f) => f.dataset.state).length;
+        const ok = fragen.filter((f) => f.dataset.state === 'ok').length;
+        score.textContent = done === 0
+          ? fragen.length + ' Fragen – wähle eine Antwort und prüfe sie.'
+          : ok + ' von ' + fragen.length + ' richtig'
+            + (done < fragen.length ? ' (' + done + ' von ' + fragen.length + ' bearbeitet)' : '');
+      };
+      fragen.forEach((f) => {
+        const inputs = [...f.querySelectorAll('input')];
+        const check = f.querySelector('.quiz-check');
+        const reveal = f.querySelector('.quiz-reveal');
+        const fb = f.querySelector('.quiz-feedback');
+        const exp = f.querySelector('.quiz-erklaerung');
+        inputs.forEach((i) => i.addEventListener('change', () => {
+          check.disabled = !inputs.some((x) => x.checked);
+        }));
+        const finish = (graded) => {
+          let allOk = true;
+          f.querySelectorAll('.quiz-opt').forEach((li) => {
+            const input = li.querySelector('input');
+            const corr = li.dataset.correct === '1';
+            if (corr !== input.checked) allOk = false;
+            if (corr) li.classList.add('opt-correct');
+            else if (input.checked) li.classList.add('opt-wrong');
+            input.disabled = true;
+          });
+          f.dataset.state = !graded ? 'shown' : (allOk ? 'ok' : 'wrong');
+          fb.className = 'quiz-feedback fb-' + f.dataset.state;
+          fb.textContent = !graded ? 'Lösung angezeigt.'
+            : (allOk ? '✔ Richtig!' : '✘ Leider nicht ganz – die richtige Lösung ist markiert.');
+          fb.hidden = false;
+          exp.hidden = false;
+          check.disabled = true;
+          reveal.disabled = true;
+          update();
+        };
+        check.addEventListener('click', () => finish(true));
+        reveal.addEventListener('click', () => finish(false));
+      });
+      quiz.querySelector('.quiz-reset').addEventListener('click', () => {
+        fragen.forEach((f) => {
+          delete f.dataset.state;
+          f.querySelectorAll('.quiz-opt').forEach((li) => li.classList.remove('opt-correct', 'opt-wrong'));
+          f.querySelectorAll('input').forEach((i) => { i.checked = false; i.disabled = false; });
+          f.querySelector('.quiz-check').disabled = true;
+          f.querySelector('.quiz-reveal').disabled = false;
+          f.querySelector('.quiz-feedback').hidden = true;
+          f.querySelector('.quiz-erklaerung').hidden = true;
+        });
+        update();
+      });
+      update();
+    });
+  </script>
+</body>
+
+</html>

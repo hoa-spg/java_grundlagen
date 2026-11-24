@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<!-- GENERIERT von java/kurs/_build (java-grundlagen) – nicht direkt bearbeiten!
+     Quelle: java/kurs/_build/java-grundlagen/lessons/, bauen: python3 _build/build.py java-grundlagen -->
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>4.3 &ndash; Komponenten &amp; Layouts | Java-Grundlagen Kurs</title>
+  <script>(function () { var t = localStorage.getItem('kurs-theme') || 'dark'; document.documentElement.setAttribute('data-theme', t); })();</script>
+  <link rel="stylesheet" href="assets/kurs.css">
+  <link rel="stylesheet" id="hljs-theme"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+
+<body>
+
+  <button class="hamburger" id="hamburger" aria-label="Navigation &ouml;ffnen">&#9776;</button>
+  <div class="sidebar-overlay" id="overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html">
+        <span class="brand-icon">J</span>
+        <div>
+          <div class="brand-name">Java</div>
+          <div class="brand-sub">Grundlagen der Programmierung</div>
+        </div>
+      </a>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Dark/Light Mode"
+        title="Theme wechseln">&#9728;</button>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-group">
+        <div class="nav-group-label html-label">Teil 1 &mdash; Grundlagen</div>
+        <a class="nav-link" href="1.1-einfuehrung-entwicklungsumgebung.html"><span class="ln">1.1</span>Einf&uuml;hrung &amp; Entwicklungsumgebung</a>
+        <a class="nav-link" href="1.2-klassen-objekte.html"><span class="ln">1.2</span>Klassen, Objekte, Get &amp; Set</a>
+        <a class="nav-link" href="1.3-konstruktoren-methoden.html"><span class="ln">1.3</span>Konstruktoren, this &amp; Methoden</a>
+        <a class="nav-link" href="1.4-datentypen.html"><span class="ln">1.4</span>Datentypen</a>
+        <a class="nav-link" href="1.5-signatur-ueberladen.html"><span class="ln">1.5</span>Methoden, Signatur &amp; &Uuml;berladen</a>
+        <a class="nav-link" href="1.6-bedingungen-berechnungen.html"><span class="ln">1.6</span>Bedingungen &amp; Berechnungen</a>
+        <a class="nav-link" href="1.7-debugger-testklassen.html"><span class="ln">1.7</span>Debugger &amp; Testklassen</a>
+        <a class="nav-link" href="1.8-strings-random.html"><span class="ln">1.8</span>Strings &amp; Random</a>
+        <a class="nav-link" href="1.9-objekt-beziehungen.html"><span class="ln">1.9</span>Objekt-Beziehungen</a>
+        <a class="nav-link" href="1.10-schleifen.html"><span class="ln">1.10</span>Schleifen</a>
+        <a class="nav-link" href="1.11-statische-methoden.html"><span class="ln">1.11</span>Statische Methoden &amp; main</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label css-label">Teil 2 &mdash; Datenstrukturen &amp; OOP</div>
+        <a class="nav-link" href="2.1-intellij-junit.html"><span class="ln">2.1</span>IntelliJ, Maven &amp; JUnit</a>
+        <a class="nav-link" href="2.2-arrays.html"><span class="ln">2.2</span>Arrays</a>
+        <a class="nav-link" href="2.3-arrays-einfuegen-entfernen.html"><span class="ln">2.3</span>Arrays: Einf&uuml;gen &amp; Entfernen</a>
+        <a class="nav-link" href="2.4-sortieralgorithmen.html"><span class="ln">2.4</span>Sortieralgorithmen</a>
+        <a class="nav-link" href="2.5-objekt-arrays.html"><span class="ln">2.5</span>Objekt-Arrays</a>
+        <a class="nav-link" href="2.6-assoziation-equals.html"><span class="ln">2.6</span>Beidseitige Assoziation &amp; equals</a>
+        <a class="nav-link" href="2.7-collections.html"><span class="ln">2.7</span>Collections: ArrayList &amp; Co.</a>
+        <a class="nav-link" href="2.8-vererbung.html"><span class="ln">2.8</span>Vererbung &amp; Polymorphismus</a>
+        <a class="nav-link" href="2.9-abstrakt-interfaces.html"><span class="ln">2.9</span>Abstrakte Klassen &amp; Interfaces</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label rn-label">Teil 3 &mdash; Fortgeschrittene Konzepte</div>
+        <a class="nav-link" href="3.0-fail-early.html"><span class="ln">3.0</span>Fail Early statt Happy Path</a>
+        <a class="nav-link" href="3.1-exceptions.html"><span class="ln">3.1</span>Exceptions</a>
+        <a class="nav-link" href="3.2-hashset-treeset.html"><span class="ln">3.2</span>HashSet, TreeSet &amp; hashCode</a>
+        <a class="nav-link" href="3.3-serialisierung-dateien.html"><span class="ln">3.3</span>Serialisierung &amp; Dateien</a>
+        <a class="nav-link" href="3.4-git.html"><span class="ln">3.4</span>Versionsverwaltung mit Git</a>
+        <a class="nav-link" href="3.5-lambdas.html"><span class="ln">3.5</span>Lambda-Ausdr&uuml;cke</a>
+        <a class="nav-link" href="3.6-streams.html"><span class="ln">3.6</span>Die Streams-API</a>
+        <a class="nav-link" href="3.7-design-patterns.html"><span class="ln">3.7</span>Design-Patterns</a>
+        <a class="nav-link" href="3.8-model-klassen.html"><span class="ln">3.8</span>Model-Klassen f&uuml;r die GUI</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label react-label">Teil 4 &mdash; Webanwendungen mit Vaadin</div>
+        <a class="nav-link" href="4.1-web-grundlagen.html"><span class="ln">4.1</span>Grundprinzipien des Web</a>
+        <a class="nav-link" href="4.2-vaadin-einstieg.html"><span class="ln">4.2</span>Vaadin Flow &amp; Start-Paket</a>
+        <a class="nav-link" href="4.3-komponenten-layouts.html"><span class="ln">4.3</span>Komponenten &amp; Layouts</a>
+        <a class="nav-link" href="4.4-grid-routing-binding.html"><span class="ln">4.4</span>Tabellen, Routing &amp; Binding</a>
+        <a class="nav-link" href="4.5-mitarbeiterverwaltung.html"><span class="ln">4.5</span>Mitarbeiterverwaltung</a>
+      </div>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <header class="lesson-header">
+      <p class="lesson-eyebrow">Lektion 4.3 &mdash; Teil 4: Webanwendungen mit Vaadin</p>
+      <h1>Komponenten &amp; Layouts</h1>
+      <div class="lesson-tags">
+        <span class="tag tag-react">Vaadin</span>
+        <span class="tag tag-time">ca. 90 min</span>
+        <span class="tag tag-level">Fortgeschritten</span>
+      </div>
+    </header>
+
+    <div class="content-area">
+      <section class="section section-lernziele">
+        <h2>Lernziele</h2>
+        <ul class="lernziele-list">
+          <li><a class="lernziel-link" href="#abschnitt-1">die wichtigsten Eingabekomponenten von Vaadin kennen und passend auswählen<span class="lernziel-ziel">Abschnitt 1</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-1">weitere Komponenten wie Tabs, TreeGrid und ProgressBar einordnen<span class="lernziel-ziel">Abschnitt 1</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-2">Komponenten mit <code>VerticalLayout</code> und <code>HorizontalLayout</code> anordnen und ausrichten<span class="lernziel-ziel">Abschnitt 2</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-3">mit <code>FormLayout</code> responsive Formulare mit mehreren Spalten bauen<span class="lernziel-ziel">Abschnitt 3</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-2">Layouts ineinander schachteln und Daten zwischen Formular und Model-Objekt austauschen<span class="lernziel-ziel">Abschnitt 2</span></a></li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-1">1 &mdash; Eingabekomponenten</h2>
+        <p>
+          Die wichtigsten Komponenten in Formularen zeigt die folgende Tabelle (Quelle:
+          <a href="https://vaadin.com/docs/latest/components/input-fields#input-field-components">vaadin.com/docs/latest/components</a>).
+        </p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Component</th><th>Usage recommendations</th><th>Java-Klasse</th></tr></thead>
+            <tbody>
+              <tr><td>Text Field</td><td>Basic single-line text input.</td><td><code>TextField</code></td></tr>
+              <tr><td>Text Area</td><td>Multi-line text input, for values that aren't expected to fit on a single line, or when manual line breaks need to be supported.</td><td><code>TextArea</code></td></tr>
+              <tr><td>Email Field</td><td>For email addresses.</td><td><code>EmailField</code></td></tr>
+              <tr><td>Number Field</td><td>Numeric-only input, such as counts, measures, or monetary values.</td><td><code>NumberField</code>, <code>IntegerField</code></td></tr>
+              <tr><td>Password Field</td><td>Optionally masked password entry.</td><td><code>PasswordField</code></td></tr>
+              <tr><td>Date Picker</td><td>Date entry with keyboard or a calendar picker.</td><td><code>DatePicker</code> (&rarr; <code>LocalDate</code>)</td></tr>
+              <tr><td>Time Picker</td><td>Selecting a time of day; resolution range from hours to milliseconds.</td><td><code>TimePicker</code></td></tr>
+              <tr><td>Date Time Picker</td><td>Combined date and time entry.</td><td><code>DateTimePicker</code></td></tr>
+              <tr><td>Radio Button</td><td>Select a single option from a list. Optimal accessibility, as all options are visible without any user action.</td><td><code>RadioButtonGroup</code></td></tr>
+              <tr><td>Select</td><td>Select a value from an overlay. More compact than Radio Buttons.</td><td><code>Select</code></td></tr>
+              <tr><td>Combo Box</td><td>Select a value from a filterable overlay. Appropriate for large sets of options. Supports lazy loading and entry of custom values.</td><td><code>ComboBox</code></td></tr>
+              <tr><td>Checkbox</td><td>For selecting multiple options from a list, or a single binary toggle.</td><td><code>Checkbox</code>, <code>CheckboxGroup</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>So erscheinen die Komponenten im Formular einer Anwendung (Bilder aus der Vaadin-Dokumentation):</p>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/vaadin-form-inputs-1.png" alt="Vaadin-Eingabekomponenten, Teil 1" loading="lazy" style="max-width:820px"></div>
+  <figcaption>Vaadin-Eingabekomponenten, Teil 1 <small class="credit">Quelle: vaadin.com/docs</small></figcaption>
+</figure>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/vaadin-form-inputs-2.png" alt="Vaadin-Eingabekomponenten, Teil 2" loading="lazy" style="max-width:820px"></div>
+  <figcaption>Vaadin-Eingabekomponenten, Teil 2 <small class="credit">Quelle: vaadin.com/docs</small></figcaption>
+</figure>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/vaadin-form-inputs-3.png" alt="Vaadin-Eingabekomponenten, Teil 3" loading="lazy" style="max-width:820px"></div>
+  <figcaption>Vaadin-Eingabekomponenten, Teil 3 <small class="credit">Quelle: vaadin.com/docs</small></figcaption>
+</figure>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Komponenten verwenden</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">TextField firstName = new TextField("First name");          // Label im Konstruktor
+firstName.setPlaceholder("z. B. Grace");
+
+ComboBox&lt;Employee.Role&gt; role = new ComboBox&lt;&gt;("Role");
+role.setItems(Employee.Role.values());                      // Auswahl aus dem enum
+
+DatePicker birthday = new DatePicker("Birthday");
+IntegerField salary = new IntegerField("Salary");
+salary.setMin(1500);
+Checkbox subcontractor = new Checkbox("Subcontractor");
+
+String name = firstName.getValue();                         // Werte auslesen
+LocalDate datum = birthday.getValue();                      // kann null sein!</code></pre>
+</div>
+        <p>Neben den Eingabeelementen (<em>Input Components</em>) gibt es zahlreiche weitere Komponenten, etwa Tabellen bzw. Baumdarstellungen, Karteikarten (Tabs) oder Fortschrittsbalken:</p>
+        <div class="figure-row">
+          <figure class="figure">
+  <div class="figure-img"><img src="assets/img/vaadin-tree-grid.png" alt="TreeGrid" loading="lazy" style="max-width:420px"></div>
+  <figcaption>TreeGrid <small class="credit">Quelle: vaadin.com/docs</small></figcaption>
+</figure>
+          <figure class="figure">
+  <div class="figure-img"><img src="assets/img/vaadin-tabs.png" alt="Tabs" loading="lazy" style="max-width:420px"></div>
+  <figcaption>Tabs <small class="credit">Quelle: vaadin.com/docs</small></figcaption>
+</figure>
+        </div>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/vaadin-progress-bar.png" alt="ProgressBar" loading="lazy" style="max-width:420px"></div>
+  <figcaption>ProgressBar <small class="credit">Quelle: vaadin.com/docs</small></figcaption>
+</figure>
+        <p>Bevor wir Formulare und Tabellen näher betrachten, wenden wir uns den <strong>Layout</strong>-Komponenten zu.</p>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-2">2 &mdash; Layouts</h2>
+        <p>
+          Layouts positionieren die Eingabeelemente. Die Herausforderung: Layouts, die auf unterschiedlich großen
+          Bildschirmen sinnvoll skalieren &ndash; beim Vergrößern und Verkleinern sollen die Elemente mitwandern bzw. neu
+          angeordnet werden. Oberflächen entstehen, indem Komponenten in Layouts verankert und Layouts ineinander geschachtelt
+          werden (Darstellung nach <a href="https://vaadin.com/docs/latest/components/basic-layouts">vaadin.com/docs/latest/components/basic-layouts</a>).
+        </p>
+        <p>Das <strong>VerticalLayout</strong> ordnet seine Elemente in einer Spalte von oben nach unten an. Die Breite ist stets 100&nbsp;%, die Höhe richtet sich nach den enthaltenen Elementen und den Einschränkungen übergeordneter Layouts.</p>
+        <div class="two-col">
+          <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">VerticalLayout</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">VerticalLayout layout = new VerticalLayout();
+layout.add(new Button("Button 1"));
+layout.add(new Button("Button 2"));
+layout.add(new Button("Button 3"));
+layout.add(new Button("Button 4"));</code></pre>
+</div>
+          <figure class="figure">
+  <div class="figure-img"><img src="assets/img/vaadin-vertical-layout.png" alt="Vertikales Layout" loading="lazy" style="max-width:360px"></div>
+  <figcaption>Vertikales Layout</figcaption>
+</figure>
+        </div>
+        <p>Ebenso können Elemente horizontal angeordnet werden:</p>
+        <div class="two-col">
+          <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">HorizontalLayout</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">HorizontalLayout layout = new HorizontalLayout();
+layout.setPadding(true);
+layout.add(new Button("Button 1"));
+layout.add(new Button("Button 2"));
+layout.add(new Button("Button 3"));
+layout.add(new Button("Button 4"));</code></pre>
+</div>
+          <figure class="figure">
+  <div class="figure-img"><img src="assets/img/vaadin-horizontal-layout.png" alt="Horizontales Layout" loading="lazy" style="max-width:360px"></div>
+  <figcaption>Horizontales Layout</figcaption>
+</figure>
+        </div>
+        <p>Die Ausrichtung innerhalb des Layout-Containers legt <code>layout.setAlignItems(alignment);</code> fest; die Werte sind <code>STRETCH</code> (Standard), <code>START</code>, <code>CENTER</code>, <code>END</code> und <code>BASELINE</code>.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Methode</th><th>Wirkung</th></tr></thead>
+            <tbody>
+              <tr><td><code>setAlignItems(Alignment.CENTER)</code></td><td>Ausrichtung <em>quer</em> zur Layout-Richtung</td></tr>
+              <tr><td><code>setJustifyContentMode(JustifyContentMode.END)</code></td><td>Verteilung <em>entlang</em> der Layout-Richtung (z.&nbsp;B. Buttons rechtsbündig)</td></tr>
+              <tr><td><code>setSpacing(true/false)</code>, <code>setPadding(true/false)</code></td><td>Abstand zwischen den Elementen bzw. zum Rand</td></tr>
+              <tr><td><code>setFlexGrow(1, komponente)</code></td><td>Komponente nimmt den restlichen Platz ein</td></tr>
+              <tr><td><code>setWidthFull()</code>, <code>setWidth("80%")</code>, <code>setSizeFull()</code></td><td>Größe der Komponente</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout callout-tip">
+  <div class="callout-icon">&#128161;</div>
+  <div class="callout-body">
+    <div class="callout-title">CSS im Hintergrund</div>
+    <p>Vertical- und HorizontalLayout sind intern CSS-Flexbox-Container &ndash; die Begriffe <em>align-items</em>,
+          <em>justify-content</em> und <em>flex-grow</em> stammen direkt aus CSS.</p>
+  </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-3">3 &mdash; FormLayout: responsive Formulare</h2>
+        <p>
+          Das <strong>FormLayout</strong> ermöglicht <em>responsive Designs</em> für Formulare: Eingabefelder werden auf großen
+          Bildschirmen nebeneinander, auf kleinen untereinander dargestellt.
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">FormLayout</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">TextField firstName = new TextField("First name");
+TextField lastName = new TextField("Last name");
+TextField username = new TextField("Username");
+PasswordField password = new PasswordField("Password");
+PasswordField confirmPassword = new PasswordField("Confirm password");
+
+FormLayout formLayout = new FormLayout();
+formLayout.add(firstName, lastName, username, password,
+        confirmPassword);
+formLayout.setResponsiveSteps(
+        // Use one column by default
+        new ResponsiveStep("0", 1),
+        // Use two columns, if layout's width exceeds 500px
+        new ResponsiveStep("500px", 2));
+// Stretch the username field over 2 columns
+formLayout.setColspan(username, 2);</code></pre>
+</div>
+        <p>Auf einem normalen Bildschirm wird dieses Formular so dargestellt &ndash; beim Verkleinern des Fensters ändert sich die Anordnung:</p>
+        <div class="figure-row">
+          <figure class="figure">
+  <div class="figure-img"><img src="assets/img/vaadin-form-layout-1.png" alt="Breites Fenster: zwei Spalten" loading="lazy" style="max-width:420px"></div>
+  <figcaption>Breites Fenster: zwei Spalten</figcaption>
+</figure>
+          <figure class="figure">
+  <div class="figure-img"><img src="assets/img/vaadin-form-layout-2.png" alt="Schmales Fenster: eine Spalte" loading="lazy" style="max-width:280px"></div>
+  <figcaption>Schmales Fenster: eine Spalte</figcaption>
+</figure>
+        </div>
+      </section>
+
+      <section class="section section-projekt">
+        <h2 id="projektschritt">Projektschritt</h2>
+<div class="projekt-box">
+  <div class="projekt-box-header">
+    <span class="projekt-step">Projektschritt 4.3</span>
+    <h3>CompanyView: das Firmenformular</h3>
+  </div>
+<p>Die erste View mit echten Daten: ein <code>FormLayout</code> mit Firmenname und Adresse, Save/Cancel rechtsbündig in einem <code>HorizontalLayout</code> und ein aufklappbarer <code>Details</code>-Bereich für Speichern/Laden als CSV. Die Daten werden noch &bdquo;von Hand&ldquo; kopiert: <code>readData()</code> (Model &rarr; Formular) und <code>storeData()</code> (Formular &rarr; Model). Ungültige Eingaben lösen in den Set-Methoden eine <code>CompanyException</code> aus, die als Notification angezeigt wird. Im <code>MainLayout</code> kommt ein Menüeintrag dazu.</p>
+  <details class="code-collapse">
+  <summary><span class="code-filename">src/main/java/at/spengergasse/company/views/company/CompanyView.java</span> <span class="code-collapse-hint">Code anzeigen (108 Zeilen)</span></summary>
+<div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">src/main/java/at/spengergasse/company/views/company/CompanyView.java</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">package at.spengergasse.company.views.company;
+
+import at.spengergasse.company.model.Company;
+import at.spengergasse.company.model.CompanyException;
+import at.spengergasse.company.views.MainLayout;
+import com.vaadin.flow.component.Key;
+import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.button.ButtonVariant;
+import com.vaadin.flow.component.details.Details;
+import com.vaadin.flow.component.formlayout.FormLayout;
+import com.vaadin.flow.component.notification.Notification;
+import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.router.PageTitle;
+import com.vaadin.flow.router.Route;
+
+/**
+ * Formular für Name und Adresse der Firma.
+ * Stand 4.3: Layouts und Komponenten; Daten werden noch "von Hand"
+ * zwischen Formular und Company-Objekt kopiert (ab 4.4: Binder).
+ */
+@PageTitle("Company")
+@Route(value = "company", layout = MainLayout.class)
+public class CompanyView extends VerticalLayout {
+
+    private final TextField companyName = new TextField("Company Name");
+    private final TextField companyAddress = new TextField("Company Address");
+
+    private final Button save = new Button("Save");
+    private final Button cancel = new Button("Cancel");
+
+    private final Button saveToFile = new Button("Save Company To File");
+    private final Button loadFromFile = new Button("Load Company From File");
+
+    public CompanyView() {
+        createLayout();
+        addHandlers();
+        readData();
+    }
+
+    private void createLayout() {
+        setWidth("80%");
+
+        FormLayout form = new FormLayout();
+        form.add(companyName, companyAddress);
+
+        save.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+        HorizontalLayout buttons = new HorizontalLayout(save, cancel);
+        buttons.setJustifyContentMode(JustifyContentMode.END);
+        buttons.setWidthFull();
+
+        // aufklappbarer Bereich für die Datei-Funktionen
+        Details fileHandling = new Details("Save/Load Company to/from File",
+                                           new HorizontalLayout(saveToFile, loadFromFile));
+        fileHandling.setOpened(false);
+
+        add(form, buttons, fileHandling);
+    }
+
+    private void addHandlers() {
+        save.addClickListener(e -&gt; storeData());
+        save.addClickShortcut(Key.ENTER);
+        cancel.addClickListener(e -&gt; readData());
+        cancel.addClickShortcut(Key.ESCAPE);
+        saveToFile.addClickListener(e -&gt; saveCompanyToFile());
+        loadFromFile.addClickListener(e -&gt; loadCompanyFromFile());
+    }
+
+    // Model -&gt; Formular
+    private void readData() {
+        Company company = Company.getInstance();
+        companyName.setValue(company.getCompanyName());
+        companyAddress.setValue(company.getCompanyAddress());
+    }
+
+    // Formular -&gt; Model (die Set-Methoden prüfen die Werte!)
+    private void storeData() {
+        try {
+            Company.getInstance().setCompanyName(companyName.getValue());
+            Company.getInstance().setCompanyAddress(companyAddress.getValue());
+            Notification.show("Company name and address saved.");
+        } catch (CompanyException e) {
+            Notification.show(e.getMessage());
+        }
+    }
+
+    private void saveCompanyToFile() {
+        final String filename = "company.csv";   // TODO Dateiname wählbar machen
+        try {
+            Company.getInstance().writeToFile(filename);
+            Notification.show("Company saved to " + filename);
+        } catch (CompanyException e) {
+            Notification.show(e.getMessage());
+        }
+    }
+
+    private void loadCompanyFromFile() {
+        final String filename = "company.csv";
+        try {
+            Company.loadFromFile(filename);
+            readData();
+            Notification.show("Company successfully loaded from " + filename);
+        } catch (CompanyException e) {
+            Notification.show(e.getMessage());
+        }
+    }
+}</code></pre>
+</div>
+</details>
+  <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">src/main/java/at/spengergasse/company/views/MainLayout.java (Ausschnitt)</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">nav.add(
+        createNavItem("Company", CompanyView.class, VaadinIcon.BUILDING),
+        createNavItem("About", AboutView.class, VaadinIcon.FILE)
+);</code></pre>
+</div>
+  <p class="mb-0">&#128193; Stand nach dieser Lektion: <a href="beispiele/4.3/src/main/java/at/spengergasse/company/views/company/CompanyView.java" target="_blank">beispiele/4.3/</a></p>
+</div>
+      </section>
+
+      <section class="section section-fehler">
+        <h2>Häufige Fehler</h2>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: getValue() liefert null</div>
+  <p><code>datePicker.getValue().getYear()</code> &rarr; <code>NullPointerException</code>, wenn nichts ausgewählt wurde.</p>
+          <p class="fehler-fix">Leere Felder liefern bei <code>DatePicker</code>, <code>ComboBox</code>, <code>IntegerField</code> &amp; Co. <code>null</code> (bei <code>TextField</code> den Leerstring). Vor der Verwendung prüfen.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Komponente in zwei Layouts</div>
+  <p>Ein Button verschwindet aus dem ersten Layout, sobald er auch einem zweiten hinzugefügt wird.</p>
+          <p class="fehler-fix">Eine Komponente hat genau einen Platz in der Oberfläche. Für zwei Buttons zwei Objekte erzeugen.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Formular wird nicht neu geladen</div>
+  <p>Nach &bdquo;Load Company From File&ldquo; zeigt das Formular noch die alten Werte.</p>
+          <p class="fehler-fix">Die Felder ändern sich nicht von selbst, wenn sich das Model ändert. Nach dem Laden <code>readData()</code> aufrufen (ab 4.4: <code>binder.readBean(&hellip;)</code>).</p>
+</div>
+      </section>
+
+      <section class="section section-quiz">
+        <h2>Wissenskontrolle</h2>
+        <div class="quiz" id="quiz-32">
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 1</span> Welche Vaadin-Komponente passt für die Eingabe einer ganzen Zahl?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-32-1"> <span><code>TextArea</code></span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-32-1"> <span><code>IntegerField</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-32-1"> <span><code>Checkbox</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-32-1"> <span><code>Button</code></span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Ein <code>IntegerField</code> akzeptiert nur ganze Zahlen und liefert den Wert als <code>Integer</code>. Für Text gibt es <code>TextField</code>, für Ja/Nein die <code>Checkbox</code>.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 2</span> Wie ordnen <code>VerticalLayout</code> und <code>HorizontalLayout</code> ihre Komponenten an?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-32-2"> <span>beide übereinander</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-32-2"> <span><code>VerticalLayout</code> untereinander, <code>HorizontalLayout</code> nebeneinander</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-32-2"> <span><code>VerticalLayout</code> nebeneinander, <code>HorizontalLayout</code> untereinander</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-32-2"> <span>zufällig</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Durch Verschachteln der beiden Layouts lassen sich auch komplexere Anordnungen bauen, z.&nbsp;B. eine Zeile mit Buttons unter einem Formular.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 3</span> Was ist das Besondere an einem <code>FormLayout</code>?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-32-3"> <span>Es speichert die Eingaben automatisch in einer Datei.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-32-3"> <span>Es ordnet Eingabefelder in Spalten an und passt die Anzahl der Spalten an die Fensterbreite an (responsive).</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-32-3"> <span>Es kann nur ein einziges Feld enthalten.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-32-3"> <span>Es prüft alle Eingaben auf Gültigkeit.</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Über <code>setResponsiveSteps</code> legt man fest, ab welcher Breite wie viele Spalten verwendet werden &ndash; am Handy eine, am Bildschirm mehrere.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 4</span> Wie kommen die Werte aus einem Formular ohne <code>Binder</code> in ein Model-Objekt?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-32-4"> <span>automatisch, sobald man tippt</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-32-4"> <span>Man liest jeden Wert mit <code>getValue()</code> und übergibt ihn an die passende Set-Methode des Objekts.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-32-4"> <span>über die <code>pom.xml</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-32-4"> <span>mit <code>System.out.println</code></span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Umgekehrt füllt <code>setValue()</code> die Felder mit den Werten des Objekts. Das ist bei vielen Feldern mühsam &ndash; genau das nimmt ein <code>Binder</code> ab.</div>
+  </div>
+  <div class="quiz-summary"><span class="quiz-score"></span><button type="button" class="quiz-reset">Zur&uuml;cksetzen</button></div>
+</div>
+      </section>
+
+    </div>
+
+    <nav class="lesson-nav">
+      <a class="nav-btn" href="4.2-vaadin-einstieg.html">&larr; Lektion 4.2: Vaadin Flow &amp; Start-Paket</a>
+      <span class="nav-center-info">Lektion 4.3</span>
+      <a class="nav-btn primary" href="4.4-grid-routing-binding.html">Lektion 4.4: Tabellen, Routing &amp; Binding &rarr;</a>
+    </nav>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>
+    const ham = document.getElementById('hamburger');
+    const sb = document.getElementById('sidebar');
+    const ov = document.getElementById('overlay');
+    ham.addEventListener('click', () => { sb.classList.toggle('open'); ov.classList.toggle('visible'); });
+    ov.addEventListener('click', () => { sb.classList.remove('open'); ov.classList.remove('visible'); });
+    const cur = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-link').forEach(l => {
+      if (l.getAttribute('href') === cur) l.classList.add('active');
+    });
+    const themeBtn = document.getElementById('theme-toggle');
+    const applyTheme = (t) => {
+      document.documentElement.setAttribute('data-theme', t);
+      if (themeBtn) themeBtn.innerHTML = t === 'dark' ? '&#9728;' : '&#9790;';
+    };
+    applyTheme(localStorage.getItem('kurs-theme') || 'dark');
+    setTimeout(() => document.documentElement.classList.add('theme-transitions'), 50);
+    if (themeBtn) themeBtn.addEventListener('click', () => {
+      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('kurs-theme', next);
+      applyTheme(next);
+    });
+    hljs.highlightAll();
+  </script>
+  <script>
+    document.querySelectorAll('.quiz').forEach((quiz) => {
+      const fragen = [...quiz.querySelectorAll('.quiz-frage')];
+      const score = quiz.querySelector('.quiz-score');
+      const update = () => {
+        const done = fragen.filter((f) => f.dataset.state).length;
+        const ok = fragen.filter((f) => f.dataset.state === 'ok').length;
+        score.textContent = done === 0
+          ? fragen.length + ' Fragen – wähle eine Antwort und prüfe sie.'
+          : ok + ' von ' + fragen.length + ' richtig'
+            + (done < fragen.length ? ' (' + done + ' von ' + fragen.length + ' bearbeitet)' : '');
+      };
+      fragen.forEach((f) => {
+        const inputs = [...f.querySelectorAll('input')];
+        const check = f.querySelector('.quiz-check');
+        const reveal = f.querySelector('.quiz-reveal');
+        const fb = f.querySelector('.quiz-feedback');
+        const exp = f.querySelector('.quiz-erklaerung');
+        inputs.forEach((i) => i.addEventListener('change', () => {
+          check.disabled = !inputs.some((x) => x.checked);
+        }));
+        const finish = (graded) => {
+          let allOk = true;
+          f.querySelectorAll('.quiz-opt').forEach((li) => {
+            const input = li.querySelector('input');
+            const corr = li.dataset.correct === '1';
+            if (corr !== input.checked) allOk = false;
+            if (corr) li.classList.add('opt-correct');
+            else if (input.checked) li.classList.add('opt-wrong');
+            input.disabled = true;
+          });
+          f.dataset.state = !graded ? 'shown' : (allOk ? 'ok' : 'wrong');
+          fb.className = 'quiz-feedback fb-' + f.dataset.state;
+          fb.textContent = !graded ? 'Lösung angezeigt.'
+            : (allOk ? '✔ Richtig!' : '✘ Leider nicht ganz – die richtige Lösung ist markiert.');
+          fb.hidden = false;
+          exp.hidden = false;
+          check.disabled = true;
+          reveal.disabled = true;
+          update();
+        };
+        check.addEventListener('click', () => finish(true));
+        reveal.addEventListener('click', () => finish(false));
+      });
+      quiz.querySelector('.quiz-reset').addEventListener('click', () => {
+        fragen.forEach((f) => {
+          delete f.dataset.state;
+          f.querySelectorAll('.quiz-opt').forEach((li) => li.classList.remove('opt-correct', 'opt-wrong'));
+          f.querySelectorAll('input').forEach((i) => { i.checked = false; i.disabled = false; });
+          f.querySelector('.quiz-check').disabled = true;
+          f.querySelector('.quiz-reveal').disabled = false;
+          f.querySelector('.quiz-feedback').hidden = true;
+          f.querySelector('.quiz-erklaerung').hidden = true;
+        });
+        update();
+      });
+      update();
+    });
+  </script>
+</body>
+
+</html>

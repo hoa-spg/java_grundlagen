@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<!-- GENERIERT von java/kurs/_build (java-grundlagen) – nicht direkt bearbeiten!
+     Quelle: java/kurs/_build/java-grundlagen/lessons/, bauen: python3 _build/build.py java-grundlagen -->
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3.7 &ndash; Design-Patterns | Java-Grundlagen Kurs</title>
+  <script>(function () { var t = localStorage.getItem('kurs-theme') || 'dark'; document.documentElement.setAttribute('data-theme', t); })();</script>
+  <link rel="stylesheet" href="assets/kurs.css">
+  <link rel="stylesheet" id="hljs-theme"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+
+<body>
+
+  <button class="hamburger" id="hamburger" aria-label="Navigation &ouml;ffnen">&#9776;</button>
+  <div class="sidebar-overlay" id="overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html">
+        <span class="brand-icon">J</span>
+        <div>
+          <div class="brand-name">Java</div>
+          <div class="brand-sub">Grundlagen der Programmierung</div>
+        </div>
+      </a>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Dark/Light Mode"
+        title="Theme wechseln">&#9728;</button>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-group">
+        <div class="nav-group-label html-label">Teil 1 &mdash; Grundlagen</div>
+        <a class="nav-link" href="1.1-einfuehrung-entwicklungsumgebung.html"><span class="ln">1.1</span>Einf&uuml;hrung &amp; Entwicklungsumgebung</a>
+        <a class="nav-link" href="1.2-klassen-objekte.html"><span class="ln">1.2</span>Klassen, Objekte, Get &amp; Set</a>
+        <a class="nav-link" href="1.3-konstruktoren-methoden.html"><span class="ln">1.3</span>Konstruktoren, this &amp; Methoden</a>
+        <a class="nav-link" href="1.4-datentypen.html"><span class="ln">1.4</span>Datentypen</a>
+        <a class="nav-link" href="1.5-signatur-ueberladen.html"><span class="ln">1.5</span>Methoden, Signatur &amp; &Uuml;berladen</a>
+        <a class="nav-link" href="1.6-bedingungen-berechnungen.html"><span class="ln">1.6</span>Bedingungen &amp; Berechnungen</a>
+        <a class="nav-link" href="1.7-debugger-testklassen.html"><span class="ln">1.7</span>Debugger &amp; Testklassen</a>
+        <a class="nav-link" href="1.8-strings-random.html"><span class="ln">1.8</span>Strings &amp; Random</a>
+        <a class="nav-link" href="1.9-objekt-beziehungen.html"><span class="ln">1.9</span>Objekt-Beziehungen</a>
+        <a class="nav-link" href="1.10-schleifen.html"><span class="ln">1.10</span>Schleifen</a>
+        <a class="nav-link" href="1.11-statische-methoden.html"><span class="ln">1.11</span>Statische Methoden &amp; main</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label css-label">Teil 2 &mdash; Datenstrukturen &amp; OOP</div>
+        <a class="nav-link" href="2.1-intellij-junit.html"><span class="ln">2.1</span>IntelliJ, Maven &amp; JUnit</a>
+        <a class="nav-link" href="2.2-arrays.html"><span class="ln">2.2</span>Arrays</a>
+        <a class="nav-link" href="2.3-arrays-einfuegen-entfernen.html"><span class="ln">2.3</span>Arrays: Einf&uuml;gen &amp; Entfernen</a>
+        <a class="nav-link" href="2.4-sortieralgorithmen.html"><span class="ln">2.4</span>Sortieralgorithmen</a>
+        <a class="nav-link" href="2.5-objekt-arrays.html"><span class="ln">2.5</span>Objekt-Arrays</a>
+        <a class="nav-link" href="2.6-assoziation-equals.html"><span class="ln">2.6</span>Beidseitige Assoziation &amp; equals</a>
+        <a class="nav-link" href="2.7-collections.html"><span class="ln">2.7</span>Collections: ArrayList &amp; Co.</a>
+        <a class="nav-link" href="2.8-vererbung.html"><span class="ln">2.8</span>Vererbung &amp; Polymorphismus</a>
+        <a class="nav-link" href="2.9-abstrakt-interfaces.html"><span class="ln">2.9</span>Abstrakte Klassen &amp; Interfaces</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label rn-label">Teil 3 &mdash; Fortgeschrittene Konzepte</div>
+        <a class="nav-link" href="3.0-fail-early.html"><span class="ln">3.0</span>Fail Early statt Happy Path</a>
+        <a class="nav-link" href="3.1-exceptions.html"><span class="ln">3.1</span>Exceptions</a>
+        <a class="nav-link" href="3.2-hashset-treeset.html"><span class="ln">3.2</span>HashSet, TreeSet &amp; hashCode</a>
+        <a class="nav-link" href="3.3-serialisierung-dateien.html"><span class="ln">3.3</span>Serialisierung &amp; Dateien</a>
+        <a class="nav-link" href="3.4-git.html"><span class="ln">3.4</span>Versionsverwaltung mit Git</a>
+        <a class="nav-link" href="3.5-lambdas.html"><span class="ln">3.5</span>Lambda-Ausdr&uuml;cke</a>
+        <a class="nav-link" href="3.6-streams.html"><span class="ln">3.6</span>Die Streams-API</a>
+        <a class="nav-link" href="3.7-design-patterns.html"><span class="ln">3.7</span>Design-Patterns</a>
+        <a class="nav-link" href="3.8-model-klassen.html"><span class="ln">3.8</span>Model-Klassen f&uuml;r die GUI</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label react-label">Teil 4 &mdash; Webanwendungen mit Vaadin</div>
+        <a class="nav-link" href="4.1-web-grundlagen.html"><span class="ln">4.1</span>Grundprinzipien des Web</a>
+        <a class="nav-link" href="4.2-vaadin-einstieg.html"><span class="ln">4.2</span>Vaadin Flow &amp; Start-Paket</a>
+        <a class="nav-link" href="4.3-komponenten-layouts.html"><span class="ln">4.3</span>Komponenten &amp; Layouts</a>
+        <a class="nav-link" href="4.4-grid-routing-binding.html"><span class="ln">4.4</span>Tabellen, Routing &amp; Binding</a>
+        <a class="nav-link" href="4.5-mitarbeiterverwaltung.html"><span class="ln">4.5</span>Mitarbeiterverwaltung</a>
+      </div>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <header class="lesson-header">
+      <p class="lesson-eyebrow">Lektion 3.7 &mdash; Teil 3: Fortgeschrittene Konzepte</p>
+      <h1>Design-Patterns</h1>
+      <div class="lesson-tags">
+        <span class="tag tag-rn">Design-Patterns</span>
+        <span class="tag tag-time">ca. 90 min</span>
+        <span class="tag tag-level">Fortgeschritten</span>
+      </div>
+    </header>
+
+    <div class="content-area">
+      <section class="section section-lernziele">
+        <h2>Lernziele</h2>
+        <ul class="lernziele-list">
+          <li><a class="lernziel-link" href="#abschnitt-1">erklären, was Design-Patterns sind und wozu sie dienen<span class="lernziel-ziel">Abschnitt 1</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-1">die Patterns Singleton, Factory, Strategy, Composite und Iterator grob beschreiben<span class="lernziel-ziel">Abschnitt 1</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-2">ein Singleton implementieren und seine Nachteile nennen<span class="lernziel-ziel">Abschnitt 2</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-3">eine Factory-Methode schreiben, die je nach Eingabe das passende Unterklassen-Objekt erzeugt<span class="lernziel-ziel">Abschnitt 3</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-4">Lambdas und <code>Comparator</code> als Strategy-Pattern erkennen<span class="lernziel-ziel">Abschnitt 4</span></a></li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-1">1 &mdash; Was sind Design-Patterns?</h2>
+        <p>
+          <strong>Design-Patterns</strong> sind bewährte Entwurfsmuster für häufig auftretende Anforderungen. Im
+          Standardwerk <em>Design Patterns. Elements of Reusable Object-Oriented Software</em> stellen Erich Gamma,
+          Richard Helm, Ralph Johnson und John Vlissides (oft &bdquo;Gang of Four&ldquo;, GoF, genannt) 23 Entwurfsmuster
+          vor, eingeteilt in <em>Erzeugungs-</em>, <em>Struktur-</em> und <em>Verhaltensmuster</em>. Ein Pattern ist kein
+          fertiger Code, sondern eine Lösungsidee mit Namen &ndash; wer &bdquo;das ist ein Singleton&ldquo; sagt, wird von
+          anderen Entwicklerinnen und Entwicklern sofort verstanden. Einigen Patterns bist du schon begegnet:
+        </p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Pattern</th><th>Art</th><th>Idee</th><th>im Kurs</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Singleton</strong></td><td>Erzeugung</td><td>Es gibt nur eine einzige Instanz einer Klasse.</td><td><code>Company.getInstance()</code>, Lektion 3.8</td></tr>
+              <tr><td><strong>Factory</strong></td><td>Erzeugung</td><td>Objekte werden über eine statische Methode statt direkt mit dem Konstruktor erzeugt; sie entscheidet, welches Objekt (möglicherweise ein Untertyp) entsteht.</td><td><code>IntegerBox.wertVon</code> (2.7), <code>Person.ausCsv</code> (Projektschritt)</td></tr>
+              <tr><td><strong>Strategy</strong></td><td>Verhalten</td><td>macht bestimmte Funktionen austauschbar</td><td><code>BinaryOperation</code>, <code>Comparator</code> (3.5)</td></tr>
+              <tr><td><strong>Composite</strong></td><td>Struktur</td><td>Eine Menge von Objekten wird wie eine einzelne Instanz behandelt.</td><td><code>Gebaeude</code> aus Wohnungen</td></tr>
+              <tr><td><strong>Iterator</strong></td><td>Verhalten</td><td>über Collections unabhängig von deren interner Struktur iterieren</td><td><code>Iterator</code>, Lektion 2.7</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Design-Patterns ausführlich vorzustellen, würde den Rahmen sprengen &ndash; siehe das Buch der GoF oder Online-Quellen. Die folgenden Abschnitte zeigen die drei wichtigsten genauer.</p>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-2">2 &mdash; Singleton</h2>
+        <p>
+          Manchmal darf es von einer Klasse nur <em>ein</em> Objekt geben, z.&nbsp;B. die Konfiguration eines
+          Programms oder die Firma, mit der alle Seiten einer Webanwendung arbeiten. Das Singleton erreicht das mit drei
+          Zutaten: Die Konstruktoren sind <code>private</code>; eine statische Variable hält die einzige Instanz; eine
+          statische Methode gibt sie zurück und erzeugt sie beim ersten Aufruf.
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Singleton (Grundgerüst)</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public class Konfiguration {
+
+    private static Konfiguration instanz = null;
+
+    private Konfiguration() {        // niemand außer der Klasse selbst kann erzeugen
+    }
+
+    public static Konfiguration getInstance() {
+        if (instanz == null) {
+            instanz = new Konfiguration();
+        }
+        return instanz;
+    }
+}</code></pre>
+</div>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Verwendung</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">Konfiguration k1 = Konfiguration.getInstance();
+Konfiguration k2 = Konfiguration.getInstance();
+System.out.println(k1 == k2);        // true – dasselbe Objekt
+// new Konfiguration();             // Fehler: Konfiguration() has private access</code></pre>
+</div>
+        <div class="callout callout-warning">
+  <div class="callout-icon">&#9888;</div>
+  <div class="callout-body">
+    <div class="callout-title">Singleton sparsam einsetzen</div>
+    <p>Ein Singleton ist im Grunde eine globale Variable: Jede Klasse kann darauf zugreifen und es verändern.
+          Besonders bei Tests ist das lästig, weil alle Tests dieselbe Instanz teilen. In Lektion 3.8 verwenden wir es
+          bewusst für die Firma der Webanwendung; in der Personalverwaltung bleibt <code>Firma</code> eine normale
+          Klasse, damit jeder Test seine eigene Firma anlegen kann.</p>
+  </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-3">3 &mdash; Factory</h2>
+        <p>
+          Eine <strong>Factory-Methode</strong> ist eine statische Methode, die ein Objekt erzeugt und zurückgibt. Das hat
+          zwei Vorteile gegenüber <code>new</code>: Sie kann einen sprechenden Namen haben (<code>wertVon</code>,
+          <code>ausCsv</code>), und sie kann je nach Eingabe entscheiden, <em>welche</em> Klasse erzeugt wird. Wer sie
+          aufruft, kennt nur den Rückgabetyp &ndash; oft eine abstrakte Basisklasse oder ein Interface.
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Factory: der Aufrufer kennt nur Person</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">Person p = Person.ausCsv("Freelancer;Sepp Gruber;1981;3;300");
+System.out.println(p.getKostenProMonat());   // 900 – es ist ein Freelancer</code></pre>
+</div>
+        <p>
+          Kommt später ein neuer Personentyp dazu (z.&nbsp;B. <code>Praktikant</code>), muss nur die Factory-Methode
+          ergänzt werden &ndash; alle Stellen, die Personen aus CSV-Zeilen erzeugen, bleiben unverändert. Wie die Methode
+          aussieht, zeigt der Projektschritt.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-4">4 &mdash; Strategy</h2>
+        <p>
+          Beim <strong>Strategy-Pattern</strong> wird ein Teil eines Algorithmus austauschbar gemacht: Der Algorithmus
+          bekommt die &bdquo;Strategie&ldquo; als Objekt übergeben, meist als Interface. Genau das passiert beim Sortieren
+          mit einem <code>Comparator</code> (Lektion 3.5): <code>sort</code> kennt den Sortieralgorithmus, der
+          <code>Comparator</code> bestimmt, was &bdquo;kleiner&ldquo; heißt. Seit es Lambdas gibt, ist eine Strategie oft
+          nur noch eine Zeile:
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Strategy mit Comparator</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public List&lt;Person&gt; sortiert(Comparator&lt;Person&gt; strategie) {
+    ArrayList&lt;Person&gt; sortiert = new ArrayList&lt;&gt;(personal);
+    sortiert.sort(strategie);
+    return sortiert;
+}
+
+// Aufruf mit verschiedenen Strategien
+firma.sortiert(Comparator.comparing(Person::getName));
+firma.sortiert((a, b) -&gt; b.getKostenProMonat() - a.getKostenProMonat());</code></pre>
+</div>
+        <p>
+          Auch <code>BinaryOperation</code> und <code>Calculator</code> aus Lektion 3.5 sind ein Strategy-Pattern: Der
+          <code>Calculator</code> rechnet, die übergebene Operation bestimmt, wie.
+        </p>
+      </section>
+
+      <section class="section section-projekt">
+        <h2 id="projektschritt">Projektschritt</h2>
+<div class="projekt-box">
+  <div class="projekt-box-header">
+    <span class="projekt-step">Projektschritt 3.7</span>
+    <h3>Eine Factory-Methode für Personen</h3>
+  </div>
+<p><code>readFromFile</code> entscheidet bisher selbst mit einer <code>if</code>-Kette, welche Unterklasse aus einer CSV-Zeile entsteht. Diese Entscheidung wandert jetzt in die Factory-Methode <code>Person.ausCsv</code>. Sie ist im Fail-Early-Stil geschrieben: jeder Typ ein eigenes <code>return</code>, am Ende die Exception.</p>
+  <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">src/main/java/Person.java (Auszug)</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">// Factory-Methode: erzeugt anhand der ersten CSV-Spalte das passende Objekt.
+// Wer sie aufruft, muss die Unterklassen nicht kennen.
+public static Person ausCsv(String zeile) throws FirmaException {
+    if (zeile == null || zeile.isBlank()) {
+        throw new FirmaException("Leere CSV-Zeile");
+    }
+    if (zeile.startsWith("Arbeiter;")) {
+        return new Arbeiter(zeile);
+    }
+    if (zeile.startsWith("Angestellter;")) {
+        return new Angestellter(zeile);
+    }
+    if (zeile.startsWith("Freelancer;")) {
+        return new Freelancer(zeile);
+    }
+    throw new FirmaException("Ungueltiger Personentyp in Zeile " + zeile);
+}</code></pre>
+</div>
+  <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">src/main/java/Firma.java (Auszug aus readFromFile)</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">while (line != null) {
+    if (!line.isBlank()) {
+        firma.einstellen(Person.ausCsv(line));   // Factory-Methode
+    }
+    line = br.readLine();
+}</code></pre>
+</div>
+  <p>Die abstrakte Klasse <code>Person</code> kann zwar selbst nicht instanziiert werden, eine statische Methode darf sie aber trotzdem haben. <code>FactoryTest</code> prüft, dass für jeden Typ die richtige Unterklasse entsteht (<code>assertInstanceOf</code>) und unbekannte Typen eine <code>FirmaException</code> auslösen.</p>
+  <p class="mb-0">&#128193; Stand nach dieser Lektion: <a href="beispiele/3.7/src/main/java/Person.java" target="_blank">beispiele/3.7/</a></p>
+</div>
+      </section>
+
+      <section class="section section-fehler">
+        <h2>Häufige Fehler</h2>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Singleton mit öffentlichem Konstruktor</div>
+  <p>Trotz <code>getInstance()</code> gibt es plötzlich zwei Konfigurationen.</p>
+          <p class="fehler-fix">Irgendwo wurde <code>new Konfiguration()</code> aufgerufen. Beim Singleton müssen <em>alle</em> Konstruktoren <code>private</code> sein.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Factory-Methode nicht statisch</div>
+  <p><code>Person.ausCsv(line)</code> &rarr; <code>non-static method ausCsv(String) cannot be referenced from a static context</code>.</p>
+          <p class="fehler-fix">Eine Factory-Methode wird aufgerufen, <em>bevor</em> es ein Objekt gibt &ndash; sie muss <code>static</code> sein.</p>
+</div>
+      </section>
+
+      <section class="section section-quiz">
+        <h2>Wissenskontrolle</h2>
+        <div class="quiz" id="quiz-28">
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 1</span> Was sind Design-Patterns?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-28-1"> <span>fertige Bibliotheken, die man herunterlädt</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-28-1"> <span>bewährte, benannte Lösungsmuster für immer wiederkehrende Entwurfsprobleme</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-28-1"> <span>Vorlagen für das Aussehen einer Oberfläche</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-28-1"> <span>Regeln für die Einrückung von Code</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Ein Pattern ist eine Idee, kein fertiger Code. Die gemeinsamen Namen (Singleton, Factory, &hellip;) erleichtern auch die Verständigung im Team.</div>
+  </div>
+  <div class="quiz-frage" data-multi="1">
+    <p class="quiz-q"><span class="quiz-num">Frage 2</span> Was gehört zu einer typischen Singleton-Implementierung?</p>
+    <p class="quiz-hint">Mehrere Antworten sind richtig.</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-28-2"> <span>ein <code>private</code> Konstruktor</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-28-2"> <span>ein statisches Attribut mit der einzigen Instanz</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-28-2"> <span>eine statische Methode wie <code>getInstance()</code>, die diese Instanz liefert</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-28-2"> <span>ein öffentlicher Konstruktor, der bei jedem Aufruf ein neues Objekt erzeugt</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Weil niemand von außen <code>new</code> aufrufen kann, gibt es nur das eine Objekt, das <code>getInstance()</code> zurückgibt.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 3</span> Was macht eine <strong>Factory-Methode</strong>?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-28-3"> <span>Sie speichert ein Objekt in einer Datei.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-28-3"> <span>Sie erzeugt ein Objekt und entscheidet dabei anhand der Eingabe, welche (Unter-)Klasse passt.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-28-3"> <span>Sie löscht alle Objekte einer Klasse.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-28-3"> <span>Sie sorgt dafür, dass es nur ein Objekt einer Klasse gibt.</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Der Aufrufer muss nicht wissen, welche konkrete Unterklasse entsteht &ndash; das entscheidet die Factory. „Nur ein Objekt“ beschreibt dagegen das Singleton.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 4</span> Warum ist ein <code>Comparator</code>, der an <code>sort</code> übergeben wird, ein Beispiel für das Strategy-Pattern?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-28-4"> <span>weil er nur einmal existieren darf</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-28-4"> <span>weil das Sortierverfahren gleich bleibt und nur die austauschbare Strategie (das Vergleichskriterium) übergeben wird</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-28-4"> <span>weil er Objekte erzeugt</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-28-4"> <span>weil er die Liste durchläuft</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Strategy trennt einen Algorithmus von einem austauschbaren Teil. Mit einem anderen Comparator sortiert dieselbe Methode nach einem anderen Kriterium.</div>
+  </div>
+  <div class="quiz-summary"><span class="quiz-score"></span><button type="button" class="quiz-reset">Zur&uuml;cksetzen</button></div>
+</div>
+      </section>
+
+    </div>
+
+    <nav class="lesson-nav">
+      <a class="nav-btn" href="3.6-streams.html">&larr; Lektion 3.6: Die Streams-API</a>
+      <span class="nav-center-info">Lektion 3.7</span>
+      <a class="nav-btn primary" href="3.8-model-klassen.html">Lektion 3.8: Model-Klassen f&uuml;r die GUI &rarr;</a>
+    </nav>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>
+    const ham = document.getElementById('hamburger');
+    const sb = document.getElementById('sidebar');
+    const ov = document.getElementById('overlay');
+    ham.addEventListener('click', () => { sb.classList.toggle('open'); ov.classList.toggle('visible'); });
+    ov.addEventListener('click', () => { sb.classList.remove('open'); ov.classList.remove('visible'); });
+    const cur = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-link').forEach(l => {
+      if (l.getAttribute('href') === cur) l.classList.add('active');
+    });
+    const themeBtn = document.getElementById('theme-toggle');
+    const applyTheme = (t) => {
+      document.documentElement.setAttribute('data-theme', t);
+      if (themeBtn) themeBtn.innerHTML = t === 'dark' ? '&#9728;' : '&#9790;';
+    };
+    applyTheme(localStorage.getItem('kurs-theme') || 'dark');
+    setTimeout(() => document.documentElement.classList.add('theme-transitions'), 50);
+    if (themeBtn) themeBtn.addEventListener('click', () => {
+      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('kurs-theme', next);
+      applyTheme(next);
+    });
+    hljs.highlightAll();
+  </script>
+  <script>
+    document.querySelectorAll('.quiz').forEach((quiz) => {
+      const fragen = [...quiz.querySelectorAll('.quiz-frage')];
+      const score = quiz.querySelector('.quiz-score');
+      const update = () => {
+        const done = fragen.filter((f) => f.dataset.state).length;
+        const ok = fragen.filter((f) => f.dataset.state === 'ok').length;
+        score.textContent = done === 0
+          ? fragen.length + ' Fragen – wähle eine Antwort und prüfe sie.'
+          : ok + ' von ' + fragen.length + ' richtig'
+            + (done < fragen.length ? ' (' + done + ' von ' + fragen.length + ' bearbeitet)' : '');
+      };
+      fragen.forEach((f) => {
+        const inputs = [...f.querySelectorAll('input')];
+        const check = f.querySelector('.quiz-check');
+        const reveal = f.querySelector('.quiz-reveal');
+        const fb = f.querySelector('.quiz-feedback');
+        const exp = f.querySelector('.quiz-erklaerung');
+        inputs.forEach((i) => i.addEventListener('change', () => {
+          check.disabled = !inputs.some((x) => x.checked);
+        }));
+        const finish = (graded) => {
+          let allOk = true;
+          f.querySelectorAll('.quiz-opt').forEach((li) => {
+            const input = li.querySelector('input');
+            const corr = li.dataset.correct === '1';
+            if (corr !== input.checked) allOk = false;
+            if (corr) li.classList.add('opt-correct');
+            else if (input.checked) li.classList.add('opt-wrong');
+            input.disabled = true;
+          });
+          f.dataset.state = !graded ? 'shown' : (allOk ? 'ok' : 'wrong');
+          fb.className = 'quiz-feedback fb-' + f.dataset.state;
+          fb.textContent = !graded ? 'Lösung angezeigt.'
+            : (allOk ? '✔ Richtig!' : '✘ Leider nicht ganz – die richtige Lösung ist markiert.');
+          fb.hidden = false;
+          exp.hidden = false;
+          check.disabled = true;
+          reveal.disabled = true;
+          update();
+        };
+        check.addEventListener('click', () => finish(true));
+        reveal.addEventListener('click', () => finish(false));
+      });
+      quiz.querySelector('.quiz-reset').addEventListener('click', () => {
+        fragen.forEach((f) => {
+          delete f.dataset.state;
+          f.querySelectorAll('.quiz-opt').forEach((li) => li.classList.remove('opt-correct', 'opt-wrong'));
+          f.querySelectorAll('input').forEach((i) => { i.checked = false; i.disabled = false; });
+          f.querySelector('.quiz-check').disabled = true;
+          f.querySelector('.quiz-reveal').disabled = false;
+          f.querySelector('.quiz-feedback').hidden = true;
+          f.querySelector('.quiz-erklaerung').hidden = true;
+        });
+        update();
+      });
+      update();
+    });
+  </script>
+</body>
+
+</html>

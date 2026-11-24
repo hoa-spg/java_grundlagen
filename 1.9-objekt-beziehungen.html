@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<!-- GENERIERT von java/kurs/_build (java-grundlagen) – nicht direkt bearbeiten!
+     Quelle: java/kurs/_build/java-grundlagen/lessons/, bauen: python3 _build/build.py java-grundlagen -->
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1.9 &ndash; Objekt-Beziehungen | Java-Grundlagen Kurs</title>
+  <script>(function () { var t = localStorage.getItem('kurs-theme') || 'dark'; document.documentElement.setAttribute('data-theme', t); })();</script>
+  <link rel="stylesheet" href="assets/kurs.css">
+  <link rel="stylesheet" id="hljs-theme"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+
+<body>
+
+  <button class="hamburger" id="hamburger" aria-label="Navigation &ouml;ffnen">&#9776;</button>
+  <div class="sidebar-overlay" id="overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html">
+        <span class="brand-icon">J</span>
+        <div>
+          <div class="brand-name">Java</div>
+          <div class="brand-sub">Grundlagen der Programmierung</div>
+        </div>
+      </a>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Dark/Light Mode"
+        title="Theme wechseln">&#9728;</button>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-group">
+        <div class="nav-group-label html-label">Teil 1 &mdash; Grundlagen</div>
+        <a class="nav-link" href="1.1-einfuehrung-entwicklungsumgebung.html"><span class="ln">1.1</span>Einf&uuml;hrung &amp; Entwicklungsumgebung</a>
+        <a class="nav-link" href="1.2-klassen-objekte.html"><span class="ln">1.2</span>Klassen, Objekte, Get &amp; Set</a>
+        <a class="nav-link" href="1.3-konstruktoren-methoden.html"><span class="ln">1.3</span>Konstruktoren, this &amp; Methoden</a>
+        <a class="nav-link" href="1.4-datentypen.html"><span class="ln">1.4</span>Datentypen</a>
+        <a class="nav-link" href="1.5-signatur-ueberladen.html"><span class="ln">1.5</span>Methoden, Signatur &amp; &Uuml;berladen</a>
+        <a class="nav-link" href="1.6-bedingungen-berechnungen.html"><span class="ln">1.6</span>Bedingungen &amp; Berechnungen</a>
+        <a class="nav-link" href="1.7-debugger-testklassen.html"><span class="ln">1.7</span>Debugger &amp; Testklassen</a>
+        <a class="nav-link" href="1.8-strings-random.html"><span class="ln">1.8</span>Strings &amp; Random</a>
+        <a class="nav-link" href="1.9-objekt-beziehungen.html"><span class="ln">1.9</span>Objekt-Beziehungen</a>
+        <a class="nav-link" href="1.10-schleifen.html"><span class="ln">1.10</span>Schleifen</a>
+        <a class="nav-link" href="1.11-statische-methoden.html"><span class="ln">1.11</span>Statische Methoden &amp; main</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label css-label">Teil 2 &mdash; Datenstrukturen &amp; OOP</div>
+        <a class="nav-link" href="2.1-intellij-junit.html"><span class="ln">2.1</span>IntelliJ, Maven &amp; JUnit</a>
+        <a class="nav-link" href="2.2-arrays.html"><span class="ln">2.2</span>Arrays</a>
+        <a class="nav-link" href="2.3-arrays-einfuegen-entfernen.html"><span class="ln">2.3</span>Arrays: Einf&uuml;gen &amp; Entfernen</a>
+        <a class="nav-link" href="2.4-sortieralgorithmen.html"><span class="ln">2.4</span>Sortieralgorithmen</a>
+        <a class="nav-link" href="2.5-objekt-arrays.html"><span class="ln">2.5</span>Objekt-Arrays</a>
+        <a class="nav-link" href="2.6-assoziation-equals.html"><span class="ln">2.6</span>Beidseitige Assoziation &amp; equals</a>
+        <a class="nav-link" href="2.7-collections.html"><span class="ln">2.7</span>Collections: ArrayList &amp; Co.</a>
+        <a class="nav-link" href="2.8-vererbung.html"><span class="ln">2.8</span>Vererbung &amp; Polymorphismus</a>
+        <a class="nav-link" href="2.9-abstrakt-interfaces.html"><span class="ln">2.9</span>Abstrakte Klassen &amp; Interfaces</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label rn-label">Teil 3 &mdash; Fortgeschrittene Konzepte</div>
+        <a class="nav-link" href="3.0-fail-early.html"><span class="ln">3.0</span>Fail Early statt Happy Path</a>
+        <a class="nav-link" href="3.1-exceptions.html"><span class="ln">3.1</span>Exceptions</a>
+        <a class="nav-link" href="3.2-hashset-treeset.html"><span class="ln">3.2</span>HashSet, TreeSet &amp; hashCode</a>
+        <a class="nav-link" href="3.3-serialisierung-dateien.html"><span class="ln">3.3</span>Serialisierung &amp; Dateien</a>
+        <a class="nav-link" href="3.4-git.html"><span class="ln">3.4</span>Versionsverwaltung mit Git</a>
+        <a class="nav-link" href="3.5-lambdas.html"><span class="ln">3.5</span>Lambda-Ausdr&uuml;cke</a>
+        <a class="nav-link" href="3.6-streams.html"><span class="ln">3.6</span>Die Streams-API</a>
+        <a class="nav-link" href="3.7-design-patterns.html"><span class="ln">3.7</span>Design-Patterns</a>
+        <a class="nav-link" href="3.8-model-klassen.html"><span class="ln">3.8</span>Model-Klassen f&uuml;r die GUI</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label react-label">Teil 4 &mdash; Webanwendungen mit Vaadin</div>
+        <a class="nav-link" href="4.1-web-grundlagen.html"><span class="ln">4.1</span>Grundprinzipien des Web</a>
+        <a class="nav-link" href="4.2-vaadin-einstieg.html"><span class="ln">4.2</span>Vaadin Flow &amp; Start-Paket</a>
+        <a class="nav-link" href="4.3-komponenten-layouts.html"><span class="ln">4.3</span>Komponenten &amp; Layouts</a>
+        <a class="nav-link" href="4.4-grid-routing-binding.html"><span class="ln">4.4</span>Tabellen, Routing &amp; Binding</a>
+        <a class="nav-link" href="4.5-mitarbeiterverwaltung.html"><span class="ln">4.5</span>Mitarbeiterverwaltung</a>
+      </div>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <header class="lesson-header">
+      <p class="lesson-eyebrow">Lektion 1.9 &mdash; Teil 1: Grundlagen</p>
+      <h1>Objekt-Beziehungen</h1>
+      <div class="lesson-tags">
+        <span class="tag tag-html">Objektreferenzen</span>
+        <span class="tag tag-time">ca. 2 &times; 90 min</span>
+        <span class="tag tag-level">Grundlagen</span>
+      </div>
+    </header>
+
+    <div class="content-area">
+      <section class="section section-lernziele">
+        <h2>Lernziele</h2>
+        <ul class="lernziele-list">
+          <li><a class="lernziel-link" href="#abschnitt-1">erklären, was eine Objektreferenz ist und wie sie sich von einem Wert eines primitiven Datentyps unterscheidet<span class="lernziel-ziel">Abschnitt 1</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-2">Beziehungen zwischen Objekten über Attribute eines Referenzdatentyps modellieren<span class="lernziel-ziel">Abschnitt 2</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-2"><code>null</code> als &bdquo;Platz ist frei&ldquo; interpretieren und vor Methodenaufrufen prüfen<span class="lernziel-ziel">Abschnitt 2</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-4">den ersten freien Platz mit verschachtelten bzw. <code>else if</code>-Bedingungen finden<span class="lernziel-ziel">Abschnitt 4</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-5">Objektreferenzen mit <code>==</code> vergleichen (dasselbe Objekt?)<span class="lernziel-ziel">Abschnitt 5</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-5">über eine Objektreferenz Methoden eines anderen Objekts aufrufen (z.&nbsp;B. Gesamtgewicht berechnen)<span class="lernziel-ziel">Abschnitt 5</span></a></li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-1">1 &mdash; Referenzdatentypen und Objektreferenzen</h2>
+        <p>
+          Java unterscheidet zwei Arten von Datentypen. Bei einem <strong>primitiven Datentyp</strong>
+          (<code>int</code>, <code>double</code>, <code>boolean</code>, &hellip;) steht der Wert direkt in der Variable.
+          Jede Klasse &ndash; auch <code>String</code> und jede selbst geschriebene Klasse &ndash; ist dagegen ein
+          <strong>Referenzdatentyp</strong>. Eine Variable, ein Parameter oder ein Attribut eines Referenzdatentyps
+          enthält nicht das Objekt selbst, sondern eine <strong>Objektreferenz</strong>: einen Verweis auf das
+          Objekt, das an anderer Stelle im Speicher liegt.
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Werte und Objektreferenzen</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">int alter = 30;                  // die Variable enthält den Wert 30
+Kunde k1 = new Kunde("Anna");    // new erzeugt ein Objekt und liefert eine Objektreferenz darauf
+Kunde k2 = k1;                   // kopiert wird nur die Objektreferenz, nicht das Objekt
+k2.setName("Berta");             // ändert das eine gemeinsame Objekt: auch k1.getName() liefert "Berta"
+Kunde k3 = null;                 // keine Objektreferenz: k3 verweist auf kein Objekt</code></pre>
+</div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th></th><th>primitiver Datentyp</th><th>Referenzdatentyp</th></tr></thead>
+            <tbody>
+              <tr><td>Inhalt der Variable</td><td>der Wert selbst</td><td>eine Objektreferenz (oder <code>null</code>)</td></tr>
+              <tr><td>Zuweisung <code>b = a</code></td><td>kopiert den Wert</td><td>kopiert die Objektreferenz &ndash; beide verweisen auf dasselbe Objekt</td></tr>
+              <tr><td>Vergleich <code>a == b</code></td><td>gleicher Wert?</td><td>gleiche Objektreferenz, also <em>dasselbe</em> Objekt?</td></tr>
+              <tr><td>Standardwert eines Attributs</td><td><code>0</code>, <code>0.0</code>, <code>false</code></td><td><code>null</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          Über eine Objektreferenz ruft man Methoden des Objekts auf (<code>k1.getName()</code>). Ist die
+          Objektreferenz <code>null</code>, gibt es kein Objekt &ndash; der Aufruf bricht mit einer
+          <code>NullPointerException</code> ab.
+        </p>
+        <p>
+          Weil auch Attribute einen Referenzdatentyp haben können, kann ein Objekt Objektreferenzen auf andere
+          Objekte speichern. Genau so entstehen <strong>Beziehungen zwischen Objekten</strong>.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-2">2 &mdash; Objekte stehen in Beziehung</h2>
+        <p>
+          Oft stehen Objekte in Beziehung zueinander. Ein häufiger Fall: In Objekten einer Klasse werden mehrere
+          Instanzen einer anderen Klasse verwaltet. In Lektion 1.6 wurde die Klasse <code>Person</code>
+          entwickelt; jetzt entsteht eine Klasse <code>Auto</code>, in die bis zu drei Personen
+          &bdquo;einsteigen&ldquo; können.
+        </p>
+        <p>
+          Die Plätze im Auto sind Attribute des Referenzdatentyps <code>Person</code>, sie enthalten also
+          <strong>Objektreferenzen auf Person-Objekte</strong>. Steigt eine Person ein, wird im Auto-Objekt eine
+          Objektreferenz auf das Person-Objekt gespeichert. Hat <code>fahrer</code>, <code>beifahrer</code> oder <code>rueckbank</code> den
+          Wert <code>null</code>, sitzt auf diesem Platz niemand.
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Klassendiagramm (vereinfacht)</span>
+    <span class="code-lang">Text</span>
+  </div>
+  <pre><code class="language-plaintext">+-------------------+   fahrer, beifahrer,   +------------------+
+|       Auto        |   rueckbank (0..3)     |      Person      |
+|-------------------| ---------------------&gt; |------------------|
+| name: String      |                        | name: String     |
+| eigengewicht: int |                        | gewicht: int ... |
++-------------------+                        +------------------+</code></pre>
+</div>
+        <p>Der Pfeil zeigt die Richtung der Beziehung: Ein Auto kennt seine Insassen, eine Person weiß aber nicht, in welchem Auto sie sitzt.</p>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-3">3 &mdash; Die Klasse Auto</h2>
+        <p>Die Klasse <code>Person</code> wird dabei mit ihrer Methode <code>printPerson()</code> (Lektion 1.6) und einer Get-Methode <code>getGewicht()</code> vorausgesetzt.</p>
+        <details class="code-collapse">
+  <summary><span class="code-filename">Auto.java</span> <span class="code-collapse-hint">Code anzeigen (165 Zeilen)</span></summary>
+<div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Auto.java</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public class Auto {
+
+    private String name;
+    private int eigengewicht;
+
+    private Person fahrer;
+    private Person beifahrer;
+    private Person rueckbank;
+
+    public Auto() {
+        setName("n/a");
+        setEigengewicht(1300);
+    }
+
+    public Auto(String name, int eigengewicht) {
+        setName(name);
+        setEigengewicht(eigengewicht);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getEigengewicht() {
+        return eigengewicht;
+    }
+
+    public void setName(String name) {
+        if (name != null) {
+            this.name = name;
+        } else {
+            System.out.println("Fehler: kein Name!");
+            this.name = "n/a";
+        }
+    }
+
+    public void setEigengewicht(int eigengewicht) {
+        if ((eigengewicht &gt;= 600) &amp;&amp; (eigengewicht &lt;= 3000)) {
+            this.eigengewicht = eigengewicht;
+        } else {
+            System.out.println("Fehler: kein gültiges Eigengewicht (600..3000)!");
+            this.eigengewicht = 1300;
+        }
+    }
+
+    public void einsteigen(Person person) {
+        // 1. Pruefung ob die Objektreferenz person nicht null ist
+        if (person != null) {
+            if (this.fahrer == null) {
+                this.fahrer = person; // this kann man hier weglassen
+            } else {
+                if (this.beifahrer == null) {
+                    this.beifahrer = person;
+                } else {
+                    if (this.rueckbank == null) {
+                        this.rueckbank = person;
+                    } else {
+                        System.out.println("Fehler: das Auto ist voll!");
+                    }
+                }
+            }
+        } else { // entsprechende Fehlermeldung
+            System.out.println("Fehler: Parameter person ist null!");
+        }
+    }
+
+    public void aussteigenFahrer() {
+        fahrer = null;
+    }
+
+    public void aussteigenBeifahrer() {
+        beifahrer = null;
+    }
+
+    public void aussteigenRueckbank() {
+        rueckbank = null;
+    }
+
+    public void aussteigen(Person person) {
+        if (person != null) {
+            if (this.fahrer == person) {
+                aussteigenFahrer();
+            } else {
+                if (this.beifahrer == person) {
+                    aussteigenBeifahrer();
+                } else {
+                    if (this.rueckbank == person) {
+                        aussteigenRueckbank();
+                    } else {
+                        System.out.println("Fehler: Person nicht im Auto.");
+                    }
+                }
+            }
+        } else {
+            System.out.println("Fehler: Parameter person ist null.");
+        }
+    }
+
+    public void aussteigen(String name) {
+        if (name != null) {
+            // Achtung: String-Vergleich immer mit der equals-Methode!
+            if (this.fahrer != null &amp;&amp; name.equals(fahrer.getName())) {
+                aussteigenFahrer();
+            } else {
+                if (this.beifahrer != null &amp;&amp; name.equals(beifahrer.getName())) {
+                    aussteigenBeifahrer();
+                } else {
+                    if (this.rueckbank != null &amp;&amp; name.equals(rueckbank.getName())) {
+                        aussteigenRueckbank();
+                    } else {
+                        System.out.println("Fehler: Person nicht im Fahrzeug");
+                    }
+                }
+            }
+        } else {
+            System.out.println("Fehler: name ist null.");
+        }
+    }
+
+    public int gesamtGewicht() {
+        int gesamtGewicht = getEigengewicht();
+
+        if (this.fahrer != null) {
+            gesamtGewicht = gesamtGewicht + this.fahrer.getGewicht();
+        }
+
+        if (this.beifahrer != null) {
+            gesamtGewicht = gesamtGewicht + this.beifahrer.getGewicht();
+        }
+
+        if (this.rueckbank != null) {
+            gesamtGewicht = gesamtGewicht + this.rueckbank.getGewicht();
+        }
+
+        return gesamtGewicht;
+    }
+
+    public void printAuto() {
+        System.out.println("Auto: " + name + ", Eigengewicht: " + eigengewicht);
+        System.out.println("--------------------------------------------------------");
+
+        System.out.print("Fahrer: ");
+        if (this.fahrer != null) {
+            this.fahrer.printPerson();
+        } else {
+            System.out.println(" --frei-- ");
+        }
+
+        System.out.print("Beifahrer: ");
+        if (this.beifahrer != null) {
+            this.beifahrer.printPerson();
+        } else {
+            System.out.println(" --frei--");
+        }
+
+        System.out.print("Rueckbank: ");
+        if (this.rueckbank != null) {
+            this.rueckbank.printPerson();
+        } else {
+            System.out.println(" --frei--");
+        }
+
+        System.out.println("--------------------------------------------------------");
+    }
+}</code></pre>
+</div>
+</details>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-4">4 &mdash; Einsteigen: den ersten freien Platz finden</h2>
+        <p>
+          Die wesentlichen Überlegungen stecken in <code>einsteigen(Person person)</code>. Der Parameter
+          <code>person</code> übergibt die Objektreferenz auf die einsteigende Person. Die Logik: Die Person nimmt den
+          <strong>ersten freien Platz</strong> &ndash; Fahrer, dann Beifahrer, dann Rückbank.
+        </p>
+        <ol>
+          <li>Prüfen, ob <code>person</code> ungleich <code>null</code> ist, sonst Fehlermeldung.</li>
+          <li>Ist <code>fahrer == null</code>, sitzt dort noch niemand &rarr; <code>this.fahrer = person;</code></li>
+          <li>Anderenfalls Beifahrer, dann Rückbank prüfen.</li>
+          <li>Kein Platz frei &rarr; Fehlermeldung &bdquo;das Auto ist voll&ldquo;.</li>
+        </ol>
+        <p>Mit <code>else if</code> wird dieselbe Logik deutlich flacher:</p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">einsteigen – Variante mit else if</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public void einsteigen(Person person) {
+    if (person == null) {
+        System.out.println("Fehler: Parameter person ist null!");
+    } else if (fahrer == null) {
+        fahrer = person;
+    } else if (beifahrer == null) {
+        beifahrer = person;
+    } else if (rueckbank == null) {
+        rueckbank = person;
+    } else {
+        System.out.println("Fehler: das Auto ist voll!");
+    }
+}</code></pre>
+</div>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-5">5 &mdash; Aussteigen: Objektreferenzen vergleichen</h2>
+        <p>
+          <code>aussteigen(Person person)</code> ist ähnlich aufgebaut, vergleicht aber, ob die übergebene
+          Objektreferenz <strong>gleich</strong> einem der Plätze ist (<code>this.fahrer == person</code>). Bei
+          Referenzdatentypen prüft <code>==</code>, ob beide Objektreferenzen auf <em>dasselbe</em> Objekt verweisen. Ist das der
+          Fall, setzt die passende Methode den Platz auf <code>null</code>.
+        </p>
+        <p>
+          In <code>aussteigen(String name)</code> soll die Person aussteigen, deren Name übereinstimmt. Zuerst muss
+          <code>name</code> auf <code>null</code> geprüft werden &ndash; sonst führt <code>name.equals(&hellip;)</code>
+          zu einer <code>NullPointerException</code>. Die Bedingungen sind etwas komplexer:
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Bedingung mit zwei Teilen</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">if (this.fahrer != null &amp;&amp; name.equals(fahrer.getName())) {</code></pre>
+</div>
+        <ul>
+          <li>Zuerst wird geprüft, ob auf dem Platz jemand sitzt (<code>this.fahrer != null</code>).</li>
+          <li>Erst <em>nach</em> <code>&amp;&amp;</code> wird der Name verglichen. Ist die linke Seite <code>false</code>, wertet Java die rechte gar nicht mehr aus (<strong>Kurzschlussauswertung</strong>) &ndash; <code>fahrer.getName()</code> wird also nie auf <code>null</code> aufgerufen.</li>
+        </ul>
+        <div class="callout callout-error">
+  <div class="callout-icon">&#10007;</div>
+  <div class="callout-body">
+    <div class="callout-title">Strings mit equals vergleichen</div>
+    <p>Bei String-Vergleichen muss immer die <code>equals</code>-Methode verwendet werden. Der
+          <code>==</code>-Operator liefert nicht immer das korrekte Ergebnis (siehe Lektion 1.8).</p>
+  </div>
+</div>
+        <p>
+          <code>gesamtGewicht()</code> zeigt, wie man über Objektreferenzen <strong>Methoden anderer Objekte</strong> aufruft:
+          Für jeden besetzten Platz wird <code>getGewicht()</code> der Person zum Eigengewicht addiert.
+        </p>
+      </section>
+
+      <section class="section section-projekt">
+        <h2 id="projektschritt">Projektschritt</h2>
+<div class="projekt-box">
+  <div class="projekt-box-header">
+    <span class="projekt-step">Projektschritt 1.9</span>
+    <h3>Die Firma mit drei Plätzen</h3>
+  </div>
+<p>Analog zum Auto entsteht die Klasse <code>Firma</code> mit drei Plätzen <code>ma1</code>, <code>ma2</code>, <code>ma3</code> für Mitarbeiter: einstellen (erster freier Platz), kündigen (Vergleich der Objektreferenzen), kündigen nach Namen (wie <code>aussteigen(String name)</code> mit <code>equals</code>), Anzahl und Summe der Kosten. Dazu eine Testklasse <code>TestFirma</code> und JUnit-Tests <code>FirmaTest</code> (im Beispielordner).</p>
+  <details class="code-collapse">
+  <summary><span class="code-filename">src/main/java/Firma.java</span> <span class="code-collapse-hint">Code anzeigen (137 Zeilen)</span></summary>
+<div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">src/main/java/Firma.java</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">/*
+  Personalverwaltung – eine Firma mit bis zu drei Mitarbeitern.
+  Stand: Lektion 1.9 (Objekt-Beziehungen)
+*/
+public class Firma {
+
+    private String name;
+
+    // Objektreferenzen auf Mitarbeiter; null bedeutet: Platz frei
+    private Mitarbeiter ma1;
+    private Mitarbeiter ma2;
+    private Mitarbeiter ma3;
+
+    public Firma() {
+        setName("n/a");
+    }
+
+    public Firma(String name) {
+        setName(name);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        if (name != null) {
+            this.name = name;
+        } else {
+            System.out.println("Fehler: name darf nicht null sein");
+            this.name = "n/a";
+        }
+    }
+
+    public void einstellen(Mitarbeiter m) {
+        if (m != null) {
+            if (ma1 == null) {
+                ma1 = m;
+            } else if (ma2 == null) {
+                ma2 = m;
+            } else if (ma3 == null) {
+                ma3 = m;
+            } else {
+                System.out.println("Fehler: kein freier Platz in der Firma!");
+            }
+        } else {
+            System.out.println("Fehler: Parameter m ist null!");
+        }
+    }
+
+    public void kuendigen(Mitarbeiter m) {
+        if (m != null) {
+            // Vergleich der Objektreferenzen: ist es DERSELBE Mitarbeiter?
+            if (ma1 == m) {
+                ma1 = null;
+            } else if (ma2 == m) {
+                ma2 = null;
+            } else if (ma3 == m) {
+                ma3 = null;
+            } else {
+                System.out.println("Fehler: Mitarbeiter arbeitet nicht in der Firma.");
+            }
+        } else {
+            System.out.println("Fehler: Parameter m ist null!");
+        }
+    }
+
+    public void kuendigen(String name) {
+        if (name != null) {
+            // Achtung: Strings immer mit equals vergleichen, nie mit ==
+            if (ma1 != null &amp;&amp; name.equals(ma1.getName())) {
+                ma1 = null;
+            } else if (ma2 != null &amp;&amp; name.equals(ma2.getName())) {
+                ma2 = null;
+            } else if (ma3 != null &amp;&amp; name.equals(ma3.getName())) {
+                ma3 = null;
+            } else {
+                System.out.println("Fehler: kein Mitarbeiter mit Namen " + name);
+            }
+        } else {
+            System.out.println("Fehler: name ist null!");
+        }
+    }
+
+    public int anzahlMitarbeiter() {
+        int anzahl = 0;
+        if (ma1 != null) {
+            anzahl++;
+        }
+        if (ma2 != null) {
+            anzahl++;
+        }
+        if (ma3 != null) {
+            anzahl++;
+        }
+        return anzahl;
+    }
+
+    public int summeKosten() {
+        int summe = 0;
+        if (ma1 != null) {
+            summe = summe + ma1.getKostenProMonat();
+        }
+        if (ma2 != null) {
+            summe = summe + ma2.getKostenProMonat();
+        }
+        if (ma3 != null) {
+            summe = summe + ma3.getKostenProMonat();
+        }
+        return summe;
+    }
+
+    public void print() {
+        System.out.println("Firma: " + name);
+        System.out.println("-----------------------------------------------");
+        System.out.print("Platz 1: ");
+        if (ma1 != null) {
+            ma1.print();
+        } else {
+            System.out.println("--frei--");
+        }
+        System.out.print("Platz 2: ");
+        if (ma2 != null) {
+            ma2.print();
+        } else {
+            System.out.println("--frei--");
+        }
+        System.out.print("Platz 3: ");
+        if (ma3 != null) {
+            ma3.print();
+        } else {
+            System.out.println("--frei--");
+        }
+        System.out.println("-----------------------------------------------");
+        System.out.println("Kosten pro Monat: " + summeKosten() + " Euro");
+    }
+}</code></pre>
+</div>
+</details>
+  <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">src/test/java/TestFirma.java</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">/*
+ * Testklasse zur Firma: Einstellen, Kündigen und Kosten.
+ */
+void main() {
+    testEinstellen();
+}
+
+void testEinstellen() {
+    Firma f = new Firma("Spengergasse OG");
+    Mitarbeiter karl = new Mitarbeiter("Karl Maier", 1989, 15, 40);
+    Mitarbeiter susi = new Mitarbeiter("Susanne Huber", 1991, 20, 30);
+    Mitarbeiter sepp = new Mitarbeiter("Sepp Gruber", 1981, 18, 38);
+    Mitarbeiter anna = new Mitarbeiter("Anna Novak", 2001, 14, 20);
+
+    f.einstellen(karl);
+    f.einstellen(susi);
+    f.einstellen(sepp);
+    f.einstellen(anna);      // erwartet: Fehler, kein Platz mehr
+    f.print();               // erwartet: 3 Mitarbeiter, Kosten 7536
+
+    f.kuendigen(susi);
+    f.einstellen(anna);      // anna bekommt Platz 2
+    f.print();
+    System.out.println("Anzahl: " + f.anzahlMitarbeiter()); // 3
+}</code></pre>
+</div>
+  <p class="mb-0">&#128193; Stand nach dieser Lektion: <a href="beispiele/1.9/src/main/java/Firma.java" target="_blank">beispiele/1.9/</a></p>
+</div>
+      </section>
+
+      <section class="section section-fehler">
+        <h2>Häufige Fehler</h2>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Methode auf leerem Platz aufgerufen</div>
+  <p><code>gesamtGewicht()</code> bricht mit <code>NullPointerException</code> ab, sobald ein Platz frei ist.</p>
+          <p class="fehler-fix">Vor jedem Zugriff prüfen: <code>if (fahrer != null) { &hellip; fahrer.getGewicht() &hellip; }</code>.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Person sitzt auf allen Plätzen</div>
+  <p>Nach einem <code>einsteigen</code> sind alle drei Plätze mit derselben Person belegt.</p>
+          <p class="fehler-fix">Die Prüfungen wurden als drei unabhängige <code>if</code> geschrieben. Es braucht <code>else</code> bzw. <code>else if</code>, damit nach dem ersten freien Platz Schluss ist.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Reihenfolge in der Bedingung</div>
+  <p><code>if (name.equals(fahrer.getName()) &amp;&amp; fahrer != null)</code> stürzt ab, wenn der Fahrersitz frei ist.</p>
+          <p class="fehler-fix">Die <code>null</code>-Prüfung muss <em>links</em> von <code>&amp;&amp;</code> stehen &ndash; die rechte Seite wird nur ausgewertet, wenn die linke wahr ist.</p>
+</div>
+      </section>
+
+      <section class="section section-aufgaben">
+        <h2>Aufgaben</h2>
+        <div class="aufgaben-list">
+          <div class="aufgabe">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Aufgabe 1</span>
+    <span class="aufgabe-title">Auto und Person</span>
+  </div>
+  <p>Ein <code>Auto</code> mit Plätzen für Fahrer, Beifahrer und Rückbank nimmt <code>Person</code>-Objekte auf; nur wer einen Führerschein hat, darf ans Steuer. Dazu eine Testklasse und das Gesamtgewicht.</p>
+            <p class="mb-0"><a href="uebungen/lektion-1.9-uebung-1-auto-person.pdf" target="_blank">&#128196; Übung 1.9-1 (PDF)</a></p>
+</div>
+          <div class="aufgabe">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Aufgabe 2</span>
+    <span class="aufgabe-title">Firma und Mitarbeiter</span>
+  </div>
+  <p>Eine <code>Firma</code> mit drei Plätzen für <code>Mitarbeiter</code>: einstellen am ersten freien Platz, Gehaltssumme und Ausgabe aller Mitarbeiter.</p>
+            <p class="mb-0"><a href="uebungen/lektion-1.9-uebung-2-firma.pdf" target="_blank">&#128196; Übung 1.9-2 (PDF)</a></p>
+</div>
+          <div class="aufgabe">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Aufgabe 3</span>
+    <span class="aufgabe-title">Fuhrpark</span>
+  </div>
+  <p>Ein <code>Fuhrpark</code> mit bis zu drei Fahrzeugen: hinzufügen, Fahrzeuge und Automatik-Fahrzeuge zählen, formatierte Ausgabe.</p>
+            <p class="mb-0"><a href="uebungen/lektion-1.9-uebung-3-fuhrpark.pdf" target="_blank">&#128196; Übung 1.9-3 (PDF)</a></p>
+</div>
+          <div class="aufgabe">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Aufgabe 4</span>
+    <span class="aufgabe-title">Markt</span>
+  </div>
+  <p>Ein <code>Markt</code> mit vier Stellplätzen für Marktstände: Stand hinzufügen, freie Plätze und Essensstände zählen, zusätzliche Bedingungen für die Belegung.</p>
+            <p class="mb-0"><a href="uebungen/lektion-1.9-uebung-4-markt.pdf" target="_blank">&#128196; Übung 1.9-4 (PDF)</a></p>
+</div>
+          <div class="aufgabe">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Aufgabe 5</span>
+    <span class="aufgabe-title">Computer und Labor</span>
+  </div>
+  <p>Ein <code>Labor</code> mit bis zu drei Computern: hinzufügen, entfernen (per Objektreferenz und per Name), Auswertungen wie RAM- und Speichersumme; als Zusatz Minimum, Maximum und Durchschnitt.</p>
+            <p class="mb-0"><a href="uebungen/lektion-1.9-uebung-5-computer-labor.pdf" target="_blank">&#128196; Übung 1.9-5 (PDF)</a></p>
+</div>
+          <div class="aufgabe">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Aufgabe 6</span>
+    <span class="aufgabe-title">Dateisystem</span>
+  </div>
+  <p>Ein <code>Verzeichnis</code> mit bis zu vier Dateien: hinzufügen am ersten freien Platz, Anzahl, Gesamtgröße und ausführbare Dateien zählen.</p>
+            <p class="mb-0"><a href="uebungen/lektion-1.9-uebung-6-dateisystem.pdf" target="_blank">&#128196; Übung 1.9-6 (PDF)</a></p>
+</div>
+          <div class="aufgabe">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Aufgabe 7</span>
+    <span class="aufgabe-title">Weinregal</span>
+  </div>
+  <p>Ein <code>Regal</code> mit vier Plätzen für Weinflaschen: hinzufügen, Rot- und Weißweine zählen, ältesten Jahrgang bestimmen.</p>
+            <p class="mb-0"><a href="uebungen/lektion-1.9-uebung-7-weinregal.pdf" target="_blank">&#128196; Übung 1.9-7 (PDF)</a></p>
+</div>
+        </div>
+      </section>
+
+      <section class="section section-quiz">
+        <h2>Wissenskontrolle</h2>
+        <div class="quiz" id="quiz-9">
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 1</span> Ein Attribut hat einen Referenzdatentyp (z.&nbsp;B. <code>private Kunde kunde;</code>) und wird im Konstruktor nicht gesetzt. Welchen Wert hat es nach dem Erzeugen des Objekts?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-9-1"> <span>ein neues, leeres Objekt der Klasse</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-9-1"> <span><code>null</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-9-1"> <span><code>0</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-9-1"> <span>Der Code übersetzt nicht.</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Attribute eines Referenzdatentyps starten mit <code>null</code> &ndash; sie enthalten keine Objektreferenz. Bei Objekt-Beziehungen lässt sich <code>null</code> als „noch keine Beziehung“ bzw. „Platz frei“ deuten.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 2</span> Was prüft <code>a == b</code>, wenn <code>a</code> und <code>b</code> Objektreferenzen sind?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-9-2"> <span>ob beide Objekte dieselben Attributwerte haben</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-9-2"> <span>ob beide Variablen auf dasselbe Objekt verweisen</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-9-2"> <span>ob beide Objekte zur selben Klasse gehören</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-9-2"> <span>ob beide nicht <code>null</code> sind</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Bei Referenzdatentypen vergleicht <code>==</code> die Objektreferenzen. Zwei verschiedene Objekte mit gleichen Daten sind nicht <code>==</code>.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 3</span> Warum prüft man vor einem Aufruf wie <code>ref.methode()</code> oft <code>if (ref != null)</code>?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-9-3"> <span>Damit der Code schneller läuft.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-9-3"> <span>Damit keine <code>NullPointerException</code> auftritt, wenn die Objektreferenz <code>null</code> ist.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-9-3"> <span>Weil <code>methode</code> sonst <code>private</code> wäre.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-9-3"> <span>Die Prüfung ist überflüssig, Java prüft das selbst.</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Ist die Objektreferenz <code>null</code>, gibt es auch keine Methode, die aufgerufen werden könnte &ndash; das Programm bricht ab.</div>
+  </div>
+  <div class="quiz-summary"><span class="quiz-score"></span><button type="button" class="quiz-reset">Zur&uuml;cksetzen</button></div>
+</div>
+      </section>
+
+    </div>
+
+    <nav class="lesson-nav">
+      <a class="nav-btn" href="1.8-strings-random.html">&larr; Lektion 1.8: Strings &amp; Random</a>
+      <span class="nav-center-info">Lektion 1.9</span>
+      <a class="nav-btn primary" href="1.10-schleifen.html">Lektion 1.10: Schleifen &rarr;</a>
+    </nav>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>
+    const ham = document.getElementById('hamburger');
+    const sb = document.getElementById('sidebar');
+    const ov = document.getElementById('overlay');
+    ham.addEventListener('click', () => { sb.classList.toggle('open'); ov.classList.toggle('visible'); });
+    ov.addEventListener('click', () => { sb.classList.remove('open'); ov.classList.remove('visible'); });
+    const cur = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-link').forEach(l => {
+      if (l.getAttribute('href') === cur) l.classList.add('active');
+    });
+    const themeBtn = document.getElementById('theme-toggle');
+    const applyTheme = (t) => {
+      document.documentElement.setAttribute('data-theme', t);
+      if (themeBtn) themeBtn.innerHTML = t === 'dark' ? '&#9728;' : '&#9790;';
+    };
+    applyTheme(localStorage.getItem('kurs-theme') || 'dark');
+    setTimeout(() => document.documentElement.classList.add('theme-transitions'), 50);
+    if (themeBtn) themeBtn.addEventListener('click', () => {
+      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('kurs-theme', next);
+      applyTheme(next);
+    });
+    hljs.highlightAll();
+  </script>
+  <script>
+    document.querySelectorAll('.quiz').forEach((quiz) => {
+      const fragen = [...quiz.querySelectorAll('.quiz-frage')];
+      const score = quiz.querySelector('.quiz-score');
+      const update = () => {
+        const done = fragen.filter((f) => f.dataset.state).length;
+        const ok = fragen.filter((f) => f.dataset.state === 'ok').length;
+        score.textContent = done === 0
+          ? fragen.length + ' Fragen – wähle eine Antwort und prüfe sie.'
+          : ok + ' von ' + fragen.length + ' richtig'
+            + (done < fragen.length ? ' (' + done + ' von ' + fragen.length + ' bearbeitet)' : '');
+      };
+      fragen.forEach((f) => {
+        const inputs = [...f.querySelectorAll('input')];
+        const check = f.querySelector('.quiz-check');
+        const reveal = f.querySelector('.quiz-reveal');
+        const fb = f.querySelector('.quiz-feedback');
+        const exp = f.querySelector('.quiz-erklaerung');
+        inputs.forEach((i) => i.addEventListener('change', () => {
+          check.disabled = !inputs.some((x) => x.checked);
+        }));
+        const finish = (graded) => {
+          let allOk = true;
+          f.querySelectorAll('.quiz-opt').forEach((li) => {
+            const input = li.querySelector('input');
+            const corr = li.dataset.correct === '1';
+            if (corr !== input.checked) allOk = false;
+            if (corr) li.classList.add('opt-correct');
+            else if (input.checked) li.classList.add('opt-wrong');
+            input.disabled = true;
+          });
+          f.dataset.state = !graded ? 'shown' : (allOk ? 'ok' : 'wrong');
+          fb.className = 'quiz-feedback fb-' + f.dataset.state;
+          fb.textContent = !graded ? 'Lösung angezeigt.'
+            : (allOk ? '✔ Richtig!' : '✘ Leider nicht ganz – die richtige Lösung ist markiert.');
+          fb.hidden = false;
+          exp.hidden = false;
+          check.disabled = true;
+          reveal.disabled = true;
+          update();
+        };
+        check.addEventListener('click', () => finish(true));
+        reveal.addEventListener('click', () => finish(false));
+      });
+      quiz.querySelector('.quiz-reset').addEventListener('click', () => {
+        fragen.forEach((f) => {
+          delete f.dataset.state;
+          f.querySelectorAll('.quiz-opt').forEach((li) => li.classList.remove('opt-correct', 'opt-wrong'));
+          f.querySelectorAll('input').forEach((i) => { i.checked = false; i.disabled = false; });
+          f.querySelector('.quiz-check').disabled = true;
+          f.querySelector('.quiz-reveal').disabled = false;
+          f.querySelector('.quiz-feedback').hidden = true;
+          f.querySelector('.quiz-erklaerung').hidden = true;
+        });
+        update();
+      });
+      update();
+    });
+  </script>
+</body>
+
+</html>

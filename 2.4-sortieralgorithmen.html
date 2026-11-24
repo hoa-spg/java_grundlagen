@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<!-- GENERIERT von java/kurs/_build (java-grundlagen) – nicht direkt bearbeiten!
+     Quelle: java/kurs/_build/java-grundlagen/lessons/, bauen: python3 _build/build.py java-grundlagen -->
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.4 &ndash; Sortieralgorithmen | Java-Grundlagen Kurs</title>
+  <script>(function () { var t = localStorage.getItem('kurs-theme') || 'dark'; document.documentElement.setAttribute('data-theme', t); })();</script>
+  <link rel="stylesheet" href="assets/kurs.css">
+  <link rel="stylesheet" id="hljs-theme"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+
+<body>
+
+  <button class="hamburger" id="hamburger" aria-label="Navigation &ouml;ffnen">&#9776;</button>
+  <div class="sidebar-overlay" id="overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html">
+        <span class="brand-icon">J</span>
+        <div>
+          <div class="brand-name">Java</div>
+          <div class="brand-sub">Grundlagen der Programmierung</div>
+        </div>
+      </a>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Dark/Light Mode"
+        title="Theme wechseln">&#9728;</button>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-group">
+        <div class="nav-group-label html-label">Teil 1 &mdash; Grundlagen</div>
+        <a class="nav-link" href="1.1-einfuehrung-entwicklungsumgebung.html"><span class="ln">1.1</span>Einf&uuml;hrung &amp; Entwicklungsumgebung</a>
+        <a class="nav-link" href="1.2-klassen-objekte.html"><span class="ln">1.2</span>Klassen, Objekte, Get &amp; Set</a>
+        <a class="nav-link" href="1.3-konstruktoren-methoden.html"><span class="ln">1.3</span>Konstruktoren, this &amp; Methoden</a>
+        <a class="nav-link" href="1.4-datentypen.html"><span class="ln">1.4</span>Datentypen</a>
+        <a class="nav-link" href="1.5-signatur-ueberladen.html"><span class="ln">1.5</span>Methoden, Signatur &amp; &Uuml;berladen</a>
+        <a class="nav-link" href="1.6-bedingungen-berechnungen.html"><span class="ln">1.6</span>Bedingungen &amp; Berechnungen</a>
+        <a class="nav-link" href="1.7-debugger-testklassen.html"><span class="ln">1.7</span>Debugger &amp; Testklassen</a>
+        <a class="nav-link" href="1.8-strings-random.html"><span class="ln">1.8</span>Strings &amp; Random</a>
+        <a class="nav-link" href="1.9-objekt-beziehungen.html"><span class="ln">1.9</span>Objekt-Beziehungen</a>
+        <a class="nav-link" href="1.10-schleifen.html"><span class="ln">1.10</span>Schleifen</a>
+        <a class="nav-link" href="1.11-statische-methoden.html"><span class="ln">1.11</span>Statische Methoden &amp; main</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label css-label">Teil 2 &mdash; Datenstrukturen &amp; OOP</div>
+        <a class="nav-link" href="2.1-intellij-junit.html"><span class="ln">2.1</span>IntelliJ, Maven &amp; JUnit</a>
+        <a class="nav-link" href="2.2-arrays.html"><span class="ln">2.2</span>Arrays</a>
+        <a class="nav-link" href="2.3-arrays-einfuegen-entfernen.html"><span class="ln">2.3</span>Arrays: Einf&uuml;gen &amp; Entfernen</a>
+        <a class="nav-link" href="2.4-sortieralgorithmen.html"><span class="ln">2.4</span>Sortieralgorithmen</a>
+        <a class="nav-link" href="2.5-objekt-arrays.html"><span class="ln">2.5</span>Objekt-Arrays</a>
+        <a class="nav-link" href="2.6-assoziation-equals.html"><span class="ln">2.6</span>Beidseitige Assoziation &amp; equals</a>
+        <a class="nav-link" href="2.7-collections.html"><span class="ln">2.7</span>Collections: ArrayList &amp; Co.</a>
+        <a class="nav-link" href="2.8-vererbung.html"><span class="ln">2.8</span>Vererbung &amp; Polymorphismus</a>
+        <a class="nav-link" href="2.9-abstrakt-interfaces.html"><span class="ln">2.9</span>Abstrakte Klassen &amp; Interfaces</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label rn-label">Teil 3 &mdash; Fortgeschrittene Konzepte</div>
+        <a class="nav-link" href="3.0-fail-early.html"><span class="ln">3.0</span>Fail Early statt Happy Path</a>
+        <a class="nav-link" href="3.1-exceptions.html"><span class="ln">3.1</span>Exceptions</a>
+        <a class="nav-link" href="3.2-hashset-treeset.html"><span class="ln">3.2</span>HashSet, TreeSet &amp; hashCode</a>
+        <a class="nav-link" href="3.3-serialisierung-dateien.html"><span class="ln">3.3</span>Serialisierung &amp; Dateien</a>
+        <a class="nav-link" href="3.4-git.html"><span class="ln">3.4</span>Versionsverwaltung mit Git</a>
+        <a class="nav-link" href="3.5-lambdas.html"><span class="ln">3.5</span>Lambda-Ausdr&uuml;cke</a>
+        <a class="nav-link" href="3.6-streams.html"><span class="ln">3.6</span>Die Streams-API</a>
+        <a class="nav-link" href="3.7-design-patterns.html"><span class="ln">3.7</span>Design-Patterns</a>
+        <a class="nav-link" href="3.8-model-klassen.html"><span class="ln">3.8</span>Model-Klassen f&uuml;r die GUI</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label react-label">Teil 4 &mdash; Webanwendungen mit Vaadin</div>
+        <a class="nav-link" href="4.1-web-grundlagen.html"><span class="ln">4.1</span>Grundprinzipien des Web</a>
+        <a class="nav-link" href="4.2-vaadin-einstieg.html"><span class="ln">4.2</span>Vaadin Flow &amp; Start-Paket</a>
+        <a class="nav-link" href="4.3-komponenten-layouts.html"><span class="ln">4.3</span>Komponenten &amp; Layouts</a>
+        <a class="nav-link" href="4.4-grid-routing-binding.html"><span class="ln">4.4</span>Tabellen, Routing &amp; Binding</a>
+        <a class="nav-link" href="4.5-mitarbeiterverwaltung.html"><span class="ln">4.5</span>Mitarbeiterverwaltung</a>
+      </div>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <header class="lesson-header">
+      <p class="lesson-eyebrow">Lektion 2.4 &mdash; Teil 2: Datenstrukturen &amp; OOP</p>
+      <h1>Sortieralgorithmen</h1>
+      <div class="lesson-tags">
+        <span class="tag tag-css">Algorithmen</span>
+        <span class="tag tag-time">ca. 90 min</span>
+        <span class="tag tag-level">Grundlagen</span>
+      </div>
+    </header>
+
+    <div class="content-area">
+      <section class="section section-lernziele">
+        <h2>Lernziele</h2>
+        <ul class="lernziele-list">
+          <li><a class="lernziel-link" href="#abschnitt-2">die Ideen von Bubble-Sort, Selection-Sort und Insertion-Sort beschreiben<span class="lernziel-ziel">Abschnitt 2</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-3">die drei Verfahren mit Schleifen und einer Tausch-Methode implementieren<span class="lernziel-ziel">Abschnitt 3</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-3">ein Array kopieren, damit alle Verfahren mit denselben Daten arbeiten<span class="lernziel-ziel">Abschnitt 3</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-4">Laufzeiten mit <code>System.currentTimeMillis()</code> messen und vergleichen<span class="lernziel-ziel">Abschnitt 4</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-2">wissen, dass es schnellere Verfahren (Quicksort, Merge-Sort) gibt<span class="lernziel-ziel">Abschnitt 2</span></a></li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-1">1 &mdash; Warum selbst sortieren?</h2>
+        <p>
+          Das Sortieren von Inhalten in Arrays ist ein häufiger Anwendungsfall. Nahezu alle Programmiersprachen
+          bieten dafür fertige Methoden (in Java z.&nbsp;B. <code>Arrays.sort</code> und <code>Collections.sort</code>,
+          Lektion 2.9). Hier werden einfache Sortier-Algorithmen vorgestellt und verglichen &ndash; das vertieft das
+          Verständnis für Algorithmen und den Umgang mit Arrays.
+        </p>
+        <p>Ausgangssituation: ein Array mit Zahlen in beliebiger Reihenfolge. Ziel: die Zahlen <em>innerhalb des Arrays</em> aufsteigend sortieren.</p>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-2">2 &mdash; Drei einfache Verfahren</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Verfahren</th><th>Idee</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Bubble-Sort</strong></td><td>Das konzeptuell einfachste Verfahren: Das Array durchlaufen und zwei <em>benachbarte</em> Elemente vertauschen, wenn das erste größer als das zweite ist. Den Durchlauf so lange wiederholen, bis nichts mehr getauscht wurde. Die großen Werte &bdquo;blubbern&ldquo; nach hinten.</td></tr>
+              <tr><td><strong>Selection-Sort</strong></td><td>In einer äußeren Schleife wird an die aktuelle Stelle der richtige Wert gesetzt: das <em>kleinste</em> Element der weiter hinten liegenden Plätze wird gesucht und hierher getauscht. So entsteht schrittweise ein sortierter Bereich am Anfang.</td></tr>
+              <tr><td><strong>Insertion-Sort</strong></td><td>Funktioniert wie das Sortieren von Spielkarten in der Hand: Links liegen die schon sortierten Elemente, rechts die unsortierten. In jedem Schritt wird das nächste unsortierte Element genommen und im sortierten Bereich an der richtigen Stelle <em>eingefügt</em>.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Ablauf mit 5, 2, 4, 1</span>
+    <span class="code-lang">Text</span>
+  </div>
+  <pre><code class="language-plaintext">Bubble-Sort, 1. Durchlauf:   [5 2] 4 1 -&gt; 2 [5 4] 1 -&gt; 2 4 [5 1] -&gt; 2 4 1 5
+Selection-Sort, Schritt 1:   kleinstes ist 1 -&gt; tausche mit Platz 0: 1 2 4 5
+Insertion-Sort:              5 | 2 4 1  -&gt;  2 5 | 4 1  -&gt;  2 4 5 | 1  -&gt;  1 2 4 5</code></pre>
+</div>
+        <p>
+          Daneben gibt es weitaus bessere Verfahren, die vor allem bei großen Datenmengen deutlich schneller sind,
+          weil sie weniger Vergleiche und Vertauschungen brauchen: <strong>Quicksort</strong> und
+          <strong>Merge-Sort</strong>. Sie sind konzeptuell schwieriger und brauchen fortgeschrittenere Techniken
+          (Rekursion) und werden hier nicht behandelt. Eine umfassende Darstellung verschiedenster Sortieralgorithmen
+          und ihrer Analyse bietet
+          <a href="https://www.happycoders.eu/de/algorithmen/sortieralgorithmen/">happycoders.eu/de/algorithmen/sortieralgorithmen</a>.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-3">3 &mdash; Codebeispiel: Sortieren</h2>
+        <details class="code-collapse">
+  <summary><span class="code-filename">Sortieren.java</span> <span class="code-collapse-hint">Code anzeigen (119 Zeilen)</span></summary>
+<div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Sortieren.java</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">import java.util.Random;
+
+public class Sortieren {
+
+    private int[] originalWerte = { 3, 9, 7, 1, 4, -5, 0, 8, 6, 9 };
+    private int[] werte;
+
+    public Sortieren() {
+        reset();
+    }
+
+    public void randomInit(int n) {
+        originalWerte = new int[n];
+        Random rnd = new Random();
+        for (int i = 0; i &lt; originalWerte.length; i++) {
+            originalWerte[i] = rnd.nextInt(1000);
+        }
+    }
+
+    public void reset() {
+        werte = new int[originalWerte.length];
+        for (int i = 0; i &lt; werte.length; i++) {
+            werte[i] = originalWerte[i];
+        }
+    }
+
+    public void sortieren() {
+        randomInit(10000);
+
+        reset();
+        bubbleSort();
+
+        reset();
+        selectionSort();
+
+        reset();
+        insertionSort();
+    }
+
+    public void bubbleSort() {
+        System.out.print("Bubble Sort... ");
+        long startTime = System.currentTimeMillis();
+        boolean getauscht = false;
+        do {
+            getauscht = false;
+            // printWerte();
+            for (int i = 0; i &lt; werte.length-1; i++) {
+                if (werte[i] &gt; werte[i+1]) {
+                    tauschen(i, i+1);
+                    // printWerte();
+                    getauscht = true;
+                }
+            }
+            // System.out.println();
+        } while (getauscht);
+        long endTime = System.currentTimeMillis();
+        System.out.println((endTime - startTime) + " ms");
+    }
+
+    public void selectionSort() {
+        System.out.print("Selection Sort... ");
+        long startTime = System.currentTimeMillis();
+        for (int i = 0; i &lt; werte.length; i++) {
+            int jMin = i; // wir speichern die Position des kleinsten
+                          // Elementes (der verbleibenden Elemente)
+            for (int j = i+1; j &lt; werte.length; j++) {
+                if (werte[j] &lt; werte[jMin]) {
+                    jMin = j;
+                }
+            }
+
+            tauschen(i, jMin);
+        }
+        long endTime = System.currentTimeMillis();
+        System.out.println((endTime - startTime) + " ms");
+    }
+
+    public void insertionSort() {
+        System.out.print("Insertion Sort... ");
+        long startTime = System.currentTimeMillis();
+        for (int i = 1; i &lt; werte.length; i++) {
+            for (int j = i; j &gt; 0; j--) {
+                if (werte[j] &lt; werte[j-1]) {
+                    tauschen(j, j-1);
+                }
+            }
+        }
+        long endTime = System.currentTimeMillis();
+        System.out.println((endTime - startTime) + " ms");
+    }
+
+    public void tauschen(int i, int j) {
+        if (i &gt;= 0 &amp;&amp; i &lt; werte.length &amp;&amp; j &gt;= 0 &amp;&amp; j &lt; werte.length /*&amp;&amp; i != j*/) {
+            int tmp = werte[i];
+            werte[i] = werte[j];
+            werte[j] = tmp;
+        } else {
+            System.out.println("Ungueltige(r) Parameter: " + i + ", " + j);
+        }
+    }
+
+    public void printWerte() {
+        // System.out.println(this.toString());
+        System.out.println(this);
+    }
+
+    public String toString() {
+        String str = "Werte: ";
+        // wir zeigen zur Veranschaulichung den gesamten Inhalt an.
+        // eigentlich waere i&lt;anzahl richtiger.
+        for (int i = 0; i &lt; werte.length; i++) {
+            if (i &gt; 0) {
+                str += ", ";
+            }
+            str += werte[i];
+        }
+        return str;
+    }
+}</code></pre>
+</div>
+</details>
+        <p>
+          Zuerst wird <code>originalWerte</code> befüllt. Vor jedem Verfahren kopiert <code>reset()</code> den Inhalt
+          nach <code>werte</code>, damit alle Verfahren mit derselben Datengrundlage arbeiten. Wichtig ist das
+          <strong>Tauschen über eine Hilfsvariable</strong> <code>tmp</code>: Ohne sie wäre einer der beiden Werte
+          verloren.
+        </p>
+        <div class="callout callout-tip">
+  <div class="callout-icon">&#128161;</div>
+  <div class="callout-body">
+    <div class="callout-title">Insertion-Sort früher abbrechen</div>
+    <p>In der inneren Schleife von <code>insertionSort</code> kann man aufhören, sobald nicht mehr getauscht
+          wird: <code>for (int j = i; j &gt; 0 &amp;&amp; werte[j] &lt; werte[j-1]; j--)</code>. Der linke Teil ist
+          ja schon sortiert &ndash; so wird das Verfahren bei fast sortierten Daten sehr schnell.</p>
+  </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-4">4 &mdash; Laufzeit messen</h2>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Laufzeitmessung</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">long startTime = System.currentTimeMillis();
+// Ausführung des Codes dessen Laufzeit gemessen werden soll
+long endTime = System.currentTimeMillis();
+long searchTime = endTime - startTime;</code></pre>
+</div>
+        <p>Für Arrays mit 10000 zufälligen Werten ergaben sich folgende Laufzeiten:</p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Ausgabe</span>
+    <span class="code-lang">Text</span>
+  </div>
+  <pre><code class="language-plaintext">Bubble Sort... 294 ms
+Selection Sort... 120 ms
+Insertion Sort... 129 ms</code></pre>
+</div>
+        <p>Selection- und Insertion-Sort sind dem einfacheren Bubble-Sort deutlich überlegen. Die genauen Zahlen hängen vom Rechner ab &ndash; das Verhältnis bleibt ähnlich.</p>
+        <div class="callout callout-info">
+  <div class="callout-icon">&#8505;</div>
+  <div class="callout-body">
+    <div class="callout-title">Warum &bdquo;langsam&ldquo;?</div>
+    <p>Alle drei Verfahren vergleichen im schlechtesten Fall jedes Element mit (fast) jedem anderen: Bei
+          <em>n</em> Werten sind das rund <em>n&sup2;/2</em> Vergleiche. Doppelt so viele Werte bedeuten also etwa
+          viermal so lange Laufzeit. Quicksort und Merge-Sort kommen mit etwa <em>n &middot; log n</em> aus.</p>
+  </div>
+</div>
+      </section>
+
+      <section class="section section-projekt">
+        <h2 id="projektschritt">Projektschritt</h2>
+<div class="projekt-box">
+  <div class="projekt-box-header">
+    <span class="projekt-step">Projektschritt 2.4</span>
+    <h3>Sortierte Buchungen und Median</h3>
+  </div>
+<p>Die Zeiterfassung liefert eine <strong>sortierte Kopie</strong> ihrer Buchungen (Insertion-Sort mit vorzeitigem Abbruch) und berechnet daraus den <strong>Median</strong> &ndash; den mittleren Wert, der im Gegensatz zum Durchschnitt nicht von einzelnen Ausreißern verzerrt wird. Die Reihenfolge der Buchungen selbst bleibt unverändert.</p>
+  <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">src/main/java/Zeiterfassung.java (neue Methoden)</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">// liefert eine sortierte KOPIE der gültigen Buchungen (Insertion-Sort);
+// die Reihenfolge in "buchungen" bleibt unverändert
+public int[] sortiert() {
+    int[] kopie = new int[anzahl];
+    for (int i = 0; i &lt; anzahl; i++) {
+        kopie[i] = buchungen[i];
+    }
+    for (int i = 1; i &lt; kopie.length; i++) {
+        for (int j = i; j &gt; 0 &amp;&amp; kopie[j] &lt; kopie[j - 1]; j--) {
+            int tmp = kopie[j];
+            kopie[j] = kopie[j - 1];
+            kopie[j - 1] = tmp;
+        }
+    }
+    return kopie;
+}
+
+// Median: der "mittlere" Wert der sortierten Buchungen
+public double median() {
+    if (anzahl == 0) {
+        return 0;
+    }
+    int[] s = sortiert();
+    if (s.length % 2 == 1) {
+        return s[s.length / 2];
+    } else {
+        return (s[s.length / 2 - 1] + s[s.length / 2]) / 2.0;
+    }
+}</code></pre>
+</div>
+  <p>Der Operator <code>%</code> liefert den Rest der Division: <code>s.length % 2 == 1</code> heißt &bdquo;ungerade Anzahl&ldquo;. Getestet wird mit <code>assertArrayEquals(new int[] {6, 8, 10}, z.sortiert())</code>.</p>
+  <p class="mb-0">&#128193; Stand nach dieser Lektion: <a href="beispiele/2.4/src/main/java/Zeiterfassung.java" target="_blank">beispiele/2.4/</a></p>
+</div>
+      </section>
+
+      <section class="section section-fehler">
+        <h2>Häufige Fehler</h2>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Tauschen ohne Hilfsvariable</div>
+  <p><code>werte[i] = werte[j]; werte[j] = werte[i];</code> &ndash; danach stehen zwei gleiche Werte im Array.</p>
+          <p class="fehler-fix">Einen Wert zwischenspeichern: <code>int tmp = werte[i]; werte[i] = werte[j]; werte[j] = tmp;</code>.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Index i+1 außerhalb</div>
+  <p>Bubble-Sort mit <code>for (int i = 0; i &lt; werte.length; i++)</code> und Zugriff auf <code>werte[i+1]</code> &rarr; <code>ArrayIndexOutOfBoundsException</code>.</p>
+          <p class="fehler-fix">Beim Vergleich mit dem Nachbarn nur bis <code>werte.length - 1</code> laufen.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Kopie ist keine Kopie</div>
+  <p>Nach <code>int[] kopie = werte;</code> und Sortieren von <code>kopie</code> ist auch <code>werte</code> sortiert.</p>
+          <p class="fehler-fix">Arrays sind Referenzen. Eine echte Kopie braucht ein neues Array (<code>new int[&hellip;]</code>) und eine Schleife, die die Werte kopiert (oder <code>werte.clone()</code>).</p>
+</div>
+      </section>
+
+      <section class="section section-quiz">
+        <h2>Wissenskontrolle</h2>
+        <div class="quiz" id="quiz-15">
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 1</span> Welche Idee steckt hinter <strong>Bubble-Sort</strong>?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-15-1"> <span>Das kleinste Element wird gesucht und an den Anfang getauscht.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-15-1"> <span>Benachbarte Elemente werden verglichen und getauscht, wenn sie falsch herum stehen; große Werte wandern so nach hinten.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-15-1"> <span>Jedes Element wird an der richtigen Stelle in den bereits sortierten Teil eingefügt.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-15-1"> <span>Das Array wird halbiert und rekursiv sortiert.</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Bei jedem Durchlauf „blubbert“ der größte verbleibende Wert ans Ende. Option 1 beschreibt Selection-Sort, Option 3 Insertion-Sort, Option 4 Merge-Sort.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 2</span> Wie tauscht man die Werte an den Indizes <code>i</code> und <code>j</code> richtig?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-15-2"> <span><code>a[i] = a[j]; a[j] = a[i];</code></span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-15-2"> <span><code>int tmp = a[i]; a[i] = a[j]; a[j] = tmp;</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-15-2"> <span><code>a[i] == a[j];</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-15-2"> <span><code>a[j] = a[i];</code></span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Ohne Hilfsvariable ist der alte Wert von <code>a[i]</code> nach der ersten Zuweisung verloren und beide Plätze haben denselben Wert.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 3</span> Warum wird das Array vor jedem Sortierverfahren kopiert?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-15-3"> <span>weil sortierte Arrays nicht noch einmal sortiert werden dürfen</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-15-3"> <span>damit alle Verfahren mit denselben unsortierten Daten arbeiten und die Laufzeiten vergleichbar sind</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-15-3"> <span>weil Sortieren das Original löscht</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-15-3"> <span>damit das Sortieren schneller geht</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Ein bereits sortiertes Array wäre für manche Verfahren viel schneller erledigt &ndash; der Vergleich wäre unfair.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 4</span> Was misst <code>System.currentTimeMillis()</code>?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-15-4"> <span>die Laufzeit der aktuellen Methode</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-15-4"> <span>die aktuelle Zeit in Millisekunden; die Differenz zweier Aufrufe ergibt die vergangene Zeit</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-15-4"> <span>die Anzahl der Vergleiche beim Sortieren</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-15-4"> <span>die Rechenleistung des Prozessors</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Man merkt sich die Zeit vor und nach dem Sortieren und zieht ab. Für aussagekräftige Werte braucht man große Arrays.</div>
+  </div>
+  <div class="quiz-summary"><span class="quiz-score"></span><button type="button" class="quiz-reset">Zur&uuml;cksetzen</button></div>
+</div>
+      </section>
+
+    </div>
+
+    <nav class="lesson-nav">
+      <a class="nav-btn" href="2.3-arrays-einfuegen-entfernen.html">&larr; Lektion 2.3: Arrays: Einf&uuml;gen &amp; Entfernen</a>
+      <span class="nav-center-info">Lektion 2.4</span>
+      <a class="nav-btn primary" href="2.5-objekt-arrays.html">Lektion 2.5: Objekt-Arrays &rarr;</a>
+    </nav>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>
+    const ham = document.getElementById('hamburger');
+    const sb = document.getElementById('sidebar');
+    const ov = document.getElementById('overlay');
+    ham.addEventListener('click', () => { sb.classList.toggle('open'); ov.classList.toggle('visible'); });
+    ov.addEventListener('click', () => { sb.classList.remove('open'); ov.classList.remove('visible'); });
+    const cur = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-link').forEach(l => {
+      if (l.getAttribute('href') === cur) l.classList.add('active');
+    });
+    const themeBtn = document.getElementById('theme-toggle');
+    const applyTheme = (t) => {
+      document.documentElement.setAttribute('data-theme', t);
+      if (themeBtn) themeBtn.innerHTML = t === 'dark' ? '&#9728;' : '&#9790;';
+    };
+    applyTheme(localStorage.getItem('kurs-theme') || 'dark');
+    setTimeout(() => document.documentElement.classList.add('theme-transitions'), 50);
+    if (themeBtn) themeBtn.addEventListener('click', () => {
+      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('kurs-theme', next);
+      applyTheme(next);
+    });
+    hljs.highlightAll();
+  </script>
+  <script>
+    document.querySelectorAll('.quiz').forEach((quiz) => {
+      const fragen = [...quiz.querySelectorAll('.quiz-frage')];
+      const score = quiz.querySelector('.quiz-score');
+      const update = () => {
+        const done = fragen.filter((f) => f.dataset.state).length;
+        const ok = fragen.filter((f) => f.dataset.state === 'ok').length;
+        score.textContent = done === 0
+          ? fragen.length + ' Fragen – wähle eine Antwort und prüfe sie.'
+          : ok + ' von ' + fragen.length + ' richtig'
+            + (done < fragen.length ? ' (' + done + ' von ' + fragen.length + ' bearbeitet)' : '');
+      };
+      fragen.forEach((f) => {
+        const inputs = [...f.querySelectorAll('input')];
+        const check = f.querySelector('.quiz-check');
+        const reveal = f.querySelector('.quiz-reveal');
+        const fb = f.querySelector('.quiz-feedback');
+        const exp = f.querySelector('.quiz-erklaerung');
+        inputs.forEach((i) => i.addEventListener('change', () => {
+          check.disabled = !inputs.some((x) => x.checked);
+        }));
+        const finish = (graded) => {
+          let allOk = true;
+          f.querySelectorAll('.quiz-opt').forEach((li) => {
+            const input = li.querySelector('input');
+            const corr = li.dataset.correct === '1';
+            if (corr !== input.checked) allOk = false;
+            if (corr) li.classList.add('opt-correct');
+            else if (input.checked) li.classList.add('opt-wrong');
+            input.disabled = true;
+          });
+          f.dataset.state = !graded ? 'shown' : (allOk ? 'ok' : 'wrong');
+          fb.className = 'quiz-feedback fb-' + f.dataset.state;
+          fb.textContent = !graded ? 'Lösung angezeigt.'
+            : (allOk ? '✔ Richtig!' : '✘ Leider nicht ganz – die richtige Lösung ist markiert.');
+          fb.hidden = false;
+          exp.hidden = false;
+          check.disabled = true;
+          reveal.disabled = true;
+          update();
+        };
+        check.addEventListener('click', () => finish(true));
+        reveal.addEventListener('click', () => finish(false));
+      });
+      quiz.querySelector('.quiz-reset').addEventListener('click', () => {
+        fragen.forEach((f) => {
+          delete f.dataset.state;
+          f.querySelectorAll('.quiz-opt').forEach((li) => li.classList.remove('opt-correct', 'opt-wrong'));
+          f.querySelectorAll('input').forEach((i) => { i.checked = false; i.disabled = false; });
+          f.querySelector('.quiz-check').disabled = true;
+          f.querySelector('.quiz-reveal').disabled = false;
+          f.querySelector('.quiz-feedback').hidden = true;
+          f.querySelector('.quiz-erklaerung').hidden = true;
+        });
+        update();
+      });
+      update();
+    });
+  </script>
+</body>
+
+</html>

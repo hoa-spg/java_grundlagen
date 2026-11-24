@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<!-- GENERIERT von java/kurs/_build (java-grundlagen) – nicht direkt bearbeiten!
+     Quelle: java/kurs/_build/java-grundlagen/lessons/, bauen: python3 _build/build.py java-grundlagen -->
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Java-Grundlagen Kurs</title>
+  <script>(function () { var t = localStorage.getItem('kurs-theme') || 'dark'; document.documentElement.setAttribute('data-theme', t); })();</script>
+  <link rel="stylesheet" href="assets/kurs.css">
+  <link rel="stylesheet" id="hljs-theme"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+
+<body>
+
+  <button class="hamburger" id="hamburger" aria-label="Navigation &ouml;ffnen">&#9776;</button>
+  <div class="sidebar-overlay" id="overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html">
+        <span class="brand-icon">J</span>
+        <div>
+          <div class="brand-name">Java</div>
+          <div class="brand-sub">Grundlagen der Programmierung</div>
+        </div>
+      </a>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Dark/Light Mode"
+        title="Theme wechseln">&#9728;</button>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-group">
+        <div class="nav-group-label html-label">Teil 1 &mdash; Grundlagen</div>
+        <a class="nav-link" href="1.1-einfuehrung-entwicklungsumgebung.html"><span class="ln">1.1</span>Einf&uuml;hrung &amp; Entwicklungsumgebung</a>
+        <a class="nav-link" href="1.2-klassen-objekte.html"><span class="ln">1.2</span>Klassen, Objekte, Get &amp; Set</a>
+        <a class="nav-link" href="1.3-konstruktoren-methoden.html"><span class="ln">1.3</span>Konstruktoren, this &amp; Methoden</a>
+        <a class="nav-link" href="1.4-datentypen.html"><span class="ln">1.4</span>Datentypen</a>
+        <a class="nav-link" href="1.5-signatur-ueberladen.html"><span class="ln">1.5</span>Methoden, Signatur &amp; &Uuml;berladen</a>
+        <a class="nav-link" href="1.6-bedingungen-berechnungen.html"><span class="ln">1.6</span>Bedingungen &amp; Berechnungen</a>
+        <a class="nav-link" href="1.7-debugger-testklassen.html"><span class="ln">1.7</span>Debugger &amp; Testklassen</a>
+        <a class="nav-link" href="1.8-strings-random.html"><span class="ln">1.8</span>Strings &amp; Random</a>
+        <a class="nav-link" href="1.9-objekt-beziehungen.html"><span class="ln">1.9</span>Objekt-Beziehungen</a>
+        <a class="nav-link" href="1.10-schleifen.html"><span class="ln">1.10</span>Schleifen</a>
+        <a class="nav-link" href="1.11-statische-methoden.html"><span class="ln">1.11</span>Statische Methoden &amp; main</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label css-label">Teil 2 &mdash; Datenstrukturen &amp; OOP</div>
+        <a class="nav-link" href="2.1-intellij-junit.html"><span class="ln">2.1</span>IntelliJ, Maven &amp; JUnit</a>
+        <a class="nav-link" href="2.2-arrays.html"><span class="ln">2.2</span>Arrays</a>
+        <a class="nav-link" href="2.3-arrays-einfuegen-entfernen.html"><span class="ln">2.3</span>Arrays: Einf&uuml;gen &amp; Entfernen</a>
+        <a class="nav-link" href="2.4-sortieralgorithmen.html"><span class="ln">2.4</span>Sortieralgorithmen</a>
+        <a class="nav-link" href="2.5-objekt-arrays.html"><span class="ln">2.5</span>Objekt-Arrays</a>
+        <a class="nav-link" href="2.6-assoziation-equals.html"><span class="ln">2.6</span>Beidseitige Assoziation &amp; equals</a>
+        <a class="nav-link" href="2.7-collections.html"><span class="ln">2.7</span>Collections: ArrayList &amp; Co.</a>
+        <a class="nav-link" href="2.8-vererbung.html"><span class="ln">2.8</span>Vererbung &amp; Polymorphismus</a>
+        <a class="nav-link" href="2.9-abstrakt-interfaces.html"><span class="ln">2.9</span>Abstrakte Klassen &amp; Interfaces</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label rn-label">Teil 3 &mdash; Fortgeschrittene Konzepte</div>
+        <a class="nav-link" href="3.0-fail-early.html"><span class="ln">3.0</span>Fail Early statt Happy Path</a>
+        <a class="nav-link" href="3.1-exceptions.html"><span class="ln">3.1</span>Exceptions</a>
+        <a class="nav-link" href="3.2-hashset-treeset.html"><span class="ln">3.2</span>HashSet, TreeSet &amp; hashCode</a>
+        <a class="nav-link" href="3.3-serialisierung-dateien.html"><span class="ln">3.3</span>Serialisierung &amp; Dateien</a>
+        <a class="nav-link" href="3.4-git.html"><span class="ln">3.4</span>Versionsverwaltung mit Git</a>
+        <a class="nav-link" href="3.5-lambdas.html"><span class="ln">3.5</span>Lambda-Ausdr&uuml;cke</a>
+        <a class="nav-link" href="3.6-streams.html"><span class="ln">3.6</span>Die Streams-API</a>
+        <a class="nav-link" href="3.7-design-patterns.html"><span class="ln">3.7</span>Design-Patterns</a>
+        <a class="nav-link" href="3.8-model-klassen.html"><span class="ln">3.8</span>Model-Klassen f&uuml;r die GUI</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label react-label">Teil 4 &mdash; Webanwendungen mit Vaadin</div>
+        <a class="nav-link" href="4.1-web-grundlagen.html"><span class="ln">4.1</span>Grundprinzipien des Web</a>
+        <a class="nav-link" href="4.2-vaadin-einstieg.html"><span class="ln">4.2</span>Vaadin Flow &amp; Start-Paket</a>
+        <a class="nav-link" href="4.3-komponenten-layouts.html"><span class="ln">4.3</span>Komponenten &amp; Layouts</a>
+        <a class="nav-link" href="4.4-grid-routing-binding.html"><span class="ln">4.4</span>Tabellen, Routing &amp; Binding</a>
+        <a class="nav-link" href="4.5-mitarbeiterverwaltung.html"><span class="ln">4.5</span>Mitarbeiterverwaltung</a>
+      </div>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <div class="index-hero">
+      <p class="lesson-eyebrow">Kurs&uuml;bersicht</p>
+      <h1>Java-Grundlagen <span>Kurs</span></h1>
+      <p class="subtitle">
+        33 Lektionen in vier Teilen &mdash; von der ersten Klasse &uuml;ber Arrays, Collections und
+        Vererbung bis zu Exceptions, Dateien, Streams und einer Webanwendung mit Vaadin.
+      </p>
+      <div class="lesson-tags" style="margin-top:1.25rem">
+        <span class="tag tag-html">Grundlagen</span>
+        <span class="tag tag-css">OOP</span>
+        <span class="tag tag-rn">Exceptions &amp; Streams</span>
+        <span class="tag tag-react">Vaadin</span>
+        <span class="tag tag-time">Programmieren &amp; Software Engineering &middot; 1.&ndash;4. Semester</span>
+      </div>
+    </div>
+
+    <div class="content-area">
+
+      <div class="section">
+        <h2>Projektidee: Personalverwaltung</h2>
+        <p>
+          Durch den ganzen Kurs zieht sich ein Projekt: eine <strong>Personalverwaltung</strong> f&uuml;r eine Firma.
+          Sie beginnt in Lektion 1.1 als leere Klasse <code>Mitarbeiter</code> und w&auml;chst Lektion f&uuml;r Lektion
+          &ndash; in IntelliJ mit der Object Workbench, mit JUnit-Tests, mit Vererbung, Exceptions und Dateien, und
+          am Ende als Webanwendung im Browser.
+        </p>
+        <p>
+          Unter <a href="beispiele/README.md">beispiele/</a> liegt der vollst&auml;ndige, lauff&auml;hige Stand nach jeder
+          Lektion &ndash; z.&nbsp;B. <a href="beispiele/1.9/src/main/java/Firma.java">beispiele/1.9/</a> (Firma mit drei Pl&auml;tzen),
+          <a href="beispiele/2.9/src/main/java/Person.java">beispiele/2.9/</a> (Klassenhierarchie) oder
+          <a href="beispiele/4.5/pom.xml">beispiele/4.5/</a> (fertige Vaadin-Anwendung).
+        </p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Lektion</th><th>Was wird gebaut</th></tr></thead>
+            <tbody>
+              <tr><td>1.1 &ndash; 1.7</td><td>Klasse <code>Mitarbeiter</code>: Attribute, Konstruktoren, Kostenberechnung, Parameterpr&uuml;fungen, erste Tests</td></tr>
+              <tr><td>1.8 &ndash; 1.11</td><td>Initialen und K&uuml;rzel, <code>Firma</code> mit drei Pl&auml;tzen, K&uuml;ndigen nach Namen, Balkendiagramm, Personalnummer und <code>main</code></td></tr>
+              <tr><td>2.1 &ndash; 2.4</td><td>Maven-Projekt mit JUnit 5; <code>Zeiterfassung</code> mit Arrays, Einf&uuml;gen/Entfernen, Sortieren und Median</td></tr>
+              <tr><td>2.5 &ndash; 2.7</td><td>Firma mit Objekt-Array, beidseitiger Assoziation und <code>ArrayList</code></td></tr>
+              <tr><td>2.8 &ndash; 2.9</td><td>Hierarchie <code>Person</code> &rarr; <code>Mitarbeiter</code> &rarr; <code>Angestellter</code>/<code>Arbeiter</code>, <code>Freelancer</code>, Sortieren</td></tr>
+              <tr><td>3.0 &ndash; 3.4</td><td>Prüfungen als Guard Clauses, <code>FirmaException</code>, Sets, Speichern als CSV und bin&auml;r, Git</td></tr>
+              <tr><td>3.5 &ndash; 3.7</td><td>Sortieren mit Lambdas, Auswertungen mit Streams, Factory-Methode <code>Person.ausCsv</code></td></tr>
+              <tr><td>3.8</td><td>Model-Klassen <code>Company</code> (Singleton) und <code>Employee</code> f&uuml;r die Oberfl&auml;che</td></tr>
+              <tr><td>4.1 &ndash; 4.5</td><td>Vaadin-Webanwendung: Firmenformular, Mitarbeitertabelle, Mitarbeiterformular, Upload</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 class="html-header" style="border-bottom:2px solid rgba(240,136,62,0.4);padding-bottom:.5rem">
+          Teil 1 &mdash; Grundlagen
+        </h2>
+        <div class="course-grid">
+          <a class="lesson-card html-card" href="1.1-einfuehrung-entwicklungsumgebung.html">
+            <span class="lesson-card-num">1.1</span>
+            <div class="lesson-card-content"><h4>Einf&uuml;hrung &amp; Entwicklungsumgebung</h4><p>Compiler, Bytecode, JVM, IntelliJ ohne KI, Object Workbench</p></div>
+          </a>
+          <a class="lesson-card html-card" href="1.2-klassen-objekte.html">
+            <span class="lesson-card-num">1.2</span>
+            <div class="lesson-card-content"><h4>Klassen, Objekte, Get &amp; Set</h4><p>Klasse als Bauplan, private Attribute, Get-/Set-Methoden, Kommentare</p></div>
+          </a>
+          <a class="lesson-card html-card" href="1.3-konstruktoren-methoden.html">
+            <span class="lesson-card-num">1.3</span>
+            <div class="lesson-card-content"><h4>Konstruktoren, this &amp; Methoden</h4><p>Default-Werte, Namenskonflikte, return, Ausgabe, Konventionen</p></div>
+          </a>
+          <a class="lesson-card html-card" href="1.4-datentypen.html">
+            <span class="lesson-card-num">1.4</span>
+            <div class="lesson-card-content"><h4>Datentypen</h4><p>Primitive Datentypen, Typkonvertierung und Cast, Referenzdatentypen, null</p></div>
+          </a>
+          <a class="lesson-card html-card" href="1.5-signatur-ueberladen.html">
+            <span class="lesson-card-num">1.5</span>
+            <div class="lesson-card-content"><h4>Methoden, Signatur &amp; &Uuml;berladen</h4><p>Methodenkopf, public/private, R&uuml;ckgabewert, Parameter&uuml;bergabe, &Uuml;berladen, Einstiegspunkt <code>main()</code></p></div>
+          </a>
+          <a class="lesson-card html-card" href="1.6-bedingungen-berechnungen.html">
+            <span class="lesson-card-num">1.6</span>
+            <div class="lesson-card-content"><h4>Bedingungen &amp; Berechnungen</h4><p>Parameterpr&uuml;fungen, Operatoren, lokale Variablen, Typkonvertierung, BMI</p></div>
+          </a>
+          <a class="lesson-card html-card" href="1.7-debugger-testklassen.html">
+            <span class="lesson-card-num">1.7</span>
+            <div class="lesson-card-content"><h4>Debugger &amp; Testklassen</h4><p>Haltepunkte, Step, Testklassen, JUnit mit @BeforeEach und Assertions</p></div>
+          </a>
+          <a class="lesson-card html-card" href="1.8-strings-random.html">
+            <span class="lesson-card-num">1.8</span>
+            <div class="lesson-card-content"><h4>Strings &amp; Random</h4><p>Java-API, String-Methoden, Zeichen vergleichen, String-Pool, equals statt ==, Zufallszahlen mit Random</p></div>
+          </a>
+          <a class="lesson-card html-card" href="1.9-objekt-beziehungen.html">
+            <span class="lesson-card-num">1.9</span>
+            <div class="lesson-card-content"><h4>Objekt-Beziehungen</h4><p>Auto und Personen: Referenzen als Pl&auml;tze, einsteigen, aussteigen, Gesamtgewicht</p></div>
+          </a>
+          <a class="lesson-card html-card" href="1.10-schleifen.html">
+            <span class="lesson-card-num">1.10</span>
+            <div class="lesson-card-content"><h4>Schleifen</h4><p>while, do-while, for, Muster zeichnen, Code-Wiederverwendung</p></div>
+          </a>
+          <a class="lesson-card html-card" href="1.11-statische-methoden.html">
+            <span class="lesson-card-num">1.11</span>
+            <div class="lesson-card-content"><h4>Statische Methoden &amp; main</h4><p>static, warum main statisch ist, die Klasse Math</p></div>
+          </a>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 class="css-header" style="border-bottom:2px solid rgba(88,166,255,0.4);padding-bottom:.5rem">
+          Teil 2 &mdash; Datenstrukturen &amp; OOP
+        </h2>
+        <div class="course-grid">
+          <a class="lesson-card css-card" href="2.1-intellij-junit.html">
+            <span class="lesson-card-num">2.1</span>
+            <div class="lesson-card-content"><h4>IntelliJ, Maven &amp; JUnit</h4><p>Projektstruktur, pom.xml, Generieren, Refactoring, Unit-Tests, Coverage</p></div>
+          </a>
+          <a class="lesson-card css-card" href="2.2-arrays.html">
+            <span class="lesson-card-num">2.2</span>
+            <div class="lesson-card-content"><h4>Arrays</h4><p>Index ab 0, length, Messreihe, Minimum, Maximum, Durchschnitt</p></div>
+          </a>
+          <a class="lesson-card css-card" href="2.3-arrays-einfuegen-entfernen.html">
+            <span class="lesson-card-num">2.3</span>
+            <div class="lesson-card-content"><h4>Arrays: Einf&uuml;gen &amp; Entfernen</h4><p>Maximalgr&ouml;&szlig;e und anzahl, Verschieben, toString</p></div>
+          </a>
+          <a class="lesson-card css-card" href="2.4-sortieralgorithmen.html">
+            <span class="lesson-card-num">2.4</span>
+            <div class="lesson-card-content"><h4>Sortieralgorithmen</h4><p>Bubble-, Selection- und Insertion-Sort, Laufzeit messen</p></div>
+          </a>
+          <a class="lesson-card css-card" href="2.5-objekt-arrays.html">
+            <span class="lesson-card-num">2.5</span>
+            <div class="lesson-card-content"><h4>Objekt-Arrays</h4><p>Markt und St&auml;nde: ohne L&uuml;cken einf&uuml;gen, entfernen, suchen, sortieren</p></div>
+          </a>
+          <a class="lesson-card css-card" href="2.6-assoziation-equals.html">
+            <span class="lesson-card-num">2.6</span>
+            <div class="lesson-card-content"><h4>Beidseitige Assoziation &amp; equals</h4><p>Konsistente Zuordnung, Inhalts- vs. Referenzgleichheit</p></div>
+          </a>
+          <a class="lesson-card css-card" href="2.7-collections.html">
+            <span class="lesson-card-num">2.7</span>
+            <div class="lesson-card-content"><h4>Collections: ArrayList &amp; Co.</h4><p>ArrayList, enum, switch, for-each, LinkedList, Iterator, Boxing</p></div>
+          </a>
+          <a class="lesson-card css-card" href="2.8-vererbung.html">
+            <span class="lesson-card-num">2.8</span>
+            <div class="lesson-card-content"><h4>Vererbung &amp; Polymorphismus</h4><p>extends, super, @Override, Polymorphismus, Object</p></div>
+          </a>
+          <a class="lesson-card css-card" href="2.9-abstrakt-interfaces.html">
+            <span class="lesson-card-num">2.9</span>
+            <div class="lesson-card-content"><h4>Abstrakte Klassen &amp; Interfaces</h4><p>abstract, Comparable, Klassenhierarchie, Collections.sort</p></div>
+          </a>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 class="rn-header" style="border-bottom:2px solid rgba(167,139,250,0.4);padding-bottom:.5rem">
+          Teil 3 &mdash; Fortgeschrittene Konzepte
+        </h2>
+        <div class="course-grid">
+          <a class="lesson-card rn-card" href="3.0-fail-early.html">
+            <span class="lesson-card-num">3.0</span>
+            <div class="lesson-card-content"><h4>Fail Early statt Happy Path</h4><p>Guard Clauses, Bedingungen umkehren, Verschachtelung vermeiden</p></div>
+          </a>
+          <a class="lesson-card rn-card" href="3.1-exceptions.html">
+            <span class="lesson-card-num">3.1</span>
+            <div class="lesson-card-content"><h4>Exceptions</h4><p>throw, throws, try/catch, checked vs. unchecked, finally</p></div>
+          </a>
+          <a class="lesson-card rn-card" href="3.2-hashset-treeset.html">
+            <span class="lesson-card-num">3.2</span>
+            <div class="lesson-card-content"><h4>HashSet, TreeSet &amp; hashCode</h4><p>Mengen ohne Duplikate, equals und hashCode konsistent</p></div>
+          </a>
+          <a class="lesson-card rn-card" href="3.3-serialisierung-dateien.html">
+            <span class="lesson-card-num">3.3</span>
+            <div class="lesson-card-content"><h4>Serialisierung &amp; Dateien</h4><p>Object-Streams, try-with-resources, CSV lesen und schreiben</p></div>
+          </a>
+          <a class="lesson-card rn-card" href="3.4-git.html">
+            <span class="lesson-card-num">3.4</span>
+            <div class="lesson-card-content"><h4>Versionsverwaltung mit Git</h4><p>add, commit, push, pull, Konflikte, Branches, .gitignore</p></div>
+          </a>
+          <a class="lesson-card rn-card" href="3.5-lambdas.html">
+            <span class="lesson-card-num">3.5</span>
+            <div class="lesson-card-content"><h4>Lambda-Ausdr&uuml;cke</h4><p>Anonyme Klassen, Lambdas, Comparator, Methodenreferenzen, forEach/removeIf</p></div>
+          </a>
+          <a class="lesson-card rn-card" href="3.6-streams.html">
+            <span class="lesson-card-num">3.6</span>
+            <div class="lesson-card-content"><h4>Die Streams-API</h4><p>Pipelines, Lazy Evaluation, Zahlen-Streams, Optional, groupingBy</p></div>
+          </a>
+          <a class="lesson-card rn-card" href="3.7-design-patterns.html">
+            <span class="lesson-card-num">3.7</span>
+            <div class="lesson-card-content"><h4>Design-Patterns</h4><p>Singleton, Factory, Strategy, Composite, Iterator</p></div>
+          </a>
+          <a class="lesson-card rn-card" href="3.8-model-klassen.html">
+            <span class="lesson-card-num">3.8</span>
+            <div class="lesson-card-content"><h4>Model-Klassen f&uuml;r die GUI</h4><p>Company als Singleton, Employee, Iterator, LocalDate, Packages</p></div>
+          </a>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 class="react-header" style="border-bottom:2px solid rgba(97,218,251,0.4);padding-bottom:.5rem">
+          Teil 4 &mdash; Webanwendungen mit Vaadin
+        </h2>
+        <div class="course-grid">
+          <a class="lesson-card react-card" href="4.1-web-grundlagen.html">
+            <span class="lesson-card-num">4.1</span>
+            <div class="lesson-card-content"><h4>Grundprinzipien des Web</h4><p>HTTP, JavaScript, Server-Skripte, SPA, JSON, REST, Frameworks</p></div>
+          </a>
+          <a class="lesson-card react-card" href="4.2-vaadin-einstieg.html">
+            <span class="lesson-card-num">4.2</span>
+            <div class="lesson-card-content"><h4>Vaadin Flow &amp; Start-Paket</h4><p>Projektaufbau, Application, MainLayout, erste View, Events</p></div>
+          </a>
+          <a class="lesson-card react-card" href="4.3-komponenten-layouts.html">
+            <span class="lesson-card-num">4.3</span>
+            <div class="lesson-card-content"><h4>Komponenten &amp; Layouts</h4><p>Eingabefelder, Vertical-/HorizontalLayout, responsive FormLayout</p></div>
+          </a>
+          <a class="lesson-card react-card" href="4.4-grid-routing-binding.html">
+            <span class="lesson-card-num">4.4</span>
+            <div class="lesson-card-content"><h4>Tabellen, Routing &amp; Binding</h4><p>Grid, Navigation mit Parametern, Binder</p></div>
+          </a>
+          <a class="lesson-card react-card" href="4.5-mitarbeiterverwaltung.html">
+            <span class="lesson-card-num">4.5</span>
+            <div class="lesson-card-content"><h4>Mitarbeiterverwaltung</h4><p>Vollst&auml;ndige Anwendung: UIFactory, CustomField, Upload</p></div>
+          </a>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Voraussetzungen &amp; Werkzeuge</h2>
+        <div class="callout callout-info">
+  <div class="callout-icon">&#8505;</div>
+  <div class="callout-body">
+    <div class="callout-title">Vorwissen</div>
+    <p>Keines &ndash; der Kurs beginnt bei null. F&uuml;r Teil 4 hilft ein Grundverst&auml;ndnis von HTML, das in Lektion
+          4.1 aber kurz wiederholt wird.</p>
+  </div>
+</div>
+        <div class="callout callout-tip">
+  <div class="callout-icon">&#128161;</div>
+  <div class="callout-body">
+    <div class="callout-title">Empfohlene Tools</div>
+    <strong>IntelliJ IDEA</strong> (2025.3 oder neuer) mit dem Plugin <em>Object Workbench</em> und
+          einem <strong>JDK</strong> ab Version 21 &ndash; KI-Vorschl&auml;ge ausgeschaltet (Lektion 1.1); in Teil 3
+          zus&auml;tzlich <strong>Git</strong>.
+  </div>
+</div>
+        <div class="callout callout-info">
+  <div class="callout-icon">&#8505;</div>
+  <div class="callout-body">
+    <div class="callout-title">Wie geht es weiter?</div>
+    <p>Webanwendungen mit HTML, CSS und JavaScript bzw. React behandeln die Kurse in
+          <a href="../html_css/">HTML &amp; CSS</a>,
+          <a href="../javascript/">JavaScript</a> und
+          <a href="../react/">React</a>.</p>
+  </div>
+</div>
+      </div>
+
+      <div class="section">
+        <h2>Kurs lokal ansehen</h2>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Lokaler Test</span>
+    <span class="code-lang">Bash</span>
+  </div>
+  <pre><code class="language-bash">python3 -m http.server 8080
+# → http://localhost:8080/index.html</code></pre>
+</div>
+      </div>
+
+    </div><!-- /content-area -->
+
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>
+    const ham = document.getElementById('hamburger');
+    const sb = document.getElementById('sidebar');
+    const ov = document.getElementById('overlay');
+    ham.addEventListener('click', () => { sb.classList.toggle('open'); ov.classList.toggle('visible'); });
+    ov.addEventListener('click', () => { sb.classList.remove('open'); ov.classList.remove('visible'); });
+    const cur = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-link').forEach(l => {
+      if (l.getAttribute('href') === cur) l.classList.add('active');
+    });
+    const themeBtn = document.getElementById('theme-toggle');
+    const applyTheme = (t) => {
+      document.documentElement.setAttribute('data-theme', t);
+      if (themeBtn) themeBtn.innerHTML = t === 'dark' ? '&#9728;' : '&#9790;';
+    };
+    applyTheme(localStorage.getItem('kurs-theme') || 'dark');
+    setTimeout(() => document.documentElement.classList.add('theme-transitions'), 50);
+    if (themeBtn) themeBtn.addEventListener('click', () => {
+      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('kurs-theme', next);
+      applyTheme(next);
+    });
+    hljs.highlightAll();
+  </script>
+</body>
+
+</html>

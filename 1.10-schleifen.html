@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<!-- GENERIERT von java/kurs/_build (java-grundlagen) – nicht direkt bearbeiten!
+     Quelle: java/kurs/_build/java-grundlagen/lessons/, bauen: python3 _build/build.py java-grundlagen -->
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1.10 &ndash; Schleifen | Java-Grundlagen Kurs</title>
+  <script>(function () { var t = localStorage.getItem('kurs-theme') || 'dark'; document.documentElement.setAttribute('data-theme', t); })();</script>
+  <link rel="stylesheet" href="assets/kurs.css">
+  <link rel="stylesheet" id="hljs-theme"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+
+<body>
+
+  <button class="hamburger" id="hamburger" aria-label="Navigation &ouml;ffnen">&#9776;</button>
+  <div class="sidebar-overlay" id="overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html">
+        <span class="brand-icon">J</span>
+        <div>
+          <div class="brand-name">Java</div>
+          <div class="brand-sub">Grundlagen der Programmierung</div>
+        </div>
+      </a>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Dark/Light Mode"
+        title="Theme wechseln">&#9728;</button>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-group">
+        <div class="nav-group-label html-label">Teil 1 &mdash; Grundlagen</div>
+        <a class="nav-link" href="1.1-einfuehrung-entwicklungsumgebung.html"><span class="ln">1.1</span>Einf&uuml;hrung &amp; Entwicklungsumgebung</a>
+        <a class="nav-link" href="1.2-klassen-objekte.html"><span class="ln">1.2</span>Klassen, Objekte, Get &amp; Set</a>
+        <a class="nav-link" href="1.3-konstruktoren-methoden.html"><span class="ln">1.3</span>Konstruktoren, this &amp; Methoden</a>
+        <a class="nav-link" href="1.4-datentypen.html"><span class="ln">1.4</span>Datentypen</a>
+        <a class="nav-link" href="1.5-signatur-ueberladen.html"><span class="ln">1.5</span>Methoden, Signatur &amp; &Uuml;berladen</a>
+        <a class="nav-link" href="1.6-bedingungen-berechnungen.html"><span class="ln">1.6</span>Bedingungen &amp; Berechnungen</a>
+        <a class="nav-link" href="1.7-debugger-testklassen.html"><span class="ln">1.7</span>Debugger &amp; Testklassen</a>
+        <a class="nav-link" href="1.8-strings-random.html"><span class="ln">1.8</span>Strings &amp; Random</a>
+        <a class="nav-link" href="1.9-objekt-beziehungen.html"><span class="ln">1.9</span>Objekt-Beziehungen</a>
+        <a class="nav-link" href="1.10-schleifen.html"><span class="ln">1.10</span>Schleifen</a>
+        <a class="nav-link" href="1.11-statische-methoden.html"><span class="ln">1.11</span>Statische Methoden &amp; main</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label css-label">Teil 2 &mdash; Datenstrukturen &amp; OOP</div>
+        <a class="nav-link" href="2.1-intellij-junit.html"><span class="ln">2.1</span>IntelliJ, Maven &amp; JUnit</a>
+        <a class="nav-link" href="2.2-arrays.html"><span class="ln">2.2</span>Arrays</a>
+        <a class="nav-link" href="2.3-arrays-einfuegen-entfernen.html"><span class="ln">2.3</span>Arrays: Einf&uuml;gen &amp; Entfernen</a>
+        <a class="nav-link" href="2.4-sortieralgorithmen.html"><span class="ln">2.4</span>Sortieralgorithmen</a>
+        <a class="nav-link" href="2.5-objekt-arrays.html"><span class="ln">2.5</span>Objekt-Arrays</a>
+        <a class="nav-link" href="2.6-assoziation-equals.html"><span class="ln">2.6</span>Beidseitige Assoziation &amp; equals</a>
+        <a class="nav-link" href="2.7-collections.html"><span class="ln">2.7</span>Collections: ArrayList &amp; Co.</a>
+        <a class="nav-link" href="2.8-vererbung.html"><span class="ln">2.8</span>Vererbung &amp; Polymorphismus</a>
+        <a class="nav-link" href="2.9-abstrakt-interfaces.html"><span class="ln">2.9</span>Abstrakte Klassen &amp; Interfaces</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label rn-label">Teil 3 &mdash; Fortgeschrittene Konzepte</div>
+        <a class="nav-link" href="3.0-fail-early.html"><span class="ln">3.0</span>Fail Early statt Happy Path</a>
+        <a class="nav-link" href="3.1-exceptions.html"><span class="ln">3.1</span>Exceptions</a>
+        <a class="nav-link" href="3.2-hashset-treeset.html"><span class="ln">3.2</span>HashSet, TreeSet &amp; hashCode</a>
+        <a class="nav-link" href="3.3-serialisierung-dateien.html"><span class="ln">3.3</span>Serialisierung &amp; Dateien</a>
+        <a class="nav-link" href="3.4-git.html"><span class="ln">3.4</span>Versionsverwaltung mit Git</a>
+        <a class="nav-link" href="3.5-lambdas.html"><span class="ln">3.5</span>Lambda-Ausdr&uuml;cke</a>
+        <a class="nav-link" href="3.6-streams.html"><span class="ln">3.6</span>Die Streams-API</a>
+        <a class="nav-link" href="3.7-design-patterns.html"><span class="ln">3.7</span>Design-Patterns</a>
+        <a class="nav-link" href="3.8-model-klassen.html"><span class="ln">3.8</span>Model-Klassen f&uuml;r die GUI</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label react-label">Teil 4 &mdash; Webanwendungen mit Vaadin</div>
+        <a class="nav-link" href="4.1-web-grundlagen.html"><span class="ln">4.1</span>Grundprinzipien des Web</a>
+        <a class="nav-link" href="4.2-vaadin-einstieg.html"><span class="ln">4.2</span>Vaadin Flow &amp; Start-Paket</a>
+        <a class="nav-link" href="4.3-komponenten-layouts.html"><span class="ln">4.3</span>Komponenten &amp; Layouts</a>
+        <a class="nav-link" href="4.4-grid-routing-binding.html"><span class="ln">4.4</span>Tabellen, Routing &amp; Binding</a>
+        <a class="nav-link" href="4.5-mitarbeiterverwaltung.html"><span class="ln">4.5</span>Mitarbeiterverwaltung</a>
+      </div>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <header class="lesson-header">
+      <p class="lesson-eyebrow">Lektion 1.10 &mdash; Teil 1: Grundlagen</p>
+      <h1>Schleifen</h1>
+      <div class="lesson-tags">
+        <span class="tag tag-html">Schleifen</span>
+        <span class="tag tag-time">ca. 2 &times; 90 min</span>
+        <span class="tag tag-level">Grundlagen</span>
+      </div>
+    </header>
+
+    <div class="content-area">
+      <section class="section section-lernziele">
+        <h2>Lernziele</h2>
+        <ul class="lernziele-list">
+          <li><a class="lernziel-link" href="#abschnitt-1">Zählvariable, Fortsetzungsbedingung und Inkrement einer Schleife benennen<span class="lernziel-ziel">Abschnitt 1</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-2"><code>while</code>-, <code>do-while</code>- und <code>for</code>-Schleifen schreiben und ineinander umformen<span class="lernziel-ziel">Abschnitt 2</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-1">Endlosschleifen erkennen und vermeiden<span class="lernziel-ziel">Abschnitt 1</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-3">mit verschachtelten Schleifen zweidimensionale Muster (Zeilen &times; Spalten) ausgeben<span class="lernziel-ziel">Abschnitt 3</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-4">Teilaufgaben in eigene Methoden auslagern (Code-Wiederverwendung) und dabei Überladen nutzen<span class="lernziel-ziel">Abschnitt 4</span></a></li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-1">1 &mdash; Die while-Schleife</h2>
+        <p>
+          Schleifen sind zentrale Sprachkonstrukte in allen Programmiersprachen: Sie führen bestimmte Codestücke
+          mehrmals aus. Es gibt verschiedene Ausprägungen &ndash; zwei <code>while</code>-Schleifen und die
+          <code>for</code>-Schleife. Allen gemeinsam ist eine <strong>Zählvariable</strong>, die (meist) angibt,
+          wie oft die Schleife schon durchlaufen wurde, und die in jedem Durchlauf verändert (hochgezählt,
+          &bdquo;inkrementiert&ldquo;) wird. Eine <strong>Fortsetzungsbedingung</strong> legt fest, ob die Schleife
+          erneut ausgeführt wird.
+        </p>
+        <p>Die folgende Methode schreibt eine Linie aus <code>-</code>-Zeichen, deren Länge per Parameter gesteuert wird:</p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">zeichneLinie</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public void zeichneLinie(int laenge) {
+    if (laenge &gt;= 0) {
+        int zaehler = 0;
+        while (zaehler &lt; laenge) {
+            System.out.print("-");
+            zaehler++; // entspricht: zaehler = zaehler + 1;
+        }
+
+        System.out.println();
+    } else {
+        System.out.println("Fehler: laenge ungueltig: " + laenge);
+    }
+}</code></pre>
+</div>
+        <ul>
+          <li><code>int zaehler = 0;</code> &ndash; Initialisierung der Schleifenvariable.</li>
+          <li><code>while (zaehler &lt; laenge)</code> &ndash; die Bedingung (ein Ausdruck mit Ergebnis <code>boolean</code>) wird <em>vor</em> jedem Durchlauf geprüft.</li>
+          <li>Im Block wird ein Zeichen ausgegeben (<code>print</code> ohne Zeilenumbruch) und danach die Zählvariable erhöht.</li>
+          <li><code>System.out.println()</code> nach der Schleife beendet die Zeile.</li>
+        </ul>
+        <div class="callout callout-error">
+  <div class="callout-icon">&#10007;</div>
+  <div class="callout-body">
+    <div class="callout-title">Endlosschleife</div>
+    <p>Wird vergessen, die Schleifenvariable zu verändern, entsteht eine <strong>Endlosschleife</strong>: Das
+          Programm läuft, ohne etwas Sinnvolles zu tun, bis es manuell unterbrochen wird &ndash; z.&nbsp;B. mit
+          <kbd>Strg</kbd>+<kbd>C</kbd> oder dem Stopp-Button der IDE. Die Object Workbench bricht hängende Methodenaufrufe nach einem Zeitlimit ab.</p>
+  </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-2">2 &mdash; do-while und for</h2>
+        <p>Von der <code>while</code>-Schleife gibt es eine Variante, bei der die Bedingung <strong>am Ende</strong> steht &ndash; der Rumpf wird also mindestens einmal ausgeführt:</p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">do-while</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public void zahlenAusgeben() {
+    int i = 0;
+    do {
+        System.out.println(i);
+        i++;
+    } while (i &lt; 10);
+}</code></pre>
+</div>
+        <p>
+          Manchmal ist diese Schleife &bdquo;eleganter&ldquo;, nötig ist sie nicht: Jede <code>while</code>-Schleife
+          kann in eine <code>do-while</code>-Schleife umgeschrieben werden und umgekehrt.
+        </p>
+        <p>
+          Auch die <strong><code>for</code>-Schleife</strong> ist nur eine andere Schreibweise und kann durch
+          <code>while</code> ersetzt werden. Das vorige Beispiel sieht so aus:
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">for</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public void zahlenAusgeben2() {
+    for (int i = 0; i &lt; 10; i++) {
+        System.out.println(i);
+    }
+}</code></pre>
+</div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Teil des Schleifenkopfs</th><th>Bedeutung</th></tr></thead>
+            <tbody>
+              <tr><td><code>int i = 0</code></td><td>Schleifenvariable und Initialisierung. Syntaktisch wäre auch <code>double</code> zulässig &ndash; das ist aber nahezu immer ein Fehler.</td></tr>
+              <tr><td><code>i &lt; 10</code></td><td>Bedingung, unter der die Schleife erneut durchlaufen wird; auch komplexere boolesche Ausdrücke sind möglich, aber selten nötig</td></tr>
+              <tr><td><code>i++</code></td><td>Veränderung der Schleifenvariable; möglich ist z.&nbsp;B. auch <code>i += 2</code> oder <code>i -= 4</code>, meist aber <code>i++</code> oder <code>i--</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout callout-tip">
+  <div class="callout-icon">&#128161;</div>
+  <div class="callout-body">
+    <div class="callout-title">Welche Schleife wann?</div>
+    <code>for</code>, wenn die Anzahl der Durchläufe vorher feststeht (zählen); <code>while</code>, wenn
+          solange wiederholt wird, bis eine Bedingung eintritt; <code>do-while</code>, wenn mindestens ein Durchlauf
+          nötig ist.
+  </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-3">3 &mdash; Beispiel: Quadrat mit Diagonale</h2>
+        <p>Eine Klasse <code>Quadrat</code> soll ein Quadrat mit einer Diagonale von links oben nach rechts unten ausgeben:</p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Ausgabe (laenge = 11)</span>
+    <span class="code-lang">Text</span>
+  </div>
+  <pre><code class="language-plaintext">###########
+##        #
+# #       #
+#  #      #
+#   #     #
+#    #    #
+#     #   #
+#      #  #
+#       # #
+#        ##
+###########</code></pre>
+</div>
+        <p>
+          Je nach Schriftart sieht das mehr oder weniger quadratisch aus &ndash; die Anzahl der Zeichen pro Zeile
+          entspricht aber der Anzahl der Zeilen. <code>printQuadrat</code> verwendet zwei Schleifen, die durch
+          Zeilen und Spalten laufen. Die If-Bedingung entscheidet, ob <code>#</code> oder ein Leerzeichen zu
+          zeichnen ist (das Leerzeichen ist nötig, sonst rückt der rechte Rand nach links):
+        </p>
+        <ul>
+          <li>erste oder letzte Zeile: <code>zeile == 0 || zeile == laenge-1</code></li>
+          <li>erste oder letzte Spalte: <code>spalte == 0 || spalte == laenge-1</code></li>
+          <li>Diagonale: Zeilenindex gleich Spaltenindex, <code>zeile == spalte</code></li>
+        </ul>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Quadrat.java</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public class Quadrat {
+
+    private int laenge;
+
+    public Quadrat() {
+        setLaenge(10);
+    }
+
+    public Quadrat(int laenge) {
+        setLaenge(laenge);
+    }
+
+    public int getLaenge() {
+        return laenge;
+    }
+
+    public void setLaenge(int laenge) {
+        if (laenge &gt; 0 &amp;&amp; laenge &lt; 100) {
+            this.laenge = laenge;
+        } else {
+            System.out.println("Fehler: ungueltige Laenge: " + laenge);
+        }
+    }
+
+    public void printQuadrat() {
+        int zeile = 0;
+        while (zeile &lt; laenge) {
+            int spalte = 0;
+            while (spalte &lt; laenge) {
+                if (zeile == 0 || zeile == laenge-1
+                    || spalte == 0 || spalte == laenge-1
+                    || zeile == spalte)
+                {
+                    System.out.print("#");
+                } else {
+                    System.out.print(" ");
+                }
+                spalte++;
+            }
+            System.out.println();
+            zeile++;
+        }
+    }
+}</code></pre>
+</div>
+        <p>
+          Übungsaufgabe (versuche es zuerst selbst): Eine Methode <code>printQuadrat2</code> soll statt dieser
+          Diagonale die andere zeichnen &ndash; von rechts oben nach links unten, mit dem Zeichen <code>*</code>:
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Quadrat.java – Lösung printQuadrat2</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public void printQuadrat2() {
+    int zeile = 0;
+    while (zeile &lt; laenge) {
+        int spalte = 0;
+        while (spalte &lt; laenge) {
+            if (zeile == 0 || zeile == laenge-1
+                || spalte == 0 || spalte == laenge-1)
+            {
+                System.out.print("#");
+            } else if (spalte == laenge-1-zeile) {
+                System.out.print("*");
+            } else {
+                System.out.print(" ");
+            }
+            spalte++;
+        }
+        System.out.println();
+        zeile++;
+    }
+}</code></pre>
+</div>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-4">4 &mdash; Beispiel: Rechtecke mit Code-Wiederverwendung</h2>
+        <p>Rechtecke und Quadrate sollen in beliebiger Größe, mit Einrückung und frei wählbaren Zeichen gezeichnet werden (&bdquo;parametrierbar&ldquo;):</p>
+        <div class="figure-row">
+          <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Rechteck mit # und .</span>
+    <span class="code-lang">Text</span>
+  </div>
+  <pre><code class="language-plaintext">###########
+#.........#
+#.........#
+###########</code></pre>
+</div>
+          <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Rechteck mit @ und _</span>
+    <span class="code-lang">Text</span>
+  </div>
+  <pre><code class="language-plaintext">@@@@@@@@@@@@@@@@@@
+@________________@
+@________________@
+@________________@
+@@@@@@@@@@@@@@@@@@</code></pre>
+</div>
+        </div>
+        <p>
+          An diesem Beispiel lässt sich das Prinzip der <strong>Code-Wiederverwendung</strong> zeigen: Bestimmte
+          Teilaufgaben sollen nicht mehrfach implementiert werden. Das wäre nicht nur Mehrarbeit, spätere
+          Änderungen müssten auch an mehreren Stellen konsistent durchgeführt werden. Mehrfach auftretende,
+          ähnliche Codefragmente sind nahezu immer ein Indiz für schlechtes Design. Schon implementierte Methoden
+          sollen überall dort verwendet werden, wo sie als Teilaufgabe einer größeren Aufgabe auftreten.
+        </p>
+        <p>
+          Das Zeichnen eines Rechtecks enthält als Teilaufgabe das Zeichnen einer <em>Zeile</em>: Die erste und
+          letzte Zeile bestehen aus lauter gleichen Zeichen, die anderen haben links und rechts ein Randzeichen.
+          Ein eingerücktes Rechteck besteht aus eingerückten Zeilen:
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">SchleifenDemo.java</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public class SchleifenDemo {
+
+    public SchleifenDemo() {
+    }
+
+    public void zeichneLinie(int offset, int laenge) {
+        zeichneLinie(offset, laenge, '*', '#');
+    }
+
+    public void zeichneLinie(int offset, int laenge, char zeichen, char rand) {
+        if (offset &gt;= 0) {
+            int zaehler = 0;
+            while (zaehler &lt; offset) {
+                System.out.print(" ");
+                zaehler++;
+            }
+        } else {
+            System.out.println("Ungueltiger Offset: " + offset);
+        }
+        if (laenge &gt;= 0) {
+            int zaehler = 0;
+            while (zaehler &lt; laenge) {
+                if (zaehler == 0 || zaehler == laenge-1) {
+                    System.out.print(rand + " ");
+                } else {
+                    System.out.print(zeichen + " ");
+                }
+                zaehler++; // zaehler = zaehler + 1;
+            }
+            System.out.println(); // Zeilenumbruch
+        } else {
+            System.out.println("Fehler: laenge ungueltig: " + laenge);
+        }
+    }
+
+    // offset = horizontale Einrueckung
+    public void zeichneRechteck(int offset, int laenge, int hoehe, char zeichen, char rand) {
+        if (laenge &gt;= 0 &amp;&amp; hoehe &gt;= 0) {
+            int zeile = 0;
+            while (zeile &lt; hoehe) {
+                if (zeile == 0 || zeile == hoehe-1) {
+                    zeichneLinie(offset, laenge, rand, rand);
+                } else {
+                    zeichneLinie(offset, laenge, zeichen, rand);
+                }
+                zeile++;
+            }
+        } else {
+            System.out.println("Fehler, ungueltige laenge oder hoehe: " + laenge + ", " + hoehe);
+        }
+    }
+}</code></pre>
+</div>
+        <div class="callout callout-tip">
+  <div class="callout-icon">&#128161;</div>
+  <div class="callout-body">
+    <div class="callout-title">Warum ein Leerzeichen nach jedem Zeichen?</div>
+    <code>zeichneLinie</code> gibt nach jedem Zeichen ein Leerzeichen aus (<code>rand + " "</code>). Zeichen in der
+          Konsole sind etwa doppelt so hoch wie breit; mit dem Leerzeichen dazwischen sieht das Rechteck deutlich
+          rechteckiger aus &ndash; ein Quadrat wirkt dann tatsächlich quadratisch. Die Ausgabe sieht also so aus:
+          <code>#&nbsp;#&nbsp;#&nbsp;#&nbsp;#</code> bzw. <code>#&nbsp;.&nbsp;.&nbsp;.&nbsp;#</code>.
+  </div>
+</div>
+        <p>
+          Die Linien-Methoden können unabhängig von der eigentlichen Aufgabe getestet werden. Beim Testen des
+          Rechtecks kann man dann annehmen, dass das Zeichnen einer Linie funktioniert. Und <code>zeichneRechteck</code>
+          ist gut lesbar: Auf der innersten Ebene steht keine komplizierte Schleife, sondern ein selbsterklärender
+          Aufruf von <code>zeichneLinie</code>.
+        </p>
+        <p>
+          Das Beispiel zeigt auch sinnvolles <strong>Überladen</strong>: <code>zeichneLinie(int offset, int laenge,
+          char zeichen, char rand)</code> ist frei konfigurierbar, <code>zeichneLinie(int offset, int laenge)</code>
+          ruft sie nur mit Standardwerten auf. Die Weiterführung dieser Idee ergibt Quadrate &ndash; ein Quadrat ist
+          nur ein Spezialfall eines Rechtecks mit <code>laenge == hoehe</code>:
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">SchleifenDemo.java (Ergänzung)</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public void zeichneQuadrat(int offset, int laenge) {
+   zeichneQuadrat(offset, laenge, '.', '#');
+}
+
+public void zeichneQuadrat(int offset, int laenge, char zeichen, char rand) {
+    zeichneRechteck(offset, laenge, laenge, zeichen, rand);
+}</code></pre>
+</div>
+        <div class="callout callout-info">
+  <div class="callout-icon">&#8505;</div>
+  <div class="callout-body">
+    <div class="callout-title">Länge statt Breite</div>
+    <p>Von der üblichen Bezeichnung Länge/Breite wurde abgewichen, um die Entsprechung zu <code>laenge</code>
+          der Linie hervorzuheben.</p>
+  </div>
+</div>
+      </section>
+
+      <section class="section section-projekt">
+        <h2 id="projektschritt">Projektschritt</h2>
+<div class="projekt-box">
+  <div class="projekt-box-header">
+    <span class="projekt-step">Projektschritt 1.10</span>
+    <h3>Linien und Kosten-Balkendiagramm</h3>
+  </div>
+<p>Die Firma bekommt Hilfsmethoden mit Schleifen &ndash; <code>linie</code> (<code>for</code>) und <code>auffuellen</code> (<code>while</code>) &ndash; und gibt die Kosten als Balkendiagramm aus. Der Mitarbeiter liefert dazu seinen Balken (ein <code>#</code> pro angefangenen 500 Euro).</p>
+  <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">src/main/java/Mitarbeiter.java (neue Methode)</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">// ein '#' pro angefangenen 500 Euro Kosten, z. B. 2400 Euro -&gt; "#####"
+public String kostenBalken() {
+    String balken = "";
+    int kosten = getKostenProMonat();
+    int i = 0;
+    while (i &lt; kosten) {
+        balken += "#";
+        i += 500;
+    }
+    return balken;
+}</code></pre>
+</div>
+  <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">src/main/java/Firma.java (neue Methoden)</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">// Hilfsmethode: liefert eine Linie aus "laenge" gleichen Zeichen
+private String linie(char zeichen, int laenge) {
+    String s = "";
+    for (int i = 0; i &lt; laenge; i++) {
+        s += zeichen;
+    }
+    return s;
+}
+
+// Name auf eine fixe Breite mit Leerzeichen auffuellen (fuer Tabellen)
+private String auffuellen(String text, int breite) {
+    String s = text;
+    while (s.length() &lt; breite) {
+        s += " ";
+    }
+    return s;
+}
+
+public void printKostenBalken() {
+    System.out.println("Kosten pro Monat (# = 500 Euro)");
+    System.out.println(linie('=', 47));
+    if (ma1 != null) {
+        System.out.println(auffuellen(ma1.getName(), 16) + ma1.kostenBalken());
+    }
+    if (ma2 != null) {
+        System.out.println(auffuellen(ma2.getName(), 16) + ma2.kostenBalken());
+    }
+    if (ma3 != null) {
+        System.out.println(auffuellen(ma3.getName(), 16) + ma3.kostenBalken());
+    }
+    System.out.println(linie('=', 47));
+}</code></pre>
+</div>
+  <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Ausgabe</span>
+    <span class="code-lang">Text</span>
+  </div>
+  <pre><code class="language-plaintext">Kosten pro Monat (# = 500 Euro)
+===============================================
+Karl Maier      #####
+Susanne Huber   #####
+Sepp Gruber     ######
+===============================================</code></pre>
+</div>
+  <p>Auch <code>print()</code> verwendet jetzt <code>linie('-', 47)</code> statt der ausgeschriebenen Striche.</p>
+  <p class="mb-0">&#128193; Stand nach dieser Lektion: <a href="beispiele/1.10/src/main/java/Firma.java" target="_blank">beispiele/1.10/</a></p>
+</div>
+      </section>
+
+      <section class="section section-fehler">
+        <h2>Häufige Fehler</h2>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Off-by-one</div>
+  <p>Die Linie ist ein Zeichen zu lang oder zu kurz, das Quadrat hat eine Zeile zu viel.</p>
+          <p class="fehler-fix">Bei Start 0 und <code>&lt; laenge</code> gibt es genau <code>laenge</code> Durchläufe. <code>&lt;=</code> ergibt einen Durchlauf mehr. Im Zweifel mit kleinen Werten (0, 1, 2) durchspielen.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Zählvariable der inneren Schleife nicht zurückgesetzt</div>
+  <p>Beim Quadrat wird nur die erste Zeile gezeichnet, danach nur noch Zeilenumbrüche.</p>
+          <p class="fehler-fix"><code>int spalte = 0;</code> muss <em>innerhalb</em> der äußeren Schleife stehen, damit jede Zeile wieder bei Spalte 0 beginnt.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Strichpunkt nach dem Schleifenkopf</div>
+  <p><code>for (int i = 0; i &lt; 10; i++);</code> &ndash; der Rumpf wird nur einmal ausgeführt (bzw. <code>while (&hellip;);</code> hängt endlos).</p>
+          <p class="fehler-fix">Kein <code>;</code> direkt nach <code>for (&hellip;)</code> oder <code>while (&hellip;)</code> &ndash; der Strichpunkt ist sonst selbst der (leere) Schleifenrumpf.</p>
+</div>
+      </section>
+
+      <section class="section section-aufgaben">
+        <h2>Aufgaben</h2>
+        <div class="aufgaben-list">
+          <div class="aufgabe">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Aufgabe 1</span>
+    <span class="aufgabe-title">Rechteck und Christbaum</span>
+  </div>
+  <p>Mit Schleifen werden Muster auf die Konsole gezeichnet: zuerst ein Rechteck mit Offset, Rand- und Füllzeichen (aufgebaut aus Methoden für einzelne Linien), dann ein Christbaum mit Kugeln und Kerzen, die zufällig verteilt sind (Zufallszahlen: Lektion 1.8).</p>
+            <p class="mb-0"><a href="uebungen/lektion-1.10-uebung-1-rechteck-christbaum.pdf" target="_blank">&#128196; Übung 1.10-1 (PDF)</a></p>
+</div>
+          <div class="aufgabe">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Aufgabe 2</span>
+    <span class="aufgabe-title">Advent of Code 2019, Tag 4</span>
+  </div>
+  <p>Wie viele sechsstellige Passwörter in einem Zahlenbereich erfüllen bestimmte Regeln (zwei gleiche Nachbarziffern, Ziffern nie fallend)? Eine Schleife über alle Zahlen, die Ziffern werden als String mit <code>charAt</code> untersucht.</p>
+            <p class="mb-0"><a href="uebungen/lektion-1.10-uebung-2-advent-of-code.pdf" target="_blank">&#128196; Übung 1.10-2 (PDF)</a></p>
+</div>
+        </div>
+      </section>
+
+      <section class="section section-quiz">
+        <h2>Wissenskontrolle</h2>
+        <div class="quiz" id="quiz-10">
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 1</span> Wie oft wird der Rumpf von <code>for (int i = 0; i &lt; 5; i++)</code> ausgeführt?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-10-1"> <span>4-mal</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-10-1"> <span>5-mal</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-10-1"> <span>6-mal</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-10-1"> <span>unendlich oft</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> <code>i</code> nimmt die Werte 0, 1, 2, 3 und 4 an. Bei <code>i == 5</code> ist die Bedingung <code>i &lt; 5</code> falsch, die Schleife endet.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 2</span> Was unterscheidet <code>do-while</code> von <code>while</code>?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-10-2"> <span>Es gibt keinen Unterschied.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-10-2"> <span>Bei <code>do-while</code> wird der Rumpf mindestens einmal ausgeführt, weil die Bedingung erst am Ende geprüft wird.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-10-2"> <span><code>do-while</code> braucht keine Bedingung.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-10-2"> <span><code>do-while</code> läuft immer genau einmal.</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Die Bedingung steht bei <code>do-while</code> hinter dem Rumpf. Ist sie von Anfang an falsch, läuft <code>while</code> gar nicht, <code>do-while</code> einmal.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 3</span> Warum ist <code>int i = 0; while (i &lt; 10) { System.out.println(i); }</code> eine Endlosschleife?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-10-3"> <span>Weil <code>i</code> mit 0 beginnt.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-10-3"> <span>Weil <code>i</code> im Rumpf nie verändert wird und die Bedingung daher immer wahr bleibt.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-10-3"> <span>Weil <code>while</code> immer endlos läuft.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-10-3"> <span>Weil <code>println</code> die Schleife neu startet.</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Jede Schleife braucht eine Anweisung, die sie dem Ende näherbringt &ndash; hier fehlt <code>i++</code>.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 4</span> Mit zwei verschachtelten <code>for</code>-Schleifen soll ein Rechteck aus 3 Zeilen und 4 Spalten <code>#</code> gezeichnet werden. Wie oft wird <code>System.out.print("#")</code> insgesamt ausgeführt?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-10-4"> <span>7-mal</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-10-4"> <span>12-mal</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-10-4"> <span>3-mal</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-10-4"> <span>4-mal</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Die äußere Schleife läuft über die Zeilen (3), die innere für jede Zeile über die Spalten (4): 3 &times; 4 = 12 Ausgaben.</div>
+  </div>
+  <div class="quiz-summary"><span class="quiz-score"></span><button type="button" class="quiz-reset">Zur&uuml;cksetzen</button></div>
+</div>
+      </section>
+
+    </div>
+
+    <nav class="lesson-nav">
+      <a class="nav-btn" href="1.9-objekt-beziehungen.html">&larr; Lektion 1.9: Objekt-Beziehungen</a>
+      <span class="nav-center-info">Lektion 1.10</span>
+      <a class="nav-btn primary" href="1.11-statische-methoden.html">Lektion 1.11: Statische Methoden &amp; main &rarr;</a>
+    </nav>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>
+    const ham = document.getElementById('hamburger');
+    const sb = document.getElementById('sidebar');
+    const ov = document.getElementById('overlay');
+    ham.addEventListener('click', () => { sb.classList.toggle('open'); ov.classList.toggle('visible'); });
+    ov.addEventListener('click', () => { sb.classList.remove('open'); ov.classList.remove('visible'); });
+    const cur = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-link').forEach(l => {
+      if (l.getAttribute('href') === cur) l.classList.add('active');
+    });
+    const themeBtn = document.getElementById('theme-toggle');
+    const applyTheme = (t) => {
+      document.documentElement.setAttribute('data-theme', t);
+      if (themeBtn) themeBtn.innerHTML = t === 'dark' ? '&#9728;' : '&#9790;';
+    };
+    applyTheme(localStorage.getItem('kurs-theme') || 'dark');
+    setTimeout(() => document.documentElement.classList.add('theme-transitions'), 50);
+    if (themeBtn) themeBtn.addEventListener('click', () => {
+      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('kurs-theme', next);
+      applyTheme(next);
+    });
+    hljs.highlightAll();
+  </script>
+  <script>
+    document.querySelectorAll('.quiz').forEach((quiz) => {
+      const fragen = [...quiz.querySelectorAll('.quiz-frage')];
+      const score = quiz.querySelector('.quiz-score');
+      const update = () => {
+        const done = fragen.filter((f) => f.dataset.state).length;
+        const ok = fragen.filter((f) => f.dataset.state === 'ok').length;
+        score.textContent = done === 0
+          ? fragen.length + ' Fragen – wähle eine Antwort und prüfe sie.'
+          : ok + ' von ' + fragen.length + ' richtig'
+            + (done < fragen.length ? ' (' + done + ' von ' + fragen.length + ' bearbeitet)' : '');
+      };
+      fragen.forEach((f) => {
+        const inputs = [...f.querySelectorAll('input')];
+        const check = f.querySelector('.quiz-check');
+        const reveal = f.querySelector('.quiz-reveal');
+        const fb = f.querySelector('.quiz-feedback');
+        const exp = f.querySelector('.quiz-erklaerung');
+        inputs.forEach((i) => i.addEventListener('change', () => {
+          check.disabled = !inputs.some((x) => x.checked);
+        }));
+        const finish = (graded) => {
+          let allOk = true;
+          f.querySelectorAll('.quiz-opt').forEach((li) => {
+            const input = li.querySelector('input');
+            const corr = li.dataset.correct === '1';
+            if (corr !== input.checked) allOk = false;
+            if (corr) li.classList.add('opt-correct');
+            else if (input.checked) li.classList.add('opt-wrong');
+            input.disabled = true;
+          });
+          f.dataset.state = !graded ? 'shown' : (allOk ? 'ok' : 'wrong');
+          fb.className = 'quiz-feedback fb-' + f.dataset.state;
+          fb.textContent = !graded ? 'Lösung angezeigt.'
+            : (allOk ? '✔ Richtig!' : '✘ Leider nicht ganz – die richtige Lösung ist markiert.');
+          fb.hidden = false;
+          exp.hidden = false;
+          check.disabled = true;
+          reveal.disabled = true;
+          update();
+        };
+        check.addEventListener('click', () => finish(true));
+        reveal.addEventListener('click', () => finish(false));
+      });
+      quiz.querySelector('.quiz-reset').addEventListener('click', () => {
+        fragen.forEach((f) => {
+          delete f.dataset.state;
+          f.querySelectorAll('.quiz-opt').forEach((li) => li.classList.remove('opt-correct', 'opt-wrong'));
+          f.querySelectorAll('input').forEach((i) => { i.checked = false; i.disabled = false; });
+          f.querySelector('.quiz-check').disabled = true;
+          f.querySelector('.quiz-reveal').disabled = false;
+          f.querySelector('.quiz-feedback').hidden = true;
+          f.querySelector('.quiz-erklaerung').hidden = true;
+        });
+        update();
+      });
+      update();
+    });
+  </script>
+</body>
+
+</html>

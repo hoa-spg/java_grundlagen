@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<!-- GENERIERT von java/kurs/_build (java-grundlagen) – nicht direkt bearbeiten!
+     Quelle: java/kurs/_build/java-grundlagen/lessons/, bauen: python3 _build/build.py java-grundlagen -->
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>4.1 &ndash; Grundprinzipien des Web | Java-Grundlagen Kurs</title>
+  <script>(function () { var t = localStorage.getItem('kurs-theme') || 'dark'; document.documentElement.setAttribute('data-theme', t); })();</script>
+  <link rel="stylesheet" href="assets/kurs.css">
+  <link rel="stylesheet" id="hljs-theme"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+
+<body>
+
+  <button class="hamburger" id="hamburger" aria-label="Navigation &ouml;ffnen">&#9776;</button>
+  <div class="sidebar-overlay" id="overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html">
+        <span class="brand-icon">J</span>
+        <div>
+          <div class="brand-name">Java</div>
+          <div class="brand-sub">Grundlagen der Programmierung</div>
+        </div>
+      </a>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Dark/Light Mode"
+        title="Theme wechseln">&#9728;</button>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-group">
+        <div class="nav-group-label html-label">Teil 1 &mdash; Grundlagen</div>
+        <a class="nav-link" href="1.1-einfuehrung-entwicklungsumgebung.html"><span class="ln">1.1</span>Einf&uuml;hrung &amp; Entwicklungsumgebung</a>
+        <a class="nav-link" href="1.2-klassen-objekte.html"><span class="ln">1.2</span>Klassen, Objekte, Get &amp; Set</a>
+        <a class="nav-link" href="1.3-konstruktoren-methoden.html"><span class="ln">1.3</span>Konstruktoren, this &amp; Methoden</a>
+        <a class="nav-link" href="1.4-datentypen.html"><span class="ln">1.4</span>Datentypen</a>
+        <a class="nav-link" href="1.5-signatur-ueberladen.html"><span class="ln">1.5</span>Methoden, Signatur &amp; &Uuml;berladen</a>
+        <a class="nav-link" href="1.6-bedingungen-berechnungen.html"><span class="ln">1.6</span>Bedingungen &amp; Berechnungen</a>
+        <a class="nav-link" href="1.7-debugger-testklassen.html"><span class="ln">1.7</span>Debugger &amp; Testklassen</a>
+        <a class="nav-link" href="1.8-strings-random.html"><span class="ln">1.8</span>Strings &amp; Random</a>
+        <a class="nav-link" href="1.9-objekt-beziehungen.html"><span class="ln">1.9</span>Objekt-Beziehungen</a>
+        <a class="nav-link" href="1.10-schleifen.html"><span class="ln">1.10</span>Schleifen</a>
+        <a class="nav-link" href="1.11-statische-methoden.html"><span class="ln">1.11</span>Statische Methoden &amp; main</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label css-label">Teil 2 &mdash; Datenstrukturen &amp; OOP</div>
+        <a class="nav-link" href="2.1-intellij-junit.html"><span class="ln">2.1</span>IntelliJ, Maven &amp; JUnit</a>
+        <a class="nav-link" href="2.2-arrays.html"><span class="ln">2.2</span>Arrays</a>
+        <a class="nav-link" href="2.3-arrays-einfuegen-entfernen.html"><span class="ln">2.3</span>Arrays: Einf&uuml;gen &amp; Entfernen</a>
+        <a class="nav-link" href="2.4-sortieralgorithmen.html"><span class="ln">2.4</span>Sortieralgorithmen</a>
+        <a class="nav-link" href="2.5-objekt-arrays.html"><span class="ln">2.5</span>Objekt-Arrays</a>
+        <a class="nav-link" href="2.6-assoziation-equals.html"><span class="ln">2.6</span>Beidseitige Assoziation &amp; equals</a>
+        <a class="nav-link" href="2.7-collections.html"><span class="ln">2.7</span>Collections: ArrayList &amp; Co.</a>
+        <a class="nav-link" href="2.8-vererbung.html"><span class="ln">2.8</span>Vererbung &amp; Polymorphismus</a>
+        <a class="nav-link" href="2.9-abstrakt-interfaces.html"><span class="ln">2.9</span>Abstrakte Klassen &amp; Interfaces</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label rn-label">Teil 3 &mdash; Fortgeschrittene Konzepte</div>
+        <a class="nav-link" href="3.0-fail-early.html"><span class="ln">3.0</span>Fail Early statt Happy Path</a>
+        <a class="nav-link" href="3.1-exceptions.html"><span class="ln">3.1</span>Exceptions</a>
+        <a class="nav-link" href="3.2-hashset-treeset.html"><span class="ln">3.2</span>HashSet, TreeSet &amp; hashCode</a>
+        <a class="nav-link" href="3.3-serialisierung-dateien.html"><span class="ln">3.3</span>Serialisierung &amp; Dateien</a>
+        <a class="nav-link" href="3.4-git.html"><span class="ln">3.4</span>Versionsverwaltung mit Git</a>
+        <a class="nav-link" href="3.5-lambdas.html"><span class="ln">3.5</span>Lambda-Ausdr&uuml;cke</a>
+        <a class="nav-link" href="3.6-streams.html"><span class="ln">3.6</span>Die Streams-API</a>
+        <a class="nav-link" href="3.7-design-patterns.html"><span class="ln">3.7</span>Design-Patterns</a>
+        <a class="nav-link" href="3.8-model-klassen.html"><span class="ln">3.8</span>Model-Klassen f&uuml;r die GUI</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label react-label">Teil 4 &mdash; Webanwendungen mit Vaadin</div>
+        <a class="nav-link" href="4.1-web-grundlagen.html"><span class="ln">4.1</span>Grundprinzipien des Web</a>
+        <a class="nav-link" href="4.2-vaadin-einstieg.html"><span class="ln">4.2</span>Vaadin Flow &amp; Start-Paket</a>
+        <a class="nav-link" href="4.3-komponenten-layouts.html"><span class="ln">4.3</span>Komponenten &amp; Layouts</a>
+        <a class="nav-link" href="4.4-grid-routing-binding.html"><span class="ln">4.4</span>Tabellen, Routing &amp; Binding</a>
+        <a class="nav-link" href="4.5-mitarbeiterverwaltung.html"><span class="ln">4.5</span>Mitarbeiterverwaltung</a>
+      </div>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <header class="lesson-header">
+      <p class="lesson-eyebrow">Lektion 4.1 &mdash; Teil 4: Webanwendungen mit Vaadin</p>
+      <h1>Grundprinzipien des Web</h1>
+      <div class="lesson-tags">
+        <span class="tag tag-react">Web</span>
+        <span class="tag tag-time">ca. 90 min</span>
+        <span class="tag tag-level">Fortgeschritten</span>
+      </div>
+    </header>
+
+    <div class="content-area">
+      <section class="section section-lernziele">
+        <h2>Lernziele</h2>
+        <ul class="lernziele-list">
+          <li><a class="lernziel-link" href="#abschnitt-1">den Ablauf von HTTP-Request und -Response bei statischen Webseiten beschreiben<span class="lernziel-ziel">Abschnitt 1</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-2">die Rolle von JavaScript im Browser und von serverseitigen Skripten unterscheiden<span class="lernziel-ziel">Abschnitt 2</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-3">erklären, was eine Single Page Application ist und wie AJAX, JSON und REST zusammenspielen<span class="lernziel-ziel">Abschnitt 3</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-4">Bibliothek und Framework unterscheiden und <em>Inversion of Control</em> bzw. <em>Dependency Injection</em> grob erklären<span class="lernziel-ziel">Abschnitt 4</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-4">Backend- und Frontend-Frameworks einordnen und die Idee von Vaadin Flow beschreiben<span class="lernziel-ziel">Abschnitt 4</span></a></li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-1">1 &mdash; Statische Webseiten</h2>
+        <p>
+          Technische Grundlage moderner Webanwendungen ist die einfache statische Webseite: ein reines Textdokument mit
+          <code>html</code>-Code. Über einen <strong>HTTP-Request</strong> wird ein solches Dokument über eine URL
+          angefordert. Der Webserver prüft, ob im Dokumentenverzeichnis ein entsprechendes Dokument vorhanden ist, und
+          schickt es mit der <strong>HTTP-Response</strong> an den Client (z.&nbsp;B. einen Webbrowser auf einem Notebook)
+          zurück. Der Browser interpretiert das HTML-Dokument: Tags und Inhalte werden <em>gerendert</em> und als
+          formatiertes Dokument dargestellt.
+        </p>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/web-grundlagen-1.jpg" alt="Statische Webseite: Request, Datei vom Webserver, Response, Darstellung im Browser" loading="lazy" style="max-width:660px"></div>
+  <figcaption>Statische Webseite: Request, Datei vom Webserver, Response, Darstellung im Browser</figcaption>
+</figure>
+        <p>
+          Solche Seiten sind rein <em>statisch</em> &ndash; keinerlei Interaktion ist möglich. Jede Form von nicht-statischem
+          Inhalt (Benutzereingaben verarbeiten, Animationen &hellip;) erfordert die Ausführung eines <em>Programms</em>, und
+          zwar <strong>im</strong> Webbrowser. Dafür hat sich <strong>JavaScript</strong> als vorherrschende Sprache etabliert.
+          Sie wird <em>interpretiert</em>: Die JavaScript-Engine des Browsers liest den Code ein und arbeitet ihn Zeile für
+          Zeile ab.
+        </p>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/web-grundlagen-2.jpg" alt="JavaScript wird mit der Seite ausgeliefert und im Browser ausgeführt" loading="lazy" style="max-width:660px"></div>
+  <figcaption>JavaScript wird mit der Seite ausgeliefert und im Browser ausgeführt</figcaption>
+</figure>
+        <p>
+          Eine typische Anwendung sind Änderungen im <strong>DOM</strong> (<em>Document Object Model</em>): Über den DOM
+          lassen sich alle Elemente (Eingabefelder, Textbereiche, Tags, Buttons) mit JavaScript ansprechen &ndash; Werte
+          berechnen und anzeigen, Zeilen zu Tabellen hinzufügen u.&nbsp;v.&nbsp;m. Bibliotheken wie <strong>jQuery</strong>
+          vereinfachen u.&nbsp;a. den Zugriff auf den DOM und die Ereignisbehandlung; in den letzten Jahren hat jQuery aber
+          an Bedeutung verloren.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-2">2 &mdash; Serverseitige Programme und Datenbanken</h2>
+        <p>
+          Bei Webanwendungen genügen statische Seiten am Server nicht &ndash; HTML-Seiten müssen auch
+          <em>serverseitig dynamisch</em> aufgebaut werden. Früher wurde dafür oft PHP verwendet (auch heute noch), es gibt
+          aber zahlreiche Alternativen. Der HTTP-Request enthält den Namen eines <em>Skripts</em> (Programms). Es wird nicht
+          an den Client geschickt, sondern zuerst <strong>ausgeführt</strong>; seine Ausgabe ist üblicherweise eine
+          HTML-Seite (mit enthaltenem JavaScript), die an den Client zurückgeht.
+        </p>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/web-grundlagen-3.jpg" alt="Serverseitiges Skript erzeugt die HTML-Seite dynamisch" loading="lazy" style="max-width:660px"></div>
+  <figcaption>Serverseitiges Skript erzeugt die HTML-Seite dynamisch</figcaption>
+</figure>
+        <p>
+          Wesentliche Motivation ist oft der Zugriff auf <strong>Datenbanken</strong>: Er kann nicht direkt von einer
+          HTML-Seite aus erfolgen, es braucht ein ausführbares Programm. Früher wurde das Ergebnis einer Datenbankabfrage oft
+          direkt im Skript in eine HTML-Tabelle eingetragen.
+        </p>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/web-grundlagen-4.jpg" alt="Das Skript fragt die Datenbank ab und baut das Ergebnis in die Seite ein" loading="lazy" style="max-width:660px"></div>
+  <figcaption>Das Skript fragt die Datenbank ab und baut das Ergebnis in die Seite ein</figcaption>
+</figure>
+        <p>
+          Mit diesen Techniken lassen sich grundsätzlich beliebige Webanwendungen bauen. Jede Interaktion mit neuen Daten
+          erfordert aber das <strong>komplette Neuladen</strong> der Seite; bei langsamer Verbindung blitzt kurz eine weiße
+          Seite zwischen vorheriger und nächster Seite auf. Dieser &bdquo;Flickering-Effekt&ldquo; prägt das typische Look and
+          Feel der 2000er-Jahre und wird manchmal als störend empfunden.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-3">3 &mdash; Single Page Applications, JSON und REST</h2>
+        <p>
+          Moderne Webanwendungen sind meist <strong>Single Page Applications</strong> (SPA). Nach einer Benutzerinteraktion
+          laden sie nur die <em>Daten</em> vom Server, nicht Layout und Struktur der Seite. Das geschieht mit
+          <strong>AJAX</strong>, einem asynchronen JavaScript-Aufruf: Der Client setzt ihn ab, ohne dass sein Programmfluss
+          unterbrochen wird. Sobald der Server die Daten liefert, übernimmt eine JavaScript-Funktion sie und fügt sie in die
+          bestehende Seite ein.
+        </p>
+        <p>
+          Das Format für den Datentransfer ist meist <strong>JSON</strong> &ndash; eine einfache Variante, Objektdaten rein
+          textuell zu <em>serialisieren</em> (vgl. Lektion 3.3).
+        </p>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/web-grundlagen-5.jpg" alt="Single Page Application: Daten (JSON) statt ganzer Seiten über eine REST-Schnittstelle" loading="lazy" style="max-width:660px"></div>
+  <figcaption>Single Page Application: Daten (JSON) statt ganzer Seiten über eine REST-Schnittstelle</figcaption>
+</figure>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Ein Employee als JSON</span>
+    <span class="code-lang">JSON</span>
+  </div>
+  <pre><code class="language-json">{
+  "id": 1001,
+  "firstName": "Donald",
+  "lastName": "Knuth",
+  "role": "DEVELOPER",
+  "salary": 12000,
+  "subcontractor": false
+}</code></pre>
+</div>
+        <p>
+          Als Schnittstellen zum Abrufen von Daten haben sich <strong>REST</strong>-Schnittstellen etabliert
+          (<em>Representational State Transfer</em>). REST ist im Wesentlichen <strong>zustandslos</strong>: Jede Anfrage ist
+          unabhängig von vorangegangenen Anfragen &ndash; optimale Voraussetzungen dafür, dass viele Clients mit einem Backend
+          am Server kommunizieren.
+        </p>
+        <p>
+          Webanwendungen sind also komplexer als Desktop-Anwendungen: wegen der expliziten Client-Server-Architektur und der
+          vielen beteiligten Technologien &ndash; HTML, CSS, JavaScript, evtl. jQuery, Java (oder C#, Node.js, PHP &hellip;),
+          REST, JSON, HTTP usw.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-4">4 &mdash; Frameworks</h2>
+        <p>
+          Im Backend wie im Frontend gibt es viele immer wiederkehrende Aufgaben. Moderne Webanwendungen werden deshalb
+          nahezu immer mit <strong>Frameworks</strong> erstellt. Im Gegensatz zu Klassenbibliotheken geben Frameworks viel
+          von der Struktur der Programme vor:
+        </p>
+        <div class="two-col">
+          <div>
+            <h4>Bibliothek</h4>
+            <p>Dein Code erzeugt Objekte der Bibliotheksklassen und ruft ihre Methoden auf (z.&nbsp;B. <code>ArrayList</code>, <code>Random</code>). Du steuerst den Ablauf.</p>
+          </div>
+          <div>
+            <h4>Framework</h4>
+            <p>Du schreibst Klassen nach bestimmten Vorgaben; das Framework startet und verwendet sie zur Laufzeit. Das Framework steuert den Ablauf (<em>Inversion of Control</em>).</p>
+          </div>
+        </div>
+        <p>
+          Im <strong>Backend</strong> hat sich im Java-Bereich <strong>Spring</strong> etabliert, im C#-Umfeld
+          <strong>.NET</strong>. Beide unterstützen wesentliche Aspekte wie REST-Schnittstellen, Routing, Datenbankanbindung
+          und Security, und beide folgen dem <em>Inversion of Control</em>-Prinzip: Klassen sollen nicht selbst für die
+          Erzeugung ihrer Abhängigkeiten verantwortlich sein; diese werden ihnen (im Konstruktor) übergeben
+          (<strong>Dependency Injection</strong>). Der Programmablauf wird nur teilweise explizit ausprogrammiert: Bestimmte
+          Klassen werden automatisch gefunden und gemäß Konfiguration miteinander &bdquo;verdrahtet&ldquo;. So startet das
+          Framework &bdquo;automatisch&ldquo; einen Webserver; als Programmierer schreibt man spezielle Klassen mit einem
+          hinterlegten URL-Pfad und Methoden zum Lesen und Ändern der Daten, und das Framework verwendet beim Aufruf der URL
+          genau diese Klassen.
+        </p>
+        <p>
+          Im Java-Bereich gibt es Java EE (Enterprise Edition, heute Jakarta EE) als Alternative zu Spring, bei Python haben
+          sich Flask und Django etabliert. Viele Prinzipien sind bei vielen Frameworks ähnlich.
+        </p>
+        <p>
+          Im <strong>Frontend</strong> haben sich Frameworks wie Angular, React oder Vue etabliert. Sie setzen auf JavaScript
+          bzw. TypeScript (eine typisierte Variante von JavaScript) auf und befassen sich vor allem mit dem
+          <strong>Binden der Daten an die Benutzeroberfläche</strong> (Template).
+        </p>
+        <p>
+          Diese Frameworks erleichtern den Entwickleralltag erheblich, die Lernkurve für moderne Single Page Applications ist
+          aber relativ steil. Das in den folgenden Lektionen vorgestellte <strong>Vaadin Flow</strong> umgeht weite Teile
+          dieser Komplexität: Webanwendungen entstehen nahezu ausschließlich mit Java-Objekten, der Client-Server-Aspekt wird
+          für den Entwickler weitgehend transparent. Trotzdem sind in Vaadin-Anwendungen viele allgemeine Design-Prinzipien
+          so umgesetzt, dass sie sich leicht auf andere Frameworks übertragen lassen.
+        </p>
+        <div class="callout callout-tip">
+  <div class="callout-icon">&#128161;</div>
+  <div class="callout-body">
+    <div class="callout-title">Der andere Weg</div>
+    <p>Wer Webanwendungen mit HTML, CSS, JavaScript und React bauen will, findet dazu eigene Kurse:
+          <a href="../html_css/">HTML &amp; CSS</a>,
+          <a href="../javascript/">JavaScript</a> und
+          <a href="../react/">React</a> (Web- und Mobile Computing).</p>
+  </div>
+</div>
+      </section>
+
+      <section class="section section-projekt">
+        <h2 id="projektschritt">Projektschritt</h2>
+<div class="projekt-box">
+  <div class="projekt-box-header">
+    <span class="projekt-step">Projektschritt 4.1</span>
+    <h3>Die Weboberfläche planen</h3>
+  </div>
+<p>Bevor programmiert wird, planen wir die Seiten (<em>Views</em>) der Personalverwaltung im Browser. Jede View bekommt eine URL (<em>Route</em>); alle teilen sich einen Rahmen mit Menü. Die Daten kommen aus den Model-Klassen von Lektion 3.8 (<code>Company.getInstance()</code>).</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>View</th><th>Route</th><th>Inhalt</th><th>Lektion</th></tr></thead>
+      <tbody>
+        <tr><td><code>MainLayout</code></td><td>&ndash;</td><td>Rahmen: Titelleiste, Menü mit Links zu allen Views</td><td>4.2</td></tr>
+        <tr><td><code>AboutView</code></td><td><code>/</code>, <code>/about</code></td><td>Startseite mit Textfeld, Button, Benachrichtigung und Dialog</td><td>4.2</td></tr>
+        <tr><td><code>CompanyView</code></td><td><code>/company</code></td><td>Formular für Firmenname und Adresse, Speichern/Laden als CSV</td><td>4.3, 4.4, 4.5</td></tr>
+        <tr><td><code>EmployeesListView</code></td><td><code>/employees</code></td><td>Tabelle aller Mitarbeiter mit Bearbeiten/Löschen</td><td>4.4, 4.5</td></tr>
+        <tr><td><code>EmployeeView</code></td><td><code>/employee</code>, <code>/employee/1002</code></td><td>Formular für einen neuen bzw. bestehenden Mitarbeiter</td><td>4.4, 4.5</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Skizziere jede View auf Papier: Welche Eingabefelder (Text, Datum, Auswahl, Checkbox) braucht sie, welche Buttons, und welche Methode des Models wird beim Klick aufgerufen?</p>
+  <p class="mb-0">&#128193; Noch kein Code &ndash; das Vaadin-Projekt entsteht in Lektion 4.2.</p>
+</div>
+      </section>
+
+      <section class="section section-fehler">
+        <h2>Häufige Fehler</h2>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: JavaScript und Java verwechselt</div>
+  <p>&bdquo;Der Browser führt unsere Java-Klassen aus.&ldquo;</p>
+          <p class="fehler-fix">Im Browser läuft JavaScript. Java läuft am Server. Vaadin erzeugt aus den Java-Komponenten HTML/JavaScript für den Browser und kümmert sich um die Kommunikation &ndash; die Java-Logik bleibt am Server.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Zustand in REST erwartet</div>
+  <p>Ein REST-Aufruf soll sich &bdquo;merken&ldquo;, welche Seite der Benutzer zuvor geöffnet hat.</p>
+          <p class="fehler-fix">REST ist zustandslos: Jede Anfrage muss alle nötigen Informationen enthalten (z.&nbsp;B. die Id in der URL).</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Datenbank direkt aus HTML</div>
+  <p>Man versucht, aus einer HTML-Seite heraus direkt auf die Datenbank zuzugreifen.</p>
+          <p class="fehler-fix">Datenbankzugriffe gehören in ein Programm am Server (Backend); der Browser bekommt nur die Ergebnisse.</p>
+</div>
+      </section>
+
+      <section class="section section-quiz">
+        <h2>Wissenskontrolle</h2>
+        <div class="quiz" id="quiz-30">
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 1</span> Was passiert, wenn der Browser eine statische Webseite aufruft?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-30-1"> <span>Der Server führt Java-Code aus und erzeugt die Seite neu.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-30-1"> <span>Der Browser schickt einen HTTP-Request, der Server antwortet mit der fertigen HTML-Datei (HTTP-Response).</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-30-1"> <span>Der Browser lädt die ganze Website auf einmal herunter.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-30-1"> <span>Die Seite wird aus der Datenbank des Browsers geladen.</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Bei statischen Seiten liefert der Server Dateien so aus, wie sie gespeichert sind. Dynamische Inhalte entstehen erst durch Programme am Server oder JavaScript im Browser.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 2</span> Was ist eine <strong>Single Page Application</strong>?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-30-2"> <span>eine Website mit nur einer einzigen Unterseite</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-30-2"> <span>eine Webanwendung, die einmal geladen wird und danach Daten (z.&nbsp;B. als JSON) nachlädt, ohne die Seite komplett neu zu laden</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-30-2"> <span>eine Anwendung, die nur offline funktioniert</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-30-2"> <span>eine Seite ohne JavaScript</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> JavaScript im Browser holt per AJAX Daten von einer REST-Schnittstelle und aktualisiert nur die betroffenen Teile der Seite.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 3</span> Was unterscheidet ein <strong>Framework</strong> von einer Bibliothek?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-30-3"> <span>Ein Framework ist immer kostenlos.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-30-3"> <span>Eine Bibliothek ruft dein Code auf; ein Framework ruft deinen Code auf (Inversion of Control).</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-30-3"> <span>Eine Bibliothek ist größer als ein Framework.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-30-3"> <span>Es gibt keinen Unterschied.</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Beim Framework gibt der Rahmen den Ablauf vor: Du schreibst Klassen und Methoden, die das Framework zur passenden Zeit aufruft &ndash; etwa eine View, wenn jemand eine bestimmte URL öffnet.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 4</span> Was ist die Grundidee von <strong>Vaadin Flow</strong>?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-30-4"> <span>Webseiten werden ausschließlich in HTML geschrieben.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-30-4"> <span>Die Oberfläche wird in Java am Server programmiert; Vaadin kümmert sich um HTML, JavaScript und die Kommunikation mit dem Browser.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-30-4"> <span>Vaadin ist eine Datenbank.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-30-4"> <span>Vaadin läuft nur im Browser, ganz ohne Server.</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Mit Vaadin Flow schreibt man Komponenten und Layouts als Java-Objekte, ohne selbst HTML oder JavaScript zu schreiben.</div>
+  </div>
+  <div class="quiz-summary"><span class="quiz-score"></span><button type="button" class="quiz-reset">Zur&uuml;cksetzen</button></div>
+</div>
+      </section>
+
+    </div>
+
+    <nav class="lesson-nav">
+      <a class="nav-btn" href="3.8-model-klassen.html">&larr; Lektion 3.8: Model-Klassen f&uuml;r die GUI</a>
+      <span class="nav-center-info">Lektion 4.1</span>
+      <a class="nav-btn primary" href="4.2-vaadin-einstieg.html">Lektion 4.2: Vaadin Flow &amp; Start-Paket &rarr;</a>
+    </nav>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>
+    const ham = document.getElementById('hamburger');
+    const sb = document.getElementById('sidebar');
+    const ov = document.getElementById('overlay');
+    ham.addEventListener('click', () => { sb.classList.toggle('open'); ov.classList.toggle('visible'); });
+    ov.addEventListener('click', () => { sb.classList.remove('open'); ov.classList.remove('visible'); });
+    const cur = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-link').forEach(l => {
+      if (l.getAttribute('href') === cur) l.classList.add('active');
+    });
+    const themeBtn = document.getElementById('theme-toggle');
+    const applyTheme = (t) => {
+      document.documentElement.setAttribute('data-theme', t);
+      if (themeBtn) themeBtn.innerHTML = t === 'dark' ? '&#9728;' : '&#9790;';
+    };
+    applyTheme(localStorage.getItem('kurs-theme') || 'dark');
+    setTimeout(() => document.documentElement.classList.add('theme-transitions'), 50);
+    if (themeBtn) themeBtn.addEventListener('click', () => {
+      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('kurs-theme', next);
+      applyTheme(next);
+    });
+    hljs.highlightAll();
+  </script>
+  <script>
+    document.querySelectorAll('.quiz').forEach((quiz) => {
+      const fragen = [...quiz.querySelectorAll('.quiz-frage')];
+      const score = quiz.querySelector('.quiz-score');
+      const update = () => {
+        const done = fragen.filter((f) => f.dataset.state).length;
+        const ok = fragen.filter((f) => f.dataset.state === 'ok').length;
+        score.textContent = done === 0
+          ? fragen.length + ' Fragen – wähle eine Antwort und prüfe sie.'
+          : ok + ' von ' + fragen.length + ' richtig'
+            + (done < fragen.length ? ' (' + done + ' von ' + fragen.length + ' bearbeitet)' : '');
+      };
+      fragen.forEach((f) => {
+        const inputs = [...f.querySelectorAll('input')];
+        const check = f.querySelector('.quiz-check');
+        const reveal = f.querySelector('.quiz-reveal');
+        const fb = f.querySelector('.quiz-feedback');
+        const exp = f.querySelector('.quiz-erklaerung');
+        inputs.forEach((i) => i.addEventListener('change', () => {
+          check.disabled = !inputs.some((x) => x.checked);
+        }));
+        const finish = (graded) => {
+          let allOk = true;
+          f.querySelectorAll('.quiz-opt').forEach((li) => {
+            const input = li.querySelector('input');
+            const corr = li.dataset.correct === '1';
+            if (corr !== input.checked) allOk = false;
+            if (corr) li.classList.add('opt-correct');
+            else if (input.checked) li.classList.add('opt-wrong');
+            input.disabled = true;
+          });
+          f.dataset.state = !graded ? 'shown' : (allOk ? 'ok' : 'wrong');
+          fb.className = 'quiz-feedback fb-' + f.dataset.state;
+          fb.textContent = !graded ? 'Lösung angezeigt.'
+            : (allOk ? '✔ Richtig!' : '✘ Leider nicht ganz – die richtige Lösung ist markiert.');
+          fb.hidden = false;
+          exp.hidden = false;
+          check.disabled = true;
+          reveal.disabled = true;
+          update();
+        };
+        check.addEventListener('click', () => finish(true));
+        reveal.addEventListener('click', () => finish(false));
+      });
+      quiz.querySelector('.quiz-reset').addEventListener('click', () => {
+        fragen.forEach((f) => {
+          delete f.dataset.state;
+          f.querySelectorAll('.quiz-opt').forEach((li) => li.classList.remove('opt-correct', 'opt-wrong'));
+          f.querySelectorAll('input').forEach((i) => { i.checked = false; i.disabled = false; });
+          f.querySelector('.quiz-check').disabled = true;
+          f.querySelector('.quiz-reveal').disabled = false;
+          f.querySelector('.quiz-feedback').hidden = true;
+          f.querySelector('.quiz-erklaerung').hidden = true;
+        });
+        update();
+      });
+      update();
+    });
+  </script>
+</body>
+
+</html>

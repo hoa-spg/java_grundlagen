@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<!-- GENERIERT von java/kurs/_build (java-grundlagen) – nicht direkt bearbeiten!
+     Quelle: java/kurs/_build/java-grundlagen/lessons/, bauen: python3 _build/build.py java-grundlagen -->
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.8 &ndash; Vererbung &amp; Polymorphismus | Java-Grundlagen Kurs</title>
+  <script>(function () { var t = localStorage.getItem('kurs-theme') || 'dark'; document.documentElement.setAttribute('data-theme', t); })();</script>
+  <link rel="stylesheet" href="assets/kurs.css">
+  <link rel="stylesheet" id="hljs-theme"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+
+<body>
+
+  <button class="hamburger" id="hamburger" aria-label="Navigation &ouml;ffnen">&#9776;</button>
+  <div class="sidebar-overlay" id="overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html">
+        <span class="brand-icon">J</span>
+        <div>
+          <div class="brand-name">Java</div>
+          <div class="brand-sub">Grundlagen der Programmierung</div>
+        </div>
+      </a>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Dark/Light Mode"
+        title="Theme wechseln">&#9728;</button>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-group">
+        <div class="nav-group-label html-label">Teil 1 &mdash; Grundlagen</div>
+        <a class="nav-link" href="1.1-einfuehrung-entwicklungsumgebung.html"><span class="ln">1.1</span>Einf&uuml;hrung &amp; Entwicklungsumgebung</a>
+        <a class="nav-link" href="1.2-klassen-objekte.html"><span class="ln">1.2</span>Klassen, Objekte, Get &amp; Set</a>
+        <a class="nav-link" href="1.3-konstruktoren-methoden.html"><span class="ln">1.3</span>Konstruktoren, this &amp; Methoden</a>
+        <a class="nav-link" href="1.4-datentypen.html"><span class="ln">1.4</span>Datentypen</a>
+        <a class="nav-link" href="1.5-signatur-ueberladen.html"><span class="ln">1.5</span>Methoden, Signatur &amp; &Uuml;berladen</a>
+        <a class="nav-link" href="1.6-bedingungen-berechnungen.html"><span class="ln">1.6</span>Bedingungen &amp; Berechnungen</a>
+        <a class="nav-link" href="1.7-debugger-testklassen.html"><span class="ln">1.7</span>Debugger &amp; Testklassen</a>
+        <a class="nav-link" href="1.8-strings-random.html"><span class="ln">1.8</span>Strings &amp; Random</a>
+        <a class="nav-link" href="1.9-objekt-beziehungen.html"><span class="ln">1.9</span>Objekt-Beziehungen</a>
+        <a class="nav-link" href="1.10-schleifen.html"><span class="ln">1.10</span>Schleifen</a>
+        <a class="nav-link" href="1.11-statische-methoden.html"><span class="ln">1.11</span>Statische Methoden &amp; main</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label css-label">Teil 2 &mdash; Datenstrukturen &amp; OOP</div>
+        <a class="nav-link" href="2.1-intellij-junit.html"><span class="ln">2.1</span>IntelliJ, Maven &amp; JUnit</a>
+        <a class="nav-link" href="2.2-arrays.html"><span class="ln">2.2</span>Arrays</a>
+        <a class="nav-link" href="2.3-arrays-einfuegen-entfernen.html"><span class="ln">2.3</span>Arrays: Einf&uuml;gen &amp; Entfernen</a>
+        <a class="nav-link" href="2.4-sortieralgorithmen.html"><span class="ln">2.4</span>Sortieralgorithmen</a>
+        <a class="nav-link" href="2.5-objekt-arrays.html"><span class="ln">2.5</span>Objekt-Arrays</a>
+        <a class="nav-link" href="2.6-assoziation-equals.html"><span class="ln">2.6</span>Beidseitige Assoziation &amp; equals</a>
+        <a class="nav-link" href="2.7-collections.html"><span class="ln">2.7</span>Collections: ArrayList &amp; Co.</a>
+        <a class="nav-link" href="2.8-vererbung.html"><span class="ln">2.8</span>Vererbung &amp; Polymorphismus</a>
+        <a class="nav-link" href="2.9-abstrakt-interfaces.html"><span class="ln">2.9</span>Abstrakte Klassen &amp; Interfaces</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label rn-label">Teil 3 &mdash; Fortgeschrittene Konzepte</div>
+        <a class="nav-link" href="3.0-fail-early.html"><span class="ln">3.0</span>Fail Early statt Happy Path</a>
+        <a class="nav-link" href="3.1-exceptions.html"><span class="ln">3.1</span>Exceptions</a>
+        <a class="nav-link" href="3.2-hashset-treeset.html"><span class="ln">3.2</span>HashSet, TreeSet &amp; hashCode</a>
+        <a class="nav-link" href="3.3-serialisierung-dateien.html"><span class="ln">3.3</span>Serialisierung &amp; Dateien</a>
+        <a class="nav-link" href="3.4-git.html"><span class="ln">3.4</span>Versionsverwaltung mit Git</a>
+        <a class="nav-link" href="3.5-lambdas.html"><span class="ln">3.5</span>Lambda-Ausdr&uuml;cke</a>
+        <a class="nav-link" href="3.6-streams.html"><span class="ln">3.6</span>Die Streams-API</a>
+        <a class="nav-link" href="3.7-design-patterns.html"><span class="ln">3.7</span>Design-Patterns</a>
+        <a class="nav-link" href="3.8-model-klassen.html"><span class="ln">3.8</span>Model-Klassen f&uuml;r die GUI</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label react-label">Teil 4 &mdash; Webanwendungen mit Vaadin</div>
+        <a class="nav-link" href="4.1-web-grundlagen.html"><span class="ln">4.1</span>Grundprinzipien des Web</a>
+        <a class="nav-link" href="4.2-vaadin-einstieg.html"><span class="ln">4.2</span>Vaadin Flow &amp; Start-Paket</a>
+        <a class="nav-link" href="4.3-komponenten-layouts.html"><span class="ln">4.3</span>Komponenten &amp; Layouts</a>
+        <a class="nav-link" href="4.4-grid-routing-binding.html"><span class="ln">4.4</span>Tabellen, Routing &amp; Binding</a>
+        <a class="nav-link" href="4.5-mitarbeiterverwaltung.html"><span class="ln">4.5</span>Mitarbeiterverwaltung</a>
+      </div>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <header class="lesson-header">
+      <p class="lesson-eyebrow">Lektion 2.8 &mdash; Teil 2: Datenstrukturen &amp; OOP</p>
+      <h1>Vererbung &amp; Polymorphismus</h1>
+      <div class="lesson-tags">
+        <span class="tag tag-css">Vererbung</span>
+        <span class="tag tag-time">ca. 2 &times; 90 min</span>
+        <span class="tag tag-level">Fortgeschritten</span>
+      </div>
+    </header>
+
+    <div class="content-area">
+      <section class="section section-lernziele">
+        <h2>Lernziele</h2>
+        <ul class="lernziele-list">
+          <li><a class="lernziel-link" href="#abschnitt-2">Probleme von dupliziertem Code erkennen und mit Vererbung beheben<span class="lernziel-ziel">Abschnitt 2</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-3">eine Unterklasse mit <code>extends</code> ableiten und den Konstruktor der Basisklasse mit <code>super(&hellip;)</code> aufrufen<span class="lernziel-ziel">Abschnitt 3</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-4">Methoden mit <code>@Override</code> überschreiben und mit <code>super.methode()</code> die Basisversion wiederverwenden<span class="lernziel-ziel">Abschnitt 4</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-5">Polymorphismus erklären: Objekte von Unterklassen dort verwenden, wo die Basisklasse erwartet wird<span class="lernziel-ziel">Abschnitt 5</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-2">den ternären Operator <code>bedingung ? a : b</code> lesen und schreiben<span class="lernziel-ziel">Abschnitt 2</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-5">die Klasse <code>Object</code> als Basis aller Klassen kennen<span class="lernziel-ziel">Abschnitt 5</span></a></li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-1">1 &mdash; Vererbung: die Idee</h2>
+        <p>
+          Die Vererbung ist ein zentrales Konzept der objektorientierten Programmierung: Klassen werden in
+          hierarchische Beziehungen gestellt. Leitet eine Klasse von einer anderen <em>ab</em>, heißt die ableitende
+          Klasse <strong>Unterklasse</strong> (Subklasse), die andere <strong>Basisklasse</strong> (Oberklasse).
+          Öffentliche Methoden der Basisklasse sind in der Unterklasse automatisch vorhanden und können bei ihren
+          Objekten verwendet werden, auch wenn sie dort nicht im Code stehen.
+        </p>
+        <p>
+          Vererbung wird oft eingesetzt, um <em>speziellere</em> Varianten von Klassen zu erzeugen, ohne den Code der
+          Basisklasse neu zu implementieren. Unterklassen können überall dort verwendet werden, wo ihre Basisklasse
+          erwartet wird &ndash; z.&nbsp;B. bei Parametern oder in Collections.
+        </p>
+        <p>
+          Beispiel: Das Personal einer <code>Firma</code> besteht aus <code>Arbeiter</code>n und
+          <code>Angestellte</code>n. Gemeinsam haben sie <code>name: String</code>, <code>geburtsjahr: int</code>,
+          <code>stundenlohn: int</code> und <code>anzahlWochenStunden: int</code>. Ein Arbeiter kann
+          <code>facharbeiter: boolean</code> sein, ein Angestellter eine <code>ueberstundenPauschale: boolean</code>
+          haben. Viele Gemeinsamkeiten &ndash; aber auch Unterschiede.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-2">2 &mdash; Der naive (falsche) Zugang ohne Vererbung</h2>
+        <p>Zuerst eine Umsetzung ohne Vererbung &ndash; vor allem, um ihre Nachteile zu zeigen:</p>
+        <details class="code-collapse">
+  <summary><span class="code-filename">Angestellter.java (ohne Vererbung)</span> <span class="code-collapse-hint">Code anzeigen (106 Zeilen)</span></summary>
+<div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Angestellter.java (ohne Vererbung)</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public class Angestellter {
+
+    private String name;
+    private int geburtsjahr;
+    private int stundenlohn;
+    private int anzahlWochenStunden;
+    private boolean ueberstundenPauschale;
+
+
+    public Angestellter() {
+        setName("n/a");
+        setGeburtsjahr(1900);
+        setStundenlohn(10);
+        setAnzahlWochenStunden(40);
+        setUeberstundenPauschale(false);
+    }
+
+    public Angestellter(String name, int geburtsjahr, int stundenlohn,
+                        int anzahlWochenStunden, boolean ueberstundenPauschale)
+    {
+        setName(name);
+        setGeburtsjahr(geburtsjahr);
+        setStundenlohn(stundenlohn);
+        setAnzahlWochenStunden(anzahlWochenStunden);
+        setUeberstundenPauschale(ueberstundenPauschale);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        if (name != null &amp;&amp; !name.isEmpty()) {
+            this.name = name;
+        } else {
+            System.out.println("Fehler: ungueltiger Name: " + name);
+        }
+    }
+
+    public int getGeburtsjahr() {
+        return geburtsjahr;
+    }
+
+    public void setGeburtsjahr(int geburtsjahr) {
+        if (geburtsjahr &gt;= 1900 &amp;&amp; geburtsjahr &lt;= 2050) {
+            this.geburtsjahr = geburtsjahr;
+        } else {
+            System.out.println("Fehler: ungueltiges Geburtsjahr: " + geburtsjahr);
+        }
+    }
+
+    public int getStundenlohn() {
+        return stundenlohn;
+    }
+
+    public void setStundenlohn(int stundenlohn) {
+        if (stundenlohn &gt; 7 &amp;&amp; stundenlohn &lt; 1000) {
+            this.stundenlohn = stundenlohn;
+        } else {
+            System.out.println("Fehler: ungueltiger Stundenlohn: " + stundenlohn);
+        }
+    }
+
+    public int getAnzahlWochenStunden() {
+        return anzahlWochenStunden;
+    }
+
+    public void setAnzahlWochenStunden(int anzahlWochenStunden) {
+        if (anzahlWochenStunden &gt; 0 &amp;&amp; anzahlWochenStunden &lt;= 50) {
+            this.anzahlWochenStunden = anzahlWochenStunden;
+        } else {
+            System.out.println("Fehler: ungueltige Wochenstundenanzahl: "
+                               + anzahlWochenStunden);
+        }
+    }
+
+    public boolean hasUeberstundenPauschale() {
+        return ueberstundenPauschale;
+    }
+
+    public void setUeberstundenPauschale(boolean ueberstundenPauschale) {
+        this.ueberstundenPauschale = ueberstundenPauschale;
+    }
+
+    public int getKostenProMonat() {
+        int kosten = getStundenlohn() * getAnzahlWochenStunden();
+        if (!hasUeberstundenPauschale()) {
+            // Ueberstunden muessen extra bezahlt werden
+            kosten += 5 * getStundenlohn();
+        }
+        return kosten;
+    }
+
+    @Override
+    public String toString() {
+        String str = getName() + " (Geb.Jahr: " + getGeburtsjahr() + ")";
+        str += " Stundenlohn: " + getStundenlohn() + ", " + getAnzahlWochenStunden() + " h/W";
+
+        str += hasUeberstundenPauschale() ? " (Ueberstundenpauschale)" : " (keine Uestd.-Pauschale)";
+        return str;
+    }
+
+    public void print() {
+        System.out.println(this);
+    }
+}</code></pre>
+</div>
+</details>
+        <p>Die Klasse <code>Arbeiter</code> (ohne Vererbung) ist bis auf wenige Zeilen <em>identisch</em> &ndash; dieselben vier Attribute, dieselben Konstruktoren, Getter und Setter. Unterschiedlich ist nur:</p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Arbeiter.java (ohne Vererbung) – nur die Unterschiede</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public class Arbeiter {
+
+    private String name;
+    private int geburtsjahr;
+    private int stundenlohn;
+    private int anzahlWochenStunden;
+    private boolean facharbeiter;
+
+    // Konstruktoren, Get-/Set-Methoden fuer name, geburtsjahr, stundenlohn
+    // und anzahlWochenStunden: Zeile fuer Zeile wie in Angestellter ...
+
+    public boolean isFacharbeiter() {
+        return facharbeiter;
+    }
+
+    public void setFacharbeiter(boolean facharbeiter) {
+        this.facharbeiter = facharbeiter;
+    }
+
+    public int getKosten() {
+        int kosten = getAnzahlWochenStunden() * getStundenlohn();
+        if (isFacharbeiter()) {
+            kosten += 200; // Facharbeiterzuschlag
+        }
+        return kosten;
+    }
+
+    @Override
+    public String toString() {
+        String str = getName() + " (Geb.Jahr: " + getGeburtsjahr() + ")";
+        str += " Stundenlohn: " + getStundenlohn() + ", " + getAnzahlWochenStunden() + " h/W";
+        /*
+        if (isFacharbeiter()) {
+            str += " Facharbeiter";
+        } else {
+            str += " Hilfsarbeiter";
+        }
+        */
+        str += isFacharbeiter() ? " Facharbeiter" : " Hilfsarbeiter";
+        return str;
+    }
+
+    public void print() {
+        System.out.println(this);
+    }
+}</code></pre>
+</div>
+        <p>
+          Man sieht: Der Code ist in weiten Teilen nahezu ident. Alle Änderungen müssten in beiden Klassen
+          konsistent durchgeführt werden &ndash; aufwändig und fehleranfällig. <strong>Duplizierter Code ist oft ein
+          Anzeichen für schlechtes Design.</strong> (Und prompt ist es auch hier passiert: Die Kostenmethode heißt einmal
+          <code>getKostenProMonat</code>, einmal <code>getKosten</code>.)
+        </p>
+        <p>
+          Die monatlichen Kosten: Bei Mitarbeitern ohne Überstundenpauschale werden fünf zusätzliche Stunden
+          kalkuliert, bei Facharbeitern ein Zuschlag von 200 Euro. Beide Berechnungen erheben keinen Anspruch auf
+          buchhalterische Korrektheit, sie sollen nur die beiden Klassen unterscheiden.
+        </p>
+        <div class="callout callout-info">
+  <div class="callout-icon">&#8505;</div>
+  <div class="callout-body">
+    <div class="callout-title">Der ternäre Operator</div>
+    <p>In <code>toString</code> von <code>Arbeiter</code> verhält sich die vorletzte Zeile genau wie das darüber
+          auskommentierte <code>if</code>/<code>else</code>: <code>bedingung ? wertWennTrue : wertWennFalse</code>
+          liefert je nach Bedingung einen der beiden Werte. Praktisch für kurze Fallunterscheidungen in Ausdrücken.</p>
+  </div>
+</div>
+        <p>
+          Noch ein Problem: Eine <code>Firma</code> soll Arbeiter <em>und</em> Angestellte verwalten. Ohne Vererbung
+          bräuchte man zwei Listen, <code>ArrayList&lt;Arbeiter&gt;</code> und <code>ArrayList&lt;Angestellter&gt;</code>, und die gesamte Logik zum
+          Einstellen oder Kündigen doppelt. Tatsächlich sind beide nur verschiedene Ausprägungen von
+          <em>Mitarbeitern</em> und sollten in <em>einer</em> Collection verwaltet werden &ndash; ohne Vererbung
+          unmöglich, da es zwei völlig unabhängige Typen sind.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-3">3 &mdash; Die Lösung: extends und super</h2>
+        <p>
+          Zuerst wird eine Klasse <code>Mitarbeiter</code> mit allen gemeinsamen Attributen definiert. Von ihr leiten
+          <code>Angestellter</code> und <code>Arbeiter</code> mit dem Schlüsselwort <code>extends</code> ab.
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Mitarbeiter.java</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public class Mitarbeiter {
+
+    private String name;
+    private int geburtsjahr;
+    private int stundenlohn;
+    private int anzahlWochenStunden;
+
+    public Mitarbeiter() {
+        setName("n/a");
+        setGeburtsjahr(1900);
+        setStundenlohn(10);
+        setAnzahlWochenStunden(40);
+    }
+
+    public Mitarbeiter(String name, int geburtsjahr, int stundenlohn,
+                       int anzahlWochenStunden)
+    {
+        setName(name);
+        setGeburtsjahr(geburtsjahr);
+        setStundenlohn(stundenlohn);
+        setAnzahlWochenStunden(anzahlWochenStunden);
+    }
+
+    // Get-/Set-Methoden fuer name, geburtsjahr, stundenlohn und
+    // anzahlWochenStunden mit den Pruefungen wie oben
+
+    public int getKostenProMonat() {
+        // eigentlich 4.35 Wochen pro Monat
+        // hier der Einfachkeit halber * 4
+        int kosten = 4 * getStundenlohn() * getAnzahlWochenStunden();
+        return kosten;
+    }
+
+    @Override
+    public String toString() {
+        String str = getName() + " (Geb.Jahr: " + getGeburtsjahr() + ")";
+        str += " Stundenlohn: " + getStundenlohn() + ", "
+               + getAnzahlWochenStunden() + " h/W";
+        return str;
+    }
+
+    public void print() {
+        System.out.println(this);
+    }
+}</code></pre>
+</div>
+        <p>Diese Klasse ist die Basis für <code>Angestellter</code> und <code>Arbeiter</code>, die mit Vererbung wesentlich kompakter ausfallen:</p>
+        <div class="two-col">
+          <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Angestellter.java</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public class Angestellter extends Mitarbeiter {
+
+    private boolean ueberstundenPauschale;
+
+    public Angestellter() {
+        super("n/a", 1900, 10, 40);
+        setUeberstundenPauschale(false);
+    }
+
+    public Angestellter(String name, int geburtsjahr,
+            int stundenlohn, int anzahlWochenStunden,
+            boolean ueberstundenPauschale)
+    {
+        super(name, geburtsjahr, stundenlohn,
+              anzahlWochenStunden);
+        setUeberstundenPauschale(ueberstundenPauschale);
+    }
+
+    public boolean hasUeberstundenPauschale() {
+        return ueberstundenPauschale;
+    }
+
+    public void setUeberstundenPauschale(boolean p) {
+        this.ueberstundenPauschale = p;
+    }
+
+    @Override
+    public int getKostenProMonat() {
+        int kosten = super.getKostenProMonat();
+        if (!hasUeberstundenPauschale()) {
+            // Ueberstunden muessen extra bezahlt werden
+            kosten += 5 * getStundenlohn();
+        }
+        return kosten;
+    }
+
+    @Override
+    public String toString() {
+        String str = super.toString();
+        str += hasUeberstundenPauschale()
+               ? " (Ueberstundenpauschale)"
+               : " (keine Uestd.-Pauschale)";
+        return str;
+    }
+}</code></pre>
+</div>
+          <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Arbeiter.java</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public class Arbeiter extends Mitarbeiter {
+
+    private boolean facharbeiter;
+
+    public Arbeiter() {
+        super("n/a", 1900, 10, 40);
+        setFacharbeiter(false);
+    }
+
+    public Arbeiter(String name, int geburtsjahr,
+            int stundenlohn, int anzahlWochenStunden,
+            boolean facharbeiter)
+    {
+        super(name, geburtsjahr, stundenlohn,
+              anzahlWochenStunden);
+        setFacharbeiter(facharbeiter);
+    }
+
+    public boolean isFacharbeiter() {
+        return facharbeiter;
+    }
+
+    public void setFacharbeiter(boolean facharbeiter) {
+        this.facharbeiter = facharbeiter;
+    }
+
+    @Override
+    public int getKostenProMonat() {
+        int kosten = super.getKostenProMonat();
+        if (isFacharbeiter()) {
+            kosten += 200; // Facharbeiterzuschlag
+        }
+        return kosten;
+    }
+
+    @Override
+    public String toString() {
+        String str = super.toString();
+        str += isFacharbeiter() ? " Facharbeiter"
+                                : " Hilfsarbeiter";
+        return str;
+    }
+}</code></pre>
+</div>
+        </div>
+        <ul>
+          <li><code>extends Mitarbeiter</code> gibt an, dass die Klasse von <code>Mitarbeiter</code> ableitet.</li>
+          <li>In der ersten Zeile der Konstruktoren steht <code>super(&hellip;)</code>: der Aufruf des
+            <strong>Konstruktors der Basisklasse</strong> mit Parametern oder Defaultwerten. Zusätzliche Attribute
+            werden wie bisher mit Set-Methoden initialisiert. Der Aufruf von <code>super(&hellip;)</code> muss in der
+            <em>ersten</em> Zeile stehen.</li>
+          <li>Getter/Setter gibt es nur für das neue Attribut. Alle öffentlichen (konkret <code>public</code> und
+            <code>protected</code>) Methoden der Basisklasse sind durch die Vererbung <em>automatisch</em> vorhanden,
+            z.&nbsp;B. <code>getName()</code> oder <code>getGeburtsjahr()</code>.</li>
+          <li>Die <code>private</code> Attribute der Basisklasse werden zwar mitvererbt, sind in der Unterklasse aber
+            nicht direkt sichtbar &ndash; Zugriff nur über die Get-/Set-Methoden.</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-4">4 &mdash; Überschreiben von Methoden</h2>
+        <p>
+          Entspricht eine Methode der Basisklasse nicht dem gewünschten Verhalten der Unterklasse, kann sie
+          <strong>überschrieben</strong> werden &ndash; sie wird durch eine speziellere Variante ersetzt. Wird
+          <code>getKostenProMonat</code> auf einem <code>Arbeiter</code> aufgerufen, so wird immer <em>dessen</em>
+          Methode verwendet.
+        </p>
+        <p>
+          Mit der <strong>Annotation</strong> <code>@Override</code> wird dem Compiler genau diese Absicht mitgeteilt.
+          Sie ist nicht zwingend, aber der Compiler meldet dann einen Fehler, falls tatsächlich keine Methode
+          überschrieben wird (z.&nbsp;B. wegen eines Tippfehlers). Sie sollte daher immer verwendet werden.
+        </p>
+        <p>
+          Mit <code>super.getKostenProMonat()</code> wird die überschriebene Methode der Basisklasse aufgerufen. Sie
+          liefert schon die Grundfunktionalität und soll deshalb verwendet werden (Prinzip: Code-Wiederverwendung);
+          die folgenden Zeilen spezialisieren sie für den <code>Arbeiter</code>.
+        </p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th></th><th>Überladen (Lektion 1.5)</th><th>Überschreiben</th></tr></thead>
+            <tbody>
+              <tr><td>wo?</td><td>in derselben Klasse</td><td>in einer Unterklasse</td></tr>
+              <tr><td>Signatur</td><td>gleicher Name, <em>andere</em> Parameter</td><td>gleicher Name, <em>gleiche</em> Parameter</td></tr>
+              <tr><td>welche Methode läuft?</td><td>entscheidet der Compiler anhand der Argumenttypen</td><td>entscheidet sich zur Laufzeit anhand des tatsächlichen Objekts</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-5">5 &mdash; Polymorphismus</h2>
+        <p>
+          <strong>Polymorphismus</strong> (Vielgestaltigkeit) bezeichnet u.&nbsp;a. die Eigenschaft, dass Objekte von
+          Unterklassen überall dort verwendet werden können, wo die Basisklasse erwartet wird. Die
+          <code>Firma</code> verwaltet Arbeiter und Angestellte in einer Liste:
+        </p>
+        <details class="code-collapse">
+  <summary><span class="code-filename">Firma.java</span> <span class="code-collapse-hint">Code anzeigen (63 Zeilen)</span></summary>
+<div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Firma.java</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">import java.util.ArrayList;
+
+public class Firma {
+
+    private String name;
+
+    private ArrayList&lt;Mitarbeiter&gt; personal;
+
+    public Firma() {
+        personal = new ArrayList&lt;&gt;();
+        setName("Default GmbH");
+    }
+
+    public Firma(String name) {
+        personal = new ArrayList&lt;&gt;();
+        setName(name);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        if (name != null &amp;&amp; !name.isEmpty()) {
+            this.name = name;
+        } else {
+            System.out.println("Fehler: ungueltiger Name: " + name);
+        }
+    }
+
+    public void einstellen(Mitarbeiter m) {
+        if (m != null) {
+            personal.add(m);
+        } else {
+            System.out.println("Fehler: ungueltiger Mitarbeiter: " + m);
+        }
+    }
+
+    public boolean kuendigen(Mitarbeiter m) {
+        if (m != null) {
+            return personal.remove(m);
+        } else {
+            System.out.println("Fehler: ungueltiger Mitarbeiter: " + m);
+        }
+        return false;
+    }
+
+    @Override
+    public String toString() {
+        String str = "Firma: " + getName()
+                     + "\n-----------------------------------------\n";
+
+        for (Mitarbeiter m : personal) {
+            str += m + "\n";
+        }
+        str += "-----------------------------------------\n";
+        return str;
+    }
+
+    public void print() {
+        System.out.println(this);
+    }
+}</code></pre>
+</div>
+</details>
+        <p>
+          <code>ArrayList&lt;Mitarbeiter&gt; personal</code> kann sowohl <code>Arbeiter</code> als auch <code>Angestellte</code>
+          aufnehmen: Beide haben alle Eigenschaften und Fähigkeiten eines <code>Mitarbeiter</code>s und können daher
+          auch in dessen &bdquo;Gestalt&ldquo; erscheinen &ndash; ihr Typ ist <em>polymorph</em>. Dasselbe gilt für
+          Parameter: <code>einstellen(Mitarbeiter m)</code> akzeptiert Objekte aller Unterklassen.
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Polymorphismus in Aktion</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">Firma firma = new Firma("Spengergasse OG");
+firma.einstellen(new Arbeiter("Karl", 1989, 15, 40, true));
+firma.einstellen(new Angestellter("Susanne", 1991, 20, 30, false));
+
+Mitarbeiter m = new Arbeiter("Sepp", 1981, 18, 38, false);
+System.out.println(m.getKostenProMonat());  // ruft Arbeiter.getKostenProMonat auf
+// m.isFacharbeiter();  // Fehler: der Typ der Variablen ist Mitarbeiter</code></pre>
+</div>
+        <div class="callout callout-tip">
+  <div class="callout-icon">&#128161;</div>
+  <div class="callout-body">
+    <div class="callout-title">Dynamische Bindung</div>
+    <p>Welche überschriebene Methode läuft, entscheidet das <em>tatsächliche Objekt</em>, nicht der Typ der
+          Variablen. Welche Methoden man <em>aufrufen darf</em>, entscheidet dagegen der Typ der Variablen.</p>
+  </div>
+</div>
+        <p>
+          Bei <code>toString</code> in <code>Firma</code> steht ebenfalls <code>@Override</code>. Welche Methode wird
+          hier überschrieben? Sie stammt aus der Klasse <strong><code>Object</code></strong>, von der <em>alle</em>
+          Klassen <em>implizit</em> ableiten. <code>Object</code> implementiert einige wenige Methoden, die die
+          Basisfunktionalität aller Objekte bilden (<code>toString</code>, <code>equals</code>, <code>hashCode</code>,
+          &hellip;); einige davon werden oft überschrieben.
+        </p>
+      </section>
+
+      <section class="section section-projekt">
+        <h2 id="projektschritt">Projektschritt</h2>
+<div class="projekt-box">
+  <div class="projekt-box-header">
+    <span class="projekt-step">Projektschritt 2.8</span>
+    <h3>Angestellte und Arbeiter</h3>
+  </div>
+<p>Der bisherige <code>Mitarbeiter</code> wird zur Basisklasse. Neu sind <code>Angestellter</code> (Überstundenpauschale) und <code>Arbeiter</code> (Facharbeiterzuschlag), die die Kostenberechnung und <code>toString</code> überschreiben. Die Firma muss <em>nicht</em> geändert werden &ndash; dank Polymorphismus verwaltet ihre <code>ArrayList&lt;Mitarbeiter&gt;</code> beide Arten, und <code>summeKosten()</code> ruft automatisch die richtige Methode auf.</p>
+  <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">src/main/java/Arbeiter.java</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">/*
+  Personalverwaltung – ein Arbeiter ist ein Mitarbeiter (extends),
+  Facharbeiter erhalten einen Zuschlag.
+  Stand: Lektion 2.8 (Vererbung)
+*/
+public class Arbeiter extends Mitarbeiter {
+
+    private boolean facharbeiter;
+
+    public Arbeiter() {
+        super("n/a", 1970, 10, 40);
+        setFacharbeiter(false);
+    }
+
+    public Arbeiter(String name, int geburtsjahr, int stundenlohn,
+                    int anzahlWochenStunden, boolean facharbeiter)
+    {
+        super(name, geburtsjahr, stundenlohn, anzahlWochenStunden);
+        setFacharbeiter(facharbeiter);
+    }
+
+    public boolean isFacharbeiter() {
+        return facharbeiter;
+    }
+
+    public void setFacharbeiter(boolean facharbeiter) {
+        this.facharbeiter = facharbeiter;
+    }
+
+    @Override
+    public int getKostenProMonat() {
+        int kosten = super.getKostenProMonat();
+        if (isFacharbeiter()) {
+            kosten += 200; // Facharbeiterzuschlag
+        }
+        return kosten;
+    }
+
+    @Override
+    public String toString() {
+        String str = super.toString();
+        str += isFacharbeiter() ? ", Facharbeiter" : ", Hilfsarbeiter";
+        return str;
+    }
+}</code></pre>
+</div>
+  <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">src/main/java/Programm.java</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public class Programm {
+
+    public static void main(String[] args) {
+        Firma firma = new Firma("Spengergasse OG");
+        // Polymorphismus: Angestellte und Arbeiter in EINER Firma
+        firma.einstellen(new Angestellter("Susanne Huber", 1991, 20, 30, false));
+        firma.einstellen(new Arbeiter("Karl Maier", 1989, 15, 40, true));
+        firma.einstellen(new Arbeiter("Sepp Gruber", 1981, 18, 38, false));
+        firma.einstellen(new Angestellter("Anna Novak", 2001, 14, 20, true));
+        firma.sortierenNachName();
+        firma.print();
+        System.out.println();
+        firma.printKostenBalken();
+    }
+}</code></pre>
+</div>
+  <p class="mb-0">&#128193; Stand nach dieser Lektion: <a href="beispiele/2.8/src/main/java/Angestellter.java" target="_blank">beispiele/2.8/</a> (inkl. <code>VererbungTest</code>)</p>
+</div>
+      </section>
+
+      <section class="section section-fehler">
+        <h2>Häufige Fehler</h2>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: super nicht in der ersten Zeile</div>
+  <p><code>call to super must be first statement in constructor</code>.</p>
+          <p class="fehler-fix"><code>super(&hellip;)</code> muss die erste Anweisung im Konstruktor sein; die Set-Methoden für eigene Attribute folgen danach.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Kein passender Basiskonstruktor</div>
+  <p><code>constructor Mitarbeiter in class Mitarbeiter cannot be applied to given types</code> &ndash; obwohl im Konstruktor gar kein <code>super</code> steht.</p>
+          <p class="fehler-fix">Ohne <code>super(&hellip;)</code> ruft Java automatisch <code>super()</code> auf. Gibt es keinen parameterlosen Konstruktor in der Basisklasse, muss man <code>super(&hellip;)</code> mit passenden Parametern aufrufen.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Überschreiben missglückt</div>
+  <p><code>public int getKostenProMonat(int wochen)</code> in <code>Arbeiter</code> &ndash; der Zuschlag wird nie berechnet.</p>
+          <p class="fehler-fix">Andere Parameter = Überladen, nicht Überschreiben. Mit <code>@Override</code> meldet der Compiler <code>method does not override or implement a method from a supertype</code>.</p>
+</div>
+      </section>
+
+      <section class="section section-aufgaben">
+        <h2>Aufgaben</h2>
+        <div class="aufgaben-list">
+          <div class="aufgabe">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Aufgabe 1</span>
+    <span class="aufgabe-title">Fuhrpark</span>
+  </div>
+  <p>Eine Hierarchie <code>Fahrzeug</code> &rarr; <code>Auto</code>/<code>Motorrad</code> in einem Fuhrpark mit <code>ArrayList</code>, ohne doppelte Fahrzeuge. Die Teile zu Exceptions und Dateien gehören zu Lektion 3.1 und 3.3.</p>
+            <p class="mb-0"><a href="uebungen/lektion-2.8-uebung-1-fuhrpark-vererbung.pdf" target="_blank">&#128196; Übung 2.8-1 (PDF)</a></p>
+</div>
+          <div class="aufgabe">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Aufgabe 2</span>
+    <span class="aufgabe-title">Musikgeschäft</span>
+  </div>
+  <p>Musikinstrumente als Vererbungshierarchie (<code>Klavier</code>, <code>Gitarre</code>, <code>Schlagzeug</code>) mit Parameterprüfungen und <code>toString()</code> in allen Klassen.</p>
+            <p class="mb-0"><a href="uebungen/lektion-2.8-uebung-2-musikgeschaeft.pdf" target="_blank">&#128196; Übung 2.8-2 (PDF)</a></p>
+</div>
+          <div class="aufgabe">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Aufgabe 3</span>
+    <span class="aufgabe-title">Denkaufgabe Override/Overload</span>
+  </div>
+  <p>Welche Methode wird aufgerufen? Ein kurzes Programm mischt Überschreiben und Überladen &ndash; die Ausgaben sollen vorhergesagt und begründet werden.</p>
+            <p class="mb-0"><a href="uebungen/lektion-2.8-uebung-3-override-overload.pdf" target="_blank">&#128196; Übung 2.8-3 (PDF)</a></p>
+</div>
+        </div>
+      </section>
+
+      <section class="section section-quiz">
+        <h2>Wissenskontrolle</h2>
+        <div class="quiz" id="quiz-19">
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 1</span> Welches Problem löst Vererbung?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-19-1"> <span>Programme laufen schneller.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-19-1"> <span>Gemeinsame Attribute und Methoden mehrerer Klassen stehen nur einmal in einer Basisklasse statt dupliziert in jeder Klasse.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-19-1"> <span>Klassen brauchen keine Konstruktoren mehr.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-19-1"> <span>Attribute können nicht mehr <code>private</code> sein.</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Unterklassen übernehmen alles von der Basisklasse und ergänzen nur, was sie zusätzlich haben. Änderungen am gemeinsamen Teil passieren an einer Stelle.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 2</span> Was muss im Konstruktor einer Unterklasse als erste Anweisung stehen, wenn die Basisklasse keinen parameterlosen Konstruktor hat?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-19-2"> <span><code>this()</code></span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-19-2"> <span>ein Aufruf <code>super(&hellip;)</code> mit passenden Argumenten</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-19-2"> <span><code>new Basisklasse()</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-19-2"> <span><code>@Override</code></span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Zuerst wird der Teil der Basisklasse aufgebaut. Fehlt der <code>super</code>-Aufruf, versucht Java einen parameterlosen Basiskonstruktor zu verwenden &ndash; gibt es keinen, übersetzt der Code nicht.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 3</span> <code>Tier t = new Hund(); t.lautGeben();</code> &ndash; <code>Hund</code> erbt von <code>Tier</code> und überschreibt <code>lautGeben()</code>. Welche Methode wird ausgeführt?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-19-3"> <span>die von <code>Tier</code>, weil die Variable diesen Typ hat</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-19-3"> <span>die von <code>Hund</code>, weil das Objekt ein Hund ist</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-19-3"> <span>beide nacheinander</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-19-3"> <span>keine &ndash; der Compiler meldet einen Fehler</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Das ist Polymorphismus: Entscheidend ist der Typ des Objekts zur Laufzeit, nicht der Typ der Variable. Die überschriebene Methode der Unterklasse gewinnt.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 4</span> Was liefert <code>String s = (x &lt; 10) ? "klein" : "groß";</code> bei <code>x = 12</code>?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-19-4"> <span><code>"klein"</code></span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-19-4"> <span><code>"groß"</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-19-4"> <span><code>true</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-19-4"> <span>einen Compilerfehler</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Der ternäre Operator <code>bedingung ? a : b</code> liefert <code>a</code>, wenn die Bedingung wahr ist, sonst <code>b</code>. 12 &lt; 10 ist falsch.</div>
+  </div>
+  <div class="quiz-summary"><span class="quiz-score"></span><button type="button" class="quiz-reset">Zur&uuml;cksetzen</button></div>
+</div>
+      </section>
+
+    </div>
+
+    <nav class="lesson-nav">
+      <a class="nav-btn" href="2.7-collections.html">&larr; Lektion 2.7: Collections: ArrayList &amp; Co.</a>
+      <span class="nav-center-info">Lektion 2.8</span>
+      <a class="nav-btn primary" href="2.9-abstrakt-interfaces.html">Lektion 2.9: Abstrakte Klassen &amp; Interfaces &rarr;</a>
+    </nav>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>
+    const ham = document.getElementById('hamburger');
+    const sb = document.getElementById('sidebar');
+    const ov = document.getElementById('overlay');
+    ham.addEventListener('click', () => { sb.classList.toggle('open'); ov.classList.toggle('visible'); });
+    ov.addEventListener('click', () => { sb.classList.remove('open'); ov.classList.remove('visible'); });
+    const cur = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-link').forEach(l => {
+      if (l.getAttribute('href') === cur) l.classList.add('active');
+    });
+    const themeBtn = document.getElementById('theme-toggle');
+    const applyTheme = (t) => {
+      document.documentElement.setAttribute('data-theme', t);
+      if (themeBtn) themeBtn.innerHTML = t === 'dark' ? '&#9728;' : '&#9790;';
+    };
+    applyTheme(localStorage.getItem('kurs-theme') || 'dark');
+    setTimeout(() => document.documentElement.classList.add('theme-transitions'), 50);
+    if (themeBtn) themeBtn.addEventListener('click', () => {
+      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('kurs-theme', next);
+      applyTheme(next);
+    });
+    hljs.highlightAll();
+  </script>
+  <script>
+    document.querySelectorAll('.quiz').forEach((quiz) => {
+      const fragen = [...quiz.querySelectorAll('.quiz-frage')];
+      const score = quiz.querySelector('.quiz-score');
+      const update = () => {
+        const done = fragen.filter((f) => f.dataset.state).length;
+        const ok = fragen.filter((f) => f.dataset.state === 'ok').length;
+        score.textContent = done === 0
+          ? fragen.length + ' Fragen – wähle eine Antwort und prüfe sie.'
+          : ok + ' von ' + fragen.length + ' richtig'
+            + (done < fragen.length ? ' (' + done + ' von ' + fragen.length + ' bearbeitet)' : '');
+      };
+      fragen.forEach((f) => {
+        const inputs = [...f.querySelectorAll('input')];
+        const check = f.querySelector('.quiz-check');
+        const reveal = f.querySelector('.quiz-reveal');
+        const fb = f.querySelector('.quiz-feedback');
+        const exp = f.querySelector('.quiz-erklaerung');
+        inputs.forEach((i) => i.addEventListener('change', () => {
+          check.disabled = !inputs.some((x) => x.checked);
+        }));
+        const finish = (graded) => {
+          let allOk = true;
+          f.querySelectorAll('.quiz-opt').forEach((li) => {
+            const input = li.querySelector('input');
+            const corr = li.dataset.correct === '1';
+            if (corr !== input.checked) allOk = false;
+            if (corr) li.classList.add('opt-correct');
+            else if (input.checked) li.classList.add('opt-wrong');
+            input.disabled = true;
+          });
+          f.dataset.state = !graded ? 'shown' : (allOk ? 'ok' : 'wrong');
+          fb.className = 'quiz-feedback fb-' + f.dataset.state;
+          fb.textContent = !graded ? 'Lösung angezeigt.'
+            : (allOk ? '✔ Richtig!' : '✘ Leider nicht ganz – die richtige Lösung ist markiert.');
+          fb.hidden = false;
+          exp.hidden = false;
+          check.disabled = true;
+          reveal.disabled = true;
+          update();
+        };
+        check.addEventListener('click', () => finish(true));
+        reveal.addEventListener('click', () => finish(false));
+      });
+      quiz.querySelector('.quiz-reset').addEventListener('click', () => {
+        fragen.forEach((f) => {
+          delete f.dataset.state;
+          f.querySelectorAll('.quiz-opt').forEach((li) => li.classList.remove('opt-correct', 'opt-wrong'));
+          f.querySelectorAll('input').forEach((i) => { i.checked = false; i.disabled = false; });
+          f.querySelector('.quiz-check').disabled = true;
+          f.querySelector('.quiz-reveal').disabled = false;
+          f.querySelector('.quiz-feedback').hidden = true;
+          f.querySelector('.quiz-erklaerung').hidden = true;
+        });
+        update();
+      });
+      update();
+    });
+  </script>
+</body>
+
+</html>

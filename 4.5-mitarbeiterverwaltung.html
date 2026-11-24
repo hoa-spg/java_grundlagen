@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<!-- GENERIERT von java/kurs/_build (java-grundlagen) – nicht direkt bearbeiten!
+     Quelle: java/kurs/_build/java-grundlagen/lessons/, bauen: python3 _build/build.py java-grundlagen -->
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>4.5 &ndash; Mitarbeiterverwaltung | Java-Grundlagen Kurs</title>
+  <script>(function () { var t = localStorage.getItem('kurs-theme') || 'dark'; document.documentElement.setAttribute('data-theme', t); })();</script>
+  <link rel="stylesheet" href="assets/kurs.css">
+  <link rel="stylesheet" id="hljs-theme"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+
+<body>
+
+  <button class="hamburger" id="hamburger" aria-label="Navigation &ouml;ffnen">&#9776;</button>
+  <div class="sidebar-overlay" id="overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html">
+        <span class="brand-icon">J</span>
+        <div>
+          <div class="brand-name">Java</div>
+          <div class="brand-sub">Grundlagen der Programmierung</div>
+        </div>
+      </a>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Dark/Light Mode"
+        title="Theme wechseln">&#9728;</button>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-group">
+        <div class="nav-group-label html-label">Teil 1 &mdash; Grundlagen</div>
+        <a class="nav-link" href="1.1-einfuehrung-entwicklungsumgebung.html"><span class="ln">1.1</span>Einf&uuml;hrung &amp; Entwicklungsumgebung</a>
+        <a class="nav-link" href="1.2-klassen-objekte.html"><span class="ln">1.2</span>Klassen, Objekte, Get &amp; Set</a>
+        <a class="nav-link" href="1.3-konstruktoren-methoden.html"><span class="ln">1.3</span>Konstruktoren, this &amp; Methoden</a>
+        <a class="nav-link" href="1.4-datentypen.html"><span class="ln">1.4</span>Datentypen</a>
+        <a class="nav-link" href="1.5-signatur-ueberladen.html"><span class="ln">1.5</span>Methoden, Signatur &amp; &Uuml;berladen</a>
+        <a class="nav-link" href="1.6-bedingungen-berechnungen.html"><span class="ln">1.6</span>Bedingungen &amp; Berechnungen</a>
+        <a class="nav-link" href="1.7-debugger-testklassen.html"><span class="ln">1.7</span>Debugger &amp; Testklassen</a>
+        <a class="nav-link" href="1.8-strings-random.html"><span class="ln">1.8</span>Strings &amp; Random</a>
+        <a class="nav-link" href="1.9-objekt-beziehungen.html"><span class="ln">1.9</span>Objekt-Beziehungen</a>
+        <a class="nav-link" href="1.10-schleifen.html"><span class="ln">1.10</span>Schleifen</a>
+        <a class="nav-link" href="1.11-statische-methoden.html"><span class="ln">1.11</span>Statische Methoden &amp; main</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label css-label">Teil 2 &mdash; Datenstrukturen &amp; OOP</div>
+        <a class="nav-link" href="2.1-intellij-junit.html"><span class="ln">2.1</span>IntelliJ, Maven &amp; JUnit</a>
+        <a class="nav-link" href="2.2-arrays.html"><span class="ln">2.2</span>Arrays</a>
+        <a class="nav-link" href="2.3-arrays-einfuegen-entfernen.html"><span class="ln">2.3</span>Arrays: Einf&uuml;gen &amp; Entfernen</a>
+        <a class="nav-link" href="2.4-sortieralgorithmen.html"><span class="ln">2.4</span>Sortieralgorithmen</a>
+        <a class="nav-link" href="2.5-objekt-arrays.html"><span class="ln">2.5</span>Objekt-Arrays</a>
+        <a class="nav-link" href="2.6-assoziation-equals.html"><span class="ln">2.6</span>Beidseitige Assoziation &amp; equals</a>
+        <a class="nav-link" href="2.7-collections.html"><span class="ln">2.7</span>Collections: ArrayList &amp; Co.</a>
+        <a class="nav-link" href="2.8-vererbung.html"><span class="ln">2.8</span>Vererbung &amp; Polymorphismus</a>
+        <a class="nav-link" href="2.9-abstrakt-interfaces.html"><span class="ln">2.9</span>Abstrakte Klassen &amp; Interfaces</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label rn-label">Teil 3 &mdash; Fortgeschrittene Konzepte</div>
+        <a class="nav-link" href="3.0-fail-early.html"><span class="ln">3.0</span>Fail Early statt Happy Path</a>
+        <a class="nav-link" href="3.1-exceptions.html"><span class="ln">3.1</span>Exceptions</a>
+        <a class="nav-link" href="3.2-hashset-treeset.html"><span class="ln">3.2</span>HashSet, TreeSet &amp; hashCode</a>
+        <a class="nav-link" href="3.3-serialisierung-dateien.html"><span class="ln">3.3</span>Serialisierung &amp; Dateien</a>
+        <a class="nav-link" href="3.4-git.html"><span class="ln">3.4</span>Versionsverwaltung mit Git</a>
+        <a class="nav-link" href="3.5-lambdas.html"><span class="ln">3.5</span>Lambda-Ausdr&uuml;cke</a>
+        <a class="nav-link" href="3.6-streams.html"><span class="ln">3.6</span>Die Streams-API</a>
+        <a class="nav-link" href="3.7-design-patterns.html"><span class="ln">3.7</span>Design-Patterns</a>
+        <a class="nav-link" href="3.8-model-klassen.html"><span class="ln">3.8</span>Model-Klassen f&uuml;r die GUI</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label react-label">Teil 4 &mdash; Webanwendungen mit Vaadin</div>
+        <a class="nav-link" href="4.1-web-grundlagen.html"><span class="ln">4.1</span>Grundprinzipien des Web</a>
+        <a class="nav-link" href="4.2-vaadin-einstieg.html"><span class="ln">4.2</span>Vaadin Flow &amp; Start-Paket</a>
+        <a class="nav-link" href="4.3-komponenten-layouts.html"><span class="ln">4.3</span>Komponenten &amp; Layouts</a>
+        <a class="nav-link" href="4.4-grid-routing-binding.html"><span class="ln">4.4</span>Tabellen, Routing &amp; Binding</a>
+        <a class="nav-link" href="4.5-mitarbeiterverwaltung.html"><span class="ln">4.5</span>Mitarbeiterverwaltung</a>
+      </div>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <header class="lesson-header">
+      <p class="lesson-eyebrow">Lektion 4.5 &mdash; Teil 4: Webanwendungen mit Vaadin</p>
+      <h1>Mitarbeiterverwaltung</h1>
+      <div class="lesson-tags">
+        <span class="tag tag-react">Vaadin</span>
+        <span class="tag tag-time">ca. 2 &times; 90 min</span>
+        <span class="tag tag-level">Fortgeschritten</span>
+      </div>
+    </header>
+
+    <div class="content-area">
+      <section class="section section-lernziele">
+        <h2>Lernziele</h2>
+        <ul class="lernziele-list">
+          <li><a class="lernziel-link" href="#abschnitt-1">eine vollständige Webanwendung aus mehreren Views, Model-Klassen und Hilfsklassen aufbauen<span class="lernziel-ziel">Abschnitt 1</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-4">wiederkehrende Oberflächenelemente (Bestätigung, Fehlermeldung) in einer Hilfsklasse bündeln<span class="lernziel-ziel">Abschnitt 4</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-4">Exceptions des Models in der Oberfläche fangen und verständlich anzeigen, inklusive Ursachenkette<span class="lernziel-ziel">Abschnitt 4</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-3">mit <code>CustomField</code> eine eigene, bindbare Komponente erstellen<span class="lernziel-ziel">Abschnitt 3</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-2">Neuanlage (INSERT) und Änderung (UPDATE) in einem Formular unterscheiden<span class="lernziel-ziel">Abschnitt 2</span></a></li>
+          <li><a class="lernziel-link" href="#projektschritt">Dateien im Browser hochladen und am Server einlesen<span class="lernziel-ziel">Projektschritt</span></a></li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-1">1 &mdash; Die fertige Anwendung</h2>
+        <p>
+          In diesem Codebeispiel entsteht eine vollständige Webanwendung mit den Model-Klassen <code>Company</code> und
+          <code>Employee</code>. Im <em>Company-Form</em> lassen sich Firmenname und Adresse ändern; alle Daten können in eine
+          Textdatei gespeichert oder aus ihr gelesen werden.
+        </p>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/vaadin-step1-solution-company-form.png" alt="Company-Form: Name und Adresse, Speichern/Laden als Datei" loading="lazy" style="max-width:560px"></div>
+  <figcaption>Company-Form: Name und Adresse, Speichern/Laden als Datei</figcaption>
+</figure>
+        <p>Unter <em>Employees</em> zeigt eine Tabelle alle Mitarbeiter. Der rote Mistkübel löscht den Mitarbeiter, der grüne Stift navigiert zur Detailansicht.</p>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/vaadin-step1-solution-employees-list.png" alt="Employees: Tabelle mit Aktionen" loading="lazy" style="max-width:560px"></div>
+  <figcaption>Employees: Tabelle mit Aktionen</figcaption>
+</figure>
+        <p>In der Detailansicht (<em>Employee-Form</em>) werden die Attribute komfortabel bearbeitet; die Buttons speichern oder verwerfen die Änderungen.</p>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/vaadin-step1-solution-employees-form.png" alt="Employee-Form: Formular für einen Mitarbeiter" loading="lazy" style="max-width:560px"></div>
+  <figcaption>Employee-Form: Formular für einen Mitarbeiter</figcaption>
+</figure>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Klasse</th><th>Aufgabe</th></tr></thead>
+            <tbody>
+              <tr><td><code>views.MainLayout</code></td><td>Rahmen; im Menü kommen die neuen Views dazu (<code>createNavItem</code>)</td></tr>
+              <tr><td><code>views.company.CompanyView</code></td><td>Firmendaten mit <code>Binder</code>; Speichern in/Laden aus <code>company.csv</code></td></tr>
+              <tr><td><code>views.company.EmployeesListView</code></td><td><code>Grid</code> mit Bearbeiten/Löschen</td></tr>
+              <tr><td><code>views.company.EmployeeView</code></td><td>Formular mit <code>HasUrlParameter&lt;Long&gt;</code></td></tr>
+              <tr><td><code>views.company.PhoneNumberField</code></td><td>eigene Komponente für Telefonnummern</td></tr>
+              <tr><td><code>util.UIFactory</code></td><td>Dialoge und Benachrichtigungen</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Um die Views ins Template einzuhängen, sind nur geringe Änderungen in <code>MainLayout</code> nötig:</p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">MainLayout.java (Ausschnitt)</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">private Component createNavigation() {
+    VerticalLayout nav = new VerticalLayout();
+    nav.setSpacing(false);
+    nav.add(                                                         // Hinzufügen der Views
+            createNavItem("Company", CompanyView.class, VaadinIcon.BUILDING),
+            createNavItem("Employees", EmployeesListView.class, VaadinIcon.TABLE),
+            createNavItem("New Employee", EmployeeView.class, VaadinIcon.USER),
+            createNavItem("About", AboutView.class, VaadinIcon.FILE)
+    );
+    return nav;
+}</code></pre>
+</div>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-2">2 &mdash; Das Mitarbeiterformular</h2>
+        <p>Die zentrale View ist das Formular für einen Mitarbeiter. Bei größeren Views hilft es, den Code in Abschnitte zu gliedern. So kann ein ausführliches Mitarbeiterformular aussehen (die Fassung im Projektschritt unten ist etwas kürzer, macht aber dasselbe):</p>
+        <details class="code-collapse">
+  <summary><span class="code-filename">EmployeeView.java (ausführliche Variante)</span> <span class="code-collapse-hint">Code anzeigen (142 Zeilen)</span></summary>
+<div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">EmployeeView.java (ausführliche Variante)</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">@PageTitle("Employee")
+@Route(value = "employee", layout = MainLayout.class)
+@Uses(Icon.class)
+public class EmployeeView extends VerticalLayout implements HasUrlParameter&lt;Long&gt; {
+
+    // -- UI-Components ------------------------------------------------------------
+    private TextField firstName = new TextField("First name");
+    private TextField lastName = new TextField("Last name");
+    private EmailField email = new EmailField("Email address");
+    private PhoneNumberField phone = new PhoneNumberField("Phone number"); // (1)
+    private DatePicker dateOfBirth = new DatePicker("Birthday");
+    private ComboBox&lt;Employee.Role&gt; role = new ComboBox&lt;&gt;("Role");
+    private IntegerField salary = new IntegerField("Salary");
+    private Checkbox subcontractor = new Checkbox("Subcontractor");
+
+    private Button cancel = new Button("Cancel");
+    private Button save = new Button("Save");
+
+    // -- Model-Class ------------------------------------------------------------
+    private Employee employee;
+
+    // -- Binder -----------------------------------------------------------------
+    private Binder&lt;Employee&gt; binder = new Binder&lt;&gt;( Employee.class );
+
+    // -- CONSTRUCTOR ------------------------------------------------------------
+    public EmployeeView() {
+        init();
+    }
+
+    // --  PARAMETER HANDLING ----------------------------------------------------
+
+    @Override
+    public void setParameter(BeforeEvent event, @OptionalParameter Long eId) {
+        if (eId == null) {                  // ohne Id: neuer Mitarbeiter
+            readBean(new Employee());
+            return;
+        }
+        readBean(loadOrCreateEmployee(eId));
+    }
+
+    private Employee loadOrCreateEmployee(Long eId) {
+        try {
+            return Company.getInstance().getEmployee(eId);
+        } catch (NumberFormatException e) {
+            UIFactory.error("Fehler beim Lesen der Id", e);
+        } catch (CompanyException e) {
+            UIFactory.error("Fehler beim Laden des Mitarbeiters", e);
+        }
+        return new Employee();
+    }
+
+    private void init() {
+        initUI();
+        initActions();
+        readBean( new Employee() );
+    }
+
+    // -- BOOTSTRAP --------------------------------------------------------------
+
+    private void readBean(Employee employee) {
+        if (employee.getId() == null) {
+            save.setText("Hire Employee");
+        } else {
+            save.setText("Update");
+        }
+
+        this.employee = employee;
+        binder.bindInstanceFields(this);
+
+        // read from employee
+        binder.readBean( this.employee );
+    }
+
+    private void initUI() {
+        addClassName("employee-form-view");
+        setSizeFull();
+        add(createTitle());
+        add(createFormLayout());
+        add(createButtonLayout());
+
+        role.setItems(Employee.Role.values());
+    }
+
+    private void initActions() {
+        cancel.addClickListener(e -&gt; onCancel());
+        save.addClickListener(e -&gt; onSave());
+    }
+
+    private Component createTitle() {
+        return new H3("Personal information");
+    }
+
+    private Component createFormLayout() {
+        FormLayout formLayout = new FormLayout();
+        email.setErrorMessage("Please enter a valid email address");
+        formLayout.add(firstName, lastName, dateOfBirth, phone, email, role,
+                       salary, subcontractor);
+        return formLayout;
+    }
+
+    private Component createButtonLayout() {
+        HorizontalLayout buttonLayout = new HorizontalLayout();
+        buttonLayout.addClassName("button-layout");
+        save.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+        buttonLayout.add(save);
+        buttonLayout.add(cancel);
+        return buttonLayout;
+    }
+
+    // -- ACTIONS ------------------------------------------------------------------
+    private void onCancel() {
+        UIFactory.showConfirm(
+                "Discard changes?",
+                "Are you sure you want to discard potential changes in this object?",
+                e -&gt; getUI().ifPresent(ui -&gt; ui.navigate(EmployeesListView.class))
+        );
+    }
+
+    private void onSave() {
+        try {
+            // write to employee
+            binder.writeBean(employee);
+
+            if (employee.getId() == null) {
+                // INSERT
+                Company.getInstance().hire(employee);
+                Notification.show("Employee " + employee.getLastName() + " saved successfully.");
+            } else {
+                // UPDATE
+                Notification.show("Employee " + employee.getLastName() + " saved successfully.");
+            }
+
+            // Init form
+            readBean(new Employee());
+
+        } catch (ValidationException e) {
+            UIFactory.error("Validation error", e);
+        } catch (Exception e) {
+            UIFactory.error("Unexpected error", e);
+        }
+    }
+}</code></pre>
+</div>
+</details>
+        <ul>
+          <li>(1) Mit Vererbung wird eine eigene Komponente für Telefonnummern samt Vorwahl erstellt (Abschnitt 3).</li>
+          <li>Der Code ist in Abschnitte gegliedert (Komponenten, Model, Binder, Parameter, Aufbau, Aktionen) &ndash; bei großen Views erleichtert das die Orientierung.</li>
+          <li><strong>INSERT oder UPDATE:</strong> Ein neuer <code>Employee</code> hat noch keine Id; nur er wird mit <code>hire</code> eingestellt. Ein bestehender wurde durch <code>writeBean</code> bereits direkt geändert.</li>
+          <li>Abbrechen fragt mit einem Bestätigungsdialog nach und navigiert dann zur Liste.</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-3">3 &mdash; Eine eigene Komponente: PhoneNumberField</h2>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">src/main/java/at/spengergasse/company/views/company/PhoneNumberField.java</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">package at.spengergasse.company.views.company;
+
+import com.vaadin.flow.component.combobox.ComboBox;
+import com.vaadin.flow.component.customfield.CustomField;
+import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
+import com.vaadin.flow.component.textfield.TextField;
+
+/**
+ * Eigene Komponente (Vererbung!): Vorwahl + Nummer, nach außen ein String
+ * wie "+43 15461501". Kann wie ein TextField an "phone" gebunden werden.
+ */
+public class PhoneNumberField extends CustomField&lt;String&gt; {
+
+    private final ComboBox&lt;String&gt; countryCode = new ComboBox&lt;&gt;();
+    private final TextField number = new TextField();
+
+    public PhoneNumberField(String label) {
+        setLabel(label);
+        countryCode.setWidth("120px");
+        countryCode.setPlaceholder("Country");
+        countryCode.setAllowedCharPattern("[\\+\\d]");
+        countryCode.setItems("+43", "+49", "+41", "+91", "+62", "+98", "+964",
+                             "+353", "+44", "+972", "+39", "+225");
+        countryCode.addCustomValueSetListener(e -&gt; countryCode.setValue(e.getDetail()));
+        number.setAllowedCharPattern("[\\d ]");
+        HorizontalLayout layout = new HorizontalLayout(countryCode, number);
+        layout.setFlexGrow(1.0, number);
+        add(layout);
+    }
+
+    // Komponenten -&gt; Wert
+    @Override
+    protected String generateModelValue() {
+        if (countryCode.getValue() == null || number.getValue() == null) {
+            return "";
+        }
+        return countryCode.getValue() + " " + number.getValue();
+    }
+
+    // Wert -&gt; Komponenten
+    @Override
+    protected void setPresentationValue(String phoneNumber) {
+        String[] parts = phoneNumber != null ? phoneNumber.split(" ", 2) : new String[0];
+        if (parts.length == 1) {
+            countryCode.clear();
+            number.setValue(parts[0]);
+        } else if (parts.length == 2) {
+            countryCode.setValue(parts[0]);
+            number.setValue(parts[1]);
+        } else {
+            countryCode.clear();
+            number.clear();
+        }
+    }
+}</code></pre>
+</div>
+        <p>
+          <code>CustomField&lt;String&gt;</code> ist eine abstrakte Basisklasse für Felder, die nach außen einen Wert (hier einen
+          <code>String</code>) haben, intern aber aus mehreren Komponenten bestehen. Zwei Methoden müssen überschrieben werden:
+          <code>generateModelValue()</code> setzt aus Vorwahl und Nummer den Wert zusammen, <code>setPresentationValue</code>
+          zerlegt einen Wert wieder auf die Komponenten. Weil das Feld <code>phone</code> heißt und einen <code>String</code>
+          liefert, bindet der <code>Binder</code> es automatisch an <code>Employee.getPhone()</code>/<code>setPhone()</code>.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-4">4 &mdash; Mitarbeiterliste und UIFactory</h2>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">EmployeesListView.java (Ausschnitt, einfache Fassung ohne Bestätigung)</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">private void delete(Employee employee) {
+    try {
+        Company.getInstance().fire(employee);
+        refreshGrid();
+        Notification.show("Employee" + employee + " removed from the company!");
+
+    } catch (CompanyException e) {
+        Notification.show("Error: " + e.getMessage());
+    }
+}
+
+private void edit(Employee employee) {
+    getUI().ifPresent(ui -&gt; ui.navigate(EmployeeView.class, employee.getId()));
+}
+
+private void refreshGrid() {
+    grid.setItems(Company.getInstance().getStaff());
+}</code></pre>
+</div>
+        <p>
+          Die Spalten des Grids werden über die Eigenschaftsnamen angelegt, die Aktionsspalte mit
+          <code>addComponentColumn</code> (wie in Lektion 4.4). Die Klasse <code>UIFactory</code> bietet wiederkehrende Aspekte
+          wie Dialoge und Benachrichtigungen an:
+        </p>
+        <details class="code-collapse">
+  <summary><span class="code-filename">src/main/java/at/spengergasse/company/util/UIFactory.java</span> <span class="code-collapse-hint">Code anzeigen (68 Zeilen)</span></summary>
+<div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">src/main/java/at/spengergasse/company/util/UIFactory.java</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">package at.spengergasse.company.util;
+
+import com.vaadin.flow.component.ComponentEventListener;
+import com.vaadin.flow.component.Text;
+import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.button.ButtonVariant;
+import com.vaadin.flow.component.confirmdialog.ConfirmDialog;
+import com.vaadin.flow.component.html.Div;
+import com.vaadin.flow.component.html.Paragraph;
+import com.vaadin.flow.component.icon.Icon;
+import com.vaadin.flow.component.notification.Notification;
+import com.vaadin.flow.component.notification.NotificationVariant;
+import com.vaadin.flow.component.orderedlayout.FlexComponent;
+import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
+
+/**
+ * Wiederkehrende Oberflächen-Elemente: Meldungen, Fehler, Bestätigungen.
+ * Nur statische Methoden – daher ein privater Konstruktor.
+ */
+public class UIFactory {
+
+    private UIFactory() {
+    }
+
+    public static void showNotification(String msg) {
+        Notification.show(msg);
+    }
+
+    public static void showConfirm(String header, String text,
+                                   ComponentEventListener&lt;ConfirmDialog.ConfirmEvent&gt; listener)
+    {
+        ConfirmDialog dialog = new ConfirmDialog();
+        dialog.setHeader(header);
+        dialog.setText(text);
+        dialog.setCancelable(true);
+        dialog.setConfirmText("Confirm");
+        dialog.setConfirmButtonTheme("error primary");
+        dialog.addConfirmListener(listener);
+        dialog.open();
+    }
+
+    public static void error(String header, Throwable e) {
+        Notification notification = new Notification();
+        notification.addThemeVariants(NotificationVariant.LUMO_ERROR);
+
+        Div text = new Div(new Text(header), new Paragraph(readCause(e)));
+
+        Button closeButton = new Button(new Icon("lumo", "cross"));
+        closeButton.addThemeVariants(ButtonVariant.LUMO_TERTIARY_INLINE);
+        closeButton.setAriaLabel("Close");
+        closeButton.addClickListener(event -&gt; notification.close());
+
+        HorizontalLayout layout = new HorizontalLayout(text, closeButton);
+        layout.setAlignItems(FlexComponent.Alignment.CENTER);
+        notification.add(layout);
+        notification.open();
+    }
+
+    // Exceptions der Set-Methoden kommen beim Binder "verpackt" an:
+    // die eigentliche Ursache ist die innerste Exception
+    private static String readCause(Throwable e) {
+        Throwable rootCause = e;
+        while (rootCause.getCause() != null &amp;&amp; rootCause.getCause() != rootCause) {
+            rootCause = rootCause.getCause();
+        }
+        return rootCause.getMessage();
+    }
+}</code></pre>
+</div>
+</details>
+        <ul>
+          <li>Alle Methoden sind <code>static</code>, der Konstruktor ist <code>private</code> &ndash; eine reine Hilfsklasse wie <code>Math</code>.</li>
+          <li><code>showConfirm</code> bekommt die Aktion für &bdquo;Confirm&ldquo; als Lambda übergeben (Strategy-Idee aus Lektion 3.7).</li>
+          <li>In <code>readCause</code> wird in der Schleife die <em>ursprüngliche</em> Ursache ermittelt: Eine <code>CompanyException</code> aus einer Set-Methode kommt beim <code>Binder</code> in andere Exceptions verpackt an (Konstruktor <code>Exception(message, cause)</code> aus Lektion 3.1). Angezeigt wird die verständliche Meldung der innersten Exception.</li>
+        </ul>
+      </section>
+
+      <section class="section section-projekt">
+        <h2 id="projektschritt">Projektschritt</h2>
+<div class="projekt-box">
+  <div class="projekt-box-header">
+    <span class="projekt-step">Projektschritt 4.5</span>
+    <h3>Die fertige Mitarbeiterverwaltung</h3>
+  </div>
+<p>Im letzten Schritt bekommt die Webanwendung den Feinschliff: <code>UIFactory</code> für Bestätigungen und Fehlermeldungen, die eigene <code>PhoneNumberField</code>-Komponente, ein Bestätigungsdialog vor dem Löschen und Verwerfen, die Unterscheidung INSERT/UPDATE beim Speichern und das Laden der Firma per <strong>Datei-Upload</strong> im Browser (die CSV-Datei wird mit <code>Company.loadFromFile(InputStream)</code> gelesen &ndash; genau dafür gibt es die <code>InputStream</code>-Variante aus Lektion 3.8).</p>
+  <details class="code-collapse">
+  <summary><span class="code-filename">src/main/java/at/spengergasse/company/views/company/EmployeeView.java</span> <span class="code-collapse-hint">Code anzeigen (108 Zeilen)</span></summary>
+<div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">src/main/java/at/spengergasse/company/views/company/EmployeeView.java</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">package at.spengergasse.company.views.company;
+
+import at.spengergasse.company.model.Company;
+import at.spengergasse.company.model.CompanyException;
+import at.spengergasse.company.model.Employee;
+import at.spengergasse.company.util.UIFactory;
+import at.spengergasse.company.views.MainLayout;
+import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.button.ButtonVariant;
+import com.vaadin.flow.component.checkbox.Checkbox;
+import com.vaadin.flow.component.combobox.ComboBox;
+import com.vaadin.flow.component.datepicker.DatePicker;
+import com.vaadin.flow.component.formlayout.FormLayout;
+import com.vaadin.flow.component.html.H3;
+import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.component.textfield.EmailField;
+import com.vaadin.flow.component.textfield.IntegerField;
+import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.data.binder.Binder;
+import com.vaadin.flow.router.BeforeEvent;
+import com.vaadin.flow.router.HasUrlParameter;
+import com.vaadin.flow.router.OptionalParameter;
+import com.vaadin.flow.router.PageTitle;
+import com.vaadin.flow.router.Route;
+
+/**
+ * Formular für einen Mitarbeiter.
+ * /employee        -&gt; neuer Mitarbeiter
+ * /employee/1002   -&gt; Mitarbeiter mit Id 1002 bearbeiten
+ * Stand 4.5: eigene Telefon-Komponente, Bestätigung, Fehlermeldungen.
+ */
+@PageTitle("Employee")
+@Route(value = "employee", layout = MainLayout.class)
+public class EmployeeView extends VerticalLayout implements HasUrlParameter&lt;Long&gt; {
+
+    // Feldnamen = Attributnamen von Employee (für bindInstanceFields)
+    private final TextField firstName = new TextField("First name");
+    private final TextField lastName = new TextField("Last name");
+    private final EmailField email = new EmailField("Email address");
+    private final PhoneNumberField phone = new PhoneNumberField("Phone number");
+    private final DatePicker dateOfBirth = new DatePicker("Birthday");
+    private final ComboBox&lt;Employee.Role&gt; role = new ComboBox&lt;&gt;("Role");
+    private final IntegerField salary = new IntegerField("Salary");
+    private final Checkbox subcontractor = new Checkbox("Subcontractor");
+
+    private final Button save = new Button("Save");
+    private final Button cancel = new Button("Cancel");
+
+    private final Binder&lt;Employee&gt; binder = new Binder&lt;&gt;(Employee.class);
+    private Employee employee = new Employee();
+
+    public EmployeeView() {
+        role.setItems(Employee.Role.values());
+        email.setErrorMessage("Please enter a valid email address");
+
+        FormLayout form = new FormLayout();
+        form.add(firstName, lastName, dateOfBirth, phone, email, role, salary, subcontractor);
+
+        save.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+        HorizontalLayout buttons = new HorizontalLayout(save, cancel);
+
+        add(new H3("Personal information"), form, buttons);
+
+        save.addClickListener(e -&gt; onSave());
+        cancel.addClickListener(e -&gt; onCancel());
+
+        binder.bindInstanceFields(this);
+    }
+
+    // wird beim Navigieren aufgerufen – vor dem Anzeigen der View
+    @Override
+    public void setParameter(BeforeEvent event, @OptionalParameter Long id) {
+        if (id == null) {                         // kein Parameter: neuer Mitarbeiter
+            employee = new Employee();
+            save.setText("Hire Employee");
+            binder.readBean(employee);
+            return;
+        }
+        try {
+            employee = Company.getInstance().getEmployee(id);
+            save.setText("Update");
+        } catch (CompanyException e) {
+            UIFactory.error("No employee found with id " + id, e);
+            employee = new Employee();
+        }
+        binder.readBean(employee);
+    }
+
+    private void onCancel() {
+        UIFactory.showConfirm("Discard changes?",
+                "Are you sure you want to discard potential changes in this object?",
+                e -&gt; getUI().ifPresent(ui -&gt; ui.navigate(EmployeesListView.class)));
+    }
+
+    private void onSave() {
+        try {
+            binder.writeBean(employee);              // Formular -&gt; Objekt
+            if (employee.getId() == null) {
+                Company.getInstance().hire(employee); // INSERT: neu einstellen
+            }                                         // sonst UPDATE: schon geändert
+            UIFactory.showNotification("Employee " + employee.getLastName() + " saved.");
+            getUI().ifPresent(ui -&gt; ui.navigate(EmployeesListView.class));
+        } catch (Exception e) {
+            UIFactory.error("Error on saving employee", e);
+        }
+    }
+}</code></pre>
+</div>
+</details>
+  <details class="code-collapse">
+  <summary><span class="code-filename">src/main/java/at/spengergasse/company/views/company/CompanyView.java</span> <span class="code-collapse-hint">Code anzeigen (111 Zeilen)</span></summary>
+<div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">src/main/java/at/spengergasse/company/views/company/CompanyView.java</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">package at.spengergasse.company.views.company;
+
+import at.spengergasse.company.model.Company;
+import at.spengergasse.company.model.CompanyException;
+import at.spengergasse.company.util.UIFactory;
+import at.spengergasse.company.views.MainLayout;
+import com.vaadin.flow.component.Key;
+import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.button.ButtonVariant;
+import com.vaadin.flow.component.details.Details;
+import com.vaadin.flow.component.formlayout.FormLayout;
+import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.component.upload.SucceededEvent;
+import com.vaadin.flow.component.upload.Upload;
+import com.vaadin.flow.component.upload.receivers.MultiFileMemoryBuffer;
+import com.vaadin.flow.data.binder.Binder;
+import com.vaadin.flow.router.PageTitle;
+import com.vaadin.flow.router.Route;
+
+/**
+ * Formular für Name und Adresse der Firma.
+ * Stand 4.5: Laden per Datei-Upload im Browser, Fehler über UIFactory.
+ * Seit 4.4: Data Binding mit Binder statt readData/storeData von Hand.
+ */
+@PageTitle("Company")
+@Route(value = "company", layout = MainLayout.class)
+public class CompanyView extends VerticalLayout {
+
+    private final TextField companyName = new TextField("Company Name");
+    private final TextField companyAddress = new TextField("Company Address");
+
+    private final Button save = new Button("Save");
+    private final Button cancel = new Button("Cancel");
+
+    private final Button saveToFile = new Button("Save Company To File");
+    // Upload: die Datei wird im Browser ausgewählt und an den Server geschickt
+    private final MultiFileMemoryBuffer buffer = new MultiFileMemoryBuffer();
+    private final Upload loadFromFile = new Upload(buffer);
+
+    // verbindet die Felder companyName/companyAddress mit den gleichnamigen
+    // Get-/Set-Methoden von Company
+    private final Binder&lt;Company&gt; binder = new Binder&lt;&gt;(Company.class);
+
+    public CompanyView() {
+        createLayout();
+        addHandlers();
+        binder.bindInstanceFields(this);           // Felder nach Namen binden
+        binder.readBean(Company.getInstance());    // Model -&gt; Formular
+    }
+
+    private void createLayout() {
+        setWidth("80%");
+
+        FormLayout form = new FormLayout();
+        form.add(companyName, companyAddress);
+
+        save.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+        HorizontalLayout buttons = new HorizontalLayout(save, cancel);
+        buttons.setJustifyContentMode(JustifyContentMode.END);
+        buttons.setWidthFull();
+
+        // aufklappbarer Bereich für die Datei-Funktionen
+        Details fileHandling = new Details("Save/Load Company to/from File",
+                                           new HorizontalLayout(saveToFile, loadFromFile));
+        fileHandling.setOpened(false);
+
+        add(form, buttons, fileHandling);
+    }
+
+    private void addHandlers() {
+        save.addClickListener(e -&gt; storeData());
+        save.addClickShortcut(Key.ENTER);
+        cancel.addClickListener(e -&gt; binder.readBean(Company.getInstance()));
+        cancel.addClickShortcut(Key.ESCAPE);
+        saveToFile.addClickListener(e -&gt; saveCompanyToFile());
+        loadFromFile.addSucceededListener(e -&gt; loadCompanyFromFile(e));
+    }
+
+    // Formular -&gt; Model; die Set-Methoden prüfen die Werte
+    private void storeData() {
+        try {
+            binder.writeBean(Company.getInstance());
+            UIFactory.showNotification("Company name and address saved.");
+        } catch (Exception e) {
+            UIFactory.error("Error on saving company", e);
+        }
+    }
+
+    private void saveCompanyToFile() {
+        final String filename = "company.csv";   // im Projektordner am Server
+        try {
+            Company.getInstance().writeToFile(filename);
+            UIFactory.showNotification("Company saved to " + filename);
+        } catch (CompanyException e) {
+            UIFactory.error("Could not write " + filename, e);
+        }
+    }
+
+    private void loadCompanyFromFile(SucceededEvent e) {
+        String fileName = e.getFileName();
+        try {
+            Company.loadFromFile(buffer.getInputStream(fileName));
+            binder.readBean(Company.getInstance());
+            UIFactory.showNotification("Company successfully loaded from " + fileName);
+        } catch (CompanyException ex) {
+            UIFactory.error("Error on processing file " + fileName, ex);
+        }
+    }
+}</code></pre>
+</div>
+</details>
+  <p>Die Hilfsklasse <code>UIFactory</code> und die <code>PhoneNumberField</code> stehen vollständig in den Abschnitten 3 und 4.</p>
+  <p>Zum Testen: Starte die Anwendung, ändere einen Mitarbeiter, lege einen neuen an (ungültige E-Mail ausprobieren!), lösche einen, speichere die Firma als CSV und lade die mitgelieferte <code>company.csv</code> per Upload.</p>
+  <p class="mb-0">&#128193; Stand nach dieser Lektion (Ende des Kurses): <a href="beispiele/4.5/src/main/java/at/spengergasse/company/views/company/EmployeeView.java" target="_blank">beispiele/4.5/</a></p>
+</div>
+      </section>
+
+      <section class="section section-fehler">
+        <h2>Häufige Fehler</h2>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Fehlermeldung ist nichtssagend</div>
+  <p>Die Notification zeigt &bdquo;java.lang.reflect.InvocationTargetException&ldquo; oder &bdquo;null&ldquo; statt &bdquo;invalid email address&ldquo;.</p>
+          <p class="fehler-fix">Die eigentliche Exception steckt als Ursache in einer anderen. Mit einer Schleife über <code>getCause()</code> die innerste Ursache suchen (<code>UIFactory.readCause</code>).</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Neuer Mitarbeiter doppelt eingestellt</div>
+  <p>Jedes Speichern im Formular erzeugt einen weiteren Eintrag bzw. eine &bdquo;already exists&ldquo;-Exception.</p>
+          <p class="fehler-fix">Nur bei <code>employee.getId() == null</code> (INSERT) <code>hire</code> aufrufen; nach dem Speichern zur Liste navigieren oder ein neues, leeres <code>Employee</code>-Objekt binden.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Datei wird am falschen Ort gesucht</div>
+  <p>&bdquo;Save Company To File&ldquo; funktioniert, aber die Datei ist auf dem eigenen Rechner nicht zu finden.</p>
+          <p class="fehler-fix">Die Java-Logik läuft am <em>Server</em>: <code>writeToFile("company.csv")</code> schreibt ins Arbeitsverzeichnis des Servers (lokal: der Projektordner). Für Dateien vom Benutzer braucht es einen Upload, für Dateien zum Benutzer einen Download (<code>Anchor</code> mit <code>StreamResource</code>).</p>
+</div>
+      </section>
+
+      <section class="section section-quiz">
+        <h2>Wissenskontrolle</h2>
+        <div class="quiz" id="quiz-34">
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 1</span> Warum bündelt man wiederkehrende Oberflächenelemente wie Bestätigungsdialoge und Fehlermeldungen in einer Hilfsklasse?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-34-1"> <span>weil Vaadin das vorschreibt</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-34-1"> <span>damit sie überall gleich aussehen und der Code dafür nur einmal existiert</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-34-1"> <span>damit die Anwendung schneller startet</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-34-1"> <span>weil Dialoge nicht in Views stehen dürfen</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Code-Wiederverwendung gilt auch für Oberflächen: Wer das Aussehen einer Fehlermeldung ändern will, ändert es an einer Stelle.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 2</span> Das Model wirft beim Speichern eine fachliche Exception. Was soll die Oberfläche tun?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-34-2"> <span>Die Exception ignorieren.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-34-2"> <span>Die Exception fangen und die Meldung verständlich anzeigen, bei Bedarf samt Ursachenkette.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-34-2"> <span>Die Anwendung beenden.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-34-2"> <span>Die Meldung nur auf der Server-Konsole ausgeben.</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Wer die Anwendung im Browser bedient, sieht die Server-Konsole nicht. Die Prüfungen liegen im Model, die Oberfläche zeigt deren Ergebnis an.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 3</span> Wozu dient ein <code>CustomField&lt;T&gt;</code> in Vaadin?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-34-3"> <span>zum Ersetzen des Binders</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-34-3"> <span>um aus mehreren Komponenten eine eigene Eingabekomponente zu bauen, die nach außen einen einzigen Wert vom Typ <code>T</code> hat und sich an den Binder binden lässt</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-34-3"> <span>um Felder unsichtbar zu machen</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-34-3"> <span>um mehrere Formulare zu einer Seite zusammenzufassen</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> <code>generateModelValue()</code> setzt aus den inneren Komponenten den Wert zusammen, <code>setPresentationValue</code> zerlegt einen Wert wieder auf die Komponenten.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 4</span> Ein Formular dient sowohl zur Neuanlage (INSERT) als auch zur Änderung (UPDATE). Woran lässt sich der Fall typischerweise unterscheiden?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-34-4"> <span>am Namen des Buttons</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-34-4"> <span>daran, ob das bearbeitete Objekt schon existiert, z.&nbsp;B. ob es bereits eine Id hat</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-34-4"> <span>an der Uhrzeit</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-34-4"> <span>Es gibt keinen Unterschied, beides wird gleich gespeichert.</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Ein neues Objekt muss beim Speichern erst in die Verwaltung aufgenommen werden; ein bestehendes wurde beim Übernehmen der Formularwerte bereits direkt geändert.</div>
+  </div>
+  <div class="quiz-summary"><span class="quiz-score"></span><button type="button" class="quiz-reset">Zur&uuml;cksetzen</button></div>
+</div>
+      </section>
+
+    </div>
+
+    <nav class="lesson-nav">
+      <a class="nav-btn" href="4.4-grid-routing-binding.html">&larr; Lektion 4.4: Tabellen, Routing &amp; Binding</a>
+      <span class="nav-center-info">Lektion 4.5</span>
+      <a class="nav-btn primary" href="index.html">Kurs&uuml;bersicht &rarr;</a>
+    </nav>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>
+    const ham = document.getElementById('hamburger');
+    const sb = document.getElementById('sidebar');
+    const ov = document.getElementById('overlay');
+    ham.addEventListener('click', () => { sb.classList.toggle('open'); ov.classList.toggle('visible'); });
+    ov.addEventListener('click', () => { sb.classList.remove('open'); ov.classList.remove('visible'); });
+    const cur = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-link').forEach(l => {
+      if (l.getAttribute('href') === cur) l.classList.add('active');
+    });
+    const themeBtn = document.getElementById('theme-toggle');
+    const applyTheme = (t) => {
+      document.documentElement.setAttribute('data-theme', t);
+      if (themeBtn) themeBtn.innerHTML = t === 'dark' ? '&#9728;' : '&#9790;';
+    };
+    applyTheme(localStorage.getItem('kurs-theme') || 'dark');
+    setTimeout(() => document.documentElement.classList.add('theme-transitions'), 50);
+    if (themeBtn) themeBtn.addEventListener('click', () => {
+      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('kurs-theme', next);
+      applyTheme(next);
+    });
+    hljs.highlightAll();
+  </script>
+  <script>
+    document.querySelectorAll('.quiz').forEach((quiz) => {
+      const fragen = [...quiz.querySelectorAll('.quiz-frage')];
+      const score = quiz.querySelector('.quiz-score');
+      const update = () => {
+        const done = fragen.filter((f) => f.dataset.state).length;
+        const ok = fragen.filter((f) => f.dataset.state === 'ok').length;
+        score.textContent = done === 0
+          ? fragen.length + ' Fragen – wähle eine Antwort und prüfe sie.'
+          : ok + ' von ' + fragen.length + ' richtig'
+            + (done < fragen.length ? ' (' + done + ' von ' + fragen.length + ' bearbeitet)' : '');
+      };
+      fragen.forEach((f) => {
+        const inputs = [...f.querySelectorAll('input')];
+        const check = f.querySelector('.quiz-check');
+        const reveal = f.querySelector('.quiz-reveal');
+        const fb = f.querySelector('.quiz-feedback');
+        const exp = f.querySelector('.quiz-erklaerung');
+        inputs.forEach((i) => i.addEventListener('change', () => {
+          check.disabled = !inputs.some((x) => x.checked);
+        }));
+        const finish = (graded) => {
+          let allOk = true;
+          f.querySelectorAll('.quiz-opt').forEach((li) => {
+            const input = li.querySelector('input');
+            const corr = li.dataset.correct === '1';
+            if (corr !== input.checked) allOk = false;
+            if (corr) li.classList.add('opt-correct');
+            else if (input.checked) li.classList.add('opt-wrong');
+            input.disabled = true;
+          });
+          f.dataset.state = !graded ? 'shown' : (allOk ? 'ok' : 'wrong');
+          fb.className = 'quiz-feedback fb-' + f.dataset.state;
+          fb.textContent = !graded ? 'Lösung angezeigt.'
+            : (allOk ? '✔ Richtig!' : '✘ Leider nicht ganz – die richtige Lösung ist markiert.');
+          fb.hidden = false;
+          exp.hidden = false;
+          check.disabled = true;
+          reveal.disabled = true;
+          update();
+        };
+        check.addEventListener('click', () => finish(true));
+        reveal.addEventListener('click', () => finish(false));
+      });
+      quiz.querySelector('.quiz-reset').addEventListener('click', () => {
+        fragen.forEach((f) => {
+          delete f.dataset.state;
+          f.querySelectorAll('.quiz-opt').forEach((li) => li.classList.remove('opt-correct', 'opt-wrong'));
+          f.querySelectorAll('input').forEach((i) => { i.checked = false; i.disabled = false; });
+          f.querySelector('.quiz-check').disabled = true;
+          f.querySelector('.quiz-reveal').disabled = false;
+          f.querySelector('.quiz-feedback').hidden = true;
+          f.querySelector('.quiz-erklaerung').hidden = true;
+        });
+        update();
+      });
+      update();
+    });
+  </script>
+</body>
+
+</html>

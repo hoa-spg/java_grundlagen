@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<!-- GENERIERT von java/kurs/_build (java-grundlagen) – nicht direkt bearbeiten!
+     Quelle: java/kurs/_build/java-grundlagen/lessons/, bauen: python3 _build/build.py java-grundlagen -->
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.2 &ndash; Arrays | Java-Grundlagen Kurs</title>
+  <script>(function () { var t = localStorage.getItem('kurs-theme') || 'dark'; document.documentElement.setAttribute('data-theme', t); })();</script>
+  <link rel="stylesheet" href="assets/kurs.css">
+  <link rel="stylesheet" id="hljs-theme"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+
+<body>
+
+  <button class="hamburger" id="hamburger" aria-label="Navigation &ouml;ffnen">&#9776;</button>
+  <div class="sidebar-overlay" id="overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html">
+        <span class="brand-icon">J</span>
+        <div>
+          <div class="brand-name">Java</div>
+          <div class="brand-sub">Grundlagen der Programmierung</div>
+        </div>
+      </a>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Dark/Light Mode"
+        title="Theme wechseln">&#9728;</button>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-group">
+        <div class="nav-group-label html-label">Teil 1 &mdash; Grundlagen</div>
+        <a class="nav-link" href="1.1-einfuehrung-entwicklungsumgebung.html"><span class="ln">1.1</span>Einf&uuml;hrung &amp; Entwicklungsumgebung</a>
+        <a class="nav-link" href="1.2-klassen-objekte.html"><span class="ln">1.2</span>Klassen, Objekte, Get &amp; Set</a>
+        <a class="nav-link" href="1.3-konstruktoren-methoden.html"><span class="ln">1.3</span>Konstruktoren, this &amp; Methoden</a>
+        <a class="nav-link" href="1.4-datentypen.html"><span class="ln">1.4</span>Datentypen</a>
+        <a class="nav-link" href="1.5-signatur-ueberladen.html"><span class="ln">1.5</span>Methoden, Signatur &amp; &Uuml;berladen</a>
+        <a class="nav-link" href="1.6-bedingungen-berechnungen.html"><span class="ln">1.6</span>Bedingungen &amp; Berechnungen</a>
+        <a class="nav-link" href="1.7-debugger-testklassen.html"><span class="ln">1.7</span>Debugger &amp; Testklassen</a>
+        <a class="nav-link" href="1.8-strings-random.html"><span class="ln">1.8</span>Strings &amp; Random</a>
+        <a class="nav-link" href="1.9-objekt-beziehungen.html"><span class="ln">1.9</span>Objekt-Beziehungen</a>
+        <a class="nav-link" href="1.10-schleifen.html"><span class="ln">1.10</span>Schleifen</a>
+        <a class="nav-link" href="1.11-statische-methoden.html"><span class="ln">1.11</span>Statische Methoden &amp; main</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label css-label">Teil 2 &mdash; Datenstrukturen &amp; OOP</div>
+        <a class="nav-link" href="2.1-intellij-junit.html"><span class="ln">2.1</span>IntelliJ, Maven &amp; JUnit</a>
+        <a class="nav-link" href="2.2-arrays.html"><span class="ln">2.2</span>Arrays</a>
+        <a class="nav-link" href="2.3-arrays-einfuegen-entfernen.html"><span class="ln">2.3</span>Arrays: Einf&uuml;gen &amp; Entfernen</a>
+        <a class="nav-link" href="2.4-sortieralgorithmen.html"><span class="ln">2.4</span>Sortieralgorithmen</a>
+        <a class="nav-link" href="2.5-objekt-arrays.html"><span class="ln">2.5</span>Objekt-Arrays</a>
+        <a class="nav-link" href="2.6-assoziation-equals.html"><span class="ln">2.6</span>Beidseitige Assoziation &amp; equals</a>
+        <a class="nav-link" href="2.7-collections.html"><span class="ln">2.7</span>Collections: ArrayList &amp; Co.</a>
+        <a class="nav-link" href="2.8-vererbung.html"><span class="ln">2.8</span>Vererbung &amp; Polymorphismus</a>
+        <a class="nav-link" href="2.9-abstrakt-interfaces.html"><span class="ln">2.9</span>Abstrakte Klassen &amp; Interfaces</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label rn-label">Teil 3 &mdash; Fortgeschrittene Konzepte</div>
+        <a class="nav-link" href="3.0-fail-early.html"><span class="ln">3.0</span>Fail Early statt Happy Path</a>
+        <a class="nav-link" href="3.1-exceptions.html"><span class="ln">3.1</span>Exceptions</a>
+        <a class="nav-link" href="3.2-hashset-treeset.html"><span class="ln">3.2</span>HashSet, TreeSet &amp; hashCode</a>
+        <a class="nav-link" href="3.3-serialisierung-dateien.html"><span class="ln">3.3</span>Serialisierung &amp; Dateien</a>
+        <a class="nav-link" href="3.4-git.html"><span class="ln">3.4</span>Versionsverwaltung mit Git</a>
+        <a class="nav-link" href="3.5-lambdas.html"><span class="ln">3.5</span>Lambda-Ausdr&uuml;cke</a>
+        <a class="nav-link" href="3.6-streams.html"><span class="ln">3.6</span>Die Streams-API</a>
+        <a class="nav-link" href="3.7-design-patterns.html"><span class="ln">3.7</span>Design-Patterns</a>
+        <a class="nav-link" href="3.8-model-klassen.html"><span class="ln">3.8</span>Model-Klassen f&uuml;r die GUI</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label react-label">Teil 4 &mdash; Webanwendungen mit Vaadin</div>
+        <a class="nav-link" href="4.1-web-grundlagen.html"><span class="ln">4.1</span>Grundprinzipien des Web</a>
+        <a class="nav-link" href="4.2-vaadin-einstieg.html"><span class="ln">4.2</span>Vaadin Flow &amp; Start-Paket</a>
+        <a class="nav-link" href="4.3-komponenten-layouts.html"><span class="ln">4.3</span>Komponenten &amp; Layouts</a>
+        <a class="nav-link" href="4.4-grid-routing-binding.html"><span class="ln">4.4</span>Tabellen, Routing &amp; Binding</a>
+        <a class="nav-link" href="4.5-mitarbeiterverwaltung.html"><span class="ln">4.5</span>Mitarbeiterverwaltung</a>
+      </div>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <header class="lesson-header">
+      <p class="lesson-eyebrow">Lektion 2.2 &mdash; Teil 2: Datenstrukturen &amp; OOP</p>
+      <h1>Arrays</h1>
+      <div class="lesson-tags">
+        <span class="tag tag-css">Arrays</span>
+        <span class="tag tag-time">ca. 90 min</span>
+        <span class="tag tag-level">Grundlagen</span>
+      </div>
+    </header>
+
+    <div class="content-area">
+      <section class="section section-lernziele">
+        <h2>Lernziele</h2>
+        <ul class="lernziele-list">
+          <li><a class="lernziel-link" href="#abschnitt-1">erklären, wann ein Array statt einzelner Variablen nötig ist<span class="lernziel-ziel">Abschnitt 1</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-2">Arrays deklarieren, mit <code>new</code> erzeugen und über den Index (ab 0) lesen und schreiben<span class="lernziel-ziel">Abschnitt 2</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-2">gültige Indizes prüfen und eine <code>ArrayIndexOutOfBoundsException</code> vermeiden<span class="lernziel-ziel">Abschnitt 2</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-2">alle Elemente mit einer Schleife und <code>length</code> durchlaufen<span class="lernziel-ziel">Abschnitt 2</span></a></li>
+          <li><a class="lernziel-link" href="#abschnitt-3">Minimum, Maximum und Durchschnitt eines Arrays berechnen<span class="lernziel-ziel">Abschnitt 3</span></a></li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-1">1 &mdash; Viele Werte desselben Typs</h2>
+        <p>
+          Bisher haben wir von einem Datentyp jeweils <em>einen</em> Wert gespeichert: <code>int i;</code> legt
+          im Speicher Platz für genau einen Integer an, angesprochen über <code>i</code>. Oft braucht man aber
+          gleich mehrere Werte desselben Typs &ndash; etwa <strong>Messreihen</strong> für Temperatur oder
+          Luftfeuchtigkeit, oder eine Personalverwaltung, in der eine <code>Firma</code> beliebig viele
+          <code>Mitarbeiter</code> haben soll, nicht nur ein, zwei oder drei.
+        </p>
+        <p>
+          Ein <strong>Array</strong> ist ein &bdquo;Feld&ldquo; oder eine Anordnung mehrerer Werte desselben
+          Datentyps; die Elemente werden über einen <strong>Index</strong> angesprochen. Gezählt wird immer ab
+          <strong>0</strong>: Das erste Element hat Index 0, das zweite Index 1 usw.
+        </p>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/arrays0.png" alt="Eine Variable i enthält einen Wert, das Array a mehrere Werte desselben Typs" loading="lazy" style="max-width:460px"></div>
+  <figcaption>Eine Variable i enthält einen Wert, das Array a mehrere Werte desselben Typs</figcaption>
+</figure>
+        <p>
+          Zur Deklaration verwendet man den Datentyp gefolgt von eckigen Klammern. Arrays gibt es zu allen
+          primitiven Datentypen, aber auch zu Referenzdatentypen (Lektion 2.5).
+        </p>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-2">2 &mdash; Erzeugen, Index, length</h2>
+        <p>
+          Arrays ähneln Referenzdatentypen: Vor der Verwendung muss ein Array mit <code>new</code> erzeugt werden,
+          vorher ist der Wert <code>null</code>. Die Abbildung zeigt das Array nach <code>int[] a;</code> als lokale
+          Variable. Als Objekteigenschaft schreibt man <code>private int[] a;</code>.
+        </p>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/arrays1.png" alt="Nach int[] a; ist a noch null" loading="lazy" style="max-width:460px"></div>
+  <figcaption>Nach int[] a; ist a noch null</figcaption>
+</figure>
+        <p>Beim Erzeugen wird auch die <strong>Größe</strong> festgelegt:</p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Array erzeugen</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">int[] a;
+a = new int[10];
+
+// bei lokalen Variablen auch in einer Zeile:
+int[] b = new int[10];
+
+// oder gleich mit Werten befüllt:
+int[] c = { 3, 9, 7, 1, 4 };</code></pre>
+</div>
+        <p>
+          Die Größe wird hier mit einem <em>Integer-Literal</em> auf 10 festgelegt; ebenso kann eine Variable,
+          z.&nbsp;B. ein Parameter, verwendet werden. Die gültigen Indizes liegen immer zwischen 0 und Größe minus
+          eins &ndash; bei Größe 10 ist der größte gültige Index 9! Die Elemente sind zunächst mit 0 belegt
+          (bei <code>boolean</code> <code>false</code>, bei Objekten <code>null</code>).
+        </p>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/arrays2.png" alt="new int[10]: zehn Plätze mit Index 0 bis 9, alle 0" loading="lazy" style="max-width:460px"></div>
+  <figcaption>new int[10]: zehn Plätze mit Index 0 bis 9, alle 0</figcaption>
+</figure>
+        <p>Mit dem Index greift man auf ein Element zu: <code>a[3]</code> liefert das vierte Element, <code>a[0]</code> das erste. Ebenso sind Zuweisungen möglich &ndash; wir setzen den dritten Platz auf 3 und den fünften auf -5:</p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Zugriff über den Index</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">a[2] = 3;
+a[4] = -5;</code></pre>
+</div>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/arrays3.png" alt="Das Array nach den beiden Zuweisungen" loading="lazy" style="max-width:460px"></div>
+  <figcaption>Das Array nach den beiden Zuweisungen</figcaption>
+</figure>
+        <div class="callout callout-error">
+  <div class="callout-icon">&#10007;</div>
+  <div class="callout-body">
+    <div class="callout-title">ArrayIndexOutOfBoundsException</div>
+    <p>Ein Zugriff auf <code>a[10]</code> führt im Beispiel zur Laufzeit zu einer
+          <code>ArrayIndexOutOfBoundsException</code> &ndash; immer dann, wenn der Index nicht im gültigen Bereich
+          liegt. Bei Arrays muss daher stets geprüft werden, ob der verwendete Index gültig ist!</p>
+  </div>
+</div>
+        <p>Alle Werte gibt man mit einer Schleife aus; <code>.length</code> liefert die Größe des Arrays:</p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Alle Elemente durchlaufen</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">for (int i = 0; i &lt; a.length; i++) {
+    System.out.println(a[i]);
+}</code></pre>
+</div>
+        <p>Der Schleifen-Index <code>i</code> wird innerhalb der Schleife verwendet, um auf die Elemente <code>a[i]</code> zuzugreifen.</p>
+      </section>
+
+      <section class="section">
+        <h2 id="abschnitt-3">3 &mdash; Codebeispiel: Messreihe</h2>
+        <p>
+          Mehrere Temperatur-Messwerte (Grad Celsius) sollen gespeichert werden. Der parameterlose Konstruktor erzeugt
+          ein <code>double</code>-Array mit 24 Plätzen (ein Messwert pro Stunde), der zweite legt die Anzahl per
+          Parameter fest. <code>messwerteBefuellen</code> füllt mit Zufallszahlen von -20 bis 30 Grad,
+          <code>messen</code> speichert einen Wert an einem <code>index</code>, <code>temperatur(int index)</code>
+          liest einen Wert, <code>printMessreihe</code> gibt alles formatiert aus.
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Messreihe.java</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">import java.util.Random;
+
+public class Messreihe
+{
+    private double[] temperatur;
+
+    public Messreihe() {
+        temperatur = new double[24]; // ein Messwert pro Stunde
+    }
+
+    public Messreihe(int anzahlMesswerte) {
+        if (anzahlMesswerte &gt; 0) {
+            temperatur = new double[anzahlMesswerte];
+        } else {
+            System.out.println("Fehler, ungueltige Anzahl: " + anzahlMesswerte);
+            System.out.println("Erzeuge Array mit 24 Plaetzen");
+            temperatur = new double[24];
+        }
+    }
+
+    public void messwerteBefuellen() {
+        Random rand = new Random();
+        for (int i = 0; i &lt; temperatur.length; i++) {
+            temperatur[i] = 50.0 * rand.nextDouble() - 20.0;
+        }
+    }
+
+    public void messen(double temp, int index) {
+        if (index &gt;= 0 &amp;&amp; index &lt; temperatur.length) {
+            if (temp &gt; -100 &amp;&amp; temp &lt; 80) {
+                temperatur[index] = temp;
+            } else {
+                System.out.println("Ungueltiger Messwert: " + temp);
+            }
+        } else {
+            System.out.println("Fehler, ungueltiger index: " + index);
+        }
+    }
+
+    public double temperatur(int index) {
+        if (index &gt;= 0 &amp;&amp; index &lt; temperatur.length) {
+            return temperatur[index];
+        } else {
+            System.out.println("Fehler, ungueltiger index: " + index);
+            return -1;
+        }
+    }
+
+    public void printMessreihe() {
+        System.out.println("Messreihe: ");
+
+        for (int i = 0; i &lt; temperatur.length; i++) {
+            System.out.println(i + ": " + temperatur[i]);
+        }
+
+        System.out.println();
+    }
+}</code></pre>
+</div>
+        <p>Nun sollen das Temperaturminimum, das Maximum und der Durchschnitt ermittelt werden &ndash; mit Schleifen und lokalen Variablen:</p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Messreihe.java (Ergänzung)</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">public double temperaturMinimum() {
+    double x = temperatur[0];
+    for (int i = 1; i &lt; temperatur.length; i++) {
+        if (temperatur[i] &lt; x) {
+            x = temperatur[i];
+        }
+    }
+    return x;
+}
+
+public double temperaturMaximum() {
+    double x = temperatur[0];
+    for (int i = 1; i &lt; temperatur.length; i++) {
+        if (temperatur[i] &gt; x) {
+            x = temperatur[i];
+        }
+    }
+    return x;
+}
+
+public double durchschnittsTemperatur() {
+    double summe = 0.0;
+    for (int i = 0; i &lt; temperatur.length; i++) {
+        summe += temperatur[i];
+    }
+
+    return summe / temperatur.length;
+}</code></pre>
+</div>
+        <div class="callout callout-tip">
+  <div class="callout-icon">&#128161;</div>
+  <div class="callout-body">
+    <div class="callout-title">Das Muster für Minimum/Maximum</div>
+    <p>Mit dem <em>ersten</em> Element starten (nicht mit 0 &ndash; alle Werte könnten negativ sein!), dann ab
+          Index 1 vergleichen und bei Bedarf ersetzen. <code>summe += x</code> ist die Kurzform von
+          <code>summe = summe + x</code>.</p>
+  </div>
+</div>
+      </section>
+
+      <section class="section section-projekt">
+        <h2 id="projektschritt">Projektschritt</h2>
+<div class="projekt-box">
+  <div class="projekt-box-header">
+    <span class="projekt-step">Projektschritt 2.2</span>
+    <h3>Zeiterfassung mit einem Array</h3>
+  </div>
+<p>Neu im Projekt: die Klasse <code>Zeiterfassung</code> speichert die Arbeitsstunden eines Monats &ndash; ein Array mit einem Platz pro Tag. Achte auf die Umrechnung zwischen Kalendertag (1&ndash;31) und Index (0&ndash;30). Dazu gibt es <code>ZeiterfassungTest</code>, und <code>Programm</code> trägt ein paar Tage ein.</p>
+  <details class="code-collapse">
+  <summary><span class="code-filename">src/main/java/Zeiterfassung.java</span> <span class="code-collapse-hint">Code anzeigen (96 Zeilen)</span></summary>
+<div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">src/main/java/Zeiterfassung.java</span>
+    <span class="code-lang">Java</span>
+  </div>
+  <pre><code class="language-java">/*
+  Personalverwaltung – Arbeitsstunden eines Monats.
+  Stand: Lektion 2.2 (Arrays): ein Array mit einem Platz pro Tag.
+*/
+public class Zeiterfassung {
+
+    private int[] stunden;   // stunden[0] = 1. Tag, stunden[1] = 2. Tag, ...
+
+    public Zeiterfassung() {
+        stunden = new int[31];
+    }
+
+    public Zeiterfassung(int anzahlTage) {
+        if (anzahlTage &gt;= 28 &amp;&amp; anzahlTage &lt;= 31) {
+            stunden = new int[anzahlTage];
+        } else {
+            System.out.println("Fehler: ungueltige Anzahl an Tagen: " + anzahlTage);
+            stunden = new int[31];
+        }
+    }
+
+    public int anzahlTage() {
+        return stunden.length;
+    }
+
+    // tag: 1 .. anzahlTage (wie im Kalender), Index im Array: tag - 1
+    public void eintragen(int tag, int anzahlStunden) {
+        if (tag &gt;= 1 &amp;&amp; tag &lt;= stunden.length) {
+            if (anzahlStunden &gt;= 0 &amp;&amp; anzahlStunden &lt;= 12) {
+                stunden[tag - 1] = anzahlStunden;
+            } else {
+                System.out.println("Fehler: ungueltige Stundenanzahl: " + anzahlStunden);
+            }
+        } else {
+            System.out.println("Fehler: ungueltiger Tag: " + tag);
+        }
+    }
+
+    public int stunden(int tag) {
+        if (tag &gt;= 1 &amp;&amp; tag &lt;= stunden.length) {
+            return stunden[tag - 1];
+        } else {
+            System.out.println("Fehler: ungueltiger Tag: " + tag);
+            return -1;
+        }
+    }
+
+    public int summe() {
+        int summe = 0;
+        for (int i = 0; i &lt; stunden.length; i++) {
+            summe += stunden[i];
+        }
+        return summe;
+    }
+
+    public int maximum() {
+        int max = stunden[0];
+        for (int i = 1; i &lt; stunden.length; i++) {
+            if (stunden[i] &gt; max) {
+                max = stunden[i];
+            }
+        }
+        return max;
+    }
+
+    public int anzahlArbeitstage() {
+        int anzahl = 0;
+        for (int i = 0; i &lt; stunden.length; i++) {
+            if (stunden[i] &gt; 0) {
+                anzahl++;
+            }
+        }
+        return anzahl;
+    }
+
+    // Durchschnitt nur über Tage, an denen gearbeitet wurde
+    public double durchschnitt() {
+        int tage = anzahlArbeitstage();
+        if (tage &gt; 0) {
+            return (double) summe() / tage;
+        } else {
+            return 0;
+        }
+    }
+
+    public void print() {
+        System.out.println("Zeiterfassung (" + stunden.length + " Tage)");
+        for (int i = 0; i &lt; stunden.length; i++) {
+            if (stunden[i] &gt; 0) {
+                System.out.println("  Tag " + (i + 1) + ": " + stunden[i] + " h");
+            }
+        }
+        System.out.println("Summe: " + summe() + " h, Maximum: " + maximum()
+                           + " h, Durchschnitt: " + durchschnitt() + " h");
+    }
+}</code></pre>
+</div>
+</details>
+  <p class="mb-0">&#128193; Stand nach dieser Lektion: <a href="beispiele/2.2/src/main/java/Zeiterfassung.java" target="_blank">beispiele/2.2/</a></p>
+</div>
+      </section>
+
+      <section class="section section-fehler">
+        <h2>Häufige Fehler</h2>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Index gleich length</div>
+  <p><code>for (int i = 0; i &lt;= a.length; i++)</code> &rarr; <code>ArrayIndexOutOfBoundsException: Index 10 out of bounds for length 10</code>.</p>
+          <p class="fehler-fix">Der letzte gültige Index ist <code>length - 1</code>; die Bedingung lautet <code>i &lt; a.length</code>.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Array nicht erzeugt</div>
+  <p><code>private int[] werte;</code> und später <code>werte[0] = 5;</code> &rarr; <code>NullPointerException</code>.</p>
+          <p class="fehler-fix">Die Deklaration legt nur die Referenz an. Im Konstruktor mit <code>werte = new int[10];</code> erzeugen.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Minimum mit 0 initialisiert</div>
+  <p>Bei lauter positiven Werten liefert <code>temperaturMinimum()</code> immer 0.</p>
+          <p class="fehler-fix">Mit dem ersten Element starten: <code>double x = temperatur[0];</code> &ndash; dann ist das Ergebnis immer ein tatsächlich vorhandener Wert.</p>
+</div>
+      </section>
+
+      <section class="section section-aufgaben">
+        <h2>Aufgaben</h2>
+        <div class="aufgaben-list">
+          <div class="aufgabe">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Aufgabe 1</span>
+    <span class="aufgabe-title">Messreihe: Temperatur</span>
+  </div>
+  <p>Eine <code>Messreihe</code> speichert Temperaturen in einem Array: Messwert hinzufügen, abfragen, Minimum, Maximum, Durchschnitt und Löschen &ndash; mit getrennter technischer Größe und Anzahl gültiger Werte.</p>
+            <p class="mb-0"><a href="uebungen/lektion-2.2-uebung-1-messreihe.pdf" target="_blank">&#128196; Übung 2.2-1 (PDF)</a></p>
+</div>
+          <div class="aufgabe">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Aufgabe 2</span>
+    <span class="aufgabe-title">Lotto-Sechser, Travelling Salesman</span>
+  </div>
+  <p>Die Wahrscheinlichkeit für einen Lotto-Sechser wird mit einem Kugel-Array simuliert; als schwierige Zusatzaufgabe werden Rundreisen durch Punkte (Travelling Salesman Problem) mit Zufallssuche verbessert.</p>
+            <p class="mb-0"><a href="uebungen/lektion-2.2-uebung-2-lotto-tsp.pdf" target="_blank">&#128196; Übung 2.2-2 (PDF)</a></p>
+</div>
+        </div>
+      </section>
+
+      <section class="section section-quiz">
+        <h2>Wissenskontrolle</h2>
+        <div class="quiz" id="quiz-13">
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 1</span> Ein Array wird mit <code>int[] werte = new int[5];</code> erzeugt. Welche Indizes sind gültig?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-13-1"> <span>1 bis 5</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-13-1"> <span>0 bis 4</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-13-1"> <span>0 bis 5</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-13-1"> <span>beliebige, das Array wächst mit</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Indizes beginnen bei 0. Ein Array der Länge 5 hat die Indizes 0 bis 4; <code>werte[5]</code> führt zu einer <code>ArrayIndexOutOfBoundsException</code>.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 2</span> Welchen Wert haben die Elemente direkt nach <code>new int[5]</code>?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-13-2"> <span>zufällige Werte</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-13-2"> <span>0</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-13-2"> <span><code>null</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-13-2"> <span>Das Array ist leer und hat keine Elemente.</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Java belegt neue Arrays mit Standardwerten: 0 bei Zahlen, <code>false</code> bei <code>boolean</code>, <code>null</code> bei Referenztypen.</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 3</span> Welche Schleife durchläuft alle Elemente des Arrays <code>werte</code> korrekt?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-13-3"> <span><code>for (int i = 1; i &lt;= werte.length; i++)</code></span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-13-3"> <span><code>for (int i = 0; i &lt; werte.length; i++)</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-13-3"> <span><code>for (int i = 0; i &lt;= werte.length; i++)</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-13-3"> <span><code>for (int i = 0; i &lt; werte.length(); i++)</code></span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Der Index läuft von 0 bis <code>length - 1</code>. <code>length</code> ist bei Arrays ein Attribut, keine Methode &ndash; ohne Klammern (anders als bei <code>String.length()</code>).</div>
+  </div>
+  <div class="quiz-frage" data-multi="0">
+    <p class="quiz-q"><span class="quiz-num">Frage 4</span> Wie berechnet man das Maximum eines Arrays am sichersten?</p>
+    <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-13-4"> <span>Startwert <code>max = 0</code>, dann alle Elemente vergleichen.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-13-4"> <span>Startwert <code>max = werte[0]</code>, dann die übrigen Elemente vergleichen.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-13-4"> <span>Das letzte Element ist immer das Maximum.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-13-4"> <span>Mit <code>werte.length</code>.</span></label></li>
+    </ul>
+    <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
+    <p class="quiz-feedback" hidden></p>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Mit dem Startwert 0 wäre das Ergebnis falsch, wenn alle Werte negativ sind (z.&nbsp;B. Temperaturen im Winter). Das erste Element ist ein sicherer Startwert.</div>
+  </div>
+  <div class="quiz-summary"><span class="quiz-score"></span><button type="button" class="quiz-reset">Zur&uuml;cksetzen</button></div>
+</div>
+      </section>
+
+    </div>
+
+    <nav class="lesson-nav">
+      <a class="nav-btn" href="2.1-intellij-junit.html">&larr; Lektion 2.1: IntelliJ, Maven &amp; JUnit</a>
+      <span class="nav-center-info">Lektion 2.2</span>
+      <a class="nav-btn primary" href="2.3-arrays-einfuegen-entfernen.html">Lektion 2.3: Arrays: Einf&uuml;gen &amp; Entfernen &rarr;</a>
+    </nav>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>
+    const ham = document.getElementById('hamburger');
+    const sb = document.getElementById('sidebar');
+    const ov = document.getElementById('overlay');
+    ham.addEventListener('click', () => { sb.classList.toggle('open'); ov.classList.toggle('visible'); });
+    ov.addEventListener('click', () => { sb.classList.remove('open'); ov.classList.remove('visible'); });
+    const cur = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-link').forEach(l => {
+      if (l.getAttribute('href') === cur) l.classList.add('active');
+    });
+    const themeBtn = document.getElementById('theme-toggle');
+    const applyTheme = (t) => {
+      document.documentElement.setAttribute('data-theme', t);
+      if (themeBtn) themeBtn.innerHTML = t === 'dark' ? '&#9728;' : '&#9790;';
+    };
+    applyTheme(localStorage.getItem('kurs-theme') || 'dark');
+    setTimeout(() => document.documentElement.classList.add('theme-transitions'), 50);
+    if (themeBtn) themeBtn.addEventListener('click', () => {
+      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('kurs-theme', next);
+      applyTheme(next);
+    });
+    hljs.highlightAll();
+  </script>
+  <script>
+    document.querySelectorAll('.quiz').forEach((quiz) => {
+      const fragen = [...quiz.querySelectorAll('.quiz-frage')];
+      const score = quiz.querySelector('.quiz-score');
+      const update = () => {
+        const done = fragen.filter((f) => f.dataset.state).length;
+        const ok = fragen.filter((f) => f.dataset.state === 'ok').length;
+        score.textContent = done === 0
+          ? fragen.length + ' Fragen – wähle eine Antwort und prüfe sie.'
+          : ok + ' von ' + fragen.length + ' richtig'
+            + (done < fragen.length ? ' (' + done + ' von ' + fragen.length + ' bearbeitet)' : '');
+      };
+      fragen.forEach((f) => {
+        const inputs = [...f.querySelectorAll('input')];
+        const check = f.querySelector('.quiz-check');
+        const reveal = f.querySelector('.quiz-reveal');
+        const fb = f.querySelector('.quiz-feedback');
+        const exp = f.querySelector('.quiz-erklaerung');
+        inputs.forEach((i) => i.addEventListener('change', () => {
+          check.disabled = !inputs.some((x) => x.checked);
+        }));
+        const finish = (graded) => {
+          let allOk = true;
+          f.querySelectorAll('.quiz-opt').forEach((li) => {
+            const input = li.querySelector('input');
+            const corr = li.dataset.correct === '1';
+            if (corr !== input.checked) allOk = false;
+            if (corr) li.classList.add('opt-correct');
+            else if (input.checked) li.classList.add('opt-wrong');
+            input.disabled = true;
+          });
+          f.dataset.state = !graded ? 'shown' : (allOk ? 'ok' : 'wrong');
+          fb.className = 'quiz-feedback fb-' + f.dataset.state;
+          fb.textContent = !graded ? 'Lösung angezeigt.'
+            : (allOk ? '✔ Richtig!' : '✘ Leider nicht ganz – die richtige Lösung ist markiert.');
+          fb.hidden = false;
+          exp.hidden = false;
+          check.disabled = true;
+          reveal.disabled = true;
+          update();
+        };
+        check.addEventListener('click', () => finish(true));
+        reveal.addEventListener('click', () => finish(false));
+      });
+      quiz.querySelector('.quiz-reset').addEventListener('click', () => {
+        fragen.forEach((f) => {
+          delete f.dataset.state;
+          f.querySelectorAll('.quiz-opt').forEach((li) => li.classList.remove('opt-correct', 'opt-wrong'));
+          f.querySelectorAll('input').forEach((i) => { i.checked = false; i.disabled = false; });
+          f.querySelector('.quiz-check').disabled = true;
+          f.querySelector('.quiz-reveal').disabled = false;
+          f.querySelector('.quiz-feedback').hidden = true;
+          f.querySelector('.quiz-erklaerung').hidden = true;
+        });
+        update();
+      });
+      update();
+    });
+  </script>
+</body>
+
+</html>
