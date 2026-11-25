@@ -427,8 +427,8 @@ public List&lt;Person&gt; sortiertNachGeburtsjahr() {
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 1</span> Wofür kann ein Lambda-Ausdruck verwendet werden?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-26-1"> <span>für jede beliebige Klasse</span></label></li>
       <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-26-1"> <span>als kurze Implementierung eines Interfaces mit genau einer abstrakten Methode (funktionales Interface)</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-26-1"> <span>für jede beliebige Klasse</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-26-1"> <span>nur für statische Methoden</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-26-1"> <span>als Ersatz für Konstruktoren</span></label></li>
     </ul>
@@ -440,9 +440,9 @@ public List&lt;Person&gt; sortiertNachGeburtsjahr() {
     <p class="quiz-q"><span class="quiz-num">Frage 2</span> Welche Lambda-Ausdrücke sind gültige Kurzformen?</p>
     <p class="quiz-hint">Mehrere Antworten sind richtig.</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-26-2"> <span><code>p -&gt; p.getAlter() &gt; 30</code></span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-26-2"> <span><code>(a, b) -&gt; a - b</code></span></label></li>
       <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-26-2"> <span><code>() -&gt; System.out.println("Hallo")</code></span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-26-2"> <span><code>(a, b) -&gt; a - b</code></span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-26-2"> <span><code>p -&gt; p.getAlter() &gt; 30</code></span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-26-2"> <span><code>a, b -&gt; a - b</code></span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
@@ -453,25 +453,26 @@ public List&lt;Person&gt; sortiertNachGeburtsjahr() {
     <p class="quiz-q"><span class="quiz-num">Frage 3</span> Was bewirkt <code>liste.sort(Comparator.comparing(Person::getName));</code>?</p>
     <ul class="quiz-opts">
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-26-3"> <span>Es sortiert absteigend nach Alter.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-26-3"> <span>Es gibt alle Namen aus.</span></label></li>
       <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-26-3"> <span>Es sortiert die Liste aufsteigend nach dem Namen.</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-26-3"> <span>Es entfernt alle Personen ohne Namen.</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-26-3"> <span>Es gibt alle Namen aus.</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
     <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> <code>Comparator.comparing</code> baut einen Comparator aus einer Methode, die den Sortierschlüssel liefert. <code>Person::getName</code> ist eine Methodenreferenz, kurz für <code>p -&gt; p.getName()</code>.</div>
   </div>
-  <div class="quiz-frage" data-multi="0">
-    <p class="quiz-q"><span class="quiz-num">Frage 4</span> Was macht <code>liste.removeIf(p -&gt; p.getAlter() &lt; 18);</code>?</p>
+  <div class="quiz-frage" data-multi="1">
+    <p class="quiz-q"><span class="quiz-num">Frage 4</span> Was trifft auf <code>liste.removeIf(p -&gt; p.getAlter() &lt; 18);</code> zu?</p>
+    <p class="quiz-hint">Mehrere Antworten sind richtig.</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-26-4"> <span>Es entfernt das erste Element mit Alter unter 18.</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-26-4"> <span>Es entfernt alle Elemente, deren Alter unter 18 liegt.</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-26-4"> <span>Es setzt das Alter aller Elemente auf 18.</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-26-4"> <span>Es liefert eine neue Liste und lässt die alte unverändert.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-26-4"> <span>Es entfernt das erste Element mit Alter unter 18.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-26-4"> <span>Der Lambda-Ausdruck wird für jedes Element der Liste ausgewertet.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-26-4"> <span>Es entfernt alle Elemente, deren Alter unter 18 liegt.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-26-4"> <span>Es liefert eine neue Liste und lässt die alte unverändert.</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
-    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> <code>removeIf</code> prüft jedes Element mit der Bedingung (einem Lambda) und entfernt alle Treffer direkt aus der Liste &ndash; ohne eigenen Iterator.</div>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> <code>removeIf</code> wertet den Lambda-Ausdruck für jedes Element aus und entfernt alle Elemente, für die er <code>true</code> liefert – direkt aus der Liste, nicht nur das erste. Eine neue Liste entsteht dabei nicht.</div>
   </div>
   <div class="quiz-summary"><span class="quiz-score"></span><button type="button" class="quiz-reset">Zur&uuml;cksetzen</button></div>
 </div>

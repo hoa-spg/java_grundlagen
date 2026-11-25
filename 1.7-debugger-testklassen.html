@@ -486,10 +486,10 @@ public class MitarbeiterTest {
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 1</span> Das Programm steht im Debugger an einer Zeile mit dem Aufruf <code>berechne()</code>. Welcher Befehl springt <strong>in</strong> diese Methode hinein?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-7-1"> <span>Step Over</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-7-1"> <span>Continue</span></label></li>
       <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-7-1"> <span>Step Into</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-7-1"> <span>Step Out</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-7-1"> <span>Continue</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-7-1"> <span>Step Over</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
@@ -498,33 +498,34 @@ public class MitarbeiterTest {
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 2</span> Was zeigt der <strong>Call Stack</strong> im Debugger?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-7-2"> <span>alle Attribute aller Objekte</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-7-2"> <span>die Kette der Methodenaufrufe, die zur aktuellen Zeile geführt haben</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-7-2"> <span>die Liste aller Haltepunkte</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-7-2"> <span>die Kette der Methodenaufrufe, die zur aktuellen Zeile geführt haben</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-7-2"> <span>die Ausgabe auf der Konsole</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-7-2"> <span>alle Attribute aller Objekte</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
     <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Ganz oben steht die Methode, in der das Programm gerade steht, darunter jeweils die Methode, die sie aufgerufen hat &ndash; bis hinunter zu <code>main</code> bzw. dem Test.</div>
   </div>
-  <div class="quiz-frage" data-multi="0">
-    <p class="quiz-q"><span class="quiz-num">Frage 3</span> Was ist der Vorteil eines JUnit-Tests gegenüber einer Testklasse, die nur Werte ausgibt?</p>
+  <div class="quiz-frage" data-multi="1">
+    <p class="quiz-q"><span class="quiz-num">Frage 3</span> Welche Vorteile hat ein JUnit-Test gegenüber einer Testklasse, die nur Werte ausgibt?</p>
+    <p class="quiz-hint">Mehrere Antworten sind richtig.</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-7-3"> <span>JUnit-Tests brauchen keine erwarteten Werte.</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-7-3"> <span>Der Test vergleicht selbst mit den erwarteten Werten und meldet Abweichungen &ndash; niemand muss die Ausgabe kontrollieren.</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-7-3"> <span>JUnit-Tests finden alle Fehler eines Programms.</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-7-3"> <span>JUnit-Tests laufen nur im Debugger.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-7-3"> <span>JUnit-Tests finden alle Fehler eines Programms.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-7-3"> <span>Der Test vergleicht selbst mit den erwarteten Werten und meldet Abweichungen &ndash; niemand muss die Ausgabe kontrollieren.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-7-3"> <span>JUnit-Tests laufen nur im Debugger.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-7-3"> <span>Er lässt sich nach jeder Änderung auf Knopfdruck wiederholen.</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
-    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Assertions wie <code>assertEquals(erwartet, tatsaechlich)</code> lassen den Computer prüfen. Ein roter Test zeigt sofort, was nicht stimmt. Tests finden aber nur die Fehler, für die es einen Testfall gibt.</div>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Ein JUnit-Test vergleicht selbst mit den erwarteten Werten und meldet Abweichungen – niemand muss Ausgaben kontrollieren. Deshalb lässt er sich nach jeder Änderung auf Knopfdruck wiederholen. Alle Fehler eines Programms findet aber auch er nicht.</div>
   </div>
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 4</span> Wozu dient eine Methode mit <code>@BeforeEach</code> in einer JUnit-Testklasse?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-7-4"> <span>Sie läuft einmal, nachdem alle Tests fertig sind.</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-7-4"> <span>Sie läuft vor jeder einzelnen Testmethode, z.&nbsp;B. um frische Testobjekte zu erzeugen.</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-7-4"> <span>Sie markiert einen Test, der übersprungen werden soll.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-7-4"> <span>Sie läuft vor jeder einzelnen Testmethode, z.&nbsp;B. um frische Testobjekte zu erzeugen.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-7-4"> <span>Sie läuft einmal, nachdem alle Tests fertig sind.</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-7-4"> <span>Sie ersetzt <code>@Test</code>.</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>

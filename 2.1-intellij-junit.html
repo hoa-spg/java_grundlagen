@@ -362,9 +362,9 @@
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 1</span> Wozu dient die Datei <code>pom.xml</code> in einem Maven-Projekt?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-12-1"> <span>Sie enthält den Java-Quelltext des Programms.</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-12-1"> <span>Sie beschreibt das Projekt: Java-Version, Abhängigkeiten wie JUnit und die verwendeten Plugins.</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-12-1"> <span>Sie speichert die Einstellungen von IntelliJ.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-12-1"> <span>Sie beschreibt das Projekt: Java-Version, Abhängigkeiten wie JUnit und die verwendeten Plugins.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-12-1"> <span>Sie enthält den Java-Quelltext des Programms.</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-12-1"> <span>Sie enthält die Testergebnisse.</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
@@ -374,10 +374,10 @@
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 2</span> Was macht der Befehl <code>mvn test</code>?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-12-2"> <span>Er startet die <code>main</code>-Methode.</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-12-2"> <span>Er übersetzt das Projekt und führt alle JUnit-Tests aus.</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-12-2"> <span>Er erzeugt automatisch Testklassen.</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-12-2"> <span>Er lädt das Projekt auf GitHub hoch.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-12-2"> <span>Er übersetzt das Projekt und führt alle JUnit-Tests aus.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-12-2"> <span>Er startet die <code>main</code>-Methode.</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
@@ -386,26 +386,27 @@
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 3</span> Was solltest du tun, nachdem IntelliJ Getter, Setter und Konstruktoren generiert hat?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-12-3"> <span>nichts &ndash; generierter Code ist immer fertig</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-12-3"> <span>den Code überarbeiten, z.&nbsp;B. Parameterprüfungen ergänzen und Konstruktoren die Set-Methoden aufrufen lassen</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-12-3"> <span>alle generierten Methoden <code>private</code> setzen</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-12-3"> <span>den Code überarbeiten, z.&nbsp;B. Parameterprüfungen ergänzen und Konstruktoren die Set-Methoden aufrufen lassen</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-12-3"> <span>nichts &ndash; generierter Code ist immer fertig</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-12-3"> <span>den generierten Code löschen und neu generieren</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
     <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Generierte Setter weisen den Wert einfach zu. Die fachlichen Prüfungen kennt nur du &ndash; sie müssen nachträglich ergänzt werden.</div>
   </div>
-  <div class="quiz-frage" data-multi="0">
-    <p class="quiz-q"><span class="quiz-num">Frage 4</span> Was sagt die <strong>Testabdeckung</strong> (Coverage) aus?</p>
+  <div class="quiz-frage" data-multi="1">
+    <p class="quiz-q"><span class="quiz-num">Frage 4</span> Was sagt die Testabdeckung (Coverage) aus?</p>
+    <p class="quiz-hint">Mehrere Antworten sind richtig.</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-12-4"> <span>wie viele Tests grün sind</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-12-4"> <span>welcher Anteil des Codes beim Ausführen der Tests tatsächlich durchlaufen wurde</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-12-4"> <span>dass das Programm fehlerfrei ist</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-12-4"> <span>wie schnell die Tests laufen</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-12-4"> <span>Sie gibt an, wie viele Tests grün sind.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-12-4"> <span>Code, den kein Test durchläuft, ist ungetestet – dort können Fehler unbemerkt bleiben.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-12-4"> <span>Sie beweist, dass das Programm fehlerfrei ist.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-12-4"> <span>welcher Anteil des Codes beim Ausführen der Tests tatsächlich durchlaufen wurde</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
-    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Die Coverage zeigt Code, den kein Test erreicht &ndash; dort fehlen Testfälle. 100&nbsp;% Abdeckung heißt aber nicht, dass alles richtig ist: Ein Test kann Code durchlaufen, ohne das Ergebnis zu prüfen.</div>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Die Coverage zeigt, welcher Anteil des Codes beim Ausführen der Tests tatsächlich durchlaufen wurde. Code, den kein Test durchläuft, ist ungetestet – dort können Fehler unbemerkt bleiben. Hohe Coverage heißt aber nicht, dass das Programm fehlerfrei ist.</div>
   </div>
   <div class="quiz-summary"><span class="quiz-score"></span><button type="button" class="quiz-reset">Zur&uuml;cksetzen</button></div>
 </div>

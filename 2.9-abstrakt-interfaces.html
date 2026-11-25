@@ -746,10 +746,10 @@ Kosten pro Monat: 7120 Euro (4 Personen)</code></pre>
     <p class="quiz-q"><span class="quiz-num">Frage 1</span> Was gilt für eine <strong>abstrakte</strong> Klasse?</p>
     <p class="quiz-hint">Mehrere Antworten sind richtig.</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-20-1"> <span>Von ihr können keine Objekte erzeugt werden.</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-20-1"> <span>Sie darf abstrakte Methoden ohne Rumpf enthalten, die jede konkrete Unterklasse implementieren muss.</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-20-1"> <span>Sie darf keine Attribute haben.</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-20-1"> <span>Sie darf keine normalen Methoden mit Rumpf haben.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-20-1"> <span>Sie darf abstrakte Methoden ohne Rumpf enthalten, die jede konkrete Unterklasse implementieren muss.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-20-1"> <span>Von ihr können keine Objekte erzeugt werden.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-20-1"> <span>Sie darf keine Attribute haben.</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
@@ -758,10 +758,10 @@ Kosten pro Monat: 7120 Euro (4 Personen)</code></pre>
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 2</span> Wie viele Basisklassen und wie viele Interfaces kann eine Java-Klasse haben?</p>
     <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-20-2"> <span>keine Basisklasse, wenn sie Interfaces implementiert</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-20-2"> <span>beliebig viele Basisklassen, ein Interface</span></label></li>
       <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-20-2"> <span>genau eine Basisklasse (<code>extends</code>), aber beliebig viele Interfaces (<code>implements</code>)</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-20-2"> <span>je genau eins</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-20-2"> <span>keine Basisklasse, wenn sie Interfaces implementiert</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
@@ -771,25 +771,26 @@ Kosten pro Monat: 7120 Euro (4 Personen)</code></pre>
     <p class="quiz-q"><span class="quiz-num">Frage 3</span> Welche Methode muss eine Klasse implementieren, die <code>Comparable&lt;Person&gt;</code> implementiert?</p>
     <ul class="quiz-opts">
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-20-3"> <span><code>boolean equals(Person p)</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-20-3"> <span><code>int compare(Person a, Person b)</code></span></label></li>
       <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-20-3"> <span><code>int compareTo(Person p)</code></span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-20-3"> <span><code>void sort()</code></span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-20-3"> <span><code>int compare(Person a, Person b)</code></span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
     <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> <code>compareTo</code> legt die natürliche Reihenfolge fest. Danach kann <code>Collections.sort(liste)</code> die Liste sortieren.</div>
   </div>
-  <div class="quiz-frage" data-multi="0">
-    <p class="quiz-q"><span class="quiz-num">Frage 4</span> Was ist ein Interface?</p>
+  <div class="quiz-frage" data-multi="1">
+    <p class="quiz-q"><span class="quiz-num">Frage 4</span> Was trifft auf ein <strong>Interface</strong> zu?</p>
+    <p class="quiz-hint">Mehrere Antworten sind richtig.</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-20-4"> <span>eine Klasse mit lauter <code>private</code>-Methoden</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-20-4"> <span>eine Schnittstelle, die festlegt, welche Methoden eine Klasse anbieten muss, ohne sie selbst zu implementieren</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-20-4"> <span>die Benutzeroberfläche eines Programms</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-20-4"> <span>eine Unterklasse von <code>Object</code> mit Attributen</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-20-4"> <span>eine Klasse mit lauter <code>private</code>-Methoden</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-20-4"> <span>die Benutzeroberfläche eines Programms</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-20-4"> <span>eine Schnittstelle, die festlegt, welche Methoden eine Klasse anbieten muss, ohne sie selbst zu implementieren</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-20-4"> <span>Eine Klasse setzt es mit <code>implements</code> um und muss dann alle seine Methoden implementieren.</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
-    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Ein Interface ist ein Vertrag. Jede Klasse, die es implementiert, garantiert die Methoden &ndash; so kann man Objekte verschiedener Klassen einheitlich verwenden.</div>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Ein Interface legt fest, welche Methoden eine Klasse anbieten muss, ohne sie selbst zu implementieren. Eine Klasse setzt es mit <code>implements</code> um und muss dann alle seine Methoden implementieren. Mit Benutzeroberflächen hat der Begriff hier nichts zu tun.</div>
   </div>
   <div class="quiz-summary"><span class="quiz-score"></span><button type="button" class="quiz-reset">Zur&uuml;cksetzen</button></div>
 </div>

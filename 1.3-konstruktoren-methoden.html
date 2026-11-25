@@ -578,24 +578,25 @@ public class Mitarbeiter {
         <details class="quiz-box">
 <summary><h2>Quiz</h2><span class="quiz-box-hint">4 Fragen &middot; zum Aufklappen klicken</span></summary>
 <div class="quiz" id="quiz-3">
-  <div class="quiz-frage" data-multi="0">
-    <p class="quiz-q"><span class="quiz-num">Frage 1</span> Was ist ein Konstruktor?</p>
+  <div class="quiz-frage" data-multi="1">
+    <p class="quiz-q"><span class="quiz-num">Frage 1</span> Was trifft auf einen <strong>Konstruktor</strong> zu?</p>
+    <p class="quiz-hint">Mehrere Antworten sind richtig.</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-3-1"> <span>Eine Methode, die ein Objekt löscht</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-3-1"> <span>Eine spezielle Methode mit dem Namen der Klasse und ohne Rückgabetyp, die beim Erzeugen eines Objekts mit <code>new</code> aufgerufen wird</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-3-1"> <span>Eine Methode mit Rückgabetyp <code>void</code>, die man nach dem Erzeugen aufrufen muss</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-3-1"> <span>Ein anderes Wort für Set-Methode</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-3-1"> <span>Ein anderes Wort für Set-Methode</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-3-1"> <span>Er hat denselben Namen wie die Klasse und keinen Rückgabetyp</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-3-1"> <span>Er wird beim Erzeugen eines Objekts mit <code>new</code> automatisch aufgerufen</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-3-1"> <span>Er löscht ein Objekt</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
-    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Der Konstruktor heißt genau wie die Klasse, hat keinen Rückgabetyp (auch nicht <code>void</code>) und setzt die Anfangswerte des neuen Objekts.</div>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Ein Konstruktor hat denselben Namen wie die Klasse und keinen Rückgabetyp – auch nicht <code>void</code>. Er wird beim Erzeugen eines Objekts mit <code>new</code> automatisch aufgerufen. Er löscht keine Objekte und ist keine Set-Methode.</div>
   </div>
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 2</span> Ein Konstruktorparameter heißt genauso wie ein Attribut, im Rumpf steht nur <code>name = name;</code>. Was passiert?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-3-2"> <span>Das Attribut <code>name</code> bekommt den Wert des Parameters.</span></label></li>
       <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-3-2"> <span>Der Parameter wird sich selbst zugewiesen, das Attribut bleibt unverändert.</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-3-2"> <span>Der Compiler meldet einen Fehler.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-3-2"> <span>Das Attribut <code>name</code> bekommt den Wert des Parameters.</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-3-2"> <span>Das Programm stürzt beim Erzeugen ab.</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
@@ -605,26 +606,27 @@ public class Mitarbeiter {
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 3</span> Eine Methode hat den Rückgabetyp <code>int</code>. Was muss in ihrem Rumpf stehen?</p>
     <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-3-3"> <span>ein Aufruf von <code>new</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-3-3"> <span>ein <code>System.out.println</code> mit dem Ergebnis</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-3-3"> <span>nichts Besonderes</span></label></li>
       <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-3-3"> <span>eine <code>return</code>-Anweisung, die einen <code>int</code>-Wert zurückgibt</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-3-3"> <span>ein <code>System.out.println</code> mit dem Ergebnis</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-3-3"> <span>ein Aufruf von <code>new</code></span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
     <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Der Rückgabetyp verspricht dem Aufrufer einen Wert. Ohne <code>return</code> meldet der Compiler <em>missing return statement</em>. Eine Ausgabe auf der Konsole ist etwas anderes als eine Rückgabe.</div>
   </div>
-  <div class="quiz-frage" data-multi="0">
+  <div class="quiz-frage" data-multi="1">
     <p class="quiz-q"><span class="quiz-num">Frage 4</span> Welche Namen entsprechen den Java-Konventionen?</p>
+    <p class="quiz-hint">Mehrere Antworten sind richtig.</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-3-4"> <span>Klasse <code>Fahrzeug</code>, Methode <code>berechneGesamtpreis</code></span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-3-4"> <span>Klasse <code>fahrzeug</code>, Methode <code>BerechneGesamtpreis</code></span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-3-4"> <span>Klasse <code>FAHRZEUG</code>, Methode <code>berechne_gesamtpreis</code></span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-3-4"> <span>Klasse <code>Fahrzeug</code>, Methode <code>berechne-Gesamtpreis</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-3-4"> <span>Klasse <code>fahrzeug</code>, Methode <code>BerechneGesamtpreis</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-3-4"> <span>Klasse <code>FAHRZEUG</code>, Methode <code>berechne_gesamtpreis</code></span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-3-4"> <span>Klasse <code>Fahrzeug</code>, Methode <code>berechneGesamtpreis</code></span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-3-4"> <span>Klasse <code>Kundenkonto</code>, Methode <code>getKontostand</code></span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
-    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Klassen beginnen mit einem Großbuchstaben, Methoden und Variablen mit einem Kleinbuchstaben; zusammengesetzte Wörter werden in camelCase geschrieben. Bindestriche sind in Namen gar nicht erlaubt.</div>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Klassennamen beginnen mit einem Großbuchstaben, Methodennamen mit einem Kleinbuchstaben; zusammengesetzte Wörter schreibt man in CamelCase (<code>berechneGesamtpreis</code>, <code>getKontostand</code>). Unterstriche, Bindestriche und durchgehende Großbuchstaben passen nicht.</div>
   </div>
   <div class="quiz-summary"><span class="quiz-score"></span><button type="button" class="quiz-reset">Zur&uuml;cksetzen</button></div>
 </div>

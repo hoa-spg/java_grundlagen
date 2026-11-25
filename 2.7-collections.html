@@ -694,9 +694,9 @@ public class Firma {
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 1</span> Was ist der wichtigste Vorteil einer <code>ArrayList</code> gegenüber einem Array?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-18-1"> <span>Sie kann nur primitive Werte speichern.</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-18-1"> <span>Sie wächst und schrumpft automatisch; Einfügen und Entfernen erledigt sie selbst.</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-18-1"> <span>Sie ist immer schneller.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-18-1"> <span>Sie wächst und schrumpft automatisch; Einfügen und Entfernen erledigt sie selbst.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-18-1"> <span>Sie kann nur primitive Werte speichern.</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-18-1"> <span>Sie braucht keinen Typparameter.</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
@@ -707,8 +707,8 @@ public class Firma {
     <p class="quiz-q"><span class="quiz-num">Frage 2</span> Welche Zeile gibt alle Elemente einer <code>ArrayList&lt;String&gt; namen</code> mit der for-each-Schleife aus?</p>
     <ul class="quiz-opts">
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-18-2"> <span><code>for (int n : namen) { System.out.println(n); }</code></span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-18-2"> <span><code>for (String n : namen) { System.out.println(n); }</code></span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-18-2"> <span><code>for (String n = namen) { System.out.println(n); }</code></span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-18-2"> <span><code>for (String n : namen) { System.out.println(n); }</code></span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-18-2"> <span><code>for (namen : String n) { System.out.println(n); }</code></span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
@@ -718,26 +718,27 @@ public class Firma {
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 3</span> Warum verwendet man einen <code>Iterator</code>, um während des Durchlaufens Elemente zu entfernen?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-18-3"> <span>weil die for-each-Schleife keine Elemente lesen kann</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-18-3"> <span>weil <code>liste.remove(&hellip;)</code> in einer for-each-Schleife eine <code>ConcurrentModificationException</code> auslöst, <code>iterator.remove()</code> aber erlaubt ist</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-18-3"> <span>weil ein Iterator die Liste sortiert</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-18-3"> <span>weil <code>ArrayList</code> keine <code>remove</code>-Methode hat</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-18-3"> <span>weil die for-each-Schleife keine Elemente lesen kann</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-18-3"> <span>weil <code>liste.remove(&hellip;)</code> in einer for-each-Schleife eine <code>ConcurrentModificationException</code> auslöst, <code>iterator.remove()</code> aber erlaubt ist</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
     <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Die for-each-Schleife verwendet intern selbst einen Iterator. Ändert man die Liste an ihm vorbei, merkt er das und bricht ab.</div>
   </div>
-  <div class="quiz-frage" data-multi="0">
+  <div class="quiz-frage" data-multi="1">
     <p class="quiz-q"><span class="quiz-num">Frage 4</span> Warum schreibt man <code>ArrayList&lt;Integer&gt;</code> statt <code>ArrayList&lt;int&gt;</code>?</p>
+    <p class="quiz-hint">Mehrere Antworten sind richtig.</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-18-4"> <span>weil <code>Integer</code> schneller ist</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-18-4"> <span>weil Collections nur Objekte speichern; <code>Integer</code> ist die Hüllklasse zu <code>int</code>, Werte werden automatisch umgewandelt (Autoboxing)</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-18-4"> <span>weil <code>int</code> in Java nicht existiert</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-18-4"> <span>Beides funktioniert gleich.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-18-4"> <span>Weil Collections nur Objekte speichern können</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-18-4"> <span>Dank Autoboxing kann man trotzdem <code>liste.add(5)</code> schreiben.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-18-4"> <span>Beides funktioniert gleich.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-18-4"> <span>weil <code>Integer</code> schneller ist</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
-    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Typparameter müssen Referenztypen sein. Beim Hinzufügen wird ein <code>int</code> automatisch in ein <code>Integer</code>-Objekt verpackt (Boxing) und beim Lesen wieder ausgepackt (Unboxing).</div>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Collections speichern nur Objekte; <code>Integer</code> ist die Hüllklasse zu <code>int</code>. Werte werden automatisch umgewandelt (Autoboxing), deshalb kann man trotzdem <code>liste.add(5)</code> schreiben. <code>int</code> gibt es natürlich, und schneller ist <code>Integer</code> nicht.</div>
   </div>
   <div class="quiz-summary"><span class="quiz-score"></span><button type="button" class="quiz-reset">Zur&uuml;cksetzen</button></div>
 </div>

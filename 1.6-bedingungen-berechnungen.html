@@ -492,8 +492,8 @@ void main() {
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 1</span> Was ist der Unterschied zwischen <code>=</code> und <code>==</code>?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-6-1"> <span>Es gibt keinen, beide vergleichen.</span></label></li>
       <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-6-1"> <span><code>=</code> weist einen Wert zu, <code>==</code> vergleicht zwei Werte.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-6-1"> <span>Es gibt keinen, beide vergleichen.</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-6-1"> <span><code>=</code> vergleicht, <code>==</code> weist zu.</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-6-1"> <span><code>==</code> ist nur für Strings gedacht.</span></label></li>
     </ul>
@@ -501,41 +501,43 @@ void main() {
     <p class="quiz-feedback" hidden></p>
     <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> <code>alter = 18</code> speichert 18 in der Variable, <code>alter == 18</code> liefert <code>true</code> oder <code>false</code>. In einer <code>if</code>-Bedingung braucht man den Vergleich.</div>
   </div>
-  <div class="quiz-frage" data-multi="0">
-    <p class="quiz-q"><span class="quiz-num">Frage 2</span> Ein Wert <code>x</code> soll zwischen 10 und 100 liegen (jeweils inklusive). Welche Bedingung prüft das?</p>
+  <div class="quiz-frage" data-multi="1">
+    <p class="quiz-q"><span class="quiz-num">Frage 2</span> Ein Wert <code>x</code> soll zwischen 10 und 100 liegen (jeweils inklusive). Welche Bedingungen prüfen das?</p>
+    <p class="quiz-hint">Mehrere Antworten sind richtig.</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-6-2"> <span><code>x &gt;= 10 || x &lt;= 100</code></span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-6-2"> <span><code>x &gt;= 10 &amp;&amp; x &lt;= 100</code></span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-6-2"> <span><code>10 &lt;= x &lt;= 100</code></span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-6-2"> <span><code>x &gt; 10 &amp;&amp; x &lt; 100</code></span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-6-2"> <span><code>x &gt;= 10 &amp;&amp; x &lt;= 100</code></span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-6-2"> <span><code>x &lt;= 100 &amp;&amp; x &gt;= 10</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-6-2"> <span><code>10 &lt;= x &lt;= 100</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-6-2"> <span><code>x &gt;= 10 || x &lt;= 100</code></span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
-    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Beide Teilbedingungen müssen gleichzeitig gelten, also <code>&amp;&amp;</code>. Mit <code>||</code> wäre jede Zahl gültig. Die Schreibweise <code>10 &lt;= x &lt;= 100</code> gibt es in Java nicht, und <code>&gt;</code>/<code>&lt;</code> würden die Grenzen ausschließen.</div>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Beide Teilbedingungen müssen gelten, also verbindet man sie mit <code>&amp;&amp;</code>; die Reihenfolge der Teile spielt keine Rolle. <code>||</code> wäre fast immer wahr, <code>10 &lt;= x &lt;= 100</code> übersetzt in Java nicht, und <code>&gt;</code>/<code>&lt;</code> schließen die Grenzen aus.</div>
   </div>
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 3</span> Welchen Wert hat <code>double d = 7 / 2;</code>?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-6-3"> <span>3.5</span></label></li>
       <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-6-3"> <span>3.0</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-6-3"> <span>4.0</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-6-3"> <span>Das übersetzt nicht.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-6-3"> <span>4.0</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-6-3"> <span>3.5</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
     <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> <code>7 / 2</code> ist eine Division zweier <code>int</code>-Werte und ergibt die ganze Zahl 3. Erst danach wird sie in <code>double</code> umgewandelt. Richtig wäre z.&nbsp;B. <code>(double) 7 / 2</code> oder <code>7.0 / 2</code>.</div>
   </div>
-  <div class="quiz-frage" data-multi="0">
+  <div class="quiz-frage" data-multi="1">
     <p class="quiz-q"><span class="quiz-num">Frage 4</span> Was gilt für eine lokale Variable, die innerhalb einer Methode deklariert wird?</p>
+    <p class="quiz-hint">Mehrere Antworten sind richtig.</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-6-4"> <span>Sie behält ihren Wert bis zum nächsten Methodenaufruf.</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-6-4"> <span>Sie existiert nur, solange die Methode läuft, und ist außerhalb nicht sichtbar.</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-6-4"> <span>Sie ist automatisch ein Attribut der Klasse.</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-6-4"> <span>Sie muss <code>private</code> deklariert werden.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-6-4"> <span>Sie muss <code>private</code> deklariert werden.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-6-4"> <span>Sie behält ihren Wert bis zum nächsten Methodenaufruf.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-6-4"> <span>Sie existiert nur, solange die Methode läuft.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-6-4"> <span>Außerhalb der Methode ist sie nicht sichtbar.</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
-    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Lokale Variablen dienen für Zwischenergebnisse. Nach dem Ende der Methode sind sie weg; was dauerhaft zum Objekt gehört, ist ein Attribut. Zugriffs-Modifier wie <code>private</code> gibt es für lokale Variablen nicht.</div>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Eine lokale Variable existiert nur, solange die Methode läuft, und ist außerhalb nicht sichtbar. Beim nächsten Aufruf entsteht sie neu. Sie ist kein Attribut und bekommt keinen Zugriffsmodifizierer wie <code>private</code>.</div>
   </div>
   <div class="quiz-summary"><span class="quiz-score"></span><button type="button" class="quiz-reset">Zur&uuml;cksetzen</button></div>
 </div>

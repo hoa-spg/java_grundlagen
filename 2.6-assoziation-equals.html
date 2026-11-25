@@ -468,10 +468,10 @@ public boolean enthaelt(Mitarbeiter m) {
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 1</span> Was bedeutet eine <strong>beidseitige</strong> Assoziation zwischen zwei Klassen <code>A</code> und <code>B</code>?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-17-1"> <span>Ein <code>A</code> kennt seine <code>B</code>-Objekte, diese kennen ihr <code>A</code> nicht.</span></label></li>
       <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-17-1"> <span>Ein <code>A</code> kennt seine <code>B</code>-Objekte, und jedes <code>B</code> kennt sein <code>A</code>.</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-17-1"> <span><code>A</code> und <code>B</code> erben voneinander.</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-17-1"> <span>Ein <code>B</code> gehört immer zu zwei <code>A</code>-Objekten.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-17-1"> <span>Ein <code>A</code> kennt seine <code>B</code>-Objekte, diese kennen ihr <code>A</code> nicht.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-17-1"> <span><code>A</code> und <code>B</code> erben voneinander.</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
@@ -480,34 +480,35 @@ public boolean enthaelt(Mitarbeiter m) {
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 2</span> Bei einer beidseitigen Assoziation ist ein Objekt bereits dem „Besitzer“ X zugeordnet und soll zum Besitzer Y wechseln. Was muss passieren?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-17-2"> <span>Es wird zusätzlich bei Y eingetragen.</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-17-2"> <span>Es wird bei X entfernt, bei Y eingetragen, und sein eigener Verweis zeigt danach auf Y.</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-17-2"> <span>Nur der Verweis im Objekt wird auf Y geändert.</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-17-2"> <span>Das ist grundsätzlich nicht möglich.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-17-2"> <span>Nur der Verweis im Objekt wird auf Y geändert.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-17-2"> <span>Es wird bei X entfernt, bei Y eingetragen, und sein eigener Verweis zeigt danach auf Y.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-17-2"> <span>Es wird zusätzlich bei Y eingetragen.</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
     <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Ein Objekt darf nicht gleichzeitig zwei Besitzern gehören, und beide Seiten der Beziehung müssen nach jeder Änderung zueinander passen.</div>
   </div>
-  <div class="quiz-frage" data-multi="0">
-    <p class="quiz-q"><span class="quiz-num">Frage 3</span> Zwei Objekte derselben Klasse wurden mit denselben Daten getrennt erzeugt. Was liefert <code>o1 == o2</code>?</p>
+  <div class="quiz-frage" data-multi="1">
+    <p class="quiz-q"><span class="quiz-num">Frage 3</span> Zwei Objekte derselben Klasse wurden mit denselben Daten getrennt erzeugt. Was stimmt?</p>
+    <p class="quiz-hint">Mehrere Antworten sind richtig.</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-17-3"> <span><code>true</code>, weil die Daten gleich sind</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-17-3"> <span><code>false</code>, weil es zwei verschiedene Objekte sind</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-17-3"> <span>einen Compilerfehler</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-17-3"> <span>Das hängt von <code>toString()</code> ab.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-17-3"> <span><code>o1 == o2</code> liefert <code>true</code>, weil die Daten gleich sind.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-17-3"> <span><code>o1 == o2</code> liefert <code>false</code>, weil es zwei verschiedene Objekte sind.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-17-3"> <span><code>o1 == o2</code> führt zu einem Compilerfehler.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-17-3"> <span>Um die Daten zu vergleichen, braucht die Klasse eine <code>equals</code>-Methode.</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
-    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> <code>==</code> prüft Referenzgleichheit. Ob zwei Objekte inhaltlich gleich sind, beantwortet erst eine selbst geschriebene <code>equals</code>-Methode.</div>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> <code>o1 == o2</code> liefert <code>false</code>, weil es zwei verschiedene Objekte sind. Um die Daten zu vergleichen, braucht die Klasse eine eigene <code>equals</code>-Methode. Mit <code>toString()</code> hat das nichts zu tun.</div>
   </div>
   <div class="quiz-frage" data-multi="1">
     <p class="quiz-q"><span class="quiz-num">Frage 4</span> Welche Schritte gehören zum Standardmuster einer <code>equals(Object o)</code>-Methode?</p>
     <p class="quiz-hint">Mehrere Antworten sind richtig.</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-17-4"> <span>prüfen, ob <code>o</code> dasselbe Objekt ist (<code>this == o</code>)</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-17-4"> <span>prüfen, ob <code>o</code> <code>null</code> ist oder eine andere Klasse hat</span></label></li>
       <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-17-4"> <span>nach dem Cast die relevanten Attribute vergleichen</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-17-4"> <span>prüfen, ob <code>o</code> <code>null</code> ist oder eine andere Klasse hat</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-17-4"> <span>prüfen, ob <code>o</code> dasselbe Objekt ist (<code>this == o</code>)</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-17-4"> <span>alle Attribute mit <code>==</code> vergleichen, auch Strings</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>

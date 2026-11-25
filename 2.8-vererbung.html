@@ -796,24 +796,25 @@ public class Arbeiter extends Mitarbeiter {
         <details class="quiz-box">
 <summary><h2>Quiz</h2><span class="quiz-box-hint">4 Fragen &middot; zum Aufklappen klicken</span></summary>
 <div class="quiz" id="quiz-19">
-  <div class="quiz-frage" data-multi="0">
-    <p class="quiz-q"><span class="quiz-num">Frage 1</span> Welches Problem löst Vererbung?</p>
+  <div class="quiz-frage" data-multi="1">
+    <p class="quiz-q"><span class="quiz-num">Frage 1</span> Welche Probleme löst Vererbung?</p>
+    <p class="quiz-hint">Mehrere Antworten sind richtig.</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-19-1"> <span>Programme laufen schneller.</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-19-1"> <span>Gemeinsame Attribute und Methoden mehrerer Klassen stehen nur einmal in einer Basisklasse statt dupliziert in jeder Klasse.</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-19-1"> <span>Klassen brauchen keine Konstruktoren mehr.</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-19-1"> <span>Attribute können nicht mehr <code>private</code> sein.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-19-1"> <span>Attribute können nicht mehr <code>private</code> sein.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-19-1"> <span>Gemeinsame Attribute und Methoden mehrerer Klassen stehen nur einmal in einer Basisklasse statt dupliziert in jeder Klasse.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-19-1"> <span>Eine Änderung an der gemeinsamen Logik muss nur an einer Stelle gemacht werden.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-19-1"> <span>Programme laufen schneller.</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
-    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Unterklassen übernehmen alles von der Basisklasse und ergänzen nur, was sie zusätzlich haben. Änderungen am gemeinsamen Teil passieren an einer Stelle.</div>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Gemeinsame Attribute und Methoden mehrerer Klassen stehen nur einmal in einer Basisklasse statt dupliziert in jeder Klasse. Eine Änderung an der gemeinsamen Logik macht man deshalb nur an einer Stelle. Schneller werden Programme dadurch nicht.</div>
   </div>
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 2</span> Was muss im Konstruktor einer Unterklasse als erste Anweisung stehen, wenn die Basisklasse keinen parameterlosen Konstruktor hat?</p>
     <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-19-2"> <span><code>new Basisklasse()</code></span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-19-2"> <span><code>this()</code></span></label></li>
       <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-19-2"> <span>ein Aufruf <code>super(&hellip;)</code> mit passenden Argumenten</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-19-2"> <span><code>new Basisklasse()</code></span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-19-2"> <span><code>@Override</code></span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
@@ -823,8 +824,8 @@ public class Arbeiter extends Mitarbeiter {
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 3</span> <code>Tier t = new Hund(); t.lautGeben();</code> &ndash; <code>Hund</code> erbt von <code>Tier</code> und überschreibt <code>lautGeben()</code>. Welche Methode wird ausgeführt?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-19-3"> <span>die von <code>Tier</code>, weil die Variable diesen Typ hat</span></label></li>
       <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-19-3"> <span>die von <code>Hund</code>, weil das Objekt ein Hund ist</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-19-3"> <span>die von <code>Tier</code>, weil die Variable diesen Typ hat</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-19-3"> <span>beide nacheinander</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-19-3"> <span>keine &ndash; der Compiler meldet einen Fehler</span></label></li>
     </ul>
@@ -835,10 +836,10 @@ public class Arbeiter extends Mitarbeiter {
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 4</span> Was liefert <code>String s = (x &lt; 10) ? "klein" : "groß";</code> bei <code>x = 12</code>?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-19-4"> <span><code>"klein"</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-19-4"> <span>einen Compilerfehler</span></label></li>
       <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-19-4"> <span><code>"groß"</code></span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-19-4"> <span><code>true</code></span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-19-4"> <span>einen Compilerfehler</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-19-4"> <span><code>"klein"</code></span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>

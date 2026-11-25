@@ -562,10 +562,10 @@ vaadin.launch-browser=true</code></pre>
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 1</span> Wozu dient die Annotation <code>@Route("kunden")</code> an einer View-Klasse?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-31-1"> <span>Sie legt die Farbe der Seite fest.</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-31-1"> <span>Sie macht die View unter der URL <code>/kunden</code> erreichbar.</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-31-1"> <span>Sie startet die Anwendung.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-31-1"> <span>Sie macht die View unter der URL <code>/kunden</code> erreichbar.</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-31-1"> <span>Sie verbindet die View mit der Datenbank.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-31-1"> <span>Sie legt die Farbe der Seite fest.</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
@@ -574,10 +574,10 @@ vaadin.launch-browser=true</code></pre>
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 2</span> Welche Aufgabe hat das <code>MainLayout</code>?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-31-2"> <span>Es enthält die Model-Klassen.</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-31-2"> <span>Es ist der gemeinsame Rahmen aller Seiten, z.&nbsp;B. mit Kopfzeile und Navigationsmenü.</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-31-2"> <span>Es enthält die <code>main</code>-Methode.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-31-2"> <span>Es ist der gemeinsame Rahmen aller Seiten, z.&nbsp;B. mit Kopfzeile und Navigationsmenü.</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-31-2"> <span>Es ersetzt die <code>pom.xml</code>.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-31-2"> <span>Es enthält die Model-Klassen.</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
@@ -586,26 +586,27 @@ vaadin.launch-browser=true</code></pre>
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 3</span> Wie reagiert ein Button in Vaadin auf einen Klick?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-31-3"> <span>mit einem <code>onclick</code>-Attribut in HTML</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-31-3"> <span>mit einem Click-Listener, meist als Lambda: <code>button.addClickListener(e -&gt; &hellip;)</code></span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-31-3"> <span>gar nicht, Buttons sind nur Dekoration</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-31-3"> <span>mit einem <code>onclick</code>-Attribut in HTML</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-31-3"> <span>mit einer <code>while</code>-Schleife, die auf den Klick wartet</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-31-3"> <span>mit einem Click-Listener, meist als Lambda: <code>button.addClickListener(e -&gt; &hellip;)</code></span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
     <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Der Lambda-Ausdruck implementiert das Listener-Interface. Vaadin ruft ihn am Server auf, sobald im Browser geklickt wird.</div>
   </div>
-  <div class="quiz-frage" data-multi="0">
+  <div class="quiz-frage" data-multi="1">
     <p class="quiz-q"><span class="quiz-num">Frage 4</span> Wie startet man eine Vaadin-Anwendung auf Basis von Spring Boot lokal, und wo sieht man sie?</p>
+    <p class="quiz-hint">Mehrere Antworten sind richtig.</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-31-4"> <span>Doppelklick auf eine HTML-Datei</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-31-4"> <span>die Klasse mit der <code>main</code>-Methode (z.&nbsp;B. <code>Application</code>) oder <code>mvn spring-boot:run</code> starten, dann im Browser <code>localhost:8080</code> öffnen</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-31-4"> <span>die Object Workbench öffnen</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-31-4"> <span>die Anwendung zuerst auf einen externen Server hochladen</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-31-4"> <span>Danach öffnet man im Browser <code>localhost:8080</code>.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-31-4"> <span>Man startet die Klasse mit der <code>main</code>-Methode oder <code>mvn spring-boot:run</code>.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-31-4"> <span>die Anwendung zuerst auf einen externen Server hochladen</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-31-4"> <span>Doppelklick auf eine HTML-Datei</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
-    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Der Start bringt einen eingebauten Webserver hoch. Beim ersten Mal lädt Maven die Abhängigkeiten herunter, das dauert eine Weile.</div>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Man startet die Klasse mit der <code>main</code>-Methode (z. B. <code>Application</code>) oder <code>mvn spring-boot:run</code>. Danach öffnet man im Browser <code>localhost:8080</code>. Eine HTML-Datei oder ein externer Server ist dafür nicht nötig.</div>
   </div>
   <div class="quiz-summary"><span class="quiz-score"></span><button type="button" class="quiz-reset">Zur&uuml;cksetzen</button></div>
 </div>

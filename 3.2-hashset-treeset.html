@@ -344,25 +344,26 @@ class SetTest {
         <details class="quiz-box">
 <summary><h2>Quiz</h2><span class="quiz-box-hint">4 Fragen &middot; zum Aufklappen klicken</span></summary>
 <div class="quiz" id="quiz-23">
-  <div class="quiz-frage" data-multi="0">
-    <p class="quiz-q"><span class="quiz-num">Frage 1</span> Was ist die wichtigste Eigenschaft einer Menge (<code>Set</code>)?</p>
+  <div class="quiz-frage" data-multi="1">
+    <p class="quiz-q"><span class="quiz-num">Frage 1</span> Was trifft auf eine Menge (Set) zu?</p>
+    <p class="quiz-hint">Mehrere Antworten sind richtig.</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-23-1"> <span>Sie speichert Elemente in Einfügereihenfolge mit Index.</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-23-1"> <span>Sie enthält jedes Element höchstens einmal &ndash; keine Duplikate.</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-23-1"> <span>Sie kann nur Zahlen speichern.</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-23-1"> <span>Sie hat eine feste Größe.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-23-1"> <span>Fügt man ein bereits enthaltenes Element erneut hinzu, ändert sich die Menge nicht.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-23-1"> <span>Sie enthält jedes Element höchstens einmal &ndash; keine Duplikate.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-23-1"> <span>Sie hat eine feste Größe.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-23-1"> <span>Sie speichert Elemente in Einfügereihenfolge mit Index.</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
-    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> <code>add</code> liefert <code>false</code>, wenn ein gleiches Element schon enthalten ist. Einen Index wie bei der <code>ArrayList</code> gibt es nicht.</div>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Eine Menge enthält jedes Element höchstens einmal. Fügt man ein bereits enthaltenes Element erneut hinzu, ändert sich die Menge nicht. Sie hat keinen Index, kann beliebige Objekte speichern und wächst bei Bedarf.</div>
   </div>
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 2</span> Eine Klasse überschreibt <code>equals</code>, aber nicht <code>hashCode</code>. Was kann im <code>HashSet</code> passieren?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-23-2"> <span>Nichts, <code>HashSet</code> verwendet nur <code>equals</code>.</span></label></li>
       <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-23-2"> <span>Zwei gleiche Objekte landen trotzdem beide im Set, weil sie verschiedene Hashcodes haben.</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-23-2"> <span>Der Compiler meldet einen Fehler.</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-23-2"> <span>Das Set wird automatisch sortiert.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-23-2"> <span>Nichts, <code>HashSet</code> verwendet nur <code>equals</code>.</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
@@ -371,26 +372,27 @@ class SetTest {
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 3</span> Welche Regel muss für <code>equals</code> und <code>hashCode</code> gelten?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-23-3"> <span>Ungleiche Objekte müssen verschiedene Hashcodes haben.</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-23-3"> <span>Sind zwei Objekte laut <code>equals</code> gleich, müssen sie denselben Hashcode haben.</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-23-3"> <span><code>hashCode</code> muss immer 0 liefern.</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-23-3"> <span>Beide Methoden müssen alle Attribute verwenden.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-23-3"> <span><code>hashCode</code> muss immer 0 liefern.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-23-3"> <span>Sind zwei Objekte laut <code>equals</code> gleich, müssen sie denselben Hashcode haben.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-23-3"> <span>Ungleiche Objekte müssen verschiedene Hashcodes haben.</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
     <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Deshalb verwenden beide Methoden dieselben Attribute, z.&nbsp;B. mit <code>Objects.hash(&hellip;)</code>. Ungleiche Objekte dürfen zufällig denselben Hashcode haben &ndash; das ist nur langsamer.</div>
   </div>
-  <div class="quiz-frage" data-multi="0">
+  <div class="quiz-frage" data-multi="1">
     <p class="quiz-q"><span class="quiz-num">Frage 4</span> Was unterscheidet ein <code>TreeSet</code> von einem <code>HashSet</code>?</p>
+    <p class="quiz-hint">Mehrere Antworten sind richtig.</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-23-4"> <span>Ein <code>TreeSet</code> erlaubt Duplikate.</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-23-4"> <span>Ein <code>TreeSet</code> hält seine Elemente sortiert; die Elemente müssen dafür vergleichbar sein (<code>Comparable</code> oder ein <code>Comparator</code>).</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-23-4"> <span>Ein <code>TreeSet</code> braucht <code>hashCode</code>, ein <code>HashSet</code> nicht.</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-23-4"> <span>Es gibt keinen Unterschied.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-23-4"> <span>Es gibt keinen Unterschied.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-23-4"> <span>Ein <code>TreeSet</code> hält seine Elemente sortiert.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-23-4"> <span>Die Elemente eines <code>TreeSet</code> müssen vergleichbar sein (<code>Comparable</code> oder ein <code>Comparator</code>).</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-23-4"> <span>Ein <code>TreeSet</code> erlaubt Duplikate.</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
-    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Das <code>TreeSet</code> ordnet nach <code>compareTo</code> bzw. dem Comparator ein. Dabei gelten Elemente mit Vergleichsergebnis 0 als Duplikate.</div>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Ein <code>TreeSet</code> hält seine Elemente sortiert. Dafür müssen sie vergleichbar sein – über <code>Comparable</code> oder einen <code>Comparator</code>. Duplikate erlaubt keines der beiden; <code>hashCode</code> braucht das <code>HashSet</code>.</div>
   </div>
   <div class="quiz-summary"><span class="quiz-score"></span><button type="button" class="quiz-reset">Zur&uuml;cksetzen</button></div>
 </div>

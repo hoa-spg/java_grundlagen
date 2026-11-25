@@ -601,45 +601,47 @@ Sepp Gruber     ######
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 1</span> Wie oft wird der Rumpf von <code>for (int i = 0; i &lt; 5; i++)</code> ausgeführt?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-10-1"> <span>4-mal</span></label></li>
       <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-10-1"> <span>5-mal</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-10-1"> <span>6-mal</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-10-1"> <span>4-mal</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-10-1"> <span>unendlich oft</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
     <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> <code>i</code> nimmt die Werte 0, 1, 2, 3 und 4 an. Bei <code>i == 5</code> ist die Bedingung <code>i &lt; 5</code> falsch, die Schleife endet.</div>
   </div>
-  <div class="quiz-frage" data-multi="0">
+  <div class="quiz-frage" data-multi="1">
     <p class="quiz-q"><span class="quiz-num">Frage 2</span> Was unterscheidet <code>do-while</code> von <code>while</code>?</p>
+    <p class="quiz-hint">Mehrere Antworten sind richtig.</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-10-2"> <span>Es gibt keinen Unterschied.</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-10-2"> <span>Bei <code>do-while</code> wird der Rumpf mindestens einmal ausgeführt, weil die Bedingung erst am Ende geprüft wird.</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-10-2"> <span><code>do-while</code> braucht keine Bedingung.</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-10-2"> <span><code>do-while</code> läuft immer genau einmal.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-10-2"> <span>Es gibt keinen Unterschied.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-10-2"> <span>Bei <code>while</code> wird die Bedingung vor dem ersten Durchlauf geprüft – der Rumpf läuft eventuell gar nicht.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-10-2"> <span><code>do-while</code> läuft immer genau einmal.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-10-2"> <span>Bei <code>do-while</code> wird der Rumpf mindestens einmal ausgeführt, weil die Bedingung erst am Ende geprüft wird.</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
-    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Die Bedingung steht bei <code>do-while</code> hinter dem Rumpf. Ist sie von Anfang an falsch, läuft <code>while</code> gar nicht, <code>do-while</code> einmal.</div>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Bei <code>do-while</code> wird die Bedingung erst am Ende geprüft, der Rumpf läuft daher mindestens einmal. Bei <code>while</code> wird sie vor dem ersten Durchlauf geprüft – ist sie gleich falsch, läuft der Rumpf gar nicht. Eine Bedingung brauchen beide.</div>
   </div>
-  <div class="quiz-frage" data-multi="0">
-    <p class="quiz-q"><span class="quiz-num">Frage 3</span> Warum ist <code>int i = 0; while (i &lt; 10) { System.out.println(i); }</code> eine Endlosschleife?</p>
+  <div class="quiz-frage" data-multi="1">
+    <p class="quiz-q"><span class="quiz-num">Frage 3</span> <code>int i = 0; while (i &lt; 10) { System.out.println(i); }</code> läuft endlos. Was stimmt?</p>
+    <p class="quiz-hint">Mehrere Antworten sind richtig.</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-10-3"> <span>Weil <code>i</code> mit 0 beginnt.</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-10-3"> <span>Weil <code>i</code> im Rumpf nie verändert wird und die Bedingung daher immer wahr bleibt.</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-10-3"> <span>Weil <code>while</code> immer endlos läuft.</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-10-3"> <span>Weil <code>println</code> die Schleife neu startet.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-10-3"> <span>Die Ursache ist, dass <code>i</code> mit 0 beginnt.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-10-3"> <span>Mit <code>i++</code> im Rumpf würde die Schleife nach 10 Durchläufen enden.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-10-3"> <span><code>while</code>-Schleifen laufen grundsätzlich endlos.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-10-3"> <span>Weil <code>i</code> im Rumpf nie verändert wird und die Bedingung daher immer wahr bleibt.</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
-    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Jede Schleife braucht eine Anweisung, die sie dem Ende näherbringt &ndash; hier fehlt <code>i++</code>.</div>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> <code>i</code> wird im Rumpf nie verändert, die Bedingung <code>i &lt; 10</code> bleibt daher immer wahr. Mit <code>i++</code> im Rumpf würde die Schleife nach 10 Durchläufen enden. Am Startwert oder an <code>println</code> liegt es nicht.</div>
   </div>
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 4</span> Mit zwei verschachtelten <code>for</code>-Schleifen soll ein Rechteck aus 3 Zeilen und 4 Spalten <code>#</code> gezeichnet werden. Wie oft wird <code>System.out.print("#")</code> insgesamt ausgeführt?</p>
     <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-10-4"> <span>3-mal</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-10-4"> <span>7-mal</span></label></li>
       <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-10-4"> <span>12-mal</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-10-4"> <span>3-mal</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-10-4"> <span>4-mal</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>

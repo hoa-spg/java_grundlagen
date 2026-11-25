@@ -406,24 +406,25 @@ public double median() {
         <details class="quiz-box">
 <summary><h2>Quiz</h2><span class="quiz-box-hint">4 Fragen &middot; zum Aufklappen klicken</span></summary>
 <div class="quiz" id="quiz-15">
-  <div class="quiz-frage" data-multi="0">
-    <p class="quiz-q"><span class="quiz-num">Frage 1</span> Welche Idee steckt hinter <strong>Bubble-Sort</strong>?</p>
+  <div class="quiz-frage" data-multi="1">
+    <p class="quiz-q"><span class="quiz-num">Frage 1</span> Was trifft auf <strong>Bubble-Sort</strong> zu?</p>
+    <p class="quiz-hint">Mehrere Antworten sind richtig.</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-15-1"> <span>Das kleinste Element wird gesucht und an den Anfang getauscht.</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-15-1"> <span>Benachbarte Elemente werden verglichen und getauscht, wenn sie falsch herum stehen; große Werte wandern so nach hinten.</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-15-1"> <span>Jedes Element wird an der richtigen Stelle in den bereits sortierten Teil eingefügt.</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-15-1"> <span>Das Array wird halbiert und rekursiv sortiert.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-15-1"> <span>Benachbarte Elemente werden verglichen und getauscht, wenn sie falsch herum stehen; große Werte wandern so nach hinten.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-15-1"> <span>Das kleinste Element wird gesucht und an den Anfang getauscht.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-15-1"> <span>Nach dem ersten Durchlauf steht das größte Element ganz hinten.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-15-1"> <span>Jedes Element wird an der richtigen Stelle in den bereits sortierten Teil eingefügt.</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
-    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Bei jedem Durchlauf „blubbert“ der größte verbleibende Wert ans Ende. Option 1 beschreibt Selection-Sort, Option 3 Insertion-Sort, Option 4 Merge-Sort.</div>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Bubble-Sort vergleicht benachbarte Elemente und tauscht sie, wenn sie falsch herum stehen. Große Werte wandern so nach hinten – nach dem ersten Durchlauf steht das größte Element ganz hinten. Das Minimum suchen ist Selection-Sort, Einfügen ist Insertion-Sort.</div>
   </div>
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 2</span> Wie tauscht man die Werte an den Indizes <code>i</code> und <code>j</code> richtig?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-15-2"> <span><code>a[i] = a[j]; a[j] = a[i];</code></span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-15-2"> <span><code>int tmp = a[i]; a[i] = a[j]; a[j] = tmp;</code></span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-15-2"> <span><code>a[i] == a[j];</code></span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-15-2"> <span><code>int tmp = a[i]; a[i] = a[j]; a[j] = tmp;</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-15-2"> <span><code>a[i] = a[j]; a[j] = a[i];</code></span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-15-2"> <span><code>a[j] = a[i];</code></span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
@@ -433,10 +434,10 @@ public double median() {
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 3</span> Warum wird das Array vor jedem Sortierverfahren kopiert?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-15-3"> <span>weil sortierte Arrays nicht noch einmal sortiert werden dürfen</span></label></li>
       <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-15-3"> <span>damit alle Verfahren mit denselben unsortierten Daten arbeiten und die Laufzeiten vergleichbar sind</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-15-3"> <span>weil Sortieren das Original löscht</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-15-3"> <span>damit das Sortieren schneller geht</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-15-3"> <span>weil Sortieren das Original löscht</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-15-3"> <span>weil sortierte Arrays nicht noch einmal sortiert werden dürfen</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
@@ -445,10 +446,10 @@ public double median() {
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 4</span> Was misst <code>System.currentTimeMillis()</code>?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-15-4"> <span>die Laufzeit der aktuellen Methode</span></label></li>
       <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-15-4"> <span>die aktuelle Zeit in Millisekunden; die Differenz zweier Aufrufe ergibt die vergangene Zeit</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-15-4"> <span>die Anzahl der Vergleiche beim Sortieren</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-15-4"> <span>die Rechenleistung des Prozessors</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-15-4"> <span>die Laufzeit der aktuellen Methode</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-15-4"> <span>die Anzahl der Vergleiche beim Sortieren</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>

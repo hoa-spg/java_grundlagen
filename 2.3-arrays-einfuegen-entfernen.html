@@ -532,25 +532,26 @@ public class Zeiterfassung {
         <details class="quiz-box">
 <summary><h2>Quiz</h2><span class="quiz-box-hint">4 Fragen &middot; zum Aufklappen klicken</span></summary>
 <div class="quiz" id="quiz-14">
-  <div class="quiz-frage" data-multi="0">
-    <p class="quiz-q"><span class="quiz-num">Frage 1</span> Ein Array mit Maximalgröße 10 wird mit der Variable <code>anzahl</code> als Liste verwendet. Wo kommt ein neuer Wert beim Hinzufügen hin?</p>
+  <div class="quiz-frage" data-multi="1">
+    <p class="quiz-q"><span class="quiz-num">Frage 1</span> Ein Array mit Maximalgröße 10 wird mit der Variable <code>anzahl</code> als Liste verwendet. Was stimmt beim Hinzufügen?</p>
+    <p class="quiz-hint">Mehrere Antworten sind richtig.</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-14-1"> <span>an Index 0</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-14-1"> <span>an Index <code>anzahl</code>; danach wird <code>anzahl</code> um 1 erhöht</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-14-1"> <span>an Index <code>anzahl + 1</code></span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-14-1"> <span>an den letzten Index (9)</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-14-1"> <span>Der Wert kommt an Index <code>anzahl + 1</code>.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-14-1"> <span>Ist <code>anzahl</code> gleich der Maximalgröße, ist kein Platz mehr frei.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-14-1"> <span>Der Wert kommt immer an Index 0.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-14-1"> <span>an Index <code>anzahl</code>; danach wird <code>anzahl</code> um 1 erhöht</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
-    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Die gültigen Werte stehen an den Indizes 0 bis <code>anzahl - 1</code>. Der nächste freie Platz ist also <code>anzahl</code> &ndash; vorher muss geprüft werden, ob <code>anzahl &lt; werte.length</code> ist.</div>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Der neue Wert kommt an Index <code>anzahl</code>, danach wird <code>anzahl</code> um 1 erhöht. Ist <code>anzahl</code> gleich der Maximalgröße, ist kein Platz mehr frei – das muss die Methode vorher prüfen.</div>
   </div>
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 2</span> Ein Wert soll an Position 2 eingefügt werden. Was muss vorher passieren?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-14-2"> <span>Der Wert an Position 2 wird überschrieben.</span></label></li>
       <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-14-2"> <span>Alle Werte ab Position 2 werden um eine Stelle nach hinten verschoben &ndash; von hinten beginnend.</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-14-2"> <span>Alle Werte werden nach vorne verschoben.</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-14-2"> <span>Das Array wird neu sortiert.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-14-2"> <span>Der Wert an Position 2 wird überschrieben.</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
@@ -559,26 +560,27 @@ public class Zeiterfassung {
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 3</span> Warum sollte eine Klasse ihr internes Array nicht mit einem Getter herausgeben?</p>
     <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-14-3"> <span>weil das Array sonst gelöscht wird</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-14-3"> <span>weil Arrays nicht zurückgegeben werden können</span></label></li>
       <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-14-3"> <span>weil Code außerhalb dann das Array verändern könnte, ohne dass <code>anzahl</code> und die Prüfungen der Klasse mitspielen</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-14-3"> <span>weil das Array sonst gelöscht wird</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-14-3"> <span>weil Getter nur für <code>String</code> erlaubt sind</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
     <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Ein Array ist ein Objekt; der Getter gäbe nur die Referenz heraus. Jeder könnte dann Werte direkt ändern und so den Zustand der Klasse inkonsistent machen.</div>
   </div>
-  <div class="quiz-frage" data-multi="0">
-    <p class="quiz-q"><span class="quiz-num">Frage 4</span> Was ist der Unterschied zwischen <code>toString()</code> und <code>print()</code>?</p>
+  <div class="quiz-frage" data-multi="1">
+    <p class="quiz-q"><span class="quiz-num">Frage 4</span> Was unterscheidet <code>toString()</code> von <code>print()</code>?</p>
+    <p class="quiz-hint">Mehrere Antworten sind richtig.</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-14-4"> <span>Es gibt keinen.</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-14-4"> <span><code>toString()</code> liefert einen String mit <code>return</code>, <code>print()</code> gibt ihn auf der Konsole aus.</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-14-4"> <span><code>toString()</code> gibt auf der Konsole aus, <code>print()</code> liefert einen String.</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-14-4"> <span><code>print()</code> funktioniert nur mit Zahlen.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-14-4"> <span><code>toString()</code> liefert den Text mit <code>return</code>.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-14-4"> <span><code>print()</code> gibt den Text auf der Konsole aus.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-14-4"> <span><code>print()</code> funktioniert nur mit Zahlen.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-14-4"> <span>Es gibt keinen.</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
-    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Einen String kann man weiterverwenden (z.&nbsp;B. in einer Oberfläche oder einem Test), eine Konsolenausgabe nicht. <code>print()</code> ruft daher meist einfach <code>System.out.println(toString())</code> auf.</div>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> <code>toString()</code> liefert den Text mit <code>return</code> an den Aufrufer, der damit weiterarbeiten kann. <code>print()</code> gibt den Text auf der Konsole aus. Beide funktionieren mit beliebigen Daten, nicht nur mit Zahlen.</div>
   </div>
   <div class="quiz-summary"><span class="quiz-score"></span><button type="button" class="quiz-reset">Zur&uuml;cksetzen</button></div>
 </div>

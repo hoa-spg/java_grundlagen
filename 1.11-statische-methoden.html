@@ -421,10 +421,10 @@ Kosten pro Monat: 7536 Euro
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 1</span> Wie ruft man eine statische Methode <code>quadrat(int x)</code> der Klasse <code>Rechner</code> von einer anderen Klasse aus auf?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-11-1"> <span><code>Rechner.quadrat(5)</code></span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-11-1"> <span>nur über ein Objekt: <code>new Rechner().quadrat(5)</code></span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-11-1"> <span><code>static.quadrat(5)</code></span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-11-1"> <span><code>this.quadrat(5)</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-11-1"> <span><code>static.quadrat(5)</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-11-1"> <span>nur über ein Objekt: <code>new Rechner().quadrat(5)</code></span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-11-1"> <span><code>Rechner.quadrat(5)</code></span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
@@ -433,10 +433,10 @@ Kosten pro Monat: 7536 Euro
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 2</span> Warum ist die klassische <code>main</code>-Methode <code>static</code>?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-11-2"> <span>damit sie schneller ausgeführt wird</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-11-2"> <span>weil es beim Programmstart noch kein Objekt gibt, auf dem Java eine Methode aufrufen könnte</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-11-2"> <span>weil sie <code>private</code> sein muss</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-11-2"> <span>weil sie einen Rückgabewert hat</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-11-2"> <span>weil sie <code>private</code> sein muss</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-11-2"> <span>weil es beim Programmstart noch kein Objekt gibt, auf dem Java eine Methode aufrufen könnte</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-11-2"> <span>damit sie schneller ausgeführt wird</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
@@ -445,10 +445,10 @@ Kosten pro Monat: 7536 Euro
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 3</span> In <code>public static void main(String[] args)</code> steht die Anweisung <code>print();</code>, wobei <code>print()</code> eine normale Objektmethode derselben Klasse ist. Was passiert?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-11-3"> <span>Die Methode wird normal ausgeführt.</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-11-3"> <span>Der Compiler meldet <em>non-static method print() cannot be referenced from a static context</em>.</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-11-3"> <span>Java erzeugt automatisch ein Objekt.</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-11-3"> <span>Das Programm stürzt erst zur Laufzeit ab.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-11-3"> <span>Die Methode wird normal ausgeführt.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-11-3"> <span>Der Compiler meldet <em>non-static method print() cannot be referenced from a static context</em>.</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
@@ -459,9 +459,9 @@ Kosten pro Monat: 7536 Euro
     <p class="quiz-hint">Mehrere Antworten sind richtig.</p>
     <ul class="quiz-opts">
       <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-11-4"> <span>Ihre Methoden sind statisch, z.&nbsp;B. <code>Math.sqrt(16)</code>.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-11-4"> <span><code>Math.pow(2, 3)</code> liefert 6.</span></label></li>
       <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-11-4"> <span><code>Math.round(2.5)</code> rundet kaufmännisch auf 3.</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-11-4"> <span>Man muss zuerst <code>new Math()</code> schreiben.</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-11-4"> <span><code>Math.pow(2, 3)</code> liefert 6.</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>

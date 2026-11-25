@@ -528,34 +528,35 @@ public Person kuendigen(String name) throws FirmaException {
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 1</span> Warum ist eine Fehlermeldung mit <code>System.out.println</code> keine vollständige Fehlerbehandlung?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-22-1"> <span>weil sie zu langsam ist</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-22-1"> <span>weil der Aufrufer nicht erfährt, dass etwas schiefging, und nicht darauf reagieren kann</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-22-1"> <span>weil Konsolenausgaben verboten sind</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-22-1"> <span>weil sie nur in <code>main</code> funktioniert</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-22-1"> <span>weil Konsolenausgaben verboten sind</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-22-1"> <span>weil der Aufrufer nicht erfährt, dass etwas schiefging, und nicht darauf reagieren kann</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-22-1"> <span>weil sie zu langsam ist</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
     <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Eine Oberfläche oder ein anderes Programmteil sieht die Konsolenausgabe nicht. Eine Exception dagegen unterbricht den normalen Ablauf und kann vom Aufrufer gefangen und behandelt werden.</div>
   </div>
-  <div class="quiz-frage" data-multi="0">
-    <p class="quiz-q"><span class="quiz-num">Frage 2</span> Was ist der Unterschied zwischen <code>throw</code> und <code>throws</code>?</p>
+  <div class="quiz-frage" data-multi="1">
+    <p class="quiz-q"><span class="quiz-num">Frage 2</span> Was trifft auf <code>throw</code> und <code>throws</code> zu?</p>
+    <p class="quiz-hint">Mehrere Antworten sind richtig.</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-22-2"> <span>Es gibt keinen.</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-22-2"> <span><code>throw</code> wirft eine Exception, <code>throws</code> im Methodenkopf kündigt an, dass die Methode eine Exception werfen kann.</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-22-2"> <span><code>throws</code> fängt eine Exception.</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-22-2"> <span><code>throw</code> steht im Methodenkopf, <code>throws</code> im Rumpf.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-22-2"> <span><code>throws</code> im Methodenkopf kündigt an, dass die Methode eine Exception werfen kann.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-22-2"> <span><code>throw</code> steht im Methodenkopf, <code>throws</code> im Rumpf.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-22-2"> <span><code>throw</code> wirft eine Exception.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-22-2"> <span>Es gibt keinen.</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
-    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> <code>throw new MeineException("&hellip;");</code> steht im Rumpf. <code>public void tuWas() throws MeineException</code> warnt alle Aufrufer: Diese Exception müsst ihr behandeln oder weitergeben.</div>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> <code>throw</code> steht im Rumpf und wirft eine Exception. <code>throws</code> steht im Methodenkopf und kündigt an, dass die Methode eine Exception werfen kann. Gefangen wird eine Exception mit <code>catch</code>.</div>
   </div>
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 3</span> Welche Aussage über checked und unchecked Exceptions stimmt?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-22-3"> <span>Unchecked Exceptions müssen immer mit <code>throws</code> deklariert werden.</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-22-3"> <span>Checked Exceptions (abgeleitet von <code>Exception</code>) muss der Aufrufer fangen oder weitergeben; unchecked Exceptions (<code>RuntimeException</code>) nicht.</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-22-3"> <span>Checked Exceptions treten nur beim Übersetzen auf.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-22-3"> <span>Unchecked Exceptions müssen immer mit <code>throws</code> deklariert werden.</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-22-3"> <span><code>NullPointerException</code> ist eine checked Exception.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-22-3"> <span>Checked Exceptions (abgeleitet von <code>Exception</code>) muss der Aufrufer fangen oder weitergeben; unchecked Exceptions (<code>RuntimeException</code>) nicht.</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
@@ -564,10 +565,10 @@ public Person kuendigen(String name) throws FirmaException {
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 4</span> Wann wird ein <code>finally</code>-Block ausgeführt?</p>
     <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-22-4"> <span>nie, er ist nur Dokumentation</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-22-4"> <span>immer &ndash; egal, ob der <code>try</code>-Block normal endet oder eine Exception auftritt</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-22-4"> <span>nur, wenn eine Exception aufgetreten ist</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-22-4"> <span>nur, wenn keine Exception aufgetreten ist</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-22-4"> <span>immer &ndash; egal, ob der <code>try</code>-Block normal endet oder eine Exception auftritt</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-22-4"> <span>nie, er ist nur Dokumentation</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>

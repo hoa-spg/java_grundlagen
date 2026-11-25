@@ -492,25 +492,26 @@ public class Zeiterfassung {
         <details class="quiz-box">
 <summary><h2>Quiz</h2><span class="quiz-box-hint">4 Fragen &middot; zum Aufklappen klicken</span></summary>
 <div class="quiz" id="quiz-13">
-  <div class="quiz-frage" data-multi="0">
-    <p class="quiz-q"><span class="quiz-num">Frage 1</span> Ein Array wird mit <code>int[] werte = new int[5];</code> erzeugt. Welche Indizes sind gültig?</p>
+  <div class="quiz-frage" data-multi="1">
+    <p class="quiz-q"><span class="quiz-num">Frage 1</span> <code>int[] werte = new int[5];</code> – was stimmt?</p>
+    <p class="quiz-hint">Mehrere Antworten sind richtig.</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-13-1"> <span>1 bis 5</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-13-1"> <span>0 bis 4</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-13-1"> <span>0 bis 5</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-13-1"> <span>beliebige, das Array wächst mit</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-13-1"> <span>Das Array wächst bei Bedarf automatisch.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-13-1"> <span>Gültige Indizes sind 0 bis 4.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-13-1"> <span><code>werte[5]</code> führt zu einem Laufzeitfehler (Exception).</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-13-1"> <span>Gültige Indizes sind 1 bis 5.</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
-    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Indizes beginnen bei 0. Ein Array der Länge 5 hat die Indizes 0 bis 4; <code>werte[5]</code> führt zu einer <code>ArrayIndexOutOfBoundsException</code>.</div>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Ein Array der Länge 5 hat die Indizes 0 bis 4. Ein Zugriff auf <code>werte[5]</code> führt zu einem Laufzeitfehler (<code>ArrayIndexOutOfBoundsException</code>). Die Größe eines Arrays ist fest, es wächst nicht mit.</div>
   </div>
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 2</span> Welchen Wert haben die Elemente direkt nach <code>new int[5]</code>?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-13-2"> <span>zufällige Werte</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-13-2"> <span>Das Array ist leer und hat keine Elemente.</span></label></li>
       <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-13-2"> <span>0</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-13-2"> <span><code>null</code></span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-13-2"> <span>Das Array ist leer und hat keine Elemente.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-13-2"> <span>zufällige Werte</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
@@ -520,8 +521,8 @@ public class Zeiterfassung {
     <p class="quiz-q"><span class="quiz-num">Frage 3</span> Welche Schleife durchläuft alle Elemente des Arrays <code>werte</code> korrekt?</p>
     <ul class="quiz-opts">
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-13-3"> <span><code>for (int i = 1; i &lt;= werte.length; i++)</code></span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-13-3"> <span><code>for (int i = 0; i &lt; werte.length; i++)</code></span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-13-3"> <span><code>for (int i = 0; i &lt;= werte.length; i++)</code></span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-13-3"> <span><code>for (int i = 0; i &lt; werte.length; i++)</code></span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-13-3"> <span><code>for (int i = 0; i &lt; werte.length(); i++)</code></span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
@@ -533,8 +534,8 @@ public class Zeiterfassung {
     <ul class="quiz-opts">
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-13-4"> <span>Startwert <code>max = 0</code>, dann alle Elemente vergleichen.</span></label></li>
       <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-13-4"> <span>Startwert <code>max = werte[0]</code>, dann die übrigen Elemente vergleichen.</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-13-4"> <span>Das letzte Element ist immer das Maximum.</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-13-4"> <span>Mit <code>werte.length</code>.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-13-4"> <span>Das letzte Element ist immer das Maximum.</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>

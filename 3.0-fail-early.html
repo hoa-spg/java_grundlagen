@@ -450,10 +450,10 @@
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 1</span> Was kennzeichnet den <strong>Fail-Early</strong>-Stil (Guard Clauses)?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-21-1"> <span>Der normale Fall steht im <code>if</code>, der Fehler ganz am Ende im <code>else</code>.</span></label></li>
       <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-21-1"> <span>Fehlerfälle werden am Anfang geprüft und beenden die Methode sofort; der normale Code folgt danach ohne Verschachtelung.</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-21-1"> <span>Fehler werden ignoriert, damit das Programm weiterläuft.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-21-1"> <span>Der normale Fall steht im <code>if</code>, der Fehler ganz am Ende im <code>else</code>.</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-21-1"> <span>Jede Methode hat genau ein <code>return</code> am Ende.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-21-1"> <span>Fehler werden ignoriert, damit das Programm weiterläuft.</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
@@ -462,34 +462,35 @@
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 2</span> Wie lautet die Umkehrung von <code>alter &gt;= 18</code>?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-21-2"> <span><code>alter &lt;= 18</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-21-2"> <span><code>alter != 18</code></span></label></li>
       <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-21-2"> <span><code>alter &lt; 18</code></span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-21-2"> <span><code>alter &gt; 18</code></span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-21-2"> <span><code>alter != 18</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-21-2"> <span><code>alter &lt;= 18</code></span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
     <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Das Gegenteil von „mindestens 18“ ist „weniger als 18“. Bei <code>&lt;=</code> wäre 18 in beiden Fällen enthalten.</div>
   </div>
-  <div class="quiz-frage" data-multi="0">
-    <p class="quiz-q"><span class="quiz-num">Frage 3</span> Ein gültiger Wert liegt zwischen 10 und 100: <code>wert &gt;= 10 &amp;&amp; wert &lt;= 100</code>. Welche Guard-Bedingung erkennt einen <strong>ungültigen</strong> Wert?</p>
+  <div class="quiz-frage" data-multi="1">
+    <p class="quiz-q"><span class="quiz-num">Frage 3</span> Ein gültiger Wert liegt zwischen 10 und 100: <code>wert &gt;= 10 &amp;&amp; wert &lt;= 100</code>. Welche Guard-Bedingungen erkennen einen ungültigen Wert?</p>
+    <p class="quiz-hint">Mehrere Antworten sind richtig.</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-21-3"> <span><code>wert &lt; 10 &amp;&amp; wert &gt; 100</code></span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-21-3"> <span><code>wert &lt; 10 || wert &gt; 100</code></span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-21-3"> <span><code>wert &lt;= 10 || wert &gt;= 100</code></span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-21-3"> <span><code>!(wert &gt;= 10) &amp;&amp; !(wert &lt;= 100)</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-21-3"> <span><code>wert &lt;= 10 || wert &gt;= 100</code></span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-21-3"> <span><code>wert &lt; 10 || wert &gt; 100</code></span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-21-3"> <span><code>!(wert &gt;= 10 &amp;&amp; wert &lt;= 100)</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-21-3"> <span><code>wert &lt; 10 &amp;&amp; wert &gt; 100</code></span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
-    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Nach De Morgan wird aus der Negation von <code>A &amp;&amp; B</code> der Ausdruck <code>!A || !B</code>. Ein Wert kann nie gleichzeitig kleiner als 10 und größer als 100 sein &ndash; mit <code>&amp;&amp;</code> würde die Prüfung nie anschlagen.</div>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Ungültig ist ein Wert, der kleiner als 10 <em>oder</em> größer als 100 ist: <code>wert &lt; 10 || wert &gt; 100</code>. Gleichwertig ist die Verneinung der ganzen Gültigkeitsbedingung <code>!(wert &gt;= 10 &amp;&amp; wert &lt;= 100)</code>. Mit <code>&amp;&amp;</code> zwischen den verneinten Teilen wäre die Bedingung nie erfüllt.</div>
   </div>
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 4</span> Wann bleibt eine <code>else if</code>-Kette trotz Fail Early richtig?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-21-4"> <span>nie &ndash; <code>else</code> ist ab Teil 3 verboten</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-21-4"> <span>nur, wenn die Methode <code>void</code> ist</span></label></li>
       <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-21-4"> <span>bei einer Fallunterscheidung zwischen gleichwertigen Fällen, z.&nbsp;B. Noten oder BMI-Bereichen</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-21-4"> <span>nur in Konstruktoren</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-21-4"> <span>nur, wenn die Methode <code>void</code> ist</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-21-4"> <span>nie &ndash; <code>else</code> ist ab Teil 3 verboten</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>

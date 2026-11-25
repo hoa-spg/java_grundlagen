@@ -1005,50 +1005,52 @@ public class Company implements Serializable {
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 1</span> Welche Aufgabe haben Model-Klassen in einer Anwendung mit Benutzeroberfläche?</p>
     <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-29-1"> <span>Sie speichern nur Konfigurationswerte.</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-29-1"> <span>Sie zeichnen die Benutzeroberfläche.</span></label></li>
       <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-29-1"> <span>Sie enthalten Daten und fachliche Logik samt Prüfungen &ndash; unabhängig von der Oberfläche.</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-29-1"> <span>Sie starten den Webserver.</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-29-1"> <span>Sie speichern nur Konfigurationswerte.</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
     <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Die Oberfläche zeigt Daten an und ruft Methoden des Models auf. Die Regeln selbst liegen im Model und funktionieren auch ohne Oberfläche, z.&nbsp;B. in JUnit-Tests.</div>
   </div>
-  <div class="quiz-frage" data-multi="0">
-    <p class="quiz-q"><span class="quiz-num">Frage 2</span> Warum liefert ein Getter für eine interne Liste oft eine <strong>Kopie</strong> der Liste (defensive Kopie)?</p>
+  <div class="quiz-frage" data-multi="1">
+    <p class="quiz-q"><span class="quiz-num">Frage 2</span> Warum liefert ein Getter für eine interne Liste oft eine Kopie der Liste (defensive Kopie)?</p>
+    <p class="quiz-hint">Mehrere Antworten sind richtig.</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-29-2"> <span>weil Listen nicht zurückgegeben werden können</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-29-2"> <span>damit niemand von außen die interne Liste an den Prüfungen der Klasse vorbei verändern kann</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-29-2"> <span>damit die Liste sortiert ist</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-29-2"> <span>weil die Kopie weniger Speicher braucht</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-29-2"> <span>Weil sich Änderungen an der zurückgegebenen Kopie nicht auf die interne Liste auswirken</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-29-2"> <span>damit niemand von außen die interne Liste an den Prüfungen der Klasse vorbei verändern kann</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-29-2"> <span>damit die Liste sortiert ist</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-29-2"> <span>weil Listen nicht zurückgegeben werden können</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
-    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Ohne Kopie gäbe der Getter nur die Referenz heraus. Wer der Kopie Elemente hinzufügt oder sie löscht, ändert das ursprüngliche Objekt nicht.</div>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Mit der Kopie kann niemand von außen die interne Liste an den Prüfungen der Klasse vorbei verändern: Änderungen an der Kopie wirken sich nicht auf die interne Liste aus. Mit Sortieren oder Speicher hat das nichts zu tun.</div>
   </div>
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 3</span> Welche Aufgabe erledigt ein <code>DateTimeFormatter</code>?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-29-3"> <span>Er berechnet die Differenz zweier Datumswerte in Jahren.</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-29-3"> <span>Er wandelt ein <code>LocalDate</code> in einen Text in einem bestimmten Format um und liest solche Texte wieder ein.</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-29-3"> <span>Er stellt die Systemuhr.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-29-3"> <span>Er wandelt ein <code>LocalDate</code> in einen Text in einem bestimmten Format um und liest solche Texte wieder ein.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-29-3"> <span>Er berechnet die Differenz zweier Datumswerte in Jahren.</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-29-3"> <span>Er vergleicht zwei Datumswerte.</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
     <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Mit einem Muster wie <code>"dd.MM.yyyy"</code> wird aus einem Datum der Text <code>24.11.2026</code> &ndash; und umgekehrt mit <code>LocalDate.parse(text, formatter)</code>.</div>
   </div>
-  <div class="quiz-frage" data-multi="0">
-    <p class="quiz-q"><span class="quiz-num">Frage 4</span> Mehrere Elemente sollen beim Durchlaufen aus einer Liste entfernt werden. Welcher Weg ist sicher?</p>
+  <div class="quiz-frage" data-multi="1">
+    <p class="quiz-q"><span class="quiz-num">Frage 4</span> Mehrere Elemente sollen beim Durchlaufen aus einer Liste entfernt werden. Welche Wege sind sicher?</p>
+    <p class="quiz-hint">Mehrere Antworten sind richtig.</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-29-4"> <span>eine for-each-Schleife mit <code>liste.remove(e)</code></span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-29-4"> <span>ein <code>Iterator</code> mit <code>iterator.remove()</code> (oder <code>removeIf</code>)</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-29-4"> <span>eine vorwärts laufende <code>for</code>-Schleife, die bei jedem Treffer <code>remove(i)</code> aufruft, ohne den Index anzupassen</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-29-4"> <span>die Liste auf <code>null</code> setzen</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-29-4"> <span>eine for-each-Schleife mit <code>liste.remove(e)</code></span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-29-4"> <span><code>liste.removeIf(…)</code> mit einer passenden Bedingung</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-29-4"> <span>eine vorwärts laufende <code>for</code>-Schleife, die bei jedem Treffer <code>remove(i)</code> aufruft, ohne den Index anzupassen</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-29-4"> <span>ein <code>Iterator</code> mit <code>iterator.remove()</code></span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
-    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Die for-each-Schleife bricht mit <code>ConcurrentModificationException</code> ab, und beim vorwärts laufenden Index wird nach jedem Entfernen ein Element übersprungen. Der Iterator ist dafür gemacht.</div>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Sicher sind ein <code>Iterator</code> mit <code>iterator.remove()</code> und <code>removeIf</code> mit einer Bedingung. <code>liste.remove(e)</code> in einer for-each-Schleife löst eine <code>ConcurrentModificationException</code> aus, und eine vorwärts laufende for-Schleife ohne Indexkorrektur überspringt Elemente.</div>
   </div>
   <div class="quiz-summary"><span class="quiz-score"></span><button type="button" class="quiz-reset">Zur&uuml;cksetzen</button></div>
 </div>

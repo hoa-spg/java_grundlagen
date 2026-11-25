@@ -793,34 +793,35 @@ public class CompanyView extends VerticalLayout {
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 1</span> Warum bündelt man wiederkehrende Oberflächenelemente wie Bestätigungsdialoge und Fehlermeldungen in einer Hilfsklasse?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-34-1"> <span>weil Vaadin das vorschreibt</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-34-1"> <span>damit sie überall gleich aussehen und der Code dafür nur einmal existiert</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-34-1"> <span>damit die Anwendung schneller startet</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-34-1"> <span>damit sie überall gleich aussehen und der Code dafür nur einmal existiert</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-34-1"> <span>weil Vaadin das vorschreibt</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-34-1"> <span>weil Dialoge nicht in Views stehen dürfen</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
     <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Code-Wiederverwendung gilt auch für Oberflächen: Wer das Aussehen einer Fehlermeldung ändern will, ändert es an einer Stelle.</div>
   </div>
-  <div class="quiz-frage" data-multi="0">
+  <div class="quiz-frage" data-multi="1">
     <p class="quiz-q"><span class="quiz-num">Frage 2</span> Das Model wirft beim Speichern eine fachliche Exception. Was soll die Oberfläche tun?</p>
+    <p class="quiz-hint">Mehrere Antworten sind richtig.</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-34-2"> <span>Die Exception ignorieren.</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-34-2"> <span>Die Exception fangen und die Meldung verständlich anzeigen, bei Bedarf samt Ursachenkette.</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-34-2"> <span>Die Anwendung beenden.</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-34-2"> <span>Die Meldung nur auf der Server-Konsole ausgeben.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-34-2"> <span>Bei Bedarf auch die Ursachenkette der Exception anzeigen.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-34-2"> <span>Die Exception fangen und die Meldung verständlich anzeigen.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-34-2"> <span>Die Exception ignorieren.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-34-2"> <span>Die Anwendung beenden.</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
-    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Wer die Anwendung im Browser bedient, sieht die Server-Konsole nicht. Die Prüfungen liegen im Model, die Oberfläche zeigt deren Ergebnis an.</div>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Die Oberfläche fängt die Exception und zeigt die Meldung verständlich an – bei Bedarf auch die Ursachenkette. Ignorieren, die Anwendung beenden oder nur auf der Server-Konsole ausgeben lässt die Benutzer:in ratlos zurück.</div>
   </div>
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 3</span> Wozu dient ein <code>CustomField&lt;T&gt;</code> in Vaadin?</p>
     <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-34-3"> <span>um mehrere Formulare zu einer Seite zusammenzufassen</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-34-3"> <span>um Felder unsichtbar zu machen</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-34-3"> <span>zum Ersetzen des Binders</span></label></li>
       <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-34-3"> <span>um aus mehreren Komponenten eine eigene Eingabekomponente zu bauen, die nach außen einen einzigen Wert vom Typ <code>T</code> hat und sich an den Binder binden lässt</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-34-3"> <span>um Felder unsichtbar zu machen</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-34-3"> <span>um mehrere Formulare zu einer Seite zusammenzufassen</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
@@ -829,8 +830,8 @@ public class CompanyView extends VerticalLayout {
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 4</span> Ein Formular dient sowohl zur Neuanlage (INSERT) als auch zur Änderung (UPDATE). Woran lässt sich der Fall typischerweise unterscheiden?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-34-4"> <span>am Namen des Buttons</span></label></li>
       <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-34-4"> <span>daran, ob das bearbeitete Objekt schon existiert, z.&nbsp;B. ob es bereits eine Id hat</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-34-4"> <span>am Namen des Buttons</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-34-4"> <span>an der Uhrzeit</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-34-4"> <span>Es gibt keinen Unterschied, beides wird gleich gespeichert.</span></label></li>
     </ul>

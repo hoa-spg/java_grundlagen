@@ -538,9 +538,9 @@ Angestellter;Eva Maier;1995;18;38;Ueberstundenpauschale</code></pre>
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 1</span> Was bedeutet <strong>Serialisierung</strong>?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-24-1"> <span>Objekte werden alphabetisch sortiert.</span></label></li>
       <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-24-1"> <span>Objekte werden in eine Folge von Bytes umgewandelt, z.&nbsp;B. um sie in einer Datei zu speichern und später wieder einzulesen.</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-24-1"> <span>Objekte bekommen eine fortlaufende Seriennummer.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-24-1"> <span>Objekte werden alphabetisch sortiert.</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-24-1"> <span>Mehrere Programme laufen nacheinander.</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
@@ -551,32 +551,33 @@ Angestellter;Eva Maier;1995;18;38;Ueberstundenpauschale</code></pre>
     <p class="quiz-q"><span class="quiz-num">Frage 2</span> Was muss eine Klasse tun, damit ihre Objekte serialisiert werden können?</p>
     <ul class="quiz-opts">
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-24-2"> <span>die Methode <code>serialize()</code> implementieren</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-24-2"> <span>das Marker-Interface <code>Serializable</code> implementieren</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-24-2"> <span>alle Attribute <code>public</code> setzen</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-24-2"> <span>das Marker-Interface <code>Serializable</code> implementieren</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-24-2"> <span>von <code>File</code> erben</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
     <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> <code>Serializable</code> hat keine Methoden &ndash; es markiert nur, dass die Klasse serialisiert werden darf. Attribute, die nicht gespeichert werden sollen, bekommen das Schlüsselwort <code>transient</code>.</div>
   </div>
-  <div class="quiz-frage" data-multi="0">
-    <p class="quiz-q"><span class="quiz-num">Frage 3</span> Was ist der Vorteil von <em>try-with-resources</em>?</p>
+  <div class="quiz-frage" data-multi="1">
+    <p class="quiz-q"><span class="quiz-num">Frage 3</span> Was ist der Vorteil von <strong>try-with-resources</strong>?</p>
+    <p class="quiz-hint">Mehrere Antworten sind richtig.</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-24-3"> <span>Es fängt automatisch alle Exceptions.</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-24-3"> <span>Die im <code>try(&hellip;)</code> geöffneten Ressourcen werden am Ende automatisch geschlossen &ndash; auch bei einer Exception.</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-24-3"> <span>Dateien werden schneller gelesen.</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-24-3"> <span>Man braucht keinen <code>catch</code>-Block, weil keine Exceptions auftreten.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-24-3"> <span>Es fängt automatisch alle Exceptions.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-24-3"> <span>Man braucht keinen <code>catch</code>-Block, weil keine Exceptions auftreten.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-24-3"> <span>Die im <code>try(&hellip;)</code> geöffneten Ressourcen werden am Ende automatisch geschlossen &ndash; auch bei einer Exception.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-24-3"> <span>Man spart sich einen <code>finally</code>-Block, der die Ressource schließt.</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
-    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Es ersetzt den fehleranfälligen <code>finally</code>-Block mit <code>close()</code>. Exceptions müssen trotzdem behandelt oder weitergegeben werden.</div>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Die im <code>try(…)</code> geöffneten Ressourcen werden am Ende automatisch geschlossen – auch bei einer Exception. Einen eigenen <code>finally</code>-Block zum Schließen spart man sich. Exceptions fängt es aber nicht automatisch.</div>
   </div>
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 4</span> Eine Methode zum Laden von Daten fängt eine <code>IOException</code> und wirft stattdessen eine eigene, fachliche Exception. Warum?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-24-4"> <span>weil <code>IOException</code> nicht gefangen werden kann</span></label></li>
       <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-24-4"> <span>damit der Aufrufer nur fachliche Fehler behandeln muss und nicht wissen muss, woher die Daten technisch kommen</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-24-4"> <span>damit die Datei gelöscht wird</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-24-4"> <span>weil <code>IOException</code> nicht gefangen werden kann</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-24-4"> <span>weil eigene Exceptions schneller sind</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>

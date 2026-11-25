@@ -828,8 +828,8 @@ public class Firma {
     <p class="quiz-q"><span class="quiz-num">Frage 1</span> Was enthält ein Objekt-Array direkt nach <code>Kunde[] kunden = new Kunde[4];</code>?</p>
     <ul class="quiz-opts">
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-16-1"> <span>vier neue <code>Kunde</code>-Objekte mit Standardwerten</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-16-1"> <span>vier Plätze, die alle <code>null</code> sind</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-16-1"> <span>ein leeres Array der Länge 0</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-16-1"> <span>vier Plätze, die alle <code>null</code> sind</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-16-1"> <span>einen einzigen <code>Kunde</code></span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
@@ -839,33 +839,34 @@ public class Firma {
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 2</span> Warum wird beim Summieren über ein lückenlos befülltes Objekt-Array nur bis <code>anzahl</code> statt bis <code>length</code> gezählt?</p>
     <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-16-2"> <span>weil <code>anzahl</code> immer größer ist als <code>length</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-16-2"> <span>weil das schneller übersetzt</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-16-2"> <span>weil <code>length</code> bei Objekt-Arrays nicht existiert</span></label></li>
       <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-16-2"> <span>weil dahinter nur <code>null</code>-Einträge stehen, auf denen kein Methodenaufruf möglich ist</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-16-2"> <span>weil das schneller übersetzt</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-16-2"> <span>weil <code>anzahl</code> immer größer ist als <code>length</code></span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
     <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Nur die Plätze 0 bis <code>anzahl - 1</code> sind belegt. Ein Methodenaufruf auf einem leeren Platz würde eine <code>NullPointerException</code> auslösen.</div>
   </div>
-  <div class="quiz-frage" data-multi="0">
-    <p class="quiz-q"><span class="quiz-num">Frage 3</span> Was liefert <code>"Apfel".compareTo("Birne")</code>?</p>
+  <div class="quiz-frage" data-multi="1">
+    <p class="quiz-q"><span class="quiz-num">Frage 3</span> Was trifft auf <code>"Apfel".compareTo("Birne")</code> zu?</p>
+    <p class="quiz-hint">Mehrere Antworten sind richtig.</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-16-3"> <span>0</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-16-3"> <span>eine negative Zahl</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-16-3"> <span>eine positive Zahl</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-16-3"> <span><code>false</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-16-3"> <span>Es liefert eine positive Zahl.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-16-3"> <span>Es liefert 0.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-16-3"> <span>„Apfel“ steht alphabetisch vor „Birne“.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-16-3"> <span>Es liefert eine negative Zahl.</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
-    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> <code>compareTo</code> liefert eine negative Zahl, wenn der erste String alphabetisch vorher kommt, 0 bei Gleichheit und eine positive Zahl, wenn er danach kommt.</div>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> <code>compareTo</code> liefert eine negative Zahl, wenn der String alphabetisch vor dem anderen steht, 0 bei Gleichheit und eine positive Zahl, wenn er danach kommt. „Apfel“ steht vor „Birne“, also ist das Ergebnis negativ.</div>
   </div>
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 4</span> Eine Klasse hat schon eine Methode <code>entfernen(int pos)</code>. Nun soll ein Objekt nach seinem Namen entfernt werden. Was ist die bessere Lösung?</p>
     <ul class="quiz-opts">
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-16-4"> <span>Die ganze Verschiebe-Logik in einer neuen Methode noch einmal schreiben.</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-16-4"> <span>Die Position des Objekts mit dem Namen suchen und dann <code>entfernen(pos)</code> aufrufen.</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-16-4"> <span>Das gefundene Objekt auf <code>null</code> setzen und die Lücke lassen.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-16-4"> <span>Die Position des Objekts mit dem Namen suchen und dann <code>entfernen(pos)</code> aufrufen.</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-16-4"> <span>Das Array neu erzeugen.</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>

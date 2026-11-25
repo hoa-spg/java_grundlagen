@@ -461,45 +461,47 @@ public class CompanyView extends VerticalLayout {
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 1</span> Welche Vaadin-Komponente passt für die Eingabe einer ganzen Zahl?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-32-1"> <span><code>TextArea</code></span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-32-1"> <span><code>IntegerField</code></span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-32-1"> <span><code>Checkbox</code></span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-32-1"> <span><code>Button</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-32-1"> <span><code>TextArea</code></span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-32-1"> <span><code>IntegerField</code></span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
     <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Ein <code>IntegerField</code> akzeptiert nur ganze Zahlen und liefert den Wert als <code>Integer</code>. Für Text gibt es <code>TextField</code>, für Ja/Nein die <code>Checkbox</code>.</div>
   </div>
-  <div class="quiz-frage" data-multi="0">
+  <div class="quiz-frage" data-multi="1">
     <p class="quiz-q"><span class="quiz-num">Frage 2</span> Wie ordnen <code>VerticalLayout</code> und <code>HorizontalLayout</code> ihre Komponenten an?</p>
+    <p class="quiz-hint">Mehrere Antworten sind richtig.</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-32-2"> <span>beide übereinander</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-32-2"> <span><code>VerticalLayout</code> untereinander, <code>HorizontalLayout</code> nebeneinander</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-32-2"> <span><code>VerticalLayout</code> nebeneinander, <code>HorizontalLayout</code> untereinander</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-32-2"> <span>zufällig</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-32-2"> <span><code>HorizontalLayout</code> ordnet sie nebeneinander an.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-32-2"> <span><code>VerticalLayout</code> ordnet sie untereinander an.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-32-2"> <span><code>VerticalLayout</code> ordnet sie nebeneinander an.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-32-2"> <span>Beide ordnen sie übereinander an.</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
-    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Durch Verschachteln der beiden Layouts lassen sich auch komplexere Anordnungen bauen, z.&nbsp;B. eine Zeile mit Buttons unter einem Formular.</div>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> <code>VerticalLayout</code> ordnet seine Komponenten untereinander an, <code>HorizontalLayout</code> nebeneinander – wie die Namen sagen.</div>
   </div>
-  <div class="quiz-frage" data-multi="0">
+  <div class="quiz-frage" data-multi="1">
     <p class="quiz-q"><span class="quiz-num">Frage 3</span> Was ist das Besondere an einem <code>FormLayout</code>?</p>
+    <p class="quiz-hint">Mehrere Antworten sind richtig.</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-32-3"> <span>Es speichert die Eingaben automatisch in einer Datei.</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-32-3"> <span>Es ordnet Eingabefelder in Spalten an und passt die Anzahl der Spalten an die Fensterbreite an (responsive).</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-32-3"> <span>Es kann nur ein einziges Feld enthalten.</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-32-3"> <span>Es prüft alle Eingaben auf Gültigkeit.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-32-3"> <span>Es ordnet Eingabefelder in Spalten an.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-32-3"> <span>Es passt die Anzahl der Spalten an die Fensterbreite an (responsive).</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-32-3"> <span>Es speichert die Eingaben automatisch in einer Datei.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-32-3"> <span>Es prüft alle Eingaben auf Gültigkeit.</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
-    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Über <code>setResponsiveSteps</code> legt man fest, ab welcher Breite wie viele Spalten verwendet werden &ndash; am Handy eine, am Bildschirm mehrere.</div>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Ein <code>FormLayout</code> ordnet Eingabefelder in Spalten an und passt die Anzahl der Spalten an die Fensterbreite an (responsive). Speichern oder Prüfen der Eingaben übernimmt es nicht.</div>
   </div>
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 4</span> Wie kommen die Werte aus einem Formular ohne <code>Binder</code> in ein Model-Objekt?</p>
     <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-32-4"> <span>über die <code>pom.xml</code></span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-32-4"> <span>automatisch, sobald man tippt</span></label></li>
       <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-32-4"> <span>Man liest jeden Wert mit <code>getValue()</code> und übergibt ihn an die passende Set-Methode des Objekts.</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-32-4"> <span>über die <code>pom.xml</code></span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-32-4"> <span>mit <code>System.out.println</code></span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>

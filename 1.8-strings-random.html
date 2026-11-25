@@ -627,9 +627,9 @@ public void testStrings() {
     <p class="quiz-q"><span class="quiz-num">Frage 1</span> Was liefert <code>"Spengergasse".substring(2, 5)</code>?</p>
     <ul class="quiz-opts">
       <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-8-1"> <span><code>"eng"</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-8-1"> <span><code>"peng"</code></span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-8-1"> <span><code>"enge"</code></span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-8-1"> <span><code>"pen"</code></span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-8-1"> <span><code>"peng"</code></span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
@@ -638,34 +638,35 @@ public void testStrings() {
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 2</span> Wie vergleicht man den Inhalt zweier Strings <code>a</code> und <code>b</code> richtig?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-8-2"> <span><code>a == b</code></span></label></li>
       <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-8-2"> <span><code>a.equals(b)</code></span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-8-2"> <span><code>a = b</code></span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-8-2"> <span><code>a.length() == b.length()</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-8-2"> <span><code>a = b</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-8-2"> <span><code>a == b</code></span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
     <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> <code>==</code> prüft bei Objekten, ob es <em>dasselbe</em> Objekt ist. Wegen des String-Pools stimmt das manchmal zufällig, aber nicht immer. Gleichen Text prüft <code>equals</code>.</div>
   </div>
-  <div class="quiz-frage" data-multi="0">
-    <p class="quiz-q"><span class="quiz-num">Frage 3</span> Welcher Aufruf kann bei <code>String s = "";</code> abstürzen?</p>
+  <div class="quiz-frage" data-multi="1">
+    <p class="quiz-q"><span class="quiz-num">Frage 3</span> Welche Aussagen zu <code>String s = "";</code> stimmen?</p>
+    <p class="quiz-hint">Mehrere Antworten sind richtig.</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-8-3"> <span><code>s.length()</code></span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-8-3"> <span><code>s.charAt(0)</code></span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-8-3"> <span><code>s.isEmpty()</code></span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-8-3"> <span><code>s.strip()</code></span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-8-3"> <span><code>s.length()</code> liefert 0.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-8-3"> <span><code>s.strip()</code> löst eine Exception aus.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-8-3"> <span><code>s.isEmpty()</code> liefert <code>false</code>.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-8-3"> <span><code>s.charAt(0)</code> löst eine Exception aus.</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
-    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Ein leerer String hat kein Zeichen an Position 0 &ndash; <code>charAt(0)</code> wirft eine <code>StringIndexOutOfBoundsException</code>. Vorher die Länge prüfen!</div>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Ein leerer String hat die Länge 0, <code>isEmpty()</code> liefert deshalb <code>true</code>. <code>charAt(0)</code> greift auf ein Zeichen zu, das es nicht gibt, und löst eine Exception aus. <code>strip()</code> liefert einfach wieder einen leeren String.</div>
   </div>
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 4</span> Welche Werte kann <code>new Random().nextInt(6) + 1</code> liefern?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-8-4"> <span>0 bis 6</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-8-4"> <span>0 bis 5</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-8-4"> <span>1 bis 6</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-8-4"> <span>0 bis 6</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-8-4"> <span>1 bis 7</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-8-4"> <span>1 bis 6</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>

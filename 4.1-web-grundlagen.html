@@ -328,9 +328,9 @@
     <p class="quiz-q"><span class="quiz-num">Frage 1</span> Was passiert, wenn der Browser eine statische Webseite aufruft?</p>
     <ul class="quiz-opts">
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-30-1"> <span>Der Server führt Java-Code aus und erzeugt die Seite neu.</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-30-1"> <span>Der Browser schickt einen HTTP-Request, der Server antwortet mit der fertigen HTML-Datei (HTTP-Response).</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-30-1"> <span>Der Browser lädt die ganze Website auf einmal herunter.</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-30-1"> <span>Die Seite wird aus der Datenbank des Browsers geladen.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-30-1"> <span>Der Browser schickt einen HTTP-Request, der Server antwortet mit der fertigen HTML-Datei (HTTP-Response).</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
@@ -340,9 +340,9 @@
     <p class="quiz-q"><span class="quiz-num">Frage 2</span> Was ist eine <strong>Single Page Application</strong>?</p>
     <ul class="quiz-opts">
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-30-2"> <span>eine Website mit nur einer einzigen Unterseite</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-30-2"> <span>eine Webanwendung, die einmal geladen wird und danach Daten (z.&nbsp;B. als JSON) nachlädt, ohne die Seite komplett neu zu laden</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-30-2"> <span>eine Anwendung, die nur offline funktioniert</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-30-2"> <span>eine Seite ohne JavaScript</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-30-2"> <span>eine Anwendung, die nur offline funktioniert</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-30-2"> <span>eine Webanwendung, die einmal geladen wird und danach Daten (z.&nbsp;B. als JSON) nachlädt, ohne die Seite komplett neu zu laden</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
@@ -351,8 +351,8 @@
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 3</span> Was unterscheidet ein <strong>Framework</strong> von einer Bibliothek?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-30-3"> <span>Ein Framework ist immer kostenlos.</span></label></li>
       <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-30-3"> <span>Eine Bibliothek ruft dein Code auf; ein Framework ruft deinen Code auf (Inversion of Control).</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-30-3"> <span>Ein Framework ist immer kostenlos.</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-30-3"> <span>Eine Bibliothek ist größer als ein Framework.</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-30-3"> <span>Es gibt keinen Unterschied.</span></label></li>
     </ul>
@@ -360,17 +360,18 @@
     <p class="quiz-feedback" hidden></p>
     <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Beim Framework gibt der Rahmen den Ablauf vor: Du schreibst Klassen und Methoden, die das Framework zur passenden Zeit aufruft &ndash; etwa eine View, wenn jemand eine bestimmte URL öffnet.</div>
   </div>
-  <div class="quiz-frage" data-multi="0">
+  <div class="quiz-frage" data-multi="1">
     <p class="quiz-q"><span class="quiz-num">Frage 4</span> Was ist die Grundidee von <strong>Vaadin Flow</strong>?</p>
+    <p class="quiz-hint">Mehrere Antworten sind richtig.</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-30-4"> <span>Webseiten werden ausschließlich in HTML geschrieben.</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-30-4"> <span>Die Oberfläche wird in Java am Server programmiert; Vaadin kümmert sich um HTML, JavaScript und die Kommunikation mit dem Browser.</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-30-4"> <span>Vaadin ist eine Datenbank.</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-30-4"> <span>Vaadin läuft nur im Browser, ganz ohne Server.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-30-4"> <span>Webseiten werden ausschließlich in HTML geschrieben.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-30-4"> <span>Vaadin kümmert sich um HTML, JavaScript und die Kommunikation mit dem Browser.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-30-4"> <span>Die Oberfläche wird in Java am Server programmiert.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-30-4"> <span>Vaadin läuft nur im Browser, ganz ohne Server.</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
-    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Mit Vaadin Flow schreibt man Komponenten und Layouts als Java-Objekte, ohne selbst HTML oder JavaScript zu schreiben.</div>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Bei Vaadin Flow programmiert man die Oberfläche in Java am Server. Vaadin kümmert sich um HTML, JavaScript und die Kommunikation mit dem Browser. Es ist keine Datenbank und läuft nicht ohne Server.</div>
   </div>
   <div class="quiz-summary"><span class="quiz-score"></span><button type="button" class="quiz-reset">Zur&uuml;cksetzen</button></div>
 </div>

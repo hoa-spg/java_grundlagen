@@ -715,37 +715,39 @@ void testEinstellen() {
         <details class="quiz-box">
 <summary><h2>Quiz</h2><span class="quiz-box-hint">3 Fragen &middot; zum Aufklappen klicken</span></summary>
 <div class="quiz" id="quiz-9">
-  <div class="quiz-frage" data-multi="0">
-    <p class="quiz-q"><span class="quiz-num">Frage 1</span> Ein Attribut hat einen Referenzdatentyp (z.&nbsp;B. <code>private Kunde kunde;</code>) und wird im Konstruktor nicht gesetzt. Welchen Wert hat es nach dem Erzeugen des Objekts?</p>
+  <div class="quiz-frage" data-multi="1">
+    <p class="quiz-q"><span class="quiz-num">Frage 1</span> Ein Attribut hat einen Referenzdatentyp (z. B. <code>private Kunde kunde;</code>) und wird im Konstruktor nicht gesetzt. Was stimmt nach dem Erzeugen des Objekts?</p>
+    <p class="quiz-hint">Mehrere Antworten sind richtig.</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-9-1"> <span>ein neues, leeres Objekt der Klasse</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-9-1"> <span><code>null</code></span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-9-1"> <span><code>0</code></span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-9-1"> <span>Der Code übersetzt nicht.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-9-1"> <span>Das Attribut verweist auf ein neues, leeres Kunde-Objekt.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-9-1"> <span>Der Code übersetzt nicht.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-9-1"> <span>Das Attribut hat den Wert <code>null</code>.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-9-1"> <span>Ein Aufruf wie <code>kunde.getName()</code> löst eine <code>NullPointerException</code> aus.</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
-    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Attribute eines Referenzdatentyps starten mit <code>null</code> &ndash; sie enthalten keine Objektreferenz. Bei Objekt-Beziehungen lässt sich <code>null</code> als „noch keine Beziehung“ bzw. „Platz frei“ deuten.</div>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Nicht gesetzte Attribute mit Referenzdatentyp haben den Wert <code>null</code> – es entsteht kein Objekt. Ein Methodenaufruf darauf, z. B. <code>kunde.getName()</code>, löst eine <code>NullPointerException</code> aus. Übersetzen lässt sich der Code problemlos.</div>
   </div>
-  <div class="quiz-frage" data-multi="0">
-    <p class="quiz-q"><span class="quiz-num">Frage 2</span> Was prüft <code>a == b</code>, wenn <code>a</code> und <code>b</code> Objektreferenzen sind?</p>
+  <div class="quiz-frage" data-multi="1">
+    <p class="quiz-q"><span class="quiz-num">Frage 2</span> Was trifft auf <code>a == b</code> zu, wenn <code>a</code> und <code>b</code> Objektreferenzen sind?</p>
+    <p class="quiz-hint">Mehrere Antworten sind richtig.</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-9-2"> <span>ob beide Objekte dieselben Attributwerte haben</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-9-2"> <span>ob beide Variablen auf dasselbe Objekt verweisen</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-9-2"> <span>ob beide Objekte zur selben Klasse gehören</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-9-2"> <span>ob beide nicht <code>null</code> sind</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-9-2"> <span>Es prüft, ob beide Objekte dieselben Attributwerte haben.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-9-2"> <span>Es prüft, ob beide Variablen auf dasselbe Objekt verweisen.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-9-2"> <span>Inhalte vergleicht man stattdessen mit <code>equals</code>, wie bei Strings.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-9-2"> <span>Es prüft, ob beide Objekte zur selben Klasse gehören.</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
-    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Bei Referenzdatentypen vergleicht <code>==</code> die Objektreferenzen. Zwei verschiedene Objekte mit gleichen Daten sind nicht <code>==</code>.</div>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Bei Referenzen prüft <code>==</code>, ob beide Variablen auf dasselbe Objekt verweisen – nicht, ob die Inhalte gleich sind. Inhalte vergleicht man mit <code>equals</code>, wie man es von Strings kennt.</div>
   </div>
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 3</span> Warum prüft man vor einem Aufruf wie <code>ref.methode()</code> oft <code>if (ref != null)</code>?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-9-3"> <span>Damit der Code schneller läuft.</span></label></li>
       <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-9-3"> <span>Damit keine <code>NullPointerException</code> auftritt, wenn die Objektreferenz <code>null</code> ist.</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-9-3"> <span>Weil <code>methode</code> sonst <code>private</code> wäre.</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-9-3"> <span>Die Prüfung ist überflüssig, Java prüft das selbst.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-9-3"> <span>Damit der Code schneller läuft.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-9-3"> <span>Weil <code>methode</code> sonst <code>private</code> wäre.</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>

@@ -348,25 +348,26 @@ $ git push -u origin main</code></pre>
         <details class="quiz-box">
 <summary><h2>Quiz</h2><span class="quiz-box-hint">4 Fragen &middot; zum Aufklappen klicken</span></summary>
 <div class="quiz" id="quiz-25">
-  <div class="quiz-frage" data-multi="0">
-    <p class="quiz-q"><span class="quiz-num">Frage 1</span> Was macht <code>git add Datei.java</code>?</p>
+  <div class="quiz-frage" data-multi="1">
+    <p class="quiz-q"><span class="quiz-num">Frage 1</span> Was trifft auf <code>git add Datei.java</code> zu?</p>
+    <p class="quiz-hint">Mehrere Antworten sind richtig.</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-25-1"> <span>Es lädt die Datei auf GitHub hoch.</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-25-1"> <span>Es nimmt den aktuellen Stand der Datei in den Index (Staging Area) für den nächsten Commit auf.</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-25-1"> <span>Es erstellt eine neue Datei.</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-25-1"> <span>Es speichert sofort eine neue Version im Repository.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-25-1"> <span>Erst ein anschließendes <code>git commit</code> speichert die neue Version im Repository.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-25-1"> <span>Es lädt die Datei auf GitHub hoch.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-25-1"> <span>Es nimmt den aktuellen Stand der Datei in den Index (Staging Area) für den nächsten Commit auf.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-25-1"> <span>Es speichert sofort eine neue Version im Repository.</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
-    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Git arbeitet in Stufen: Workspace &rarr; <code>add</code> &rarr; Index &rarr; <code>commit</code> &rarr; lokales Repository &rarr; <code>push</code> &rarr; entferntes Repository.</div>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> <code>git add</code> nimmt den aktuellen Stand der Datei in den Index (Staging Area) auf. Erst das anschließende <code>git commit</code> speichert die neue Version im Repository. Hochgeladen wird erst mit <code>git push</code>.</div>
   </div>
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 2</span> Welcher Befehl überträgt deine lokalen Commits in das entfernte Repository?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-25-2"> <span><code>git pull</code></span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-25-2"> <span><code>git commit</code></span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-25-2"> <span><code>git push</code></span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-25-2"> <span><code>git clone</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-25-2"> <span><code>git commit</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-25-2"> <span><code>git pull</code></span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-25-2"> <span><code>git push</code></span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
@@ -376,9 +377,9 @@ $ git push -u origin main</code></pre>
     <p class="quiz-q"><span class="quiz-num">Frage 3</span> <code>git push</code> wird mit <code>! [rejected] main -&gt; main (fetch first)</code> abgelehnt. Was ist zu tun?</p>
     <ul class="quiz-opts">
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-25-3"> <span>das lokale Repository löschen und neu klonen</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-25-3"> <span>einen neuen Branch anlegen und dort weiterarbeiten</span></label></li>
       <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-25-3"> <span>zuerst mit <code>git pull</code> die neuen Commits holen, Konflikte ggf. auflösen, dann erneut pushen</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-25-3"> <span><code>git add</code> noch einmal ausführen</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-25-3"> <span>einen neuen Branch anlegen und dort weiterarbeiten</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
@@ -387,10 +388,10 @@ $ git push -u origin main</code></pre>
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 4</span> Wofür ist die Datei <code>.gitignore</code> da?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-25-4"> <span>Sie listet Personen, die keinen Zugriff haben.</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-25-4"> <span>Sie legt fest, welche Dateien Git nicht versionieren soll, z.&nbsp;B. den Ordner <code>target/</code> mit übersetzten Klassen.</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-25-4"> <span>Sie enthält Commits, die rückgängig gemacht werden.</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-25-4"> <span>Sie ignoriert Konflikte automatisch.</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-25-4"> <span>Sie legt fest, welche Dateien Git nicht versionieren soll, z.&nbsp;B. den Ordner <code>target/</code> mit übersetzten Klassen.</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-25-4"> <span>Sie listet Personen, die keinen Zugriff haben.</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
