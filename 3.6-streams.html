@@ -77,6 +77,9 @@
         <a class="nav-link" href="4.5-mitarbeiterverwaltung.html"><span class="ln">4.5</span>Mitarbeiterverwaltung</a>
       </div>
     </nav>
+    <div class="sidebar-footer">
+      <a class="sidebar-home" href="https://hoa-spg.github.io/">&larr; Kursseite</a>
+    </div>
   </aside>
 
   <main class="main-content">
@@ -487,7 +490,9 @@ public List&lt;String&gt; namen() {
       </section>
 
       <section class="section section-fehler">
-        <h2>Häufige Fehler</h2>
+<details class="fold-box">
+<summary><h2>Häufige Fehler</h2><span class="quiz-box-hint">5 Fehler &middot; zum Aufklappen klicken</span></summary>
+<div class="fold-body">
         <div class="fehler-item">
   <div class="fehler-title">Fehler: Stream ohne Endoperation</div>
   <p><code>personal.stream().filter(&hellip;).map(&hellip;);</code> bewirkt nichts.</p>
@@ -513,6 +518,8 @@ public List&lt;String&gt; namen() {
   <p><code>int max = personal.stream().mapToInt(&hellip;).max();</code> &rarr; <code>incompatible types: OptionalInt cannot be converted to int</code>.</p>
           <p class="fehler-fix"><code>max()</code> liefert ein Optional. Mit <code>.orElse(0)</code> oder <code>.orElseThrow()</code> den Wert herausholen.</p>
 </div>
+</div>
+</details>
       </section>
 
       <section class="section section-quiz">

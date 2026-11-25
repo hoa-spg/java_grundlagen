@@ -77,6 +77,9 @@
         <a class="nav-link" href="4.5-mitarbeiterverwaltung.html"><span class="ln">4.5</span>Mitarbeiterverwaltung</a>
       </div>
     </nav>
+    <div class="sidebar-footer">
+      <a class="sidebar-home" href="https://hoa-spg.github.io/">&larr; Kursseite</a>
+    </div>
   </aside>
 
   <main class="main-content">
@@ -617,7 +620,9 @@ void testEinstellen() {
       </section>
 
       <section class="section section-fehler">
-        <h2>Häufige Fehler</h2>
+<details class="fold-box">
+<summary><h2>Häufige Fehler</h2><span class="quiz-box-hint">3 Fehler &middot; zum Aufklappen klicken</span></summary>
+<div class="fold-body">
         <div class="fehler-item">
   <div class="fehler-title">Fehler: Methode auf leerem Platz aufgerufen</div>
   <p><code>gesamtGewicht()</code> bricht mit <code>NullPointerException</code> ab, sobald ein Platz frei ist.</p>
@@ -633,10 +638,14 @@ void testEinstellen() {
   <p><code>if (name.equals(fahrer.getName()) &amp;&amp; fahrer != null)</code> stürzt ab, wenn der Fahrersitz frei ist.</p>
           <p class="fehler-fix">Die <code>null</code>-Prüfung muss <em>links</em> von <code>&amp;&amp;</code> stehen &ndash; die rechte Seite wird nur ausgewertet, wenn die linke wahr ist.</p>
 </div>
+</div>
+</details>
       </section>
 
       <section class="section section-aufgaben">
-        <h2>Aufgaben</h2>
+<details class="fold-box">
+<summary><h2>Aufgaben</h2><span class="quiz-box-hint">7 Aufgaben &middot; zum Aufklappen klicken</span></summary>
+<div class="fold-body">
         <div class="aufgaben-list">
           <div class="aufgabe">
   <div class="aufgabe-header">
@@ -695,6 +704,8 @@ void testEinstellen() {
             <p class="mb-0"><a href="uebungen/lektion-1.9-uebung-7-weinregal.pdf" target="_blank">&#128196; Übung 1.9-7 (PDF)</a></p>
 </div>
         </div>
+</div>
+</details>
       </section>
 
       <section class="section section-quiz">

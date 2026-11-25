@@ -77,6 +77,9 @@
         <a class="nav-link" href="4.5-mitarbeiterverwaltung.html"><span class="ln">4.5</span>Mitarbeiterverwaltung</a>
       </div>
     </nav>
+    <div class="sidebar-footer">
+      <a class="sidebar-home" href="https://hoa-spg.github.io/">&larr; Kursseite</a>
+    </div>
   </aside>
 
   <main class="main-content">
@@ -415,7 +418,9 @@
       </section>
 
       <section class="section section-fehler">
-        <h2>Häufige Fehler</h2>
+<details class="fold-box">
+<summary><h2>Häufige Fehler</h2><span class="quiz-box-hint">3 Fehler &middot; zum Aufklappen klicken</span></summary>
+<div class="fold-body">
         <div class="fehler-item">
   <div class="fehler-title">Fehler: return vergessen</div>
   <p>Die Fehlermeldung erscheint, aber der ungültige Wert wird trotzdem gesetzt.</p>
@@ -431,6 +436,8 @@
   <p><code>if (x == null) { return; } else { &hellip; }</code> &ndash; der Code ist wieder eingerückt, der Vorteil verloren.</p>
           <p class="fehler-fix">Nach einem <code>return</code> oder <code>throw</code> ist <code>else</code> überflüssig. Den normalen Code einfach nach dem <code>if</code>-Block schreiben.</p>
 </div>
+</div>
+</details>
       </section>
 
       <section class="section section-quiz">

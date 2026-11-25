@@ -77,6 +77,9 @@
         <a class="nav-link" href="4.5-mitarbeiterverwaltung.html"><span class="ln">4.5</span>Mitarbeiterverwaltung</a>
       </div>
     </nav>
+    <div class="sidebar-footer">
+      <a class="sidebar-home" href="https://hoa-spg.github.io/">&larr; Kursseite</a>
+    </div>
   </aside>
 
   <main class="main-content">
@@ -758,7 +761,9 @@ public class CompanyView extends VerticalLayout {
       </section>
 
       <section class="section section-fehler">
-        <h2>Häufige Fehler</h2>
+<details class="fold-box">
+<summary><h2>Häufige Fehler</h2><span class="quiz-box-hint">3 Fehler &middot; zum Aufklappen klicken</span></summary>
+<div class="fold-body">
         <div class="fehler-item">
   <div class="fehler-title">Fehler: Fehlermeldung ist nichtssagend</div>
   <p>Die Notification zeigt &bdquo;java.lang.reflect.InvocationTargetException&ldquo; oder &bdquo;null&ldquo; statt &bdquo;invalid email address&ldquo;.</p>
@@ -774,6 +779,8 @@ public class CompanyView extends VerticalLayout {
   <p>&bdquo;Save Company To File&ldquo; funktioniert, aber die Datei ist auf dem eigenen Rechner nicht zu finden.</p>
           <p class="fehler-fix">Die Java-Logik läuft am <em>Server</em>: <code>writeToFile("company.csv")</code> schreibt ins Arbeitsverzeichnis des Servers (lokal: der Projektordner). Für Dateien vom Benutzer braucht es einen Upload, für Dateien zum Benutzer einen Download (<code>Anchor</code> mit <code>StreamResource</code>).</p>
 </div>
+</div>
+</details>
       </section>
 
       <section class="section section-quiz">

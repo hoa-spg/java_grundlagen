@@ -77,6 +77,9 @@
         <a class="nav-link" href="4.5-mitarbeiterverwaltung.html"><span class="ln">4.5</span>Mitarbeiterverwaltung</a>
       </div>
     </nav>
+    <div class="sidebar-footer">
+      <a class="sidebar-home" href="https://hoa-spg.github.io/">&larr; Kursseite</a>
+    </div>
   </aside>
 
   <main class="main-content">
@@ -433,7 +436,9 @@ public boolean enthaelt(Mitarbeiter m) {
       </section>
 
       <section class="section section-fehler">
-        <h2>Häufige Fehler</h2>
+<details class="fold-box">
+<summary><h2>Häufige Fehler</h2><span class="quiz-box-hint">3 Fehler &middot; zum Aufklappen klicken</span></summary>
+<div class="fold-body">
         <div class="fehler-item">
   <div class="fehler-title">Fehler: Nur eine Seite aktualisiert</div>
   <p>Nach <code>markt.entfernen("Langos")</code> liefert <code>stand.getMarkt()</code> immer noch den alten Markt; der Stand kann nirgends mehr hinzugefügt werden.</p>
@@ -449,6 +454,8 @@ public boolean enthaelt(Mitarbeiter m) {
   <p><code>public boolean equals(Student other)</code> wird von <code>ArrayList.contains</code> &amp; Co. nie aufgerufen.</p>
           <p class="fehler-fix">Die Signatur muss exakt <code>equals(Object other)</code> lauten &ndash; sonst ist es eine Überladung, keine Überschreibung. <code>@Override</code> davor lässt den Compiler das prüfen.</p>
 </div>
+</div>
+</details>
       </section>
 
       <section class="section section-quiz">

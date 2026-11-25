@@ -77,6 +77,9 @@
         <a class="nav-link" href="4.5-mitarbeiterverwaltung.html"><span class="ln">4.5</span>Mitarbeiterverwaltung</a>
       </div>
     </nav>
+    <div class="sidebar-footer">
+      <a class="sidebar-home" href="https://hoa-spg.github.io/">&larr; Kursseite</a>
+    </div>
   </aside>
 
   <main class="main-content">
@@ -553,7 +556,9 @@ public void testStrings() {
       </section>
 
       <section class="section section-fehler">
-        <h2>Häufige Fehler</h2>
+<details class="fold-box">
+<summary><h2>Häufige Fehler</h2><span class="quiz-box-hint">7 Fehler &middot; zum Aufklappen klicken</span></summary>
+<div class="fold-body">
         <div class="fehler-item">
   <div class="fehler-title">Fehler: Strings mit == verglichen</div>
   <p><code>if (name == "Karl")</code> funktioniert manchmal, manchmal nicht &ndash; je nachdem, wie der String entstanden ist.</p>
@@ -589,10 +594,14 @@ public void testStrings() {
   <p><code>rnd.nextInt(6)</code> liefert 0 bis 5, <code>rnd.nextInt(5) + 1</code> nur 1 bis 5.</p>
           <p class="fehler-fix"><code>nextInt(n)</code> liefert Werte von 0 bis <code>n-1</code>. Für 1 bis 6: <code>rnd.nextInt(6) + 1</code>.</p>
 </div>
+</div>
+</details>
       </section>
 
       <section class="section section-aufgaben">
-        <h2>Aufgaben</h2>
+<details class="fold-box">
+<summary><h2>Aufgaben</h2><span class="quiz-box-hint">1 Aufgabe &middot; zum Aufklappen klicken</span></summary>
+<div class="fold-body">
         <div class="aufgaben-list">
           <div class="aufgabe">
   <div class="aufgabe-header">
@@ -603,6 +612,8 @@ public void testStrings() {
             <p class="mb-0"><a href="uebungen/lektion-1.8-uebung-1-student.pdf" target="_blank">&#128196; Übung 1.8-1 (PDF)</a> &middot; <a href="uebungen/lektion-1.8-uebung-1-student/Student.java" target="_blank">Vorlage <code>Student.java</code></a></p>
 </div>
         </div>
+</div>
+</details>
       </section>
 
       <section class="section section-quiz">

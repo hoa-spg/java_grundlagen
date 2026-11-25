@@ -77,6 +77,9 @@
         <a class="nav-link" href="4.5-mitarbeiterverwaltung.html"><span class="ln">4.5</span>Mitarbeiterverwaltung</a>
       </div>
     </nav>
+    <div class="sidebar-footer">
+      <a class="sidebar-home" href="https://hoa-spg.github.io/">&larr; Kursseite</a>
+    </div>
   </aside>
 
   <main class="main-content">
@@ -279,7 +282,9 @@ public static Person ausCsv(String zeile) throws FirmaException {
       </section>
 
       <section class="section section-fehler">
-        <h2>Häufige Fehler</h2>
+<details class="fold-box">
+<summary><h2>Häufige Fehler</h2><span class="quiz-box-hint">2 Fehler &middot; zum Aufklappen klicken</span></summary>
+<div class="fold-body">
         <div class="fehler-item">
   <div class="fehler-title">Fehler: Singleton mit öffentlichem Konstruktor</div>
   <p>Trotz <code>getInstance()</code> gibt es plötzlich zwei Konfigurationen.</p>
@@ -290,6 +295,8 @@ public static Person ausCsv(String zeile) throws FirmaException {
   <p><code>Person.ausCsv(line)</code> &rarr; <code>non-static method ausCsv(String) cannot be referenced from a static context</code>.</p>
           <p class="fehler-fix">Eine Factory-Methode wird aufgerufen, <em>bevor</em> es ein Objekt gibt &ndash; sie muss <code>static</code> sein.</p>
 </div>
+</div>
+</details>
       </section>
 
       <section class="section section-quiz">

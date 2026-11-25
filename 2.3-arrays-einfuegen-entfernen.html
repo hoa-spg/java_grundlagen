@@ -77,6 +77,9 @@
         <a class="nav-link" href="4.5-mitarbeiterverwaltung.html"><span class="ln">4.5</span>Mitarbeiterverwaltung</a>
       </div>
     </nav>
+    <div class="sidebar-footer">
+      <a class="sidebar-home" href="https://hoa-spg.github.io/">&larr; Kursseite</a>
+    </div>
   </aside>
 
   <main class="main-content">
@@ -500,7 +503,9 @@ public class Zeiterfassung {
       </section>
 
       <section class="section section-fehler">
-        <h2>Häufige Fehler</h2>
+<details class="fold-box">
+<summary><h2>Häufige Fehler</h2><span class="quiz-box-hint">3 Fehler &middot; zum Aufklappen klicken</span></summary>
+<div class="fold-body">
         <div class="fehler-item">
   <div class="fehler-title">Fehler: Beim Einfügen von vorne verschoben</div>
   <p>Nach dem Einfügen steht derselbe Wert mehrfach hintereinander im Array.</p>
@@ -516,6 +521,8 @@ public class Zeiterfassung {
   <p><code>toString()</code> enthält <code>System.out.println</code> &ndash; in der Ausgabe stehen die Werte doppelt oder an der falschen Stelle.</p>
           <p class="fehler-fix"><code>toString()</code> baut nur einen String und gibt ihn mit <code>return</code> zurück. Ausgeben ist Aufgabe von <code>print()</code>.</p>
 </div>
+</div>
+</details>
       </section>
 
       <section class="section section-quiz">

@@ -77,6 +77,9 @@
         <a class="nav-link" href="4.5-mitarbeiterverwaltung.html"><span class="ln">4.5</span>Mitarbeiterverwaltung</a>
       </div>
     </nav>
+    <div class="sidebar-footer">
+      <a class="sidebar-home" href="https://hoa-spg.github.io/">&larr; Kursseite</a>
+    </div>
   </aside>
 
   <main class="main-content">
@@ -426,7 +429,9 @@ public class CompanyView extends VerticalLayout {
       </section>
 
       <section class="section section-fehler">
-        <h2>Häufige Fehler</h2>
+<details class="fold-box">
+<summary><h2>Häufige Fehler</h2><span class="quiz-box-hint">3 Fehler &middot; zum Aufklappen klicken</span></summary>
+<div class="fold-body">
         <div class="fehler-item">
   <div class="fehler-title">Fehler: getValue() liefert null</div>
   <p><code>datePicker.getValue().getYear()</code> &rarr; <code>NullPointerException</code>, wenn nichts ausgewählt wurde.</p>
@@ -442,6 +447,8 @@ public class CompanyView extends VerticalLayout {
   <p>Nach &bdquo;Load Company From File&ldquo; zeigt das Formular noch die alten Werte.</p>
           <p class="fehler-fix">Die Felder ändern sich nicht von selbst, wenn sich das Model ändert. Nach dem Laden <code>readData()</code> aufrufen (ab 4.4: <code>binder.readBean(&hellip;)</code>).</p>
 </div>
+</div>
+</details>
       </section>
 
       <section class="section section-quiz">

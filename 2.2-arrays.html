@@ -77,6 +77,9 @@
         <a class="nav-link" href="4.5-mitarbeiterverwaltung.html"><span class="ln">4.5</span>Mitarbeiterverwaltung</a>
       </div>
     </nav>
+    <div class="sidebar-footer">
+      <a class="sidebar-home" href="https://hoa-spg.github.io/">&larr; Kursseite</a>
+    </div>
   </aside>
 
   <main class="main-content">
@@ -434,7 +437,9 @@ public class Zeiterfassung {
       </section>
 
       <section class="section section-fehler">
-        <h2>Häufige Fehler</h2>
+<details class="fold-box">
+<summary><h2>Häufige Fehler</h2><span class="quiz-box-hint">3 Fehler &middot; zum Aufklappen klicken</span></summary>
+<div class="fold-body">
         <div class="fehler-item">
   <div class="fehler-title">Fehler: Index gleich length</div>
   <p><code>for (int i = 0; i &lt;= a.length; i++)</code> &rarr; <code>ArrayIndexOutOfBoundsException: Index 10 out of bounds for length 10</code>.</p>
@@ -450,10 +455,14 @@ public class Zeiterfassung {
   <p>Bei lauter positiven Werten liefert <code>temperaturMinimum()</code> immer 0.</p>
           <p class="fehler-fix">Mit dem ersten Element starten: <code>double x = temperatur[0];</code> &ndash; dann ist das Ergebnis immer ein tatsächlich vorhandener Wert.</p>
 </div>
+</div>
+</details>
       </section>
 
       <section class="section section-aufgaben">
-        <h2>Aufgaben</h2>
+<details class="fold-box">
+<summary><h2>Aufgaben</h2><span class="quiz-box-hint">2 Aufgaben &middot; zum Aufklappen klicken</span></summary>
+<div class="fold-body">
         <div class="aufgaben-list">
           <div class="aufgabe">
   <div class="aufgabe-header">
@@ -472,6 +481,8 @@ public class Zeiterfassung {
             <p class="mb-0"><a href="uebungen/lektion-2.2-uebung-2-lotto-tsp.pdf" target="_blank">&#128196; Übung 2.2-2 (PDF)</a></p>
 </div>
         </div>
+</div>
+</details>
       </section>
 
       <section class="section section-quiz">

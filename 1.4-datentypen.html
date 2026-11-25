@@ -77,6 +77,9 @@
         <a class="nav-link" href="4.5-mitarbeiterverwaltung.html"><span class="ln">4.5</span>Mitarbeiterverwaltung</a>
       </div>
     </nav>
+    <div class="sidebar-footer">
+      <a class="sidebar-home" href="https://hoa-spg.github.io/">&larr; Kursseite</a>
+    </div>
   </aside>
 
   <main class="main-content">
@@ -357,7 +360,9 @@ public void print() {
       </section>
 
       <section class="section section-fehler">
-        <h2>Häufige Fehler</h2>
+<details class="fold-box">
+<summary><h2>Häufige Fehler</h2><span class="quiz-box-hint">3 Fehler &middot; zum Aufklappen klicken</span></summary>
+<div class="fold-body">
         <div class="fehler-item">
   <div class="fehler-title">Fehler: Methode auf null aufgerufen</div>
   <p>Das Programm bricht mit <code>NullPointerException</code> ab, z.&nbsp;B. bei <code>student.getName()</code>.</p>
@@ -373,6 +378,8 @@ public void print() {
   <p>Nach <code>Student s2 = s1; s2.setName("X");</code> hat auch <code>s1</code> plötzlich den Namen &bdquo;X&ldquo;.</p>
           <p class="fehler-fix"><code>=</code> kopiert bei Objekten nur den Verweis. Für ein zweites, unabhängiges Objekt braucht es ein neues <code>new Student(&hellip;)</code>.</p>
 </div>
+</div>
+</details>
       </section>
 
       <section class="section section-quiz">

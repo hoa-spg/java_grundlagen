@@ -77,6 +77,9 @@
         <a class="nav-link" href="4.5-mitarbeiterverwaltung.html"><span class="ln">4.5</span>Mitarbeiterverwaltung</a>
       </div>
     </nav>
+    <div class="sidebar-footer">
+      <a class="sidebar-home" href="https://hoa-spg.github.io/">&larr; Kursseite</a>
+    </div>
   </aside>
 
   <main class="main-content">
@@ -520,7 +523,9 @@ public class Mitarbeiter {
       </section>
 
       <section class="section section-fehler">
-        <h2>Häufige Fehler</h2>
+<details class="fold-box">
+<summary><h2>Häufige Fehler</h2><span class="quiz-box-hint">3 Fehler &middot; zum Aufklappen klicken</span></summary>
+<div class="fold-body">
         <div class="fehler-item">
   <div class="fehler-title">Fehler: Konstruktor mit Rückgabetyp</div>
   <p><code>public void Student() { &hellip; }</code> übersetzt zwar, wird aber beim <code>new</code> nicht aufgerufen &ndash; die Eigenschaften bleiben <code>null</code> bzw. 0.</p>
@@ -536,10 +541,14 @@ public class Mitarbeiter {
   <p>Eine Methode <code>alterBerechnen</code> schreibt das Ergebnis nur mit <code>println</code> auf die Konsole; andere Methoden können damit nicht weiterrechnen.</p>
           <p class="fehler-fix">Berechnungen mit <code>return</code> zurückgeben. Die Ausgabe übernimmt der Aufrufer bzw. eine eigene Print-Methode.</p>
 </div>
+</div>
+</details>
       </section>
 
       <section class="section section-aufgaben">
-        <h2>Aufgaben</h2>
+<details class="fold-box">
+<summary><h2>Aufgaben</h2><span class="quiz-box-hint">2 Aufgaben &middot; zum Aufklappen klicken</span></summary>
+<div class="fold-body">
         <div class="aufgaben-list">
           <div class="aufgabe">
   <div class="aufgabe-header">
@@ -558,6 +567,8 @@ public class Mitarbeiter {
             <p class="mb-0"><a href="uebungen/lektion-1.3-uebung-2-wohnung.pdf" target="_blank">&#128196; Übung 1.3-2 (PDF)</a></p>
 </div>
         </div>
+</div>
+</details>
       </section>
 
       <section class="section section-quiz">

@@ -77,6 +77,9 @@
         <a class="nav-link" href="4.5-mitarbeiterverwaltung.html"><span class="ln">4.5</span>Mitarbeiterverwaltung</a>
       </div>
     </nav>
+    <div class="sidebar-footer">
+      <a class="sidebar-home" href="https://hoa-spg.github.io/">&larr; Kursseite</a>
+    </div>
   </aside>
 
   <main class="main-content">
@@ -392,7 +395,9 @@ public List&lt;Person&gt; sortiertNachGeburtsjahr() {
       </section>
 
       <section class="section section-fehler">
-        <h2>Häufige Fehler</h2>
+<details class="fold-box">
+<summary><h2>Häufige Fehler</h2><span class="quiz-box-hint">3 Fehler &middot; zum Aufklappen klicken</span></summary>
+<div class="fold-body">
         <div class="fehler-item">
   <div class="fehler-title">Fehler: Lokale Variable im Lambda verändert</div>
   <p><code>int summe = 0; list.forEach(p -&gt; summe += p.getKostenProMonat());</code> &rarr; <code>local variables referenced from a lambda expression must be final or effectively final</code>.</p>
@@ -408,6 +413,8 @@ public List&lt;Person&gt; sortiertNachGeburtsjahr() {
   <p><code>(a, b) -&gt; a - b</code> sortiert falsch, wenn die Differenz den <code>int</code>-Bereich überschreitet (Überlauf, Lektion 1.4).</p>
           <p class="fehler-fix">Für beliebige Werte <code>Integer.compare(a, b)</code> bzw. <code>Comparator.comparing(&hellip;)</code> verwenden.</p>
 </div>
+</div>
+</details>
       </section>
 
       <section class="section section-quiz">

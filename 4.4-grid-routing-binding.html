@@ -77,6 +77,9 @@
         <a class="nav-link" href="4.5-mitarbeiterverwaltung.html"><span class="ln">4.5</span>Mitarbeiterverwaltung</a>
       </div>
     </nav>
+    <div class="sidebar-footer">
+      <a class="sidebar-home" href="https://hoa-spg.github.io/">&larr; Kursseite</a>
+    </div>
   </aside>
 
   <main class="main-content">
@@ -547,7 +550,9 @@ private void storeData() {
       </section>
 
       <section class="section section-fehler">
-        <h2>Häufige Fehler</h2>
+<details class="fold-box">
+<summary><h2>Häufige Fehler</h2><span class="quiz-box-hint">3 Fehler &middot; zum Aufklappen klicken</span></summary>
+<div class="fold-body">
         <div class="fehler-item">
   <div class="fehler-title">Fehler: Feld wird nicht gebunden</div>
   <p>Nach <code>readBean</code> bleibt ein Feld leer, ohne Fehlermeldung.</p>
@@ -563,6 +568,8 @@ private void storeData() {
   <p>Der Menüpunkt &bdquo;New Employee&ldquo; (<code>/employee</code> ohne Id) führt zu <em>Could not navigate</em>.</p>
           <p class="fehler-fix">Ohne <code>@OptionalParameter</code> ist der Parameter Pflicht. Annotation ergänzen und in <code>setParameter</code> den Fall <code>id == null</code> (neuer Mitarbeiter) behandeln.</p>
 </div>
+</div>
+</details>
       </section>
 
       <section class="section section-quiz">

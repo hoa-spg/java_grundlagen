@@ -77,6 +77,9 @@
         <a class="nav-link" href="4.5-mitarbeiterverwaltung.html"><span class="ln">4.5</span>Mitarbeiterverwaltung</a>
       </div>
     </nav>
+    <div class="sidebar-footer">
+      <a class="sidebar-home" href="https://hoa-spg.github.io/">&larr; Kursseite</a>
+    </div>
   </aside>
 
   <main class="main-content">
@@ -352,7 +355,9 @@ public class Mitarbeiter {
       </section>
 
       <section class="section section-fehler">
-        <h2>Häufige Fehler</h2>
+<details class="fold-box">
+<summary><h2>Häufige Fehler</h2><span class="quiz-box-hint">3 Fehler &middot; zum Aufklappen klicken</span></summary>
+<div class="fold-body">
         <div class="fehler-item">
   <div class="fehler-title">Fehler: Get-Methode ohne return</div>
   <p>Der Compiler meldet <code>missing return statement</code>.</p>
@@ -368,6 +373,8 @@ public class Mitarbeiter {
   <p><code>string name;</code> oder <code>Int jahr;</code> führen zu <code>cannot find symbol</code>.</p>
           <p class="fehler-fix">Java unterscheidet Groß- und Kleinschreibung: <code>String</code> (Klasse, groß), <code>int</code> (primitiver Typ, klein). Auch <code>getname()</code> ist eine andere Methode als <code>getName()</code>.</p>
 </div>
+</div>
+</details>
       </section>
 
       <section class="section section-quiz">

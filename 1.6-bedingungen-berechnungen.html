@@ -77,6 +77,9 @@
         <a class="nav-link" href="4.5-mitarbeiterverwaltung.html"><span class="ln">4.5</span>Mitarbeiterverwaltung</a>
       </div>
     </nav>
+    <div class="sidebar-footer">
+      <a class="sidebar-home" href="https://hoa-spg.github.io/">&larr; Kursseite</a>
+    </div>
   </aside>
 
   <main class="main-content">
@@ -415,7 +418,9 @@ void main() {
       </section>
 
       <section class="section section-fehler">
-        <h2>Häufige Fehler</h2>
+<details class="fold-box">
+<summary><h2>Häufige Fehler</h2><span class="quiz-box-hint">3 Fehler &middot; zum Aufklappen klicken</span></summary>
+<div class="fold-body">
         <div class="fehler-item">
   <div class="fehler-title">Fehler: Zuweisung statt Vergleich</div>
   <p><code>if (anzahl = 0)</code> &rarr; <code>incompatible types: int cannot be converted to boolean</code>. Bei <code>boolean</code>-Variablen übersetzt <code>if (maennlich = true)</code> sogar und ist dann <em>immer</em> wahr.</p>
@@ -431,10 +436,14 @@ void main() {
   <p><code>if (groesse &lt; 110 &amp;&amp; groesse &gt; 220)</code> ist nie wahr &ndash; ungültige Werte werden durchgelassen.</p>
           <p class="fehler-fix">&bdquo;außerhalb&ldquo; heißt <code>||</code>: <code>groesse &lt; 110 || groesse &gt; 220</code>. Am besten die gültige Bedingung formulieren (<code>&gt;= 110 &amp;&amp; &lt;= 220</code>) und ungültige Werte im <code>else</code> behandeln.</p>
 </div>
+</div>
+</details>
       </section>
 
       <section class="section section-aufgaben">
-        <h2>Aufgaben</h2>
+<details class="fold-box">
+<summary><h2>Aufgaben</h2><span class="quiz-box-hint">4 Aufgaben &middot; zum Aufklappen klicken</span></summary>
+<div class="fold-body">
         <div class="aufgaben-list">
           <div class="aufgabe">
   <div class="aufgabe-header">
@@ -469,6 +478,8 @@ void main() {
             <p class="mb-0"><a href="uebungen/lektion-1.6-uebung-4-beamer.pdf" target="_blank">&#128196; Übung 1.6-4 (PDF)</a></p>
 </div>
         </div>
+</div>
+</details>
       </section>
 
       <section class="section section-quiz">

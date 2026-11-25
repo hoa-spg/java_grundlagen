@@ -77,6 +77,9 @@
         <a class="nav-link" href="4.5-mitarbeiterverwaltung.html"><span class="ln">4.5</span>Mitarbeiterverwaltung</a>
       </div>
     </nav>
+    <div class="sidebar-footer">
+      <a class="sidebar-home" href="https://hoa-spg.github.io/">&larr; Kursseite</a>
+    </div>
   </aside>
 
   <main class="main-content">
@@ -312,7 +315,9 @@ class SetTest {
       </section>
 
       <section class="section section-fehler">
-        <h2>Häufige Fehler</h2>
+<details class="fold-box">
+<summary><h2>Häufige Fehler</h2><span class="quiz-box-hint">3 Fehler &middot; zum Aufklappen klicken</span></summary>
+<div class="fold-body">
         <div class="fehler-item">
   <div class="fehler-title">Fehler: Nur equals überschrieben</div>
   <p>Ein <code>HashSet</code> enthält zwei inhaltsgleiche Personen, obwohl <code>equals</code> <code>true</code> liefert.</p>
@@ -328,6 +333,8 @@ class SetTest {
   <p><code>ClassCastException: Stand cannot be cast to class java.lang.Comparable</code> beim ersten <code>add</code>.</p>
           <p class="fehler-fix">Elemente eines <code>TreeSet</code> müssen <code>Comparable</code> implementieren &ndash; oder man übergibt dem <code>TreeSet</code> einen <code>Comparator</code> (Lektion 3.5).</p>
 </div>
+</div>
+</details>
       </section>
 
       <section class="section section-quiz">

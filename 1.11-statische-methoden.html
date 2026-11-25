@@ -77,6 +77,9 @@
         <a class="nav-link" href="4.5-mitarbeiterverwaltung.html"><span class="ln">4.5</span>Mitarbeiterverwaltung</a>
       </div>
     </nav>
+    <div class="sidebar-footer">
+      <a class="sidebar-home" href="https://hoa-spg.github.io/">&larr; Kursseite</a>
+    </div>
   </aside>
 
   <main class="main-content">
@@ -362,16 +365,22 @@ Kosten pro Monat: 7536 Euro
       </section>
 
       <section class="section section-fehler">
-        <h2>Häufige Fehler</h2>
+<details class="fold-box">
+<summary><h2>Häufige Fehler</h2><span class="quiz-box-hint">1 Fehler &middot; zum Aufklappen klicken</span></summary>
+<div class="fold-body">
         <div class="fehler-item">
   <div class="fehler-title">Fehler: non-static from a static context</div>
   <p>In <code>main</code> steht <code>print();</code> oder <code>name = "X";</code> &rarr; <code>non-static method print() cannot be referenced from a static context</code>.</p>
           <p class="fehler-fix">Statische Methoden haben kein <code>this</code>. Zuerst ein Objekt erzeugen und die Methode darauf aufrufen: <code>Mitarbeiter m = new Mitarbeiter(); m.print();</code>.</p>
 </div>
+</div>
+</details>
       </section>
 
       <section class="section section-aufgaben">
-        <h2>Aufgaben</h2>
+<details class="fold-box">
+<summary><h2>Aufgaben</h2><span class="quiz-box-hint">3 Aufgaben &middot; zum Aufklappen klicken</span></summary>
+<div class="fold-body">
         <div class="aufgaben-list">
           <div class="aufgabe">
   <div class="aufgabe-header">
@@ -398,6 +407,8 @@ Kosten pro Monat: 7536 Euro
             <p class="mb-0"><a href="uebungen/lektion-1.11-uebung-3-konto.pdf" target="_blank">&#128196; Übung 1.11-3 (PDF)</a></p>
 </div>
         </div>
+</div>
+</details>
       </section>
 
       <section class="section section-quiz">

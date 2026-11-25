@@ -77,6 +77,9 @@
         <a class="nav-link" href="4.5-mitarbeiterverwaltung.html"><span class="ln">4.5</span>Mitarbeiterverwaltung</a>
       </div>
     </nav>
+    <div class="sidebar-footer">
+      <a class="sidebar-home" href="https://hoa-spg.github.io/">&larr; Kursseite</a>
+    </div>
   </aside>
 
   <main class="main-content">
@@ -970,7 +973,9 @@ public class Company implements Serializable {
       </section>
 
       <section class="section section-fehler">
-        <h2>Häufige Fehler</h2>
+<details class="fold-box">
+<summary><h2>Häufige Fehler</h2><span class="quiz-box-hint">3 Fehler &middot; zum Aufklappen klicken</span></summary>
+<div class="fold-body">
         <div class="fehler-item">
   <div class="fehler-title">Fehler: new Company()</div>
   <p><code>Company() has private access in Company</code>.</p>
@@ -986,6 +991,8 @@ public class Company implements Serializable {
   <p>IntelliJ meldet <code>Package name 'at.spengergasse.company.model' does not correspond to the file path</code>.</p>
           <p class="fehler-fix">Die Datei muss in <code>src/main/java/at/spengergasse/company/model/</code> liegen. Klassen am besten über <em>New &rarr; Java Class</em> im richtigen Package anlegen; beim Verschieben IntelliJs Refactoring (<kbd>F6</kbd>) verwenden.</p>
 </div>
+</div>
+</details>
       </section>
 
       <section class="section section-quiz">
